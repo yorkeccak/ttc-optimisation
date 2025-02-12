@@ -1,0 +1,3 @@
+valyu
+ollama
+python-dotenv
