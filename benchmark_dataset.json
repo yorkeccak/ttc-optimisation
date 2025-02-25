@@ -340,5 +340,43 @@
             "Analyze the paradox of the heap",
             "Explain the problem of induction"
         ]
-    }
+    },
+    "world_history": {
+        "easy": [
+          "Who was the first President of the United States?",
+          "What ancient civilization built the pyramids in Egypt?",
+          "Who was known as the 'Maid of Orléans'?",
+          "What is the name of the ship that carried the Pilgrims to America in 1620?",
+          "Which empire was ruled by Julius Caesar?",
+          "In which year did the American Declaration of Independence occur?",
+          "Who was the British queen during the Victorian era?",
+          "What wall was famously torn down in 1989?",
+          "Which war was fought between the North and South regions in the United States?",
+          "What ancient city was buried by the eruption of Mount Vesuvius in 79 AD?"
+        ],
+        "medium": [
+          "What were the primary causes of World War I?",
+          "Describe the impact of the Industrial Revolution on society.",
+          "Explain the significance of the Silk Road in ancient trade.",
+          "What role did the Enlightenment play in shaping modern democracies?",
+          "Discuss the factors that led to the fall of the Roman Empire.",
+          "What were the major outcomes of the Treaty of Versailles?",
+          "How did the discovery of the New World affect global trade?",
+          "What were the social and economic impacts of colonialism in Africa?",
+          "Explain the significance of the Magna Carta.",
+          "How did the Cold War influence international relations in the late 20th century?"
+        ],
+        "hard": [
+          "Analyze the long-term impacts of the Byzantine Empire on Eastern Europe.",
+          "Discuss the causes and consequences of the Thirty Years' War.",
+          "Evaluate the effects of the Mongol invasions on Eurasian trade networks.",
+          "Analyze the political and cultural impacts of the Renaissance on Europe.",
+          "Examine the role of propaganda in shaping public opinion during World War II.",
+          "Assess the influence of the Napoleonic Wars on European political boundaries.",
+          "Evaluate the impact of decolonization on the geopolitical landscape of the 20th century.",
+          "Discuss the significance of the Congress of Vienna in restoring order in Europe.",
+          "Analyze the causes and effects of the Russian Revolution.",
+          "Examine the historical significance of the Ottoman Empire's decline."
+        ]
+  }
 }
