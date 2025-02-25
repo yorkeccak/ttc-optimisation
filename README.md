@@ -13,8 +13,6 @@ The benchmark is structured into **20 Topics**, each divided into **3 Subcategor
 - **Medium:** 10 questions with moderate complexity.
 - **Hard:** 10 challenging questions requiring in-depth understanding.
 
-This format is ideal for educators, students, and enthusiasts alike to assess and challenge their knowledge.
-
 ## Topics
 
 1. **Mathematics**
@@ -46,13 +44,11 @@ Each topic contains:
 - **Medium:** 10 moderately challenging questions.
 - **Hard:** 10 advanced, in-depth questions.
 
-This consistent structure allows you to quickly navigate through topics and focus on the level of challenge that suits your needs.
+This consistent structure allows you to quickly navigate through topics and focus on the level of challenge.
 
 ## How to Use
 
-- **For Educators:** Integrate these benchmarks into your curriculum to assess student progress.
-- **For Students:** Use the questions for self-assessment and practice.
-- **For Enthusiasts:** Challenge yourself by exploring diverse subjects and difficulty levels.
+- **For LLMS:** Integrate these benchmarks with our models to test their performance in terms of output tokens (ttc).
 
 ## Contributing
 
@@ -63,5 +59,3 @@ Contributions are welcome! If you have suggestions, improvements, or additional 
 This repository is licensed under the [MIT License](LICENSE).
 
 ---
-
-Happy learning and benchmarking!
