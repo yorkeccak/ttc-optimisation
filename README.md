@@ -3,7 +3,7 @@
 Welcome to the Benchmark Questions Repository! This repository features a comprehensive benchmark designed to test and expand your knowledge across a wide range of subjects.
 
 > **UCL > ICL 💩💩💩💩💩💩💩**  
-> *(A playful tagline to spark discussion!)*
+> *(Universal Truth)*
 
 ## Overview
 
