@@ -378,5 +378,385 @@
           "Analyze the causes and effects of the Russian Revolution.",
           "Examine the historical significance of the Ottoman Empire's decline."
         ]
+    },
+    "art": {
+    "easy": [
+      "Who painted the Mona Lisa?",
+      "Which art movement is associated with Pablo Picasso?",
+      "Name the artist known for his Campbell's Soup Cans paintings.",
+      "From which country do traditional ukiyo-e woodblock prints originate?",
+      "Who painted 'Starry Night'?",
+      "What is the primary medium used in oil painting?",
+      "Who painted 'The Last Supper'?",
+      "Which art movement is characterized by bold colors and dynamic brushstrokes pioneered by Vincent van Gogh?",
+      "What is the term for a sculpture carved from a single block of stone?",
+      "Who painted 'Girl with a Pearl Earring'?"
+    ],
+    "medium": [
+      "What is the significance of the Golden Ratio in art and design?",
+      "Describe the technique used in fresco painting.",
+      "Explain how the Renaissance influenced modern art.",
+      "How did Cubism revolutionize the depiction of perspective?",
+      "Discuss the use of light and shadow in Baroque art.",
+      "What is chiaroscuro and how is it applied in painting?",
+      "How did Impressionism differ from Realism in technique?",
+      "Analyze the impact of Dadaism on contemporary art.",
+      "What role did the Salon play in 19th-century European art?",
+      "Describe the evolution of abstract art in the 20th century."
+    ],
+    "hard": [
+      "Evaluate the impact of postmodernism on the traditional art canon.",
+      "Discuss the theoretical underpinnings of visual semiotics in art criticism.",
+      "Analyze the influence of African art on European modernism.",
+      "Compare and contrast the conceptual frameworks of Expressionism and Fauvism.",
+      "Examine the role of patronage in the development of Renaissance art.",
+      "Critically assess the socio-political implications of performance art.",
+      "Analyze the integration of digital technology in contemporary art practice.",
+      "Discuss the evolution of art criticism from the 18th century to today.",
+      "Evaluate the contributions of feminist art movements in reshaping art history.",
+      "Examine how globalization has influenced cross-cultural art collaborations."
+    ]
+  },
+  "music": {
+    "easy": [
+      "Who is known as the 'King of Pop'?",
+      "Which instrument has 88 keys?",
+      "Name the composer of the 'Fifth Symphony'.",
+      "What do you call a piece of music performed by an orchestra?",
+      "Who composed 'The Four Seasons'?",
+      "What is the highest male singing voice called?",
+      "Which instrument is central to jazz music?",
+      "Who was the lead singer of The Beatles?",
+      "What is the basic unit of time in music called?",
+      "Name an instrument played by blowing air through a reed."
+    ],
+    "medium": [
+      "Explain the difference between major and minor scales.",
+      "What is counterpoint in musical composition?",
+      "Describe the structure of a classical sonata.",
+      "How does syncopation affect musical rhythm?",
+      "What is the role of a conductor in an orchestra?",
+      "Discuss the development of atonality in the 20th century.",
+      "What are the key characteristics of Baroque music?",
+      "Explain the role of improvisation in jazz.",
+      "How did the blues influence rock and roll?",
+      "Describe the evolution of electronic music in the late 20th century."
+    ],
+    "hard": [
+      "Analyze the impact of serialism on modern composition techniques.",
+      "Discuss the influence of non-Western music traditions on contemporary classical music.",
+      "Examine the role of music theory in the development of algorithmic composition.",
+      "Critically assess the evolution of opera from the Baroque era to modern times.",
+      "Evaluate the contributions of minimalist music to postmodern art.",
+      "Analyze the relationship between music and cultural identity in world music.",
+      "Discuss the role of microtonality in avant-garde compositions.",
+      "Examine the integration of traditional instruments in fusion genres.",
+      "Critically evaluate the impact of digital sampling on music production.",
+      "Analyze the theoretical foundations of spectral music."
+    ]
+  },
+  "sports": {
+    "easy": [
+      "What sport is known as 'the beautiful game'?",
+      "Which country hosted the 2016 Summer Olympics?",
+      "How many players from one team are on the court in basketball?",
+      "What is it called when a player scores three goals in a single soccer game?",
+      "Which sport uses a shuttlecock?",
+      "In which sport do players hit a ball over a net with a racket?",
+      "What is the international soccer tournament held every four years?",
+      "Which sport is associated with the Tour de France?",
+      "Which sport uses the terms 'ace' and 'deuce'?",
+      "What sport features the term 'home run'?"
+    ],
+    "medium": [
+      "Explain the offside rule in soccer.",
+      "Discuss how technology has impacted modern sports training.",
+      "Describe the evolution of basketball rules over the decades.",
+      "Analyze the role of teamwork in American football.",
+      "What are the key differences between rugby union and rugby league?",
+      "Discuss the history and development of the Olympic Games.",
+      "Explain how scoring works in tennis matches.",
+      "Analyze the significance of sportsmanship in competitive sports.",
+      "Discuss the impact of sports analytics on player performance.",
+      "Explain the physiological demands of endurance sports like marathon running."
+    ],
+    "hard": [
+      "Examine the economic impact of hosting a major international sporting event.",
+      "Analyze the sociopolitical implications of sports in national identity.",
+      "Evaluate the influence of sports medicine on athlete longevity.",
+      "Discuss the evolution of doping regulations in professional sports.",
+      "Critically assess the impact of globalization on sports leagues.",
+      "Examine the role of biomechanics in enhancing athletic performance.",
+      "Analyze the effects of psychological factors on competitive performance.",
+      "Evaluate how media coverage influences public perception of sports.",
+      "Discuss the strategic evolution in professional sports coaching.",
+      "Examine the role of data analytics in transforming modern sports strategies."
+    ]
+  },
+  "medicine": {
+    "easy": [
+      "What is the primary function of the heart?",
+      "Which organ is responsible for filtering blood?",
+      "What is the largest organ in the human body?",
+      "What is the common term for myocardial infarction?",
+      "Which vitamin is primarily obtained from sunlight?",
+      "What is the medical term for high blood pressure?",
+      "Name the process by which the body fights infection.",
+      "What is the basic unit of life in the human body?",
+      "Which system is responsible for transporting blood throughout the body?",
+      "What bone protects the brain?"
+    ],
+    "medium": [
+      "Explain the difference between viruses and bacteria.",
+      "Describe the role of the immune system in disease prevention.",
+      "What is the significance of the blood-brain barrier?",
+      "Discuss the process of cellular respiration in human cells.",
+      "Explain how vaccines work to protect against infectious diseases.",
+      "Describe the function of the endocrine system.",
+      "What are the stages of the cell cycle?",
+      "Discuss the impact of genetics on disease susceptibility.",
+      "Explain the process of wound healing.",
+      "Describe the mechanisms behind antibiotic resistance."
+    ],
+    "hard": [
+      "Analyze the molecular mechanisms involved in cancer development.",
+      "Evaluate the impact of CRISPR technology on modern medicine.",
+      "Discuss the challenges in developing vaccines for rapidly mutating viruses.",
+      "Examine the role of stem cells in regenerative medicine.",
+      "Analyze the physiological basis of autoimmune diseases.",
+      "Critically assess the role of genomics in personalized medicine.",
+      "Evaluate the impact of antibiotic stewardship on public health.",
+      "Discuss the biochemical pathways involved in metabolic disorders.",
+      "Examine the challenges of organ transplantation and rejection.",
+      "Analyze the role of epigenetics in disease progression."
+    ]
+  },
+  "engineering": {
+    "easy": [
+      "What is the basic definition of engineering?",
+      "Name one branch of engineering.",
+      "What does CAD stand for in engineering design?",
+      "What is the purpose of a prototype?",
+      "Define what a bridge is in civil engineering.",
+      "What does 'load-bearing' mean?",
+      "Which engineering discipline deals with designing machines?",
+      "What is the primary focus of electrical engineering?",
+      "What role does an engineer play in project management?",
+      "Name one common material used in construction."
+    ],
+    "medium": [
+      "Explain the significance of stress and strain in materials engineering.",
+      "Describe the process of designing a sustainable building.",
+      "Discuss the importance of safety factors in structural engineering.",
+      "What is the role of finite element analysis in engineering?",
+      "How are renewable energy technologies integrated into engineering projects?",
+      "Discuss the challenges of thermal management in electronic systems.",
+      "What are the key considerations in designing an automotive engine?",
+      "Explain the concept of systems engineering.",
+      "Discuss the importance of ergonomics in product design.",
+      "Explain the principles behind the design of a suspension bridge."
+    ],
+    "hard": [
+      "Analyze the impact of advanced materials on modern engineering design.",
+      "Discuss the challenges of designing structures to withstand seismic activity.",
+      "Evaluate the role of computational fluid dynamics in aerodynamics.",
+      "Examine the integration of artificial intelligence in engineering systems.",
+      "Critically assess the sustainability of current engineering practices.",
+      "Analyze the trade-offs between structural integrity and cost optimization.",
+      "Evaluate the challenges in designing next-generation transportation systems.",
+      "Discuss the application of nanotechnology in engineering innovations.",
+      "Examine the role of engineering ethics in complex project decisions.",
+      "Critically analyze the impact of digital twins on system maintenance and performance."
+    ]
+  },
+  "astronomy": {
+    "easy": [
+      "What is the name of our galaxy?",
+      "Which star is closest to Earth?",
+      "Which planet is known as the Red Planet?",
+      "What is the primary component of the Sun?",
+      "Name the planet known for its rings.",
+      "What do you call a group of stars?",
+      "Which celestial object is Earth's natural satellite?",
+      "What is a comet?",
+      "Name the largest planet in our solar system.",
+      "What is the name of the telescope launched into space in 1990?"
+    ],
+    "medium": [
+      "Explain the difference between a star and a planet.",
+      "Describe how a solar eclipse occurs.",
+      "What are the primary characteristics of a black hole?",
+      "Discuss the significance of the Hertzsprung-Russell diagram.",
+      "Explain the process of stellar evolution.",
+      "What causes the phases of the Moon?",
+      "Describe one method used to detect exoplanets.",
+      "Explain the concept of redshift in cosmology.",
+      "Discuss the significance of dark matter in the universe.",
+      "Explain how gravity influences the structure of galaxies."
+    ],
+    "hard": [
+      "Analyze the role of dark energy in the expansion of the universe.",
+      "Discuss the formation and evolution of planetary nebulae.",
+      "Evaluate the significance of the cosmic microwave background radiation.",
+      "Examine theories surrounding the formation of supermassive black holes.",
+      "Critically assess methods used in measuring cosmic distances.",
+      "Discuss the implications of the multiverse hypothesis in modern cosmology.",
+      "Analyze the impact of gravitational lensing on astronomical observations.",
+      "Examine the challenges in detecting and studying exoplanet atmospheres.",
+      "Evaluate the role of computational simulations in astrophysics research.",
+      "Analyze the theoretical basis for time dilation near black holes."
+    ]
+  },
+  "psychology": {
+    "easy": [
+      "What is the study of psychology?",
+      "Define behavior in psychological terms.",
+      "What is cognitive psychology?",
+      "Which branch studies child development?",
+      "What is the main focus of social psychology?",
+      "Name a common research method in psychology.",
+      "Define perception in psychology.",
+      "What mental disorder is characterized by persistent sadness?",
+      "What does the term 'cognition' refer to?",
+      "Which psychological approach emphasizes observable behavior?"
+    ],
+    "medium": [
+      "Explain the concept of classical conditioning.",
+      "Discuss the role of reinforcement in behavior modification.",
+      "What is the significance of the placebo effect in studies?",
+      "Describe Piaget's stages of cognitive development.",
+      "Explain the concept of cognitive dissonance.",
+      "Discuss how social influence affects decision making.",
+      "Describe the major components of Freud's psychoanalytic theory.",
+      "Explain the concept of attachment in developmental psychology.",
+      "Discuss the role of memory in learning processes.",
+      "Explain how biases can affect human judgment."
+    ],
+    "hard": [
+      "Critically analyze various theories of personality.",
+      "Evaluate the impact of neuroplasticity on cognitive rehabilitation.",
+      "Examine the role of genetics versus environment in behavior.",
+      "Analyze the effectiveness of different therapeutic approaches.",
+      "Discuss ethical considerations in psychological research.",
+      "Evaluate the implications of unconscious processing on decision-making.",
+      "Examine contributions of evolutionary psychology to understanding behavior.",
+      "Critically assess methodologies used in social psychology experiments.",
+      "Analyze the impact of cultural factors on psychological development.",
+      "Examine the role of neurotransmitters in mood regulation and mental health."
+    ]
+  },
+  "law": {
+    "easy": [
+      "What is the primary purpose of law in society?",
+      "Define the term 'constitution'.",
+      "What characterizes a common law system?",
+      "What is the role of a judge?",
+      "Define 'legislation'.",
+      "What is a formal written statement of laws called?",
+      "Name one main source of law.",
+      "What is the purpose of a courtroom?",
+      "Define 'jurisdiction'.",
+      "What is a civil case?"
+    ],
+    "medium": [
+      "Explain the difference between civil law and criminal law.",
+      "Discuss the significance of the separation of powers.",
+      "What is the role of an appellate court?",
+      "Describe the process of judicial review.",
+      "Explain the concept of precedent in legal systems.",
+      "Discuss the importance of the right to a fair trial.",
+      "Analyze the impact of statutory interpretation on decisions.",
+      "Explain the role of a jury in a trial.",
+      "Discuss the legal implications of constitutional amendments.",
+      "Explain the significance of international law in global relations."
+    ],
+    "hard": [
+      "Critically analyze the evolution of human rights law.",
+      "Examine the impact of legal positivism on modern jurisprudence.",
+      "Discuss the theoretical foundations of natural law.",
+      "Evaluate the role of case law in shaping legal principles.",
+      "Analyze the influence of legal realism on judicial decision-making.",
+      "Critically assess the impact of emerging technologies on privacy law.",
+      "Examine the role of comparative law in understanding different systems.",
+      "Discuss the challenges of enforcing international treaties.",
+      "Evaluate the impact of landmark Supreme Court decisions on society.",
+      "Analyze the interplay between law and ethics in modern jurisprudence."
+    ]
+  },
+  "religion": {
+    "easy": [
+      "What is the primary holy book of Christianity?",
+      "Name one of the main branches of Islam.",
+      "What is the central concept in Buddhism?",
+      "Who is considered the founder of Hinduism?",
+      "What is a temple?",
+      "Define the term 'worship'.",
+      "What is the significance of prayer in many religions?",
+      "Name a major religious festival celebrated in Judaism.",
+      "What is the term for a religious leader in Christianity?",
+      "What role does meditation play in spiritual practices?"
+    ],
+    "medium": [
+      "Explain the concept of karma in Eastern religions.",
+      "Discuss the role of ritual in religious practices.",
+      "Analyze the influence of religious texts on cultural values.",
+      "Explain the concept of the afterlife in various religions.",
+      "Discuss the role of pilgrimage in religious traditions.",
+      "Explain how mythology influences religious beliefs.",
+      "Discuss the impact of the Reformation on Christianity.",
+      "Examine the role of interfaith dialogue in modern society.",
+      "Analyze the influence of Eastern philosophy on Western spirituality.",
+      "Discuss the evolution of religious institutions over time."
+    ],
+    "hard": [
+      "Critically analyze the philosophical underpinnings of secularism.",
+      "Examine the role of religion in shaping modern political ideologies.",
+      "Evaluate the impact of religious pluralism on global conflicts.",
+      "Analyze the interplay between religion and science historically.",
+      "Critically assess the contributions of mysticism to religious thought.",
+      "Examine the influence of religious reformations on societal change.",
+      "Discuss the role of theology in contemporary ethical debates.",
+      "Analyze the impact of globalization on the spread of religious ideas.",
+      "Critically evaluate the concept of divine justice in different faiths.",
+      "Examine the role of ritual and symbolism in constructing religious identity."
+    ]
+  },
+  "culinary_arts": {
+    "easy": [
+      "What is the main ingredient in bread?",
+      "Name a basic cooking technique that involves boiling water.",
+      "What is the purpose of seasoning in cooking?",
+      "Define what a recipe is.",
+      "What is the primary ingredient in a Caesar salad?",
+      "Which kitchen tool is used to chop vegetables?",
+      "What does 'al dente' mean when cooking pasta?",
+      "Name a common herb used in cooking.",
+      "What is the difference between baking and roasting?",
+      "Which utensil is commonly used for stirring soups?"
+    ],
+    "medium": [
+      "Explain the process of emulsification in cooking.",
+      "Describe the technique of sous-vide cooking.",
+      "What role does acid play in balancing flavors?",
+      "Discuss the impact of regional cuisines on global culinary trends.",
+      "Explain how to properly temper chocolate.",
+      "Describe the Maillard reaction and its importance in cooking.",
+      "What are the key differences between French and Italian culinary techniques?",
+      "Discuss the role of fermentation in food preparation.",
+      "Explain the process of making a roux.",
+      "Analyze the impact of modernist cuisine on traditional cooking methods."
+    ],
+    "hard": [
+      "Critically assess the role of molecular gastronomy in modern culinary arts.",
+      "Examine the evolution of fusion cuisine and its cultural implications.",
+      "Analyze the influence of nutritional science on contemporary cooking.",
+      "Evaluate the impact of culinary traditions on national identity.",
+      "Discuss the challenges of scaling artisanal food production.",
+      "Examine the role of gastronomy within sustainable food systems.",
+      "Analyze the economic factors influencing global culinary trends.",
+      "Critically assess the impact of technology on modern cooking techniques.",
+      "Examine the theoretical foundations of flavor pairing and its applications.",
+      "Discuss the influence of cultural exchange on the evolution of culinary arts."
+    ]
   }
 }
