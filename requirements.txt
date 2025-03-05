@@ -1,3 +1,9 @@
 valyu
 ollama
 python-dotenv
+matplotlib
+seaborn
+tqdm
+pandas
+tiktoken
+python-dotenv

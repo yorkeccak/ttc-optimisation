@@ -1,0 +1,26 @@
+{
+    "quantitative_finance": {
+        "easy": [
+            "What is compound interest?",
+            "Define market capitalization",
+            "What is a stock dividend?",
+            "Explain what a P/E ratio is",
+            "What is diversification in investing?"
+
+        ],
+        "medium": [
+            "Calculate the duration of a 5-year bond with 6% coupon rate",
+            "Explain the Black-Scholes option pricing model",
+            "Calculate Value at Risk (VaR) using historical method",
+            "Explain the concept of beta in CAPM",
+            "Calculate the Sharpe ratio for a portfolio"
+        ],
+        "hard": [
+            "Derive the Ito's lemma and explain its applications",
+            "Implement a Monte Carlo simulation for option pricing",
+            "Develop a mean-variance optimization model for portfolio selection",
+            "Explain and implement the Hull-White interest rate model",
+            "Calculate the Greeks (delta, gamma, theta, vega) for an option portfolio"
+        ]
+    }
+}
