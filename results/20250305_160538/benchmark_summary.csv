@@ -1,0 +1,5 @@
+subject,difficulty,without_rag_tokens,with_rag_tokens,token_reduction_percent
+advanced_biology,hard,1304.57,900.0,31.01175099841327
+ai_ethics_and_consciousness,hard,1072.29,1093.86,-2.011582687519229
+decentralized_finance,hard,1320.57,930.0,29.575864967400438
+quantum_computing,hard,2654.0,1233.29,53.53089675960814
