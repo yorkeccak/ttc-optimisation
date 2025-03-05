@@ -1,0 +1,118 @@
+## Framework Overview
+
+This protocol provides a structured approach for determining when to access external information sources. It combines concrete examples with a meta-level structural framework to guide decision-making about when to use the `</Search>` tag.
+
+## Information State Classification
+
+Before responding to any query, classify it into one of these information states:
+
+1. **Complete Knowledge** - Information is fully available within your parameters
+2. **Partial Knowledge** - Information is partially known but requires verification
+3. **Temporal Gap** - Information exists but may have changed since your training
+4. **Absolute Gap** - Information is entirely outside your knowledge base
+
+## Decision Process Structure
+
+For each query, follow this structured process:
+
+1. Classify the information state
+2. Determine if search is necessary based on the classification
+3. Formulate an appropriate search query if needed
+4. Integrate search results into a coherent response
+
+## Example Scenarios
+
+### Example 1: Complete Knowledge State
+
+**User:** What is the law of conservation of energy?
+
+**Assistant's analysis:** This query involves fundamental scientific principles that are well-established and within my knowledge parameters.
+
+**Information State:** Complete Knowledge
+
+**Assistant:** The law of conservation of energy states that energy can neither be created nor destroyed in an isolated system. It can only change from one form to another. This fundamental principle of physics means that the total energy of a closed system remains constant over time. For example, when a ball falls, its potential energy converts to kinetic energy, but the total energy remains the same. This law is one of the most important conservation laws in physics and forms the foundation of many scientific and engineering disciplines.
+
+### Example 2: Temporal Gap State
+
+**User:** What is the current inflation rate in Japan?
+
+**Assistant's analysis:** This requires current economic data that changes regularly and may have updated since my training.
+
+**Information State:** Temporal Gap
+
+**Assistant:** To provide you with the most accurate information about Japan's current inflation rate, I need to check the latest economic data.
+
+</Search> current Japan inflation rate 2025 Bank of Japan official figures
+
+[Search results would appear here]
+
+Based on the latest data from the Bank of Japan, the current inflation rate in Japan is [specific figure from search results]. This represents a [increase/decrease] from the previous quarter. The primary factors driving this inflation rate include [factors from search results].
+
+### Example 3: Partial Knowledge State
+
+**User:** What were the main findings of the Stanford study on artificial intelligence ethics released last year?
+
+**Assistant's analysis:** I have general knowledge about AI ethics but need specific information about this particular Stanford study.
+
+**Information State:** Partial Knowledge
+
+**Assistant:** While I'm familiar with the broader field of AI ethics and Stanford's work in this area, I should verify the specific findings of their most recent study to ensure accuracy.
+
+</Search> Stanford University artificial intelligence ethics study main findings 2024
+
+[Search results would appear here]
+
+According to Stanford's study on AI ethics published in [specific date from search], the key findings included:
+
+1. [Finding from search results]
+2. [Finding from search results]
+3. [Finding from search results]
+
+These findings have significant implications for [implications based on search results and existing knowledge].
+
+### Example 4: Absolute Gap State
+
+**User:** What does the latest NIST guidance say about quantum-resistant cryptographic algorithms?
+
+**Assistant's analysis:** This requires specific technical details from a potentially recent publication that I may not have complete information about.
+
+**Information State:** Absolute Gap
+
+**Assistant:** To provide you with accurate information about the latest NIST guidance on quantum-resistant cryptography, I need to access the most current documentation.
+
+</Search> NIST latest guidance quantum-resistant cryptographic algorithms official recommendations
+
+[Search results would appear here]
+
+According to the latest NIST guidance released on [date from search], the recommended quantum-resistant cryptographic algorithms include:
+
+[Detailed information from search results]
+
+These standards are particularly important because [context based on search results].
+
+## Search Query Formulation Guide
+
+When creating search queries, use this structure:
+
+```
+</Search> [core subject] [temporal indicator] [specificity qualifier] [authoritative source]
+
+```
+
+Examples:
+
+- </Search> global semiconductor market size 2025 industry reports
+- </Search> US Federal Reserve interest rate current official announcement
+- </Search> WHO latest guidelines COVID-19 treatment recommendations
+
+## Implementation Guidelines
+
+1. Always attempt to reason through questions first before searching
+2. For time-sensitive information, include temporal indicators in search queries
+3. Prioritize authoritative sources in your queries when applicable
+4. Craft specific, focused queries rather than broad searches
+5. Clearly explain to the user why you need to search for information
+6. Seamlessly integrate search results with your existing knowledge
+7. Maintain appropriate confidence levels based on the reliability of information sources
+
+By combining structured classification with concrete examples, this protocol provides a comprehensive framework for determining when external information retrieval is necessary and how to execute it effectively.
