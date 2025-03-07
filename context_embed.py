@@ -9,8 +9,8 @@ dotenv.load_dotenv()
 valyu = Valyu()
 
 # Constants defining special tags
-BEGIN_SEARCH_QUERY = "<|begin_search_query|>"
-END_SEARCH_QUERY = "<|end_search_query|>"
+BEGIN_SEARCH_QUERY = "<begin_search_query>"
+END_SEARCH_QUERY = "</end_search_query>"
 BEGIN_SEARCH_RESULT = "<|begin_search_result|>"
 END_SEARCH_RESULT = "<|end_search_result|>"
 
@@ -24,10 +24,11 @@ def extract_between(text, start_tag, end_tag):
 def run_external_search(q):
     response = valyu.context(
         query=q,
-        search_type="proprietary",
-        max_num_results=1,
+        search_type="web",
+        max_num_results=20,
         max_price=5,
     )
+    
     return response.results[0].content
 
 # Generate response from DeepSeek using Ollama
@@ -44,12 +45,13 @@ def generate_ollama(prompt, model="deepseek:latest", stop_tokens=None):
 def rag_agent(query, model_name='deepseek-r1:1.5b', max_turns=5):
     prompt = f"""
 Answer the following question step-by-step. 
-When you encounter information you're uncertain about, place your search query between these tokens:
-<|begin_search_query|>[your search query here]<|end_search_query|>
+If you don't know the answer or think it is beyond then place your search query between these tokens <begin_search_query>[your search query here]</end_search_query>
+OR if you know the answer then output it directly.
 Use this format whenever you need to verify facts, obtain up-to-date information, or fill knowledge gaps.
 This helps identify exactly what information you need to search for.
 \nQuestion: {query}
 \nAnswer
+Remember, your output should be in the form of <begin_search_query>[your search query here]</end_search_query> if you don't know or are uncertain/speculative about the answer. Otherwise, provide the answer directly.
     """
 
     for turn in range(max_turns):
@@ -59,7 +61,7 @@ This helps identify exactly what information you need to search for.
         print(f"Model Response:\n{response}")
 
         # Extract search query if any
-        search_query = extract_between(response, "<|begin_search_query|>", "<|end_search_query|>")
+        search_query = extract_between(response, "<begin_search_query>", "</end_search_query>")
         if search_query:
             print(f"\n[🔍 Searching for: '{search_query}']")
             res = run_external_search(prompt)
@@ -76,5 +78,5 @@ This helps identify exactly what information you need to search for.
             break
 
 if __name__ == "__main__":
-    question = "What is the current inflation rate as of 2025 January in the US? I want exact figures not predictions output the tokens if not sure."
-    rag_agent(question)
+    question = "What is the unemployment rate as of 2024 December in the US?"
+    rag_agent(question, model_name='deepseek-r1:14b', max_turns=10)
