@@ -1,6 +1,6 @@
 # Benchmark Questions Repository
 
-Welcome to the Benchmark Questions Repository! This repository features a comprehensive benchmark designed to test and expand your knowledge across a wide range of subjects.
+Welcome to the Benchmark Questions Repository! This repository features a comprehensive benchmark designed to test and expand knowledge across a wide range of subjects, with a focus on evaluating large language model performance.
 
 > **UCL > ICL 💩💩💩💩💩💩💩**  
 > *(Universal Truth)*
@@ -12,6 +12,26 @@ The benchmark is structured into **20 Topics**, each divided into **3 Subcategor
 - **Easy:** 10 introductory knowledge-based questions.
 - **Medium:** 10 questions with moderate complexity.
 - **Hard:** 10 challenging questions requiring in-depth understanding.
+
+## Setup
+
+1. Clone this repository
+2. Install the required packages: `pip install -r requirements.txt`
+3. Create a `.env` file in the root directory with your Valyu API key:
+   ```
+   VALYU_API_KEY=your_api_key_here
+   ```
+
+## Scripts
+
+- **benchmark.py**: The main script that runs comprehensive benchmarks comparing token usage with and without RAG (Retrieval-Augmented Generation).
+  ```bash
+  python benchmark.py --sample-size 5 --difficulties medium hard
+  ```
+
+- **deepseek.py**: A simple test script to demonstrate how to use the Ollama API with the DeepSeek model.
+
+- **main.py**: An example script showing how to use the Valyu API for contextual retrieval.
 
 ## Topics
 
@@ -48,7 +68,8 @@ This consistent structure allows you to quickly navigate through topics and focu
 
 ## How to Use
 
-- **For LLMS:** Integrate these benchmarks with our models to test their performance in terms of output tokens (ttc).
+- **For LLMs:** Integrate these benchmarks with models to test their performance in terms of output tokens (ttc).
+- **With RAG:** The benchmark compares performance with and without retrieval-augmented generation.
 
 ## Contributing
 
