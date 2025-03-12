@@ -6,4 +6,3 @@ seaborn
 tqdm
 pandas
 tiktoken
-python-dotenv
