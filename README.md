@@ -2,7 +2,7 @@
 
 Welcome to the Benchmark Questions Repository! This repository features a comprehensive benchmark designed to test and expand knowledge across a wide range of subjects, with a focus on evaluating large language model performance.
 
-> **UCL > ICL 💩💩💩💩💩💩💩**  
+> **UCL > ICL**  
 > *(Universal Truth)*
 
 ## Overview
