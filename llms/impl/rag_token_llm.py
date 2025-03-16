@@ -1,3 +1,9 @@
+# rag_token_llm.py
+# Rag Token LLM is an agentic RAG implementation that uses the Valyu API to search for information during the reasoning process.
+# The reasoning model outputs <search> tokens when it needs to search for information.
+# The search model then uses the Valyu API to search for the information and returns the results.
+# The results are then passed to the reasoning model, which then uses the context to inform the answer.
+
 from ..llm import Llm
 from typing import Self
 

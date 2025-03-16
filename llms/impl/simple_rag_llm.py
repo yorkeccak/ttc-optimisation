@@ -1,3 +1,7 @@
+# simple_rag_llm.py
+# Simple RAG LLM is a naive RAG implementation that uses the Valyu API to search the web and return the top 10 results.
+# It then passes the results to the LLM and asks it to answer the question, using the context to inform the answer.
+
 from ..llm import Llm
 from typing import Self
 
