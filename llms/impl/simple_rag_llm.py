@@ -23,6 +23,10 @@ Remember: Stay focused only on answering the original question about "{question}
 
 
 class SimpleRagLlm(Llm):
+    def __init__(self, model: str) -> None:
+        super().__init__(model)
+        self._rag_enabled = True
+
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
         context = self._run_valyu(question)
         prompt = PROMPT_TEMPLATE.format(question=question, context=context)
