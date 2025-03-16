@@ -3,6 +3,10 @@ import ollama
 import re
 from typing import Self, Generator
 from valyu import Valyu
+import tiktoken
+
+# Initialize tokenizer for token counting
+tokenizer = tiktoken.get_encoding("cl100k_base")
 
 
 class Llm(ABC):
@@ -11,16 +15,16 @@ class Llm(ABC):
         self._model = model
         self._valyu = Valyu()
         self._rag_enabled = False
-        self._start_rag = "<|begin_search_query|>"
-        self._end_rag = "<|end_search_query|>"
-        self._start_result = "<|begin_search_result|>"
-        self._end_result = "<|end_search_result|>"
+        self._start_rag = "<begin_search_query>"
+        self._end_rag = "</end_search_query>"
+        self._start_result = "<begin_search_result>"
+        self._end_result = "</end_search_result>"
 
     def _run_valyu(
         self: Self,
         query: str,
-        search_type: str = "all",
-        max_num_results: int = 10,
+        search_type: str = "web",
+        max_num_results: int = 5,
         max_price: int = 10,
     ) -> str:
         """
@@ -33,7 +37,7 @@ class Llm(ABC):
             max_price=max_price,
         )
 
-        return response
+        return "\n".join([result.content for result in response.results])
 
     def _run_ollama(self: Self, prompt: str, stop_tokens=None) -> str:
         """
@@ -66,11 +70,31 @@ class Llm(ABC):
     def _extract_rag_query(self: Self, text: str) -> str | None:
         """
         Extracts the RAG query from the model output.
-        E.g. <|begin_search_query|>What is the capital of France?<|end_search_query|> -> "What is the capital of France?"
+        E.g. <begin_search_query>What is the capital of France?<end_search_query> -> "What is the capital of France?"
         """
         pattern = re.escape(self._start_rag) + r"(.*?)" + re.escape(self._end_rag)
         matches = re.findall(pattern, text, flags=re.DOTALL)
         return matches[-1].strip() if matches else None
+
+    def _compute_metrics(self: Self, response: str) -> dict:
+        """
+        Computes the metrics for the model response, this includes no. of thinking tokens, full response tokens, no. of search queries, no. of search results.
+        """
+        # Count tokens in the response
+        response_tokens = len(tokenizer.encode(response))
+
+        # Count number of search queries
+        search_queries = len(re.findall(re.escape(self._start_rag), response))
+
+        # Count number of search results
+        search_results = len(re.findall(re.escape(self._start_result), response))
+
+        return {
+            "response": response,
+            "response_tokens": response_tokens,
+            "search_queries": search_queries,
+            "search_results": search_results,
+        }
 
     @abstractmethod
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:

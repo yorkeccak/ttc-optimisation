@@ -21,4 +21,5 @@ class NoRagLlm(Llm):
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
         prompt = PROMPT_TEMPLATE.format(question=question)
-        return self._run_ollama(prompt)
+        response = self._run_ollama(prompt)
+        return self._compute_metrics(response)

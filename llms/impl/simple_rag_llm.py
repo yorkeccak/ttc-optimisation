@@ -30,4 +30,5 @@ class SimpleRagLlm(Llm):
     def generate_output(self: Self, question: str) -> str:
         context = self._run_valyu(question)
         prompt = PROMPT_TEMPLATE.format(question=question, context=context)
-        return self._run_ollama(prompt)
+        response = self._run_ollama(prompt)
+        return self._compute_metrics(response)
