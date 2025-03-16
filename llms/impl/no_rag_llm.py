@@ -15,6 +15,10 @@ Do not try to answer any other questions or topics - focus exclusively on the qu
 
 
 class NoRagLlm(Llm):
+    def __init__(self, model: str) -> None:
+        super().__init__(model)
+        self._rag_enabled = False
+
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
         prompt = PROMPT_TEMPLATE.format(question=question)
         return self._run_ollama(prompt)

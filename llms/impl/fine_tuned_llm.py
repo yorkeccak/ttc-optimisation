@@ -5,5 +5,9 @@ from ..llm import Llm
 from typing import Self
 
 class FineTunedLlm(Llm):
+    def __init__(self, model: str) -> None:
+        super().__init__(model)
+        self._rag_enabled = True
+
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
         return ""

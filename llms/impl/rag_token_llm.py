@@ -25,6 +25,10 @@ Remember: Your output should be in the form of {start_rag}[your search query her
 
 
 class RagTokenLlm(Llm):
+    def __init__(self, model: str) -> None:
+        super().__init__(model)
+        self._rag_enabled = True
+
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
         prompt = PROMPT_TEMPLATE.format(
             question=question,
