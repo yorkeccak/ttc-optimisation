@@ -10,23 +10,30 @@ class Llm(ABC):
         super().__init__()
         self._model = model
         self._valyu = Valyu()
+        self._rag_enabled = False
         self._start_rag = "<|begin_search_query|>"
         self._end_rag = "<|end_search_query|>"
         self._start_result = "<|begin_search_result|>"
         self._end_result = "<|end_search_result|>"
 
-    def _run_valyu(self: Self, query: str) -> str:
+    def _run_valyu(
+        self: Self,
+        query: str,
+        search_type: str = "all",
+        max_num_results: int = 10,
+        max_price: int = 10,
+    ) -> str:
         """
         Query the Valyu API to get relevant information for the model.
         """
         response = self._valyu.context(
             query=query,
-            search_type="all",
-            max_num_results=10,
-            max_price=10,
+            search_type=search_type,
+            max_num_results=max_num_results,
+            max_price=max_price,
         )
 
-        return response.results[0].content
+        return response
 
     def _run_ollama(self: Self, prompt: str, stop_tokens=None) -> str:
         """
