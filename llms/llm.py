@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import ollama
 import re
-from typing import Self
+from typing import Self, Generator
 from valyu import Valyu
 
 
@@ -46,6 +46,22 @@ class Llm(ABC):
         )
 
         return response["response"]
+
+    def _run_ollama_stream(
+        self: Self, prompt: str, stop_tokens=None
+    ) -> Generator[str, None, None]:
+        """
+        Runs the model with the given prompt and returns a generator that yields response chunks.
+        """
+        stream = ollama.chat(
+            model=self._model,
+            messages=[{"role": "user", "content": prompt}],
+            stream=True,
+            options={"stop": stop_tokens or []} if stop_tokens else {},
+        )
+
+        for chunk in stream:
+            yield chunk["message"]["content"]
 
     def _extract_rag_query(self: Self, text: str) -> str | None:
         """
