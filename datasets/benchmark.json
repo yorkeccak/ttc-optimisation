@@ -1,0 +1,186 @@
+{
+    "quantum_computing": {
+      "medium": [
+        {
+          "question": "Explain the difference between quantum annealing and gate-based quantum computing",
+          "answer": "Quantum annealing uses quantum tunneling to find low-energy states, while gate-based uses reversible quantum gates for general computation"
+        },
+        {
+          "question": "What is the significance of Shor's algorithm in cryptography?",
+          "answer": "Shor's algorithm can factor large numbers exponentially faster than classical algorithms, threatening RSA encryption"
+        },
+        {
+          "question": "Explain quantum entanglement and its importance in quantum teleportation",
+          "answer": "Quantum entanglement creates correlations between particles regardless of distance, enabling quantum information transfer in teleportation"
+        }
+      ],
+      "hard": [
+        {
+          "question": "Design a quantum circuit to implement a SWAP test for measuring the similarity between two quantum states",
+          "answer": "The SWAP test uses controlled-SWAP gate between two registers with Hadamard gates on control qubit before and after, measuring control qubit probability"
+        },
+        {
+          "question": "Explain how to implement a variational quantum eigensolver (VQE) for finding the ground state energy of a complex molecule",
+          "answer": "VQE uses parameterized quantum circuits to prepare trial states, measures energy expectation, and classical optimization to minimize energy"
+        },
+        {
+          "question": "Design a quantum error correction code that can handle both bit-flip and phase-flip errors simultaneously",
+          "answer": "The Steane code encodes 1 logical qubit into 7 physical qubits using CSS construction to correct both X and Z errors"
+        },
+        {
+          "question": "Derive a protocol for fault-tolerant magic state distillation that achieves a logical error rate below 10^-15 with minimal resource overhead",
+          "answer": "Protocol combines multi-level concatenated distillation with code switching, employs transversal gates where possible, and optimizes resource allocation with sparse Clifford+T circuits"
+        },
+        {
+          "question": "Design a quantum-classical hybrid algorithm for real-time error mitigation in non-Markovian noise environments on superconducting qubit hardware",
+          "answer": "Algorithm uses Bayesian inference to model frequency-dependent noise spectral density, implements dynamical decoupling sequences optimized via reinforcement learning, and applies real-time spectator qubit measurements"
+        },
+        {
+          "question": "Formulate a complete Hamiltonian simulation for braiding non-Abelian Fibonacci anyons in a fractional quantum Hall system and calculate the resulting topological protection threshold",
+          "answer": "Hamiltonian must include Coulomb interactions, disorder potentials, and edge effects while maintaining SU(2)_3 topological order, with protection threshold derived from quasi-particle excitation gaps"
+        },
+        {
+          "question": "Design a provably optimal quantum circuit synthesis algorithm for NISQ devices that accounts for connectivity constraints, crosstalk errors, and amplitude damping channel characteristics",
+          "answer": "Algorithm combines ZX-calculus rewrite rules, reinforcement learning for gate scheduling, topological circuit optimization, and hardware-aware fidelity estimation through tensor network contraction"
+        }
+      ]
+    },
+    "decentralized_finance": {
+      "medium": [
+        {
+          "question": "Compare and contrast Automated Market Makers (AMMs) vs. traditional order book exchanges",
+          "answer": "AMMs use liquidity pools and deterministic pricing functions without order matching, while order books match buyer/seller orders directly"
+        },
+        {
+          "question": "Explain the security implications of cross-chain bridges in DeFi",
+          "answer": "Cross-chain bridges create potential attack vectors through smart contract vulnerabilities, custody risks, and reliance on validators"
+        },
+        {
+          "question": "What is MEV (Maximal Extractable Value) and how does it affect DeFi users?",
+          "answer": "MEV is profit validators extract by reordering transactions, causing higher fees, sandwich attacks, and unfair arbitrage for users"
+        }
+      ],
+      "hard": [
+        {
+          "question": "Design a flash loan arbitrage strategy that exploits price differences across multiple DEXs, accounting for gas costs and potential slippage",
+          "answer": "Contract borrows via flash loan, executes trades across DEXs in specific order, accounts for gas and slippage with dynamic routing, and repays loan plus fee"
+        },
+        {
+          "question": "Explain how zero-knowledge proofs can be implemented in DeFi to create privacy-preserving transactions while maintaining compliance",
+          "answer": "ZK-proofs enable transaction validity verification without revealing details, with selective disclosure for compliance while hiding user identity and amounts"
+        },
+        {
+          "question": "Design a liquidation protection mechanism for overcollateralized lending protocols that can handle extreme market volatility",
+          "answer": "Mechanism uses dynamic collateral requirements, gradual liquidations, insurance funds, and volatility-adjusted pricing oracles with time-weighted moving averages"
+        },
+        {
+          "question": "Formulate a mechanism design for a fully on-chain credit scoring protocol that uses behavioral economics to prevent Sybil attacks while maintaining privacy and enabling under-collateralized lending",
+          "answer": "Protocol employs zero-knowledge attestations of reputation, social graph analysis with privacy-preserving nullifiers, capital-time commitment mechanisms, and context-bound reputation transfer with proof-of-uniqueness"
+        },
+        {
+          "question": "Design a formal verification framework for analyzing cross-protocol composability risks in multi-layer DeFi systems with rebasing tokens, flash loans, and non-fungible collateral",
+          "answer": "Framework requires temporal logic specifications for rebase interactions, model checking of recursive flash loan attacks, abstract interpretation of price impact scenarios, and automated invariant discovery across protocol boundaries"
+        },
+        {
+          "question": "Create an auction mechanism for MEV redistribution that provably maximizes chain efficiency while ensuring equitable value distribution among users, validators, and protocol developers",
+          "answer": "Mechanism implements threshold encrypted mempool with time-locked revelation, Dutch-style batch auctions with segregated fee lanes, commit-reveal validator selection, and cryptographic proofs of execution optimality"
+        },
+        {
+          "question": "Design a liquidity provisioning algorithm that optimally balances capital efficiency across multiple concentrated liquidity ranges while dynamically responding to volatility regime changes",
+          "answer": "Algorithm employs non-parametric volatility estimation with heavy-tail adjustments, implements dynamic programming for range optimization, uses Bayesian machine learning for regime detection, and maintains options-theoretic hedging"
+        }
+      ]
+    },
+    "ai_ethics_and_consciousness": {
+      "medium": [
+        {
+          "question": "What is the Chinese Room argument and how does it relate to claims about LLM consciousness?",
+          "answer": "Searle's Chinese Room argues symbol manipulation without understanding isn't consciousness, suggesting LLMs processing tokens lack true understanding"
+        },
+        {
+          "question": "Explain the alignment problem in advanced AI systems",
+          "answer": "The alignment problem is ensuring AI systems pursue human-intended goals rather than optimizing for proxy objectives that lead to harmful outcomes"
+        },
+        {
+          "question": "What are the key criticisms of using the Turing Test as a measure of machine intelligence?",
+          "answer": "Criticisms include confusing imitation with understanding, human-centric bias, focus on linguistic ability over other intelligence forms, and vulnerability to trickery"
+        }
+      ],
+      "hard": [
+        {
+          "question": "Design a comprehensive framework for testing whether a large language model possesses any form of phenomenal consciousness",
+          "answer": "Framework requires multi-dimensional testing of self-awareness, qualia reports, integrated information measurement, predictable responses to consciousness-altering scenarios, and neuromorphic comparison"
+        },
+        {
+          "question": "Propose a technical solution to the inner alignment problem that addresses both mesa-optimization and goal misgeneralization",
+          "answer": "Solution requires regularized training objectives, adversarial testing across distribution shifts, mechanistic interpretability techniques, and formal verification of decision boundaries"
+        },
+        {
+          "question": "Design a governance structure for superintelligent AI systems that balances innovation, safety, and equitable access",
+          "answer": "Structure requires international oversight body, mandatory capability evaluations, tiered deployment permissions, ethics review boards, and benefit-sharing mechanisms"
+        },
+        {
+          "question": "Formulate a mathematical framework that combines integrated information theory with predictive processing to quantify consciousness emergence in artificial neural networks of varying architectures",
+          "answer": "Framework requires information-theoretic formalization of counterfactual states, causal exclusion principles applied to activation gradients, free energy principle integration with phi measures, and topological analysis of information integration across timescales"
+        },
+        {
+          "question": "Design a value learning system that overcomes the fundamental problems of normative uncertainty while addressing meta-preferences, preference evolution, and value incommensurability",
+          "answer": "System implements hierarchical Bayesian inference over moral theories, employs multi-level reflective equilibrium with counterfactual value elicitation, manages value drift through temporal discounting of preference shifts, and handles incommensurability via non-Archimedean utility functions"
+        },
+        {
+          "question": "Develop a formal specification for an embedded agency solution that addresses the optimization boundary, self-reference, and logical uncertainty problems simultaneously",
+          "answer": "Specification combines reflective oracle frameworks for logical uncertainty, uses modal combat for counterfactual reasoning, implements updateless decision theory with naturalized induction, and addresses Löbstacles through careful management of self-reference and trust"
+        },
+        {
+          "question": "Design an experimental protocol to distinguish between Global Workspace Theory, Higher-Order Thought Theory, and Integrated Information Theory explanations of consciousness in large-scale neural networks",
+          "answer": "Protocol employs targeted ablation studies of attention mechanisms, tests causal networks through interventions on higher-order representations, measures information integration across architectural partitions, and correlates with neurobiological consciousness markers via computational homomorphisms"
+        }
+      ]
+    },
+    "advanced_biology": {
+      "medium": [
+        {
+          "question": "Explain how CRISPR-Cas9 can be used for precise genomic editing",
+          "answer": "CRISPR-Cas9 uses guide RNA to target specific DNA sequences, Cas9 enzyme creates double-strand breaks, and cellular repair mechanisms enable precise edits"
+        },
+        {
+          "question": "What is the role of epigenetics in cell differentiation?",
+          "answer": "Epigenetic modifications like DNA methylation and histone modifications regulate gene expression without changing DNA sequence, determining cell fate"
+        },
+        {
+          "question": "Describe the process of protein folding and the computational challenges in predicting protein structure",
+          "answer": "Proteins fold through hydrophobic collapse and local interactions, presenting computational challenges due to vast conformational space and energy landscape complexity"
+        }
+      ],
+      "hard": [
+        {
+          "question": "Design a multi-layered organoid system that accurately models the blood-brain barrier for drug testing",
+          "answer": "System requires co-culture of brain endothelial cells, pericytes, astrocytes on permeable membrane with precise ECM, flow conditions, and metabolic sensors"
+        },
+        {
+          "question": "Propose a novel approach to target cancer-specific metabolic pathways while minimizing damage to healthy cells",
+          "answer": "Approach uses dual-targeting of synthetic lethality in cancer-specific mutations and altered metabolic dependencies with activity-based probes and selective inhibitors"
+        },
+        {
+          "question": "Design a comprehensive experimental protocol to distinguish between different theories of consciousness at the neurobiological level",
+          "answer": "Protocol combines high-density EEG, fMRI, perturbational complexity metrics, and optogenetic manipulation with information integration measurements across consciousness states"
+        },
+        {
+          "question": "Design a synthetic chromosome with optimized codon usage that incorporates non-canonical amino acids while maintaining translational efficiency and minimizing proteotoxic stress",
+          "answer": "Design requires computational optimization of codon-anticodon interactions, engineered tRNA synthetases with expanded binding pockets, recoded stop codons, orthogonal ribosome binding sites, and stress response element modifications"
+        },
+        {
+          "question": "Develop an integrative computational framework for predicting emergent phenotypes from multi-omics data of microbiome-host interactions in inflammatory bowel disease",
+          "answer": "Framework requires strain-level metagenomic analysis, multi-scale modeling of microbiome-epithelial-immune interactions, Bayesian integration of transcriptomics and metabolomics, and causal inference methods for identifying key mediators"
+        },
+        {
+          "question": "Design a protein engineering approach to create a synthetic enzyme capable of catalyzing atmospheric carbon fixation with efficiency exceeding RuBisCO by at least 10-fold",
+          "answer": "Approach combines ancestral sequence reconstruction, directed evolution under high CO2 constraint, computational design of novel active sites, dynamical coupling optimization, and scaffold engineering for optimal transition state stabilization"
+        },
+        {
+          "question": "Create a systems biology framework to model and predict cellular senescence trajectories in different tissue types, accounting for telomere dynamics, DNA damage response, and metabolic reprogramming",
+          "answer": "Framework implements stochastic differential equations for telomere attrition, agent-based modeling of heterochromatin reorganization, flux balance analysis of senescence-associated metabolic shifts, and information theory measures of intercellular signaling network entropy"
+        }
+      ]
+    }
+} 
