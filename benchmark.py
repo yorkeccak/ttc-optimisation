@@ -85,45 +85,61 @@ def save_results(results, results_folder=None):
         json.dump(results, f, indent=2)
     logger.info(f"Saved raw results to {results_json}")
 
+    # Extract model implementations used
+    model_types = []
+    if results and "llm_results" in results[0]:
+        model_types = [f"model_{i}" for i in range(len(results[0]["llm_results"]))]
+
     # Convert to DataFrame
-    df = pd.DataFrame(
-        [
-            {
-                "subject": r["subject"],
-                "difficulty": r["difficulty"],
-                "without_rag_tokens": r["without_rag"]["response_tokens"],
-                "with_rag_tokens": r["with_rag"]["response_tokens"],
-            }
-            for r in results
-        ]
-    )
+    data_rows = []
+    for r in results:
+        base_row = {
+            "subject": r["subject"],
+            "difficulty": r["difficulty"],
+            "question": r["question"],
+        }
+
+        for i, result in enumerate(r["llm_results"]):
+            model_key = f"model_{i}"
+            if model_key not in model_types:
+                model_types.append(model_key)
+
+            row = base_row.copy()
+            row[f"{model_key}_tokens"] = result["response_tokens"]
+            row[f"{model_key}_search_queries"] = result.get("search_queries", 0)
+            row[f"{model_key}_search_results"] = result.get("search_results", 0)
+            data_rows.append(row)
+
+    df = pd.DataFrame(data_rows)
 
     # Summary statistics
     logger.info("Generating summary statistics")
-    summary = (
-        df.groupby(["subject", "difficulty"])
-        .agg({"without_rag_tokens": "mean", "with_rag_tokens": "mean"})
-        .round(2)
-    )
 
-    # Compute token reduction percentage
-    df["token_reduction_percent"] = (
-        (df["without_rag_tokens"] - df["with_rag_tokens"])
-        / df["without_rag_tokens"]
-        * 100
-    ).replace([float("inf"), -float("inf")], 0)
-    summary["token_reduction_percent"] = summary.apply(
-        lambda row: (
-            (
-                (row["without_rag_tokens"] - row["with_rag_tokens"])
-                / row["without_rag_tokens"]
-                * 100
+    # Group by subject and difficulty
+    token_cols = [f"{model}_tokens" for model in model_types]
+    summary = df.groupby(["subject", "difficulty"])[token_cols].mean().round(2)
+
+    # Compute token reduction percentage if we have at least 2 models to compare
+    if len(model_types) >= 2:
+        # Assuming model_0 is the baseline (e.g., no_rag) and model_1 is the comparison (e.g., simple_rag)
+        baseline_col = f"{model_types[0]}_tokens"
+        for i in range(1, len(model_types)):
+            comparison_col = f"{model_types[i]}_tokens"
+            reduction_col = f"{model_types[i]}_reduction_percent"
+
+            df[reduction_col] = (
+                (df[baseline_col] - df[comparison_col]) / df[baseline_col] * 100
+            ).replace([float("inf"), -float("inf")], 0)
+
+            summary[reduction_col] = summary.apply(
+                lambda row: (
+                    (row[baseline_col] - row[comparison_col]) / row[baseline_col] * 100
+                    if row[baseline_col] != 0
+                    else 0
+                ),
+                axis=1,
             )
-            if row["without_rag_tokens"] != 0
-            else 0
-        ),
-        axis=1,
-    )
+
     summary_csv = results_folder / "benchmark_summary.csv"
     summary.to_csv(summary_csv)
     logger.info(f"Saved summary statistics to {summary_csv}")
@@ -132,51 +148,65 @@ def save_results(results, results_folder=None):
     logger.info("Generating visualizations")
     plt.figure(figsize=(15, 10))
 
-    # Plot 1: Thinking Tokens by Difficulty
+    # Plot 1: Token Usage by Model and Difficulty
     plt.subplot(2, 2, 1)
+    token_data = pd.melt(
+        df,
+        value_vars=token_cols,
+        id_vars=["difficulty"],
+    )
     sns.boxplot(
-        data=pd.melt(
-            df,
-            value_vars=["without_rag_tokens", "with_rag_tokens"],
-            id_vars=["difficulty"],
-        ),
+        data=token_data,
         x="difficulty",
         y="value",
         hue="variable",
     )
-    plt.title("Thinking Tokens by Difficulty")
+    plt.title("Token Usage by Difficulty and Model")
     plt.xticks(rotation=45)
+    plt.ylabel("Tokens")
+    plt.legend(title="Model")
 
-    # Plot 2: Token Reduction Percentage by Difficulty
-    plt.subplot(2, 2, 2)
-    sns.barplot(data=df, x="difficulty", y="token_reduction_percent")
-    plt.title("Token Reduction (%) by Difficulty")
-    plt.xticks(rotation=45)
+    # Plot 2: Token Reduction Percentage by Difficulty (if applicable)
+    if len(model_types) >= 2:
+        plt.subplot(2, 2, 2)
+        reduction_cols = [f"{model}_reduction_percent" for model in model_types[1:]]
+        reduction_data = pd.melt(
+            df,
+            value_vars=reduction_cols,
+            id_vars=["difficulty"],
+        )
+        sns.barplot(data=reduction_data, x="difficulty", y="value", hue="variable")
+        plt.title("Token Reduction (%) by Difficulty")
+        plt.xticks(rotation=45)
+        plt.ylabel("Reduction %")
+        plt.legend(title="Model Comparison")
 
-    # Plot 3: Token Reduction Percentage by Subject
+    # Plot 3: Token Usage by Subject
     plt.subplot(2, 2, 3)
-    subject_reduction = (
-        df.groupby("subject")["token_reduction_percent"].mean().reset_index()
-    )
-    sns.barplot(data=subject_reduction, x="subject", y="token_reduction_percent")
-    plt.title("Token Reduction (%) by Subject")
-    plt.xticks(rotation=45)
-
-    # Plot 4: Token Usage Comparison
-    plt.subplot(2, 2, 4)
-    token_comparison = (
-        df.groupby("subject")[["without_rag_tokens", "with_rag_tokens"]]
-        .mean()
-        .reset_index()
-    )
-    token_comparison_melted = pd.melt(
-        token_comparison,
+    subject_data = pd.melt(
+        df,
+        value_vars=token_cols,
         id_vars=["subject"],
-        value_vars=["without_rag_tokens", "with_rag_tokens"],
     )
-    sns.barplot(data=token_comparison_melted, x="subject", y="value", hue="variable")
-    plt.title("Average Token Usage by Subject")
+    sns.barplot(data=subject_data, x="subject", y="value", hue="variable")
+    plt.title("Token Usage by Subject")
     plt.xticks(rotation=45)
+    plt.ylabel("Tokens")
+    plt.legend(title="Model")
+
+    # Plot 4: Token Reduction by Subject (if applicable)
+    if len(model_types) >= 2:
+        plt.subplot(2, 2, 4)
+        subject_reduction = pd.melt(
+            df.groupby("subject")[reduction_cols].mean().reset_index(),
+            id_vars=["subject"],
+            value_vars=reduction_cols,
+        )
+        sns.barplot(data=subject_reduction, x="subject", y="value", hue="variable")
+        plt.title("Token Reduction (%) by Subject")
+        plt.xticks(rotation=45)
+        plt.ylabel("Reduction %")
+        plt.legend(title="Model Comparison")
 
     plt.tight_layout()
     results_png = results_folder / "benchmark_results.png"
@@ -194,7 +224,7 @@ def save_results(results, results_folder=None):
 def run_benchmark(
     model_name: str,
     model_impl: List[Model],
-    dataset_path="datasets/benchmark_dataset_advanced.json",
+    dataset_path="benchmark.json",
     sample_size=None,
     sample_percent=None,
     difficulties=None,
@@ -305,14 +335,15 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model-impl",
         type=str,
+        nargs="+",
         choices=["simple_rag_llm", "rag_token_llm", "no_rag_llm", "fine_tuned_llm"],
-        default=["simple_rag_llm"],
-        help="Model implementation to use for the benchmark",
+        default=["simple_rag_llm", "no_rag_llm"],
+        help="Model implementations to use for the benchmark (multiple can be specified)",
     )
     parser.add_argument(
         "--dataset",
         type=str,
-        default="datasets/benchmark_dataset_advanced.json",
+        default="benchmark.json",
         help="Path to benchmark dataset",
     )
     parser.add_argument("--sample-size", type=int, help="Number of questions to sample")
