@@ -1,3 +1,7 @@
+# no_rag_llm.py
+# No RAG LLM is a simple LLM that does not use any RAG.
+# It simply uses the LLM to answer the question.
+
 from ..llm import Llm
 from typing import Self
 
