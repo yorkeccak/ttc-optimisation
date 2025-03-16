@@ -111,7 +111,8 @@ def run_benchmark(
     """Run the benchmark comparing token usage with and without RAG.
 
     Args:
-        model: Model implementation to use for the benchmark
+        model_name: Model name to use for the benchmark
+        model_impl: Model implementations to use for the benchmark
         dataset_path: Path to the benchmark dataset JSON
         sample_size: Exact number of questions to sample (overrides sample_percent)
         sample_percent: Percentage of questions to sample (0-100)
@@ -193,42 +194,10 @@ def run_benchmark(
                     ]
                 )
 
-        # Without RAG
-        logger.info("Generating response without RAG")
-        prompt_without_rag = generate_prompt(question)
-        without_rag_metrics = stream_and_get_response(
-            [{"role": "user", "content": prompt_without_rag}]
-        )
+                prompt_with_rag = generate_prompt(question, context_text)
+            else:
+                prompt_without_rag = generate_prompt(question)
 
-        # With RAG
-        logger.info("Fetching context with Valyu")
-        try:
-            context_response = valyu.context(
-                query=question,
-                search_type="all",
-                max_num_results=10,
-                max_price=100,
-                similarity_threshold=0.4,
-            )
-            logger.info(f"Received {len(context_response.results)} context results")
-
-            context_text = "\n".join(
-                [
-                    f"Source {i+1}:\n{result.content}"
-                    for i, result in enumerate(context_response.results)
-                ]
-            )
-        except Exception as e:
-            logger.error(f"Error retrieving context from Valyu: {str(e)}")
-            logger.info("Continuing without RAG context")
-            context_text = "No relevant context found."
-
-        prompt_with_rag = generate_prompt(question, context_text)
-
-        logger.info("Generating response with RAG")
-        with_rag_metrics = stream_and_get_response(
-            [{"role": "user", "content": prompt_with_rag}]
-        )
 
         # Store results
         results.append(
