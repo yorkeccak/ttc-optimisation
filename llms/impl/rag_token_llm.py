@@ -8,28 +8,16 @@ from ..llm import Llm
 from typing import Self
 
 PROMPT_TEMPLATE = """
-You are a helpful assistant that can search for information when needed. Answer the following question:
-
-"{question}"
-
-IMPORTANT: If you need to search for information, use EXACTLY this format:
-{start_rag}your search query here{end_rag}
-
-Examples:
-Question: "What is the capital of France?"
-If you need to search: {start_rag}capital city of France{end_rag}
-
-Question: "Who won the 2024 Super Bowl?"
-If you need to search: {start_rag}winner of 2024 Super Bowl{end_rag}
-
-Rules:
-1. ALWAYS use the EXACT format with {start_rag} and {end_rag}
-2. Keep search queries short and focused
-3. If you know the answer with certainty, respond directly without searching
-4. Never include the tokens within your regular response text
-
-Your turn - please answer the question above following these rules.
-"""
+Answer the following question step-by-step. 
+If you don't know the answer or think it is beyond then place your search query between these tokens {start_rag}[your search query here]{end_rag}
+If you dont know then immediately admit it and dont try to reason.
+OR if you know the answer then output it directly.
+Use this format whenever you need to verify facts, obtain up-to-date information, or fill knowledge gaps.
+This helps identify exactly what information you need to search for.
+\nQuestion: {question}
+\nAnswer
+Remember, your output should be in the form of {start_rag}[your search query here]{end_rag} if you don't know or are uncertain/speculative about the answer. Otherwise, provide the answer directly.
+    """
 
 
 class RagTokenLlm(Llm):
@@ -38,6 +26,7 @@ class RagTokenLlm(Llm):
         self._rag_enabled = True
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
+        print("\n🤔 Initial Question:", question)
         prompt = PROMPT_TEMPLATE.format(
             question=question,
             start_rag=self._start_rag,
@@ -48,8 +37,8 @@ class RagTokenLlm(Llm):
         current_chunk = ""
 
         for turn in range(max_turns):
-            print(f"\n--- Turn {turn+1} ---")
-            print(prompt)
+            print(f"\n📝 Turn {turn+1}/{max_turns} ---")
+            print("\n🤖 Model thinking...")
 
             # Stream the response and check for RAG tokens
             for chunk in self._run_ollama_stream(prompt, stop_tokens=[self._end_rag]):
@@ -70,20 +59,23 @@ class RagTokenLlm(Llm):
             search_query = self._extract_rag_query(current_chunk)
 
             if not search_query:
-                print("\n[✅ No further searches required.]")
-                print("\nFinal Response:\n")
+                print("\n✅ Model provided direct answer (no search needed)")
+                print("\n📊 Final Response:")
+                print("=" * 50)
                 print(current_chunk)
+                print("=" * 50)
                 break
 
-            print(f"\n[🔍 Searching for: '{search_query}']")
+            print(f"\n🔍 Searching: '{search_query}'")
             res = self._run_valyu(search_query)
+            print("\n📚 Search Results:")
+            print("-" * 50)
+            print(res)
+            print("-" * 50)
+
             embedded_context = f"\n{self._start_result}\n{res}\n{self._end_result}\n"
             prompt += f"\n{current_chunk}\n{embedded_context}\n"
-            print(f"\n[✅ Search Results embedded into prompt.]\n")
+            print(f"\n📎 Search results added to context. Continuing reasoning...\n")
             current_chunk = ""
 
         return output
-
-
-myLLM = RagTokenLlm("deepseek-r1:1.5b")
-print(myLLM.generate_output("What is the capital of France?"))
