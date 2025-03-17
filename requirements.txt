@@ -6,3 +6,4 @@ seaborn
 tqdm
 pandas
 tiktoken
+openai
