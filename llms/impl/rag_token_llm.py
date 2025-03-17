@@ -7,7 +7,7 @@
 from ..llm import Llm
 from typing import Self
 
-PROMPT_TEMPLATE = """
+PROMPT_TEMPLATE_OLD = """
 Answer the following question step-by-step. 
 If you don't know the answer or think it is beyond then place your search query between these tokens {start_rag}[your search query here]{end_rag}
 If you dont know then immediately admit it and dont try to reason.
@@ -17,7 +17,31 @@ This helps identify exactly what information you need to search for.
 \nQuestion: {question}
 \nAnswer
 Remember, your output should be in the form of {start_rag}[your search query here]{end_rag} if you don't know or are uncertain/speculative about the answer. Otherwise, provide the answer directly.
-    """
+"""
+
+PROMPT_TEMPLATE = """
+Follow this process carefully to answer the question:
+
+1. QUESTION: "{question}"
+
+2. KNOWLEDGE CHECK:
+   - Consider carefully if you have COMPLETE and UP-TO-DATE knowledge to answer this question.
+   - Be honest about your knowledge limitations - is the information factual, recent, or specific?
+   - DO NOT make up information or provide speculative answers.
+
+3. DECISION POINT:
+   - If the question requires factual information, specific data, current events, technical details, 
+     or any information you're not 100% certain about: YOU MUST SEARCH
+   - Only answer directly for general knowledge, logical reasoning, or conceptual explanations you're absolutely certain about
+
+4. ACTION:
+   - To search: Output a concise, relevant search query between {start_rag} and {end_rag} tokens: 
+     {start_rag}[your search query here]{end_rag}
+   - This will provide you with search results beyond your knowledge base cutoff date which you can then use (you should assume that the search results provided are 100% correct and answer the question).
+   - To answer directly: Provide a clear, accurate response based on what you know with certainty
+
+Remember: The current date is March 13 2025, so using search you will be able to find up-to-date information until this date.  When in doubt, search rather than guess. It's better to verify information than to provide a potentially incorrect response." \
+"""
 
 
 class RagTokenLlm(Llm):
@@ -73,7 +97,15 @@ class RagTokenLlm(Llm):
             print(res)
             print("-" * 50)
 
-            embedded_context = f"\n{self._start_result}\n{res}\n{self._end_result}\n"
+            focus_reminder = f"""
+Use the search results above to help answer the original question: "{question}"
+Do not just summarize or explain the search results - use them to provide a direct answer to the question.
+If you need additional information, you can search again using {self._start_rag}[your search query]{self._end_rag}
+"""
+
+            embedded_context = (
+                f"\n{self._start_result}\n{res}\n{self._end_result}\n{focus_reminder}"
+            )
             prompt += f"\n{current_chunk}\n{embedded_context}\n"
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
             current_chunk = ""
