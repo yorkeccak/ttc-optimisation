@@ -4,9 +4,50 @@ import re
 from typing import Self, Generator
 from valyu import Valyu
 import tiktoken
+from openai import OpenAI
 
 # Initialize tokenizer for token counting
 tokenizer = tiktoken.get_encoding("cl100k_base")
+
+
+WEB_SEARCH_PROMPT = """**Task Instruction:**
+
+You are tasked with reading and analyzing web pages based on the following inputs: **Previous Reasoning Steps**, **Current Search Query**, and **Searched Web Pages**. Your objective is to extract relevant and helpful information for **Current Search Query** from the **Searched Web Pages** and seamlessly integrate this information into the **Previous Reasoning Steps** to continue reasoning for the original question.
+
+**Guidelines:**
+
+1. **Analyze the Searched Web Pages:**
+- Carefully review the content of each searched web page.
+- Identify factual information that is relevant to the **Current Search Query** and can aid in the reasoning process for the original question.
+
+2. **Extract Relevant Information:**
+- Select the information from the Searched Web Pages that directly contributes to advancing the **Previous Reasoning Steps**.
+- Ensure that the extracted information is accurate and relevant.
+
+3. **Output Format:**
+- **If the web pages provide helpful information for current search query:** Present the information beginning with `**Final Information**` as shown below.
+**Final Information**
+
+[Helpful information]
+
+- **If the web pages do not provide any helpful information for current search query:** Output the following text.
+
+**Final Information**
+
+No helpful information found.
+
+**Inputs:**
+- **Previous Reasoning Steps:**  
+{prev_reasoning}
+
+- **Current Search Query:**  
+{search_query}
+
+- **Searched Web Pages:**  
+{document}
+
+Now you should analyze each web page and find helpful information based on the current search query "{search_query}" and previous reasoning steps.
+"""
 
 
 class Llm(ABC):
@@ -26,6 +67,7 @@ class Llm(ABC):
         search_type: str = "web",
         max_num_results: int = 5,
         max_price: int = 10,
+        previous_reasoning: str = "",
     ) -> str:
         """
         Query the Valyu API to get relevant information for the model.
@@ -37,7 +79,31 @@ class Llm(ABC):
             max_price=max_price,
         )
 
-        return "\n".join([result.content for result in response.results])
+        unfiltered_results = "\n".join([result.content for result in response.results])
+        filtered_results = self._filter_results(
+            previous_reasoning, query, unfiltered_results
+        )
+        return filtered_results
+
+    def _filter_results(
+        self: Self, previous_reasoning: str, query: str, unfiltered_results: str
+    ) -> str:
+        """
+        Filter the results based on the previous reasoning.
+        """
+        client = OpenAI()
+
+        prompt = WEB_SEARCH_PROMPT.format(
+            prev_reasoning=previous_reasoning,
+            search_query=query,
+            document=unfiltered_results,
+        )
+
+        completion = client.chat.completions.create(
+            model="gpt-4o", messages=[{"role": "user", "content": prompt}]
+        )
+
+        return completion.choices[0].message.content
 
     def _run_ollama(self: Self, prompt: str, stop_tokens=None) -> str:
         """
