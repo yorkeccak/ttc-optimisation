@@ -87,8 +87,14 @@ def save_results(results, results_folder=None):
 
     # Extract model implementations used
     model_types = []
+    model_names = []
     if results and "llm_results" in results[0]:
-        model_types = [f"model_{i}" for i in range(len(results[0]["llm_results"]))]
+        for i, result in enumerate(results[0]["llm_results"]):
+            model_key = f"model_{i}"
+            model_types.append(model_key)
+            # Extract the model implementation name from the result
+            model_name = result.get("model_impl", f"model_{i}")
+            model_names.append(model_name)
 
     # Convert to DataFrame
     data_rows = []
@@ -103,6 +109,9 @@ def save_results(results, results_folder=None):
             model_key = f"model_{i}"
             if model_key not in model_types:
                 model_types.append(model_key)
+                model_name = result.get("model_impl", f"model_{i}")
+                if model_name not in model_names:
+                    model_names.append(model_name)
 
             row = base_row.copy()
             row[f"{model_key}_tokens"] = result["response_tokens"]
@@ -125,7 +134,7 @@ def save_results(results, results_folder=None):
         baseline_col = f"{model_types[0]}_tokens"
         for i in range(1, len(model_types)):
             comparison_col = f"{model_types[i]}_tokens"
-            reduction_col = f"{model_types[i]}_reduction_percent"
+            reduction_col = f"{model_names[i]}_vs_{model_names[0]}_reduction_percent"
 
             df[reduction_col] = (
                 (df[baseline_col] - df[comparison_col]) / df[baseline_col] * 100
@@ -155,6 +164,12 @@ def save_results(results, results_folder=None):
         value_vars=token_cols,
         id_vars=["difficulty"],
     )
+    # Create a mapping for labels
+    label_map = {
+        f"{model_types[i]}_tokens": f"{model_names[i]}" for i in range(len(model_types))
+    }
+    token_data["variable"] = token_data["variable"].map(label_map)
+
     sns.boxplot(
         data=token_data,
         x="difficulty",
@@ -169,17 +184,21 @@ def save_results(results, results_folder=None):
     # Plot 2: Token Reduction Percentage by Difficulty (if applicable)
     if len(model_types) >= 2:
         plt.subplot(2, 2, 2)
-        reduction_cols = [f"{model}_reduction_percent" for model in model_types[1:]]
-        reduction_data = pd.melt(
-            df,
-            value_vars=reduction_cols,
-            id_vars=["difficulty"],
-        )
-        sns.barplot(data=reduction_data, x="difficulty", y="value", hue="variable")
-        plt.title("Token Reduction (%) by Difficulty")
-        plt.xticks(rotation=45)
-        plt.ylabel("Reduction %")
-        plt.legend(title="Model Comparison")
+        reduction_cols = [
+            f"{model_names[i]}_vs_{model_names[0]}_reduction_percent"
+            for i in range(1, len(model_types))
+        ]
+        if reduction_cols:
+            reduction_data = pd.melt(
+                df,
+                value_vars=reduction_cols,
+                id_vars=["difficulty"],
+            )
+            sns.barplot(data=reduction_data, x="difficulty", y="value", hue="variable")
+            plt.title("Token Reduction (%) by Difficulty")
+            plt.xticks(rotation=45)
+            plt.ylabel("Reduction %")
+            plt.legend(title="Model Comparison")
 
     # Plot 3: Token Usage by Subject
     plt.subplot(2, 2, 3)
@@ -188,6 +207,8 @@ def save_results(results, results_folder=None):
         value_vars=token_cols,
         id_vars=["subject"],
     )
+    subject_data["variable"] = subject_data["variable"].map(label_map)
+
     sns.barplot(data=subject_data, x="subject", y="value", hue="variable")
     plt.title("Token Usage by Subject")
     plt.xticks(rotation=45)
@@ -197,16 +218,17 @@ def save_results(results, results_folder=None):
     # Plot 4: Token Reduction by Subject (if applicable)
     if len(model_types) >= 2:
         plt.subplot(2, 2, 4)
-        subject_reduction = pd.melt(
-            df.groupby("subject")[reduction_cols].mean().reset_index(),
-            id_vars=["subject"],
-            value_vars=reduction_cols,
-        )
-        sns.barplot(data=subject_reduction, x="subject", y="value", hue="variable")
-        plt.title("Token Reduction (%) by Subject")
-        plt.xticks(rotation=45)
-        plt.ylabel("Reduction %")
-        plt.legend(title="Model Comparison")
+        if reduction_cols:
+            subject_reduction = pd.melt(
+                df.groupby("subject")[reduction_cols].mean().reset_index(),
+                id_vars=["subject"],
+                value_vars=reduction_cols,
+            )
+            sns.barplot(data=subject_reduction, x="subject", y="value", hue="variable")
+            plt.title("Token Reduction (%) by Subject")
+            plt.xticks(rotation=45)
+            plt.ylabel("Reduction %")
+            plt.legend(title="Model Comparison")
 
     plt.tight_layout()
     results_png = results_folder / "benchmark_results.png"
@@ -323,7 +345,14 @@ def run_benchmark(
 
 
 if __name__ == "__main__":
-    # Set up command line arguments
+    # This bnchmark pipeline can be configured by command line arguments to run with different:
+    # - models (e.g. deepseek-r1:1.5b, ...)
+    # - datasets (for benchmarking ttc)
+    # - search implementations (no rag, simple rag, rag token, fine-tuned)
+    # - dataset sizes (e.g. percent or exact number of questions)
+    # - difficulty levels (e.g. medium, hard)
+    # - topics (e.g. quantum computing, decentralized finance)
+
     parser = argparse.ArgumentParser(description="Run RAG thinking token benchmark")
     parser.add_argument(
         "--model",
