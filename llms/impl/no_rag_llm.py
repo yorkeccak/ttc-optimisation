@@ -15,11 +15,44 @@ Do not try to answer any other questions or topics - focus exclusively on the qu
 
 
 class NoRagLlm(Llm):
+    """
+    No RAG LLM that generates responses without any external information.
+
+    This implementation is the baseline approach:
+    1. Take user question
+    2. Generate response using only the LLM's internal knowledge
+    """
+
     def __init__(self, model: str) -> None:
+        """
+        Initialize the No RAG LLM with the specified model.
+
+        Args:
+            model: Name of the Ollama model to use
+        """
         super().__init__(model)
         self._rag_enabled = False
 
-    def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
+    def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
+        """
+        Generate a response to the question using only the LLM (no external data).
+
+        Args:
+            question: The user's question
+            max_turns: Maximum number of turns (unused in this implementation)
+
+        Returns:
+            Dictionary containing response and metrics
+        """
+        # Prepare prompt with just the question
+        print(
+            f"\r🧠 No RAG: Generating response with internal knowledge only...", end=""
+        )
         prompt = PROMPT_TEMPLATE.format(question=question)
+
+        # Generate response using the LLM
         response = self._run_ollama(prompt)
+        print(f"\r✅ No RAG: Response generated using internal knowledge only       ")
+
+        # Compute metrics and return result
         return self._compute_metrics(response)
