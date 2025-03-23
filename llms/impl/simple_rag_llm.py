@@ -23,12 +23,48 @@ Remember: Stay focused only on answering the original question about "{question}
 
 
 class SimpleRagLlm(Llm):
+    """
+    Simple RAG LLM that performs search before generating a response.
+
+    This implementation follows a standard RAG approach:
+    1. Take user question
+    2. Search for relevant information using Valyu API
+    3. Include search results as context in the prompt
+    4. Generate a response with the LLM using this context
+    """
+
     def __init__(self, model: str) -> None:
+        """
+        Initialize the Simple RAG LLM with the specified model.
+
+        Args:
+            model: Name of the Ollama model to use
+        """
         super().__init__(model)
         self._rag_enabled = True
 
-    def generate_output(self: Self, question: str) -> str:
+    def generate_output(self: Self, question: str) -> dict:
+        """
+        Generate a response to the question using Simple RAG approach.
+
+        Args:
+            question: The user's question
+
+        Returns:
+            Dictionary containing response and metrics
+        """
+        # Search for context using Valyu API
+        print(f"\r🔍 Simple RAG: Searching for context for question...", end="")
         context = self._run_valyu(question)
+        print(f"\r✅ Simple RAG: Retrieved context for question        ")
+
+        # Prepare prompt with question and context
         prompt = PROMPT_TEMPLATE.format(question=question, context=context)
+
+        # Generate response using the LLM
+        print(f"\r🧠 Simple RAG: Generating response with context...", end="")
         response = self._run_ollama(prompt)
+        print(f"\r✅ Simple RAG: Response generated with context      ")
+
+        # Compute metrics and return result
         return self._compute_metrics(response)
