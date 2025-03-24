@@ -2,6 +2,7 @@
 # Simple RAG LLM is a naive RAG implementation that uses the Valyu API to search the web and return the top 10 results.
 # It then passes the results to the LLM and asks it to answer the question, using the context to inform the answer.
 
+import time
 from ..llm import Llm
 from typing import Self
 
@@ -63,7 +64,9 @@ class SimpleRagLlm(Llm):
 
         # Generate response using the LLM
         print(f"\r🧠 Simple RAG: Generating response with context...", end="")
+        
         response = self._run_ollama(prompt)
+
         print(f"\r✅ Simple RAG: Response generated with context      ")
 
         # Compute metrics and return result
