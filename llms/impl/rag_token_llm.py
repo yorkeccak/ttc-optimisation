@@ -110,4 +110,4 @@ If you need additional information, you can search again using {self._start_rag}
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
             current_chunk = ""
 
-        return output
+        return self._compute_metrics(output)

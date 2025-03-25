@@ -174,12 +174,16 @@ def judge_responses(
         )
         print(f"\r✅ Responses judged by Cohere Command model                ")
 
+        print(response.text)
         evaluation_text = response.text.strip()
+        print(f'\n\nEvaluation text: \n{evaluation_text}' )
+
 
         # Extract evaluations
         evaluations = {}
         for resp in responses:
             model_impl = resp.get("model_impl", "unknown")
+            print(f'\n\nModel implementation: {model_impl}')
 
             # Extract correctness
             correctness_pattern = f"<{model_impl}><Correctness>(.*?)</Correctness>"
@@ -189,6 +193,7 @@ def judge_responses(
             correctness = (
                 correctness_match.group(1).strip() if correctness_match else "Unknown"
             )
+            print(f'Correctness: {correctness}')
 
             # Extract conciseness
             conciseness_pattern = f"<{model_impl}>.*?<Conciseness>(.*?)</Conciseness>"
@@ -198,6 +203,7 @@ def judge_responses(
             conciseness = (
                 conciseness_match.group(1).strip() if conciseness_match else "Unknown"
             )
+            print(f'Conciseness: {conciseness}')
 
             evaluations[model_impl] = {
                 "correctness": correctness == "T",
@@ -941,6 +947,7 @@ def run_benchmark(
     #                     "question_dict": question_dict,
     #                 }
     #             )
+    count = 0
     for qobj in dataset:
         question_dict = {
             "question": qobj["Question"],
@@ -953,6 +960,9 @@ def run_benchmark(
                 "question_dict": question_dict,
             }
         )
+        count+=1
+        if count >= 200:
+            break
 
     logger.info(f"Collected {len(all_questions)} questions matching criteria")
     print(f"📋 Collected {len(all_questions)} questions matching criteria")
@@ -997,6 +1007,7 @@ def run_benchmark(
 
         # Get responses from all model implementations
         for model_idx, llm in enumerate(llms):
+
             impl_name = model_impl[model_idx]
             pbar.set_postfix({"model": impl_name})
             logger.info(f"Generating response with {impl_name}")
@@ -1084,7 +1095,7 @@ if __name__ == "__main__":
         type=str,
         nargs="+",
         choices=["simple_rag_llm", "rag_token_llm", "no_rag_llm", "fine_tuned_llm"],
-        default=["simple_rag_llm", "no_rag_llm"],
+        default=["simple_rag_llm", "no_rag_llm", "rag_token_llm"],
         help="Model implementations to use for the benchmark (multiple can be specified)",
     )
     parser.add_argument(
