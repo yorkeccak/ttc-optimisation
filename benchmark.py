@@ -947,7 +947,6 @@ def run_benchmark(
     #                     "question_dict": question_dict,
     #                 }
     #             )
-    count = 0
     for qobj in dataset:
         question_dict = {
             "question": qobj["Question"],
@@ -960,9 +959,6 @@ def run_benchmark(
                 "question_dict": question_dict,
             }
         )
-        count+=1
-        if count >= 200:
-            break
 
     logger.info(f"Collected {len(all_questions)} questions matching criteria")
     print(f"📋 Collected {len(all_questions)} questions matching criteria")
