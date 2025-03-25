@@ -11,7 +11,7 @@ import os
 tokenizer = tiktoken.get_encoding("cl100k_base")
 
 
-WEB_SEARCH_PROMPT = """**Task Instruction:**
+WEB_SEARCH_PROMPT_OLD = """**Task Instruction:**
 
 You are tasked with reading and analyzing web pages based on the following inputs: **Previous Reasoning Steps**, **Current Search Query**, and **Searched Web Pages**. Your objective is to extract relevant and helpful information for **Current Search Query** from the **Searched Web Pages** and seamlessly integrate this information into the **Previous Reasoning Steps** to continue reasoning for the original question.
 
@@ -48,6 +48,32 @@ No helpful information found.
 {document}
 
 Now you should analyze each web page and find helpful information based on the current search query "{search_query}" and previous reasoning steps.
+"""
+
+WEB_SEARCH_PROMPT = """**Task Instruction: EXTRACTION ONLY, DO NOT ANSWER THE QUESTION**
+
+You are an information extraction tool ONLY. Your job is to extract relevant facts from web pages WITHOUT answering, reasoning about, or addressing the original question directly.
+
+**IMPORTANT: You are NOT to provide answers, conclusions, opinions, or analyses. You are ONLY extracting information.**
+
+Your inputs:
+- **Previous Reasoning Steps:** {prev_reasoning}
+- **Current Search Query:** {search_query}
+- **Searched Web Pages:** {document}
+
+**Strict Guidelines:**
+1. Extract ONLY factual information from the web pages that is relevant to the search query
+2. Present information as brief, bullet-point style facts
+3. DO NOT integrate these facts into the reasoning steps
+4. DO NOT attempt to answer the original question
+5. DO NOT provide your own analysis, recommendations, or conclusions
+6. DO NOT attempt to finish the user's reasoning
+
+**Output Format:**
+- Begin with "**Extracted Facts:**" followed by bullet points of ONLY factual information from the search results
+- If no relevant information found, output: "**Extracted Facts:** No relevant factual information found."
+
+Your extraction should be concise, factual, and detached from any attempt to solve the user's original problem.
 """
 
 
