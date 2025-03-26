@@ -933,20 +933,21 @@ def run_benchmark(
 
     # Collect all matching questions at the requested difficulty level
     all_questions = []
-    # for subject, difficulty_levels in dataset.items():
-    #     for difficulty, questions in difficulty_levels.items():
-    #         # Skip if not in requested difficulties
-    #         if difficulties and difficulty not in difficulties:
-    #             continue
+    for subject, difficulty_levels in dataset.items():
+        for difficulty, questions in difficulty_levels.items():
+            # Skip if not in requested difficulties
+            if difficulties and difficulty not in difficulties:
+                continue
 
-    #         for question_dict in questions:
-    #             all_questions.append(
-    #                 {
-    #                     "subject": subject,
-    #                     "difficulty": difficulty,
-    #                     "question_dict": question_dict,
-    #                 }
-    #             )
+            for question_dict in questions:
+                all_questions.append(
+                    {
+                        "subject": subject,
+                        "difficulty": difficulty,
+                        "question_dict": question_dict,
+                    }
+                )
+    """
     for qobj in dataset:
         question_dict = {
             "question": qobj["Question"],
@@ -959,6 +960,7 @@ def run_benchmark(
                 "question_dict": question_dict,
             }
         )
+    """
 
     logger.info(f"Collected {len(all_questions)} questions matching criteria")
     print(f"📋 Collected {len(all_questions)} questions matching criteria")
