@@ -66,18 +66,18 @@ class RagTokenLlm(Llm):
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
         print("\n🤔 Initial Question:", question)
-        # prompt = PROMPT_TEMPLATE_NEW.format(
-        #     question=question,
-        #     start_rag=self._start_rag,
-        #     end_rag=self._end_rag,
-        #     max_turns=max_turns,
-        # )
-        prompt = PROMPT_TEMPLATE.format(
+        prompt = PROMPT_TEMPLATE_NEW.format(
             question=question,
             start_rag=self._start_rag,
             end_rag=self._end_rag,
             max_turns=max_turns,
         )
+        # prompt = PROMPT_TEMPLATE.format(
+        #     question=question,
+        #     start_rag=self._start_rag,
+        #     end_rag=self._end_rag,
+        #     max_turns=max_turns,
+        # )
 
         output = ""
         current_chunk = ""
