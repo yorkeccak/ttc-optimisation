@@ -28,6 +28,7 @@ ENV/
 .venv
 env.bak/
 venv.bak/
+._env/
 
 # IDE
 .idea/
@@ -52,9 +53,8 @@ htmlcov/
 
 # Logs
 *.log
-logs/
+# logs
 
 benchmark.log
-
 
 results/*

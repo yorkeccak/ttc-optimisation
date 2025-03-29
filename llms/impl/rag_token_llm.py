@@ -43,6 +43,21 @@ Follow this process carefully to answer the question:
 Remember: The current date is March 13 2025, so using search you will be able to find up-to-date information until this date.  When in doubt, search rather than guess. It's better to verify information than to provide a potentially incorrect response." \
 """
 
+PROMPT_TEMPLATE_NEW  = """ 
+        You are a reasoning assistant with the ability to access an external knowledge source to help 
+        you answer the user's question accurately. 
+        Users Question is: {question}
+        
+        You have special tools that you MUST USE whenever you're unsure about something or when the question requires you to recall conceptual information, current events.
+        To perform a search: output a relevant search query between {start_rag} and {end_rag} tokens like this: {start_rag}[your search query here]{end_rag} "
+        Then, the system will search and analyze relevant web pages, then provide you with helpful information in the format
+        You can repeat the search process multiple times if necessary. The maximum number of search attempts is limited to {max_turns}
+        "Remember: You absolutely must search when the question requires factual information, specific data, current events, technical details,
+        or any piece of knowledge you're confused or need to be sure about. This will help you get the right context and then you can answer the question."
+        "- Use {start_rag} to request a web search and end with {end_rag}.\n"
+        "- When done searching, continue your reasoning.\n\n"
+        """
+
 
 class RagTokenLlm(Llm):
     def __init__(self, model: str) -> None:
@@ -51,10 +66,17 @@ class RagTokenLlm(Llm):
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
         print("\n🤔 Initial Question:", question)
+        # prompt = PROMPT_TEMPLATE_NEW.format(
+        #     question=question,
+        #     start_rag=self._start_rag,
+        #     end_rag=self._end_rag,
+        #     max_turns=max_turns,
+        # )
         prompt = PROMPT_TEMPLATE.format(
             question=question,
             start_rag=self._start_rag,
             end_rag=self._end_rag,
+            max_turns=max_turns,
         )
 
         output = ""
