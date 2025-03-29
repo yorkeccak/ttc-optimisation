@@ -1,0 +1,669 @@
+{
+  "graph_theory": {
+    "medium": [
+      {
+        "question": "Suppose a convex polygon has 26 faces and 39 edges. How many vertices does it have?",
+        "answer": 15
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<0,2>,<2,1>,<2,3>,<3,4>,<4,1>}, which <A,B> represent Node A is connected to Node B. What is the shortest path from node 4 to node 0? Represent the path as a list.",
+        "answer": [
+          4,
+          1,
+          2,
+          0
+        ]
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<0,1>,<4,1>,<2,0>,<2,1>,<2,3>,<1,3>}, which <A,B> represent Node A is connected to Node B. What is the minimum vertex cover of G? Represent the vertex cover in a list of ascending order.",
+        "answer": [
+          1,
+          2
+        ]
+      },
+      {
+        "question": "Suppose a convex 3d-object has k pentagonal faces and m hexagonal faces. All faces are regular. What is k?",
+        "answer": 12
+      },
+      {
+        "question": "What is the number of labelled rooted forests on 6 vertices",
+        "answer": 16807
+      }
+    ]
+  },
+  "algebra": {
+    "medium": [
+      {
+        "question": "Is W = {[x, y] in R^2: x >= 0 and y >= 0} a subspace of R^2?",
+        "answer": false
+      },
+      {
+        "question": "Let V be the space of all infinite sequences of real numbers. Consider the transformation T(x_0, x_1, x_2, ...) = (x_1, x_2, x_3, ...) from V to V. Is the sequence (1,2,3,...) in the image of T?",
+        "answer": true
+      },
+      {
+        "question": "For the two linear equations $2 * x + 3 * y = 10$ and $4 * x + 4 * y = 12$ iwth variables x and y. Use cramer's rule to solve these two variables.",
+        "answer": [
+          -1,
+          4
+        ]
+      },
+      {
+        "question": "Let A be an invertible n * n matrix and v and eigenvector of both A and B, is v necesarily an eigenvector of A + B?",
+        "answer": true
+      },
+      {
+        "question": "The polynomial $x^3 - Ax + 15$ has three real roots. Two of these roots sum to 5. What is |A|?",
+        "answer": 22.0
+      },
+      {
+        "question": "For which 2 * 2 matrices A does there exist a nonzero matrix M such that AM = MD, where D = [[2, 0], [0, 3]]? Give your answer in terms of eigenvalues of A.",
+        "answer": [
+          2,
+          3
+        ]
+      },
+      {
+        "question": "For matrix A = [[3, 1, 1], [2, 4, 2], [1, 1, 3]], what are its eigen values?",
+        "answer": [
+          2,
+          6
+        ]
+      },
+      {
+        "question": "Suppose the graph of a polynomial f(t) = a + bt + ct^2 passes through points (1, -1), (2, 3), and (3, 13). What is f(-1)?",
+        "answer": 9
+      }
+    ]
+  },
+  "calculus": {
+    "medium": [
+      {
+        "question": "$\\lim_{x \\to c}((x^2 - 5x - 6) / (x - c))$ exists. What is the value of c?",
+        "answer": [
+          -1,
+          6
+        ]
+      },
+      {
+        "question": "Does cos(x) = x^k have a solution for k = 2023?",
+        "answer": true
+      },
+      {
+        "question": "RS is the midsegment of trapezoid MNOP. If MN = 10x+3, RS=9x-1, and PO = 4x+7, what is the length of RS?",
+        "answer": 26
+      },
+      {
+        "question": "What is the value of the integral $\\int_0^{\\pi/2} 1/(1+(tan(x))^{\\sqrt{2}}) dx$?",
+        "answer": 0.78539815
+      },
+      {
+        "question": "suppose I=[0,1]\\times[0,1], where exp is the exponential function. What is the numeric of the double integral of the function f(x,y)=x*y^3 exp^{x^2+y^2} over I?",
+        "answer": 0.4295
+      },
+      {
+        "question": "Let x \\in R with 0 < x < 1 and n \\in N. Is (1 - x)^n >= 1/(1+nx)?",
+        "answer": false
+      },
+      {
+        "question": "For the function $f(x)=|x|−1$ defined on $[-1,1]$. Does it meet the criteria of Rolle's Theorem? Answer true or false.",
+        "answer": false
+      },
+      {
+        "question": "A survey shows that a mayoral candidate is gaining votes at a rate of 2000t + 1000 votes per day, where t is the number of days since she announced her candidacy. How many supporters will the candidate have after 60 days, assuming that she had no supporters at t = 0?",
+        "answer": 3660000
+      },
+      {
+        "question": "Approximate the area under the curve y=2^{x} between x=-1 and x=3 using the Trapezoidal rule with n=4 subintervals.",
+        "answer": 11.25
+      },
+      {
+        "question": "What is \\lim_{x \\to 1} ((x - 1) sin((\\pi)/(x - 1))?",
+        "answer": 0
+      },
+      {
+        "question": "What is \\lim_{x \\to 0} (x \\lfloor 1/x \rfloor)?",
+        "answer": 1
+      },
+      {
+        "question": "Use the linear approximation to estimate (3.99)^3 (1.01)^4 (1.98)^{-1}.",
+        "answer": 33.36
+      },
+      {
+        "question": "Use Stoke's Theorem to evaluate $\\iint_S curl \\vec{F} \\cdot d \\vec{r}$ where $\\vec{F} = z^2 \\vec{i} - 3xy \\vec{j} + x^3y^3 \\vec{k}$ and $S$ is the part of $z = 5 - x^2 - y^2$ above the plane $z$=1. Assume that S is oriented upwards.",
+        "answer": 0.0
+      },
+      {
+        "question": "Let $f(x) = 1/x$ on $(0, 1]$ and $f(x) = 3$ if $x = 0$. Is there a global maximum on interval $[0, 1]$?",
+        "answer": false
+      },
+      {
+        "question": "Using n=8 approximate the value of $\\int_{0}^4 cos(1 + \\sqrt{x}) dx$ using the Simpson's rule.",
+        "answer": -2.47160136
+      },
+      {
+        "question": "If z = \\frac{1 + e^{-2x}}{x + tan(12x)}, what's the derivative of $\\frac{\\partial z}{\\partial x}$ at $x = 1$.",
+        "answer": -153.59
+      },
+      {
+        "question": "what is the value of \\int_a^b \\frac{dx}{\\sqrt{(x-a)(b-x)}}? Round the answer to the thousands decimal.",
+        "answer": 3.1415926
+      }
+    ]
+  },
+  "signal_processing": {
+    "medium": [
+      {
+        "question": "Consider $x(t)$ to be given as, $$ x(t)=\\cos (1000 \\pi t) $$ . Let the sampling frequency be $700 \\mathrm{~Hz}$. Does aliasing occur?",
+        "answer": true
+      },
+      {
+        "question": "The difference equation of a causal system is $y[n]+0.5 y[n-1]=x[n]-x[n-2]$, where $y[n]$ is its output and $x[n]$ is its input. Is the system a FIR filter?",
+        "answer": false
+      },
+      {
+        "question": "Consider a periodic signal $x(t)$ with period $(T)$ equals to ten. Over one period (i.e., $-5 \\leq t<5)$, it is defined as $$ x(t)=\\left\\{\\begin{array}{cc} 2 & -5 \\leq t<0 \\\\ -2 & 0 \\leq t<5 \\end{array}\\right. $$ In Fourier series, the signal $x(t)$ is written in the form of $$ x(t)=\\sum_{k=-\\infty}^{\\infty} c_k e^{\\frac{j 2 \\pi k t}{T}} $$ where the Fourier series coefficient $c_k$ is obtained as, $$ c_k=\\frac{1}{T} \\int_{-\\frac{T}{2}}^{\\frac{T}{2}} x(t) e^{-\\frac{j 2 \\pi k t}{T}} d t $$ Determine the value of $c_0$ (i.e., $\\left.k=0\\right)$",
+        "answer": 0
+      },
+      {
+        "question": "Given image \\begin{tabular}{|llll|} \\hline 7 & 1 & 6 & 0 \\\\ 3 & 3 & 7 & 6 \\\\ 6 & 6 & 5 & 7 \\\\ \\hline \\end{tabular} , and the bit-depth of the image is 4. Suppose you want to use the thresholding technique to segment the image. What is the appropriate threshold value based on the histogram of the image? Follow the following rule when you do thresholding or grouping: pixel $(i, j) \\in$ Group A pixels if $g(i, j) \\leq$ current threshold $\\mathrm{T}$; pixel $(i, j) \\in$ Group B pixels otherwise, where $g(i, j)$ is the intensity value of pixel $(i, j)$.",
+        "answer": 4
+      },
+      {
+        "question": "Consider that the following two signals: $x(t)$ and $v(t)$ $$ x(t)=\\left\\{\\begin{array}{cc} 1 & 0 \\leq t \\leq 3 \\\\ 0 & \\text { otherwise } \\end{array} \\quad v(t)=\\left\\{\\begin{array}{cc} 1 & 0 \\leq t \\leq 2 \\\\ 0 & \\text { otherwise } \\end{array}\\right.\\right. $$ Let $y(\\tau)=\\int_{-\\infty}^{\\infty} x(\\tau-t) v(t) d t$. Let $\\tau=2.5$. Determine $y(\\tau)$.",
+        "answer": 2
+      },
+      {
+        "question": "In the process of searching circles in an image, object O is detected. The contour of the object O is represented with the Fourier Descriptors (-20,60,-20,20,-20,21,-20,20). Given that the Fourier Descriptors of a circle are (0,40,0,0,0,0,0,0). Is the object O a circle-like polygon in the image? Bear in mind that there is some high frequency noise in the image. You should take this into account when you make your judgment.",
+        "answer": false
+      },
+      {
+        "question": "The difference equation of a digital system is given by $$ y[n]-y[n-1]=2 x[n-1]-x[n-2], $$ where $x[n]$ and $y[n]$ are, respectively the current samples of the input and the output signals of the system. Determine if the system is a stable system.",
+        "answer": false
+      }
+    ]
+  },
+  "atomic_physics": {
+    "medium": [
+      {
+        "question": "Find the fraction of 7.7-MeV alpha particles that is deflected at an angle of 90° or more from a gold foil of 10^-6 m thickness.",
+        "answer": 4e-05
+      },
+      {
+        "question": "The cross section for a 2.0-MeV neutron (a typical energy for a neutron released in fission) being absorbed by a U-238 nucleus and producing fission is 0.68 barn. For a pure U-238 sample of thickness 3.2 cm, what is the probability of a 2.0-MeV neutron producing fission?",
+        "answer": 0.1
+      }
+    ]
+  },
+  "portfolio_management": {
+    "medium": [
+      {
+        "question": "Let’s assume that the 10-year annual return for the S&P 500 (market portfolio) is 10%, while the average annual return on Treasury bills (a good proxy for the risk-free rate) is 5%. The standard deviation is 15% over a 10-year period. Whats the market Sharpe Ratio?",
+        "answer": 0.33
+      },
+      {
+        "question": "Your firm is trying to decide whether to buy an e-commerce software company. The company has $100,000 in total capital assets: $60,000 in equity and $40,000 in debt. The cost of the company’s equity is 10%, while the cost of the company's debt is 5%. The corporate tax rate is 21%. What is the WACC of the company?",
+        "answer": 0.0758
+      },
+      {
+        "question": "Let's assume that the 10-year annual return for the S&P 500 (market portfolio) is 10%, while the average annual return on Treasury bills (a good proxy for the risk-free rate) is 5%. Whats the market Treynor Ratio? Return the numeric value between 0 and 1.",
+        "answer": 0.05
+      },
+      {
+        "question": "Let’s assume Mutual Fund A has an annualized return of 15% and a downside deviation of 8%. Mutual Fund B has an annualized return of 12% and a downside deviation of 5%. The risk-free rate is 2.5%. What is the Sortino ratio for Fund A?",
+        "answer": 1.56
+      },
+      {
+        "question": "Three years ago, Fred invested $10,000 in the shares of ABC Corp. Each year, the company distributed dividends to its shareholders. Each year, Fred received $100 in dividends. Note that since Fred received $100 in dividends each year, his total income is $300. Today, Fred sold his shares for $12,000. What is the holding period return of his investment?",
+        "answer": 0.23
+      },
+      {
+        "question": "You are interviewing two investment managers. Mr. Wong shows that the average return on his portfolio for the past 10 years has been 14%, with a standard deviation of 8% and a beta of 1.2. Ms. Petrov shows that the average return on her portfolio for the past 10 years has been 16%, with a standard deviation of 10% and a beta of 1.6. You know that over the past 10 years, the US Treasury security rate has averaged 2% and the return on the S&P 500 has averaged 11%. By measuring Jensen’s alpha, Mr. Wong has done the better job. Is this correct? Answer True or False.",
+        "answer": true
+      }
+    ]
+  },
+  "information_theory": {
+    "medium": [
+      {
+        "question": "Let $C$ be a variable length code that satisfies the Kraft inequality with equality but does not satisfy the prefix condition. Then $C$ has finite decoding delay. True or False?",
+        "answer": false
+      },
+      {
+        "question": "Consider the discrete memoryless channel $Y=XZ$ where $X$ and $Z$ are independent binary random variables that take on values 0 and 1. Let $P(Z=1)=0.5$. Find the capacity of this channel in bits.",
+        "answer": 0.322
+      },
+      {
+        "question": "Consider a source X uniform on $\\{1,2,\\ldots,m\\}$ with a distortion measure $d(x, \\hat{x})$ that satisfies the following property: all rows and columns of the distortion matrix are permutations of the set $\\{d_1, d_2, \\ldots, d_m\\}$. Then the Shannon lower bound is tight. i.e. $R(D)=H(X)-\\phi(D)$. True or False?",
+        "answer": true
+      },
+      {
+        "question": "A train pulls out of the station at constant velocity. The received signal energy thus falls off with time as $1/i^2$. The total received signal at time $i$ is $Y_i = \\frac{1}{i}X_i + Z_i$ where $Z_1, Z_2, \\ldots$ are i.i.d. drawn from $N(0,1)$. The transmitter constraint for block length $n$ is $\\frac{1}{n}\\sum_{i=1}^n x_i^2(w) \\leq 2  $ for $w \\in \\{1,2,\\ldots, 2^{nR}\\}$. Use Fano's inequality to find the capacity for this channel.",
+        "answer": 0.0
+      },
+      {
+        "question": "One is given a communication channel with transition probabilities $p(y|x)$ and channel capacity $C=max_{p(x)}I(X;Y)$. If we preprocesses the output by forming $Y=g(Y)$ the capacity will not improve. True or False?",
+        "answer": true
+      },
+      {
+        "question": "Is the conditional entropy $H(X_0|X_n)$ non-decreasing with n for any Markov chain?",
+        "answer": true
+      },
+      {
+        "question": "Suppose that feedback is used on a binary symmetric channel with parameter $p=0.5$. Each time a $Y$ is received, it becomes the next transmission. Thus $X_1$ is Bern(1/2), $X_2=Y_1$, $X_3=Y_2$, \\ldots, X_n=Y_{n-1}. Find $\\lim_{n\\to\\infty} \\frac{1}{n} I(X_n;Y_n)$ in bits.",
+        "answer": 0.0
+      }
+    ]
+  },
+  "combinatorics": {
+    "medium": [
+      {
+        "question": "Coloring the edges of a complete graph with n vertices in 2 colors (red and blue), what is the smallest n that guarantees there is either a 4-clique in red or a 5-clique in blue?",
+        "answer": 25
+      },
+      {
+        "question": "What is the minimum number of people needed in a room to guarantee that there are 4 mutual friends or 4 mutual strangers?",
+        "answer": 18
+      },
+      {
+        "question": "In how many ways can 10 people be seated at 1 identical round tables? Each table must have at least 1 person seated.",
+        "answer": 362880
+      },
+      {
+        "question": "In how many ways can 6 people be seated at 2 identical round tables? Each table must have at least 1 person seated.",
+        "answer": 225
+      },
+      {
+        "question": "How many different 6-letter arrangements can be made from the letters in the word BANANA?",
+        "answer": 60
+      },
+      {
+        "question": "How many ways are there to arrange the letters in the word *BANANA* up to the symmetries of the word?",
+        "answer": 30
+      },
+      {
+        "question": "Coloring the edges of a complete graph with n vertices in 2 colors (red and blue), what is the smallest n that guarantees there is either a 4-clique in red or a 4-clique in blue?",
+        "answer": 18
+      },
+      {
+        "question": "How many ways are there to divide a set of 6 elements into 3 non-empty ordered subsets?",
+        "answer": 1200
+      },
+      {
+        "question": "How many ways are there to distribute 13 identical balls into 4 distinct boxes if the boxes are distinguishable and no box can be left empty?",
+        "answer": 220
+      },
+      {
+        "question": "How many people at least shall we include in one group, such that there must exist two different people in this group whose birthdays are in the same month?",
+        "answer": 13
+      },
+      {
+        "question": "What is the coefficient of $x^2y^5$ for the formula $(x + 2y)^7$?",
+        "answer": 672
+      },
+      {
+        "question": "How many ways are there to color the faces of a cube with three colors, up to rotation?",
+        "answer": 57
+      }
+    ]
+  },
+  "quantum": {
+    "medium": [
+      {
+        "question": "Calculate the momentum uncertainty of a tennis ball constrained to be in a fence enclosure of length 35 m surrounding the court in kg m/s.",
+        "answer": 3e-36
+      },
+      {
+        "question": "Photoelectrons may be emitted from sodium (phi = 2.36 eV) even for light intensities as low as 10^-8 W/m^2. Calculate classically how much time (in seconds) the light must shine to produce a photoelectron of kinetic energy 1.00 eV. Return the numeric value.",
+        "answer": 463000000.0
+      }
+    ]
+  },
+  "optics": {
+    "medium": [
+      {
+        "question": "Malus' law: $I=I_0*cos^2($\\theta$)$. Where I is the intensity of polarized light that has passed through the polarizer, I_0 is the intensity of polarized light before the polarizer, and $\\theta$ is the angle between the polarized light and the polarizer. Unpolarized light passes through a polarizer. It then passes through another polarizer at angle 40 degree to the first, and then another at angle 15 degree to the second. What percentage of the original intensity was the light coming out of the second polarizer?",
+        "answer": 54.8
+      },
+      {
+        "question": "An object of height 5cm is placed 10 cm in front of a convex mirror that has a radius of curvature of 45.0 cm. Determine the magnification of the image.",
+        "answer": 1.8
+      }
+    ]
+  },
+  "stochastic_process": {
+    "medium": [
+      {
+        "question": "Let W(t) be the standard Brownian motion, and 0 < s < t. Find the conditional PDF of W(s = 1/2) given that W(t = 1) = 2. What are the mean and variance? Return the list of [mean, variance].",
+        "answer": [
+          1.0,
+          0.25
+        ]
+      },
+      {
+        "question": "Assuming we are underground, and the only thing we can observe is whether a person brings an umbrella or not. The weather could be either rain or sunny. Assuming the P(rain)=0.6 and P(sunny)=0.4. Assuming the weather on day $k$ is dependent on the weather on day $k-1$. We can write the transition probability as P(sunny $\\mid$ sunny) = P(rain $\\mid$ rain) = 0.7. The person has 60% chance to bring an umbrella when the weather is rain, and 40% chance to bring an umbrella when the weather is sunny, i.e. P(umbrella $\\mid$ rain) = 0.6 and P(umbrella $\\mid$ sunny) = 0.4. If we observe that the person (1) brought an umbrella on day 1, (2) did not bring an umbrella on day 2, (3) brought an umbrella on day 3.  What is the probability that day 2 is raining?",
+        "answer": 0.5167
+      },
+      {
+        "question": "Let {N(t), t \\in [0, \\infty)} be a Poisson process with rate of $\\lambda = 4$. Find it covariance function $C_N(t1, t2) for t1, t2 \\in [0, \\infy)$. What is C_N(2, 4)?",
+        "answer": 8
+      }
+    ]
+  },
+  "complex_analysis": {
+    "medium": [
+      {
+        "question": "Evaluate $\\int_c z^2 / (z - 5) dz$, where c is the circle that $|z| = 2$.",
+        "answer": 0
+      }
+    ]
+  },
+  "particle": {
+    "medium": [
+      {
+        "question": "Assume that half of the mass of a 62-kg person consists of protons. If the half-life of the proton is 10^33 years, calculate the number of proton decays per day from the body.",
+        "answer": 3.5e-08
+      },
+      {
+        "question": "The Relativistic Heavy Ion Collider (RHIC) at the Brookhaven National Laboratory collides gold ions onto other gold ions head on. The energy of the gold ions is 100 GeV per nucleon. What is the speed of the gold ions as a fraction of the speed of light?",
+        "answer": 0.99996
+      }
+    ]
+  },
+  "computer_networking": {
+    "medium": [
+      {
+        "question": "In an IPv4 datagram, the value of the total-length field is $(00 \\mathrm{~A} 0)_{16}$ and the value of the headerlength (HLEN) is (5) $1_{16}$. How many bytes of payload are being carried by the datagram?",
+        "answer": 140
+      },
+      {
+        "question": "In a CSMA/CD network with a data rate of 10 Mbps, the minimum frame size is found to be 512 bits for the correct operation of the collision detection process. What should be the minimum frame size (in bits) if we increase the data rate to 1 Gbps?",
+        "answer": 51200
+      },
+      {
+        "question": "In Chord, assume the size of the identifier space is 16. The active nodes are N3, N6, N8 and N12. Show all the target key (in ascending order, ignore the node's identifier itself) for N6.",
+        "answer": [
+          7,
+          8,
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "numerical_analysis": {
+    "medium": [
+      {
+        "question": "Use the Birge-Vieta method to find a real root correct to three decimals of the following equation: x^5 - x + 1 = 0, p=-1.5.",
+        "answer": -1
+      },
+      {
+        "question": "Find the interval in which the smallest positive root of the following equations lies: tan x + tanh x = 0. Determine the roots correct to two decimal places using the bisection method",
+        "answer": 2.37
+      },
+      {
+        "question": "The two-step Adams-Bashforth method of approximation uses the approximation scheme $y_{i+2}=y_{i+1} - 1/2 * hf(t_i,y_i)+ 3/2 * hf(t_{i+1},y_{i+1})$. Given that y(0)=1 and y(1)=2, use the Adams-Bashforth method to approximate y(3) for y=-y^2 with a step size of h=1.",
+        "answer": -19.875
+      },
+      {
+        "question": "Perform 2 iterations with the Müller method for the following equation: x^3 - 1/2 = 0, x_0 = 0, x_1 = 1, x_2 = 1/2. What's the decimal value of x_3?",
+        "answer": 0.7929
+      },
+      {
+        "question": "Apply the Graeffe's root squaring method to find the roots of the following equation x^3 + 3x^2 - 4 = 0 correct to two decimals. What's the sum of these roots?",
+        "answer": -3
+      },
+      {
+        "question": "Find the interval in which the smallest positive root of the following equations lies: x^3 - x - 4 = 0. Determine the roots correct to two decimal places using the bisection method",
+        "answer": 1.8
+      }
+    ]
+  },
+  "mathematical_analysis": {
+    "medium": [
+      {
+        "question": "what is the value of $\\prod_{n=0}^{\\infty}(1+(\\frac{1}{2})^{2^n})$?",
+        "answer": 2.0
+      },
+      {
+        "question": "Find the sum of $\\sum_{n=1}^{\\infty} (cost(1/n^2) - cost(1/(n+1)^2))$",
+        "answer": -0.459
+      },
+      {
+        "question": "what is the value of $2/\\pi*\\prod_{k=1}^{\\infty} \\frac{(2*k)^2}{(2*k-1)(2*k+1)}$?",
+        "answer": 1.0
+      },
+      {
+        "question": "For any poitie integer $n$, let $\\langle n\\rangle$ denote the closest integer to $\\sqrt{n}$. Evaluate $\\sum_{n=1}^{\\infty} \\frac{2^{\\langle n \\rangle}+2^{-\\langle n \\rangle}}{2^n}$.",
+        "answer": 3.0
+      }
+    ]
+  },
+  "probability_theory": {
+    "medium": [
+      {
+        "question": "A symmetric random walk on the three-dimensional cubic lattice Z^3 is transient or persistent? Return 1 for persistent and 0 for transient.",
+        "answer": 0.0
+      },
+      {
+        "question": "A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room going to adjoining rooms with equal probability through each of the walls. To be specific, the corner rooms have 3 exits. What is the entropy rate of this random walk? Use base 2 logarithm and return the entropy rate in bits.",
+        "answer": 2.03
+      },
+      {
+        "question": "If four points are picked independently at random inside the triangle ABC, what is the probability that no one of them lies inside the triangle formed by the other three?",
+        "answer": 0.6667
+      }
+    ]
+  },
+  "thermodynamics": {
+    "medium": [
+      {
+        "question": "A camper pours 0.300 kg of coffee, initially in a pot at 70.0°C into a 0.120-kg aluminum cup initially at 20.0°C. What is the equilibrium temperature? Assume that coffee has the same specific heat as water and that no heat is exchanged with the surroundings. (Unit: °C)",
+        "answer": 66.0
+      }
+    ]
+  },
+  "derivatives": {
+    "medium": [
+      {
+        "question": "Suppose a European call option on a barrel of crude oil with a strike price of $50 and a maturity of one-month, trades for $5. What is the price of the put premium with identical strike price and time until expiration, if the one-month risk-free rate is 2% and the spot price of the underlying asset is $52?",
+        "answer": 2.92
+      },
+      {
+        "question": "Consider a forward contract on a 4-year bond with maturity 1 year. The current value of the bond is $1018.86, it has a face value of $1000 and a coupon rate of 10% per annum. A coupon has just been paid on the bond and further coupons will be paid after 6 months and after 1 year, just prior to delivery. Interest rates for 1 year out are flat at 8%. Compute the forward price of the bond.",
+        "answer": 999.998976
+      },
+      {
+        "question": "Assume that the Black-Scholes framework holds. The price of a nondividened-paying stock is $30. The price of a put option on this stock is $4.00. You are given $(i) $\\Delta=-0.28$. (ii) $\\Gamma=0.10$ Using the delta-gamma approximation, determine the price of the put option if the stock price changes to $31.50.",
+        "answer": 3.7
+      },
+      {
+        "question": "You are given: (i) The current exchange rate is 0.011$/¥. (ii) A four-year dollar-denominated European put option on yen with a strike price of $0.008 sells for $0.0005. (iii) The continuously compounded risk-free interest rate on dollars is 3%. (iv) The continuously compounded risk-free interest rate on yen is 1.5%. Calculate the price of a four-year yen-denominated European put option on dollars with a strike price of ¥125.",
+        "answer": 42.77325
+      }
+    ]
+  },
+  "statistics": {
+    "medium": [
+      {
+        "question": "A court is investigating the possible occurrence of an unlikely event T. The reliability of two independent witnesses called Alf and Bob is known to the court: Alf tells the truth with probability \\alpha and Bob with probability \\beta, and there is no collusion between the two of them. Let A and B be the events that Alf and Bob assert (respectively) that T occurred, and let \\tau=P(T). What is the probability that T occurred given that both Alf and Bob declare that T occurred? Suppose \\alpha=\\beta=9/10 and \\tau=1/1000. Return the answer up to the thousands decimal.",
+        "answer": 0.075
+      },
+      {
+        "question": "Compute covariance of x=(1,2,3,4), y=(2,3,4,5)",
+        "answer": 1.67
+      },
+      {
+        "question": "What is the smallest number of standard deviations from the mean that we must go if we want to ensure that we have at least 50% of the data of a distribution?",
+        "answer": 1.4
+      }
+    ]
+  },
+  "geometry": {
+    "medium": [
+      {
+        "question": "In triangle RST, X is located on the side RS, Y is located on the side RT, Z is located on the side ST, and XY and XZ are midsegments of △RST. If the length of side XY is 7, the length of side RT is 13, and the measure of angle YXZ is 124°, what is the measure of ange RYX?",
+        "answer": 124
+      },
+      {
+        "question": "If polygon ACDF is similar to polygon VWYZ, AF = 12, CD = 9, YZ = 10, YW = 6, and ZV = 3y-1, find the length of FD.",
+        "answer": 15
+      },
+      {
+        "question": "In triangle RST, X is located on the side RS, Y is located on the side RT, Z is located on the side ST, and XY and XZ are midsegments of △RST. If the length of side XY is 7, the length of side RT is 13, and the measure of angle YXZ is 124°, what is the length of side ST?",
+        "answer": 14
+      }
+    ]
+  },
+  "kinetics": {
+    "medium": [
+      {
+        "question": "Under some circumstances, a star can collapse into an extremely dense object made mostly of neutrons and called a neutron star. The density of a neutron star is roughly $10^14$ times as great as that of ordinary solid matter. Suppose we represent the star as a uniform, solid, rigid sphere, both before and after the collapse. The star's initial radius was $7 \\tims 10^5$ km (comparable to our sun); its final radius is 16 km. If the original star rotated once in 30 days, find the angular speed (in rad/s) of the neutron star.",
+        "answer": 4600.0
+      },
+      {
+        "question": "You throw a ball from your window $8.0 \\mathrm{~m}$ above the ground. When the ball leaves your hand, it is moving at $10.0 \\mathrm{~m} / \\athrm{s}$ at an angle of $20^{\\circ}$ below the horizontal. How far horizontally from your window will the ball hit the ground? Ignore air resistance. (Unit: m)",
+        "answer": 9.2
+      },
+      {
+        "question": "The mass of one of the small spheres of a Cavendish balance is 0.0100 kg, the mass of the nearest large sphere is 0.500 kg, and the center-to-center distance between them is 0.0500 m. Assuming the gravitational force on each sphere due to the other is $X * 10^{-10}$ N, what is X?",
+        "answer": 1.33
+      },
+      {
+        "question": "A robotic lander with an earth weight of 3430 N is sent to Mars, which has radius $R_M=3.40 \\times 10^6 m$ and mass $m_M=6.42 \\times$ $10^{23} kg$. Find the acceleration there due to gravity. (Unit: $m/s^2$)",
+        "answer": 3.7
+      }
+    ]
+  },
+  "celestial_mechanics": {
+    "medium": [
+      {
+        "question": "The asteroid Pallas has an orbital period of 4.62 years and an orbital eccentricity of 0.233. Find the semi-major axis of its orbit. (Unit: 10^11 m)",
+        "answer": 4.15
+      }
+    ]
+  },
+  "statistical_physics": {
+    "medium": [
+      {
+        "question": "Compute the mean translational kinetic energy of a mole of ideal gas in J, both at room temperature 293 K.",
+        "answer": 3650.0
+      }
+    ]
+  },
+  "wave": {
+    "medium": [
+      {
+        "question": "An airplane is flying at Mach 1.75 at an altitude of 8000 m, where the speed of sound is How long after the plane passes directly overhead will you hear the sonic boom? (Unit: m/s)",
+        "answer": 560
+      },
+      {
+        "question": "Calculate the de Broglie Wavelength of a tennis ball of mass 57 g traveling 25 m/s in meters.",
+        "answer": 4.7e-34
+      },
+      {
+        "question": "On a day when the speed of sound is the fundamental frequency of a particular stopped organ pipe is 220 Hz. The second overtone of this pipe has the same wavelength as the third harmonic of an open pipe. How long is the open pipe? (Unit: m)",
+        "answer": 0.47
+      }
+    ]
+  },
+  "classic_mechanics": {
+    "medium": [
+      {
+        "question": "An athlete whirls a discus in a circle of radius 80.0 cm. At a certain instant, the athlete is rotating at 10.0 rad / s and the angular speed is increasing at 50.0 rad / s^2. At this instant, find the magnitude (Unit: m / s^2) of the acceleration. Return the numeric value.",
+        "answer": 89.4
+      }
+    ]
+  },
+  "number_theory": {
+    "medium": [
+      {
+        "question": "Find the sum of all positive integers less than 196 and relatively prime to 98.",
+        "answer": 8232
+      },
+      {
+        "question": "What's phi(29791) where phi is Euler's Totient Function?",
+        "answer": 28830
+      }
+    ]
+  },
+  "equity_investments": {
+    "medium": [
+      {
+        "question": "If a preferred share of stock pays dividends of $1.90 per year, and the required rate of return for the stock is 9%, then what is its intrinsic value?",
+        "answer": 22.11
+      },
+      {
+        "question": "An investor is looking to purchase a security for $100 with an initial margin of 50% (meaning the investor is using $50 of his money to purchase the security and borrowing the remaining $50 from a broker). In addition, the maintenance margin is 25%. At what price of the security will the investor receive a margin call?",
+        "answer": 66.67
+      },
+      {
+        "question": "Phased Solutions Inc. has paid the following dividends per share from 2011 to 2020:\n2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020\n$0.70 | $0.80 | $0.925 | $1.095 | $1.275 | $1.455 | $1.590 | $1.795 | $1.930 | $2.110\nIf you plan to hold this stock for 10 years, believe Phased Solutions will continue this dividend pattern forever, and you want to earn 17% on your investment, what would you be willing to pay per share of Phased Solutions stock as of January 1, 2021?",
+        "answer": 60.23
+      }
+    ]
+  },
+  "real_analysis": {
+    "medium": [
+      {
+        "question": "Let $A=\\{n+\\sum_{p=1}^{\\infty} a_p 2^{-2p}: n \\in \\mathbf{Z}, a_p=0 or 1 \\}$. What is the Lebesgue measure of A?",
+        "answer": 0.0
+      }
+    ]
+  },
+  "quantitive_methods": {
+    "medium": [
+      {
+        "question": "If the annual earnings per share has mean $8.6 and standard deviation $3.4, what is the chance that an observed EPS less than $5.5?",
+        "answer": 0.1814
+      }
+    ]
+  },
+  "functional_analysis": {
+    "medium": [
+      {
+        "question": "Suppose H is a Banach space. Let A be a linear functional on the space H that maps H to H. Suppose operator A satisfies: for all $x\\in H$, $||Ax||\\geq a ||x||$ for some a>0. If A is not a compact operator on H, Is the dimension of H finite or infinite? Return 1 for finite dimension and 0 for infinite dimension",
+        "answer": 0.0
+      },
+      {
+        "question": "Let L^1[0,2] be the space of all the Lebesgue integrable functions on the interval [0,2], and C[0,2] be the space of all the continuous functions on the interval [0,2]. Suppose H=L^1[0,2], and X=C[0,2]. For any f\\in L^1[0,2], define operator T as $(Tf)(x)=\\int_0^x f(t)dt$. For the linear operator T from H to X, what is the norm of T? For the linear operator T from H to H, what is the norm of T? Return the answers of two questions as a list. For example, if the norm for the first question is 2, the second is 3, then return [2,3].",
+        "answer": [
+          1,
+          2
+        ]
+      }
+    ]
+  },
+  "condensed_matter_physics": {
+    "medium": [
+      {
+        "question": "Light of wavelength 400 nm is incident upon lithium (phi = 2.93 eV). Calculate the photon energy in eV.",
+        "answer": 3.1
+      },
+      {
+        "question": "A pure lead bar 10 cm long is maintained with one end at T &=300 K and the other at 310 K. The thermoelectric potential difference thus induced across the ends is 12.8 micro-volts. Find the thermoelectric power for lead in this temperature range in V/K. (Note: Q varies nonlinearly with temperature, but over this narrow temperature range, you may use a linear approximation.)",
+        "answer": 1.28e-06
+      }
+    ]
+  },
+  "economics": {
+    "medium": [
+      {
+        "question": "A firm in a perfectly competitive industry has patented a new process for making widgets. The new process lowers the firm's average cost, meaning that this firm alone (although still a price taker) can earn real economic profits in the long run. Suppose a government study has found that the firm's new process is polluting the air and estimates the social marginal cost of widget production by this firm to be SMC = 0.5q. If the market price is $20, what should be the rate of a government-imposed excise tax to bring about optimal level of production?",
+        "answer": 4
+      },
+      {
+        "question": "Suppose there are 8,000 hours in a year (actually there are 8,760) and that an individual has a potential market wage of $5 per hour. Suppose a rich uncle dies and leaves the individual an annual income of $4,000 per year. If he or she devotes 75 percent of full income to leisure, how many hours will be worked?",
+        "answer": 1400
+      }
+    ]
+  },
+  "relativity": {
+    "medium": [
+      {
+        "question": "In 1985 the space shuttle Challenger flew a cesium clock and compared its time with a fixed clock left on Earth. The shuttle orbited at approximately 330 km above Earth with a speed of 7712 m/s. Calculate the expected time lost per second (in picoseconds) for the moving clock and compare with the measured result of $-295.02 \\pm 0.29 ps/s$, which includes a predicted effect due to general Relativity of $35.0 \\pm 0.06 ps/s$",
+        "answer": 330.76
+      }
+    ]
+  }
+}

@@ -1,0 +1,665 @@
+{
+  "numerical_analysis": {
+    "medium": [
+      {
+        "question": "Please solve the equation 2*x^3 + e^x = 10 using newton-raphson method.",
+        "answer": 1.42
+      },
+      {
+        "question": "Use Euler's method to find the solution to the differential equation dy/dx=y^2e^x at x=6 with the initial condition y(0)=0.01 and step size h=0.5. What is y(6)?",
+        "answer": 5.113
+      },
+      {
+        "question": "Obtain the number of real roots between 0 and 3 of the equation P(x) = x^4 -4x^3 + 3x^2 + 4x - 4 = 0 using Sturm's sequence.",
+        "answer": 2
+      }
+    ]
+  },
+  "functional_analysis": {
+    "medium": [
+      {
+        "question": "Let M be the set of bounded functions (i.e. \\sup_{x\\in[a,b]}|f(x)|<\\infty) in C[0,1]. Is the set ${F(x)=\\int_0^x f(t) dt | f \\in M }$ a sequentially compact set? Answer 1 for yes and 0 for no. Furthermore, it can be proved using 1. Arzelà-Ascoli theorem, 2. Riesz representation theorem, 3. Banach fixed point theorem, 4. None of the above. Return the answers of the two questions in a list. For example, if you think the answer is no and Riesz representation theorem, then return [0,2].",
+        "answer": [
+          1,
+          1
+        ]
+      },
+      {
+        "question": "The open mapping theorem can be proved by (a) Baire category theorem; (b) Cauchy integral theorem; (c) random graph theorem; (d) None of the above. Which option is correct?",
+        "answer": "(a)"
+      }
+    ]
+  },
+  "algebra": {
+    "medium": [
+      {
+        "question": "Consider the basis B of R^2 consisting of vectors v_1 = [3,1] and v_2 = [-1, 3]. If x = [10, 10], find the B-coordinate vector of x",
+        "answer": [
+          4,
+          2
+        ]
+      },
+      {
+        "question": "Is x-1 a factor of 2*x^4+3*x^2-5x+7?",
+        "answer": false
+      },
+      {
+        "question": "Find the orthogonal projection of 9e_1 onto the subspace of R^4 spanned by [2, 2, 1, 0] and [-2, 2, 0, 1].",
+        "answer": [
+          8,
+          0,
+          2,
+          -2
+        ]
+      },
+      {
+        "question": "Is 7 a quadratic residue modulo 19? Use Gauss's Lemma to answer it.",
+        "answer": true
+      },
+      {
+        "question": "For matrix A = [[2, 4, 3], [3, 3, 1], [42, 20, 51]], what is its determinant?",
+        "answer": -376
+      },
+      {
+        "question": "V is a vector space over the real field R. It is known that the vector group u_1, u_2, u_3 in V are linearly independent. Finding the rank of vector group ${u_1-\\lambda u_2, u_2-\\lambda u_3, u_3-\\lambda u_1}$ for $\\lambda=\\sqrt{5}$ and $\\lambda=1$ separately. Return the answer as a list.",
+        "answer": [
+          3,
+          2
+        ]
+      },
+      {
+        "question": "Solve the following linear programming problems: maximize 3x + y subject to (1) -x + y <= 1, (2) 2x + y <= 4, (3) x>= 0 and y >= 0. What's [x, y] for the optimal solution?",
+        "answer": [
+          2,
+          0
+        ]
+      },
+      {
+        "question": "What are the real eigenvalues of the matrix [[3, -2, 5], [1, 0, 7], [0, 0, 2]]?",
+        "answer": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "question": "Finding all the real roots of the equation $\\sqrt{x^2+x+1}+\\sqrt{2 x^2+x+5}=\\sqrt{x^2-3 x+13}$. Return the answer as a list with ascending order.",
+        "answer": [
+          -1.7807764064,
+          0.2807764064
+        ]
+      },
+      {
+        "question": "If the quartic x^4 + 3x^3 + 11x^2 + 9x + A has roots k, l, m, and n such that kl = mn, find A.",
+        "answer": 9
+      },
+      {
+        "question": "matrix $A=(\\begin{array}{rrrr} -2 & -1 & -1 & -1 \\ 2 & 1 & 3 & 2 \\ 1 & 1 & 0 & 1 \\ -1 & -1 & -2 & -2 \\end{array})$. Suppose f is the minimal polynomial of A. What is f(99)? Return the numeric without explanation.",
+        "answer": 990000.0
+      },
+      {
+        "question": "Let V be the space spanned by functions cos(2x) and sin(2x). Find the determinant of the linear transformation D(f) = f' from V to V.",
+        "answer": 4
+      }
+    ]
+  },
+  "complex_analysis": {
+    "medium": [
+      {
+        "question": "If u is the real part of a function, and v is the imaginary part, then the Cauchy-Riemann equations for u and v take the following form in polar coordinates: r\\frac{\\partial u}{\\partial r} = \\frac{\\partial v}{\\partial \\theta} and r\\frac{\\partial v}{\\partial r} = -\\frac{\\partial u}{\\partial \\theta}. Is this argument True or False?",
+        "answer": true
+      },
+      {
+        "question": "Suppose that f is analytic on the closed unit disk, f(0) = 0, and $|Rf(z)| \\leq |e^z|$ for |z| < 1. What's the maximum value of f((1 + i)/2)?",
+        "answer": 17.95
+      },
+      {
+        "question": "In complex analysis, define U^n={(z_1, \\cdots, z_n): |z_j|<1, j=1, \\cdots, n} and B_n={(z_1, \\cdots, z_n): \\sum_{j=1}^n |z_j|^2<1 }. Are they conformally equivalent in C^n? Here C^n is the d-dimensional complex space. Return 1 for yes and 0 for no.",
+        "answer": 0.0
+      },
+      {
+        "question": "If $u(x, y) = 4x^3y - 4xy^3$, is there a function v(x, y) such that u(x,y) + iv(x,y) is an analytical function?",
+        "answer": true
+      }
+    ]
+  },
+  "kinetics": {
+    "medium": [
+      {
+        "question": "An auto magazine reports that a certain sports car has 53% of its weight on the front wheels and 47% on its rear wheels. (That is, the total normal forces on the front and rear wheels are 0.53w and 0.47w, respectively, where w is the car’s weight.) The distance between the axles is 2.46 m. How far in front of the rear axle is the car’s center of gravity?",
+        "answer": 1.3
+      },
+      {
+        "question": "A glider with mass m = 0.200 kg sits on a frictionless horizontalair track, connected to a spring with force constant k = 5.00 N/m.You pull on the glider, stretching the spring 0.100 m, and release itfrom rest. The glider moves back toward its equilibrium position (x = 0).What is its x-velocity when  x = 0.080 m? (Unit: m/s))",
+        "answer": -0.3
+      },
+      {
+        "question": "An ultrasonic transducer used for medical diagnosis oscillates at 6.7 Mhz.How long does each oscillation take, and what is the angular frequency? (Unit: 10^7 rad/s)",
+        "answer": 4.2
+      },
+      {
+        "question": "A spring is mounted horizontally, with its left end fixed. A spring balance attached to the free end and pulled toward the right indicates that the stretching force is proportional to the displacement, and a force of 6.0 N causes a displacement of 0.030 m. We replace the spring balance with a 0.50-kg glider, pull it 0.020 m to the right along a frictionless air track, and release it from rest. Find the period T of the resulting oscillation. (Unit: s)",
+        "answer": 0.31
+      },
+      {
+        "question": "Sally is driving along a straight highway in her 1965 Mustang. At when she is moving at in the positive x-direction, she passes a signpost at Her x-acceleration as a function of time is\na_x = 2.0 m/s^2 - (0.10 m / s^3) t\n At X meter's, the car reaches maximum x-velocity? What is X?",
+        "answer": 517
+      },
+      {
+        "question": "You wish to put a 1000-kg satellite into a circular orbit 300 km above the earth's surface. How much work must be done to the satellite to put it in orbit? The earth's radius and mass are $R_E}=$ $6.38 \\times 10^6 m$ and $m_E=5.97 \\times 10^{24} kg$. (Unit: 10^10 J)",
+        "answer": 3.26
+      }
+    ]
+  },
+  "calculus": {
+    "medium": [
+      {
+        "question": "Find the area of the region between the graphs of the functions f(x) = x^2 - 4x + 10, g(x) = 4x - x^2, 1 <= x <= 3.",
+        "answer": 5.333
+      },
+      {
+        "question": "For the function $f(x,y)$ defined by $f(x,y)=1$ if $x=y$, $f(x,y)=0$ otherwise. Can we measure its integraion over the rectangle $[0,1]\\times[0,1]$ using the Tonelli's Theorem? Answer true or false.",
+        "answer": false
+      },
+      {
+        "question": "compute the integral \\int_{\\Gamma} \\frac{x*dy-y*dx}{x^2+y^2}, where $\\Gamma$ is any piecewise smooth, closed curve that encloses the origin but does not pass through it.",
+        "answer": 6.2831852
+      },
+      {
+        "question": "Find the curvature for r(t) = 5cos(t)i + 4sin(t)j + 3tk, t=4\\pi/3.",
+        "answer": 0.16
+      },
+      {
+        "question": "Use Green's Theorem to evaluate $\\oint_{C} xy dx + x^2y^3dy$ where $C$ is the triangle with vertices (0,0), (1,0), (1,2) with positive orientation",
+        "answer": 0.6667
+      },
+      {
+        "question": "Suppose g(x) is the horizontal asymptote of function f(x) = (3^x)/(1+3^{-x}). What are possible values of g(2023)?",
+        "answer": 0
+      },
+      {
+        "question": "Use divergence therem to evaluate $\\iint_S \\vec{F} \\cdot d \\vec{S}$ where $\\vec{F} = yx^2 \\vec{i} + (xy^2 - 3z^4)\\vec{j} + (x^3+y^3)\\vec{k}$ and the surface $S$ consists of the sphere of radius 4 with $z \\le 0$ and $y \\le 0$. Note all three surfaces of this solid are included in $S$.",
+        "answer": 0.0
+      },
+      {
+        "question": "Use Stoke's Theorem to evaluate $\\int_C \\vec{F} \\cdot d \\vec{r}$ where $\\vec{F} = z^2 \\vec{i} + y^2 \\vec{j} + x \\vec{k}$ and $C$ is the triangle with vertices (1,0,0), (0,1,0) and (0,0,1) with counter-clockwise rotation.",
+        "answer": -0.166
+      },
+      {
+        "question": "\\lim_{x \\to c} |f(x)| = 0. What is \\lim_{x \\to c} f(x)?",
+        "answer": 0
+      },
+      {
+        "question": "Does f (x) = x2 + cx + 1 have a real root when c=0?",
+        "answer": false
+      },
+      {
+        "question": "Define f(x)=(4x+5)/(9-3x), is the function continuous at x=-1?",
+        "answer": true
+      },
+      {
+        "question": "Compute the integral $\\iint_D xy^2 dA$, where $D$ is the rectangle defined by 0 <= x <= 2 and 0 <= y <= 1.",
+        "answer": 0.66667
+      },
+      {
+        "question": "Passing to polar coordinates, calculate the double integral $\\iint_S ydxdy$ with $y$ > 0, where S is a semicircle of a diameter 1 with center at point C(1/2, 0) above the X axis.",
+        "answer": 0.0833
+      },
+      {
+        "question": "The position of a point for any time t (t>0) s defined by the equations: x=2t, y=ln(t), z = t^2. Find the mean velocity of motion between times t=1 and t=10.",
+        "answer": 11.25
+      },
+      {
+        "question": "Does 2^x +1/x = -4 have a solution?",
+        "answer": true
+      },
+      {
+        "question": "A model rocket follows the trajectory c(t) = (80t, 200t - 4.9t^2) until it hits the ground, with t in seconds and distance in meters. Find the rocket's maximum height in meters.",
+        "answer": 2041
+      }
+    ]
+  },
+  "quantitive_methods": {
+    "medium": [
+      {
+        "question": "The returns on a stock are 2.45% at 2018, 5.42% at 2019, -13.83% at 2020. What is the compound annual rate (between -1 and 1) of return over the three years.",
+        "answer": -0.023669
+      },
+      {
+        "question": "A teacher wants to invest $30,000 into an account that compounds annually. The interest rate at this bank is 1.8%. How much money will be in the account after 6 years?",
+        "answer": 33389.35
+      },
+      {
+        "question": "Calculate the interest rate (between 0 and 1) for an account that started with $5,000 and now has $13,000 and has been compounded annually for the past 12 years. Answer with the numeric value.",
+        "answer": 0.0828
+      },
+      {
+        "question": "Calculate the future value of an ordinary annuity of $800 per year for 4 years at 5% rate of return.",
+        "answer": 3448.1
+      }
+    ]
+  },
+  "statistics": {
+    "medium": [
+      {
+        "question": "Let X_1, X_2,... be independent variables each taking values +1 or -1 with probabilities 1/2 and 1/2. It is know that $\\sqrt{3/n^3}*\\sum_{k=1}^n k*X_k$ converges in distribution normal distribution N(a,b) as n goes to infinity. Here a is the expectation and b is the variance. What are the values of a and b? Return the answers as a list. For example, if a=2, b=100, return [2,100].",
+        "answer": [
+          0,
+          1
+        ]
+      },
+      {
+        "question": "You have a coin and you would like to check whether it is fair or biased. More specifically, let $\\theta$ be the probability of heads, $\\theta = P(H)$. Suppose that you need to choose between the following hypotheses: H_0 (null hypothesis): The coin is fair, i.e. $\\theta = \\theta_0 = 1 / 2$. H_1 (the alternative hypothesis): The coin is not fair, i.e. $\\theta > 1 / 2$. We toss 100 times and observe 60 heads. Can we reject H_0 at significance level $\\alpha = 0.01$?",
+        "answer": false
+      },
+      {
+        "question": "For a parametric family $\\{p_\\theta(x)\\}$ we know that $\\lim_{\\theta'\\to\\theta}\\frac{1}{(\\theta-\\theta')^2}D(p_\\theta||p_{\\theta'}) = \\alpha J(\\theta)$, where $J(\\theta)$ is the Fisher information. Use natural logarithm for KL divergence to compute $\\alpha$.",
+        "answer": 0.5
+      },
+      {
+        "question": "Let X_2,X_3,... be independent random variables such that $P(X_n=n)=P(X_n=-n)=1/(2n\\log (n)), P(X_n=0)=1-1/(n*\\log(n))$. Does $n^{-1}\\sum_{i=2}^n X_i$ converges in probability? Does $n^{-1}\\sum_{i=2}^n X_i$ converges in almost surely? Return the answers of the two questions as a list.",
+        "answer": [
+          1,
+          0
+        ]
+      },
+      {
+        "question": "You have a coin and you would like to check whether it is fair or biased. More specifically, let $\\theta$ be the probability of heads, $\\theta = P(H)$. Suppose that you need to choose between the following hypotheses: H_0 (null hypothesis): The coin is fair, i.e. $\\theta = \\theta_0 = 1 / 2$. H_1 (the alternative hypothesis): The coin is not fair, i.e. $\\theta > 1 / 2$. We toss 100 times and observe 60 heads. What is the P-value?",
+        "answer": 0.023
+      }
+    ]
+  },
+  "fixed_income": {
+    "medium": [
+      {
+        "question": "A state issues a 15 year $1000 bond that pays $25 every six months. If the current market interest rate is 4%, what is the fair market value of the bond?",
+        "answer": 1111.97
+      },
+      {
+        "question": "What is the effective rates for 3% compounded monthly?",
+        "answer": 0.0304
+      },
+      {
+        "question": "An 8% bond with 18 years to maturity has a yield of 9%. What is the price of this bond?",
+        "answer": 91.17
+      }
+    ]
+  },
+  "mathematical_analysis": {
+    "medium": [
+      {
+        "question": "what is the limit of $2/\\sqrt{\\pi}*\\sqrt{n}\\int_0^1(1-x^2)^n dx$ as n goes to infinity?",
+        "answer": 1.0
+      },
+      {
+        "question": "Consider a source X with a distortion measure $d(x, \\hat{x})$ that satisfies the following property: all columns of the distortion matrix are permutations of the set $\\{d_1, d_2, \\ldots, d_m\\}$. The function $\\phi(D) = \\max_{b:\\sum_{i=1}^m p_i d_i \\leq D} H(p)$ is concave. True or False?",
+        "answer": true
+      },
+      {
+        "question": "suppose $u=\\arctan \\frac{y}{x}$, what is numeric of $\\frac{\\partial^2 u}{\\partial x^2}+\\frac{\\partial^2 u}{\\partial y^2}$?",
+        "answer": 0.0
+      },
+      {
+        "question": "Two sets of points are linearly separable if and only if their convex hulls are disjoint. True or False?",
+        "answer": true
+      },
+      {
+        "question": "suppose sequence x_n satisfies x_n*x_{n+1}=n for all n>=1, and $\\lim_{n\\rightarrow\\infty}\\frac{x_n}{x_{n+1}}=1$. What's the value of $\\pi*x_1^2$?",
+        "answer": 2.0
+      },
+      {
+        "question": "What is the value of the series $\\sum_{k=1}^{\\infty} \\frac{(-1)^{k-1}}{k} \\sum_{n=0}^{\\infty} \\frac{1}{k 2^n+1}$?",
+        "answer": 1.0
+      },
+      {
+        "question": "Find the absolute minimum value of the function $f(x,y)=x^2+y^2$ subject to the constraint $x^2+2*y^2=1$.",
+        "answer": 0.5
+      },
+      {
+        "question": "x=0.3168. what is the value of $x*\\prod_{n=1}^\\infty(1-\\frac{x^2}{n^2 \\pi^2})/sin(x)$?",
+        "answer": 1.0
+      },
+      {
+        "question": "Does the following series $\\sum_{i=0}^{\\infty} \\frac{n-1}{n^3+1}$ converge?",
+        "answer": 1.0
+      },
+      {
+        "question": "suppose $x=\\sqrt{17}/17$. what is the value of $\\frac{2}{\\pi} \\int_0^{+\\infty} \\frac{\\sin ^2 t}{t^2} cos(2xt) dt$? Rounding it to the hundredths place and return the value.",
+        "answer": 0.757
+      },
+      {
+        "question": "Find the sum of $\\sum_{n=1}^{\\infty} \\frac{2}{n^2 + 4n + 3}$",
+        "answer": 0.8333
+      }
+    ]
+  },
+  "signal_processing": {
+    "medium": [
+      {
+        "question": "Is the Fourier transform of the signal x(t)=(1-e^{-|t|})[u(t+1)-u(t-1)] real?",
+        "answer": true
+      },
+      {
+        "question": "Given 2 colors whose HSI representations are given as follows: which color looks closer to blue? (a) Color 1: $(\\pi, 0.3,0.5)$, (b) Color 2: $(0.5 \\pi, 0.8,0.3)$",
+        "answer": "(a)"
+      },
+      {
+        "question": "The equation of a digital filter is given by $y(n)=1 / 3(x(n)+x(n-1)+x(n-2))$, where $y(n)$ and $x(n)$ are, respectively, the nth samples of the output and input signals. Is it a FIR?",
+        "answer": true
+      },
+      {
+        "question": "For the signal f(t)=3sin(200πt)+ 6sin(400πt) + sin(500πt), determine the minimum sampling requency (in πHz) satisfying the Nyquist criterion.",
+        "answer": 500
+      },
+      {
+        "question": "Calculate the required memory size in Mebibytes (MiB) (in 3 sig.fig.) for storing a frame in 720p if the sampling scheme Y'CbCr 4:2:0 is used. Note that There are 1280 × 720 pixels in one 720p frame. Each pixel contains three primary-colour components. Each primary-colour component requires 1 byte of memory for storage. 1 Mebibyte has 1024^2 bytes.",
+        "answer": 1.32
+      },
+      {
+        "question": "In the process of searching circles in an image, object O is detected. The contour of the object O is represented with the Fourier Descriptors (80,40,0,0,-1,0,0,1). Given that the Fourier Descriptors of a circle are (0,40,0,0,0,0,0,0). Is the object O a circle-like polygon in the image? Bear in mind that there is some high frequency noise in the image. You should take this into account when you make your judgment.",
+        "answer": true
+      },
+      {
+        "question": "The difference equation of a digital system is given by $$ y[n]=8 x[n]+2 x[n-1]-x[n-2], $$ where $x[n]$ and $y[n]$ are, respectively the current samples of the input and the output signals of the system. Determine if the system is a FIR.",
+        "answer": true
+      },
+      {
+        "question": "Determine the period of the following signal, $$ x_1(t)=\\cos (3 \\pi t)-4 \\cos (5 \\pi t-0.5 \\pi) $$",
+        "answer": 2
+      }
+    ]
+  },
+  "machine_learning": {
+    "medium": [
+      {
+        "question": "Consider Convolutional Neural Network D2 which takes input images of size 32x32 with 1 colour channels. The first layer of D2 uses 4 filters of size 5x5, a stride of 2, and zero-padding of width 1. Consider CNN D2 which takes input images of size 32x32 with 1 colour channels. The first layer of D2 uses 4 filters of size 5x5, a stride of 2, and zero-padding of width 1. What is the total number of weights defined for the entire activation output of this first layer? (ie. If you flattened all filters and channels into a single vector)",
+        "answer": 900
+      },
+      {
+        "question": "Given a color image of size 28 x 28 x 3 pixels, how many convolutional filters in the first layer of a Convolutional Neural Network if the first layer's output tensor has size 26 x 26 x 64?",
+        "answer": 64
+      },
+      {
+        "question": "A linear learning machine based on the kernel $k(x,x')=f(x)f(x')$ will always find a solution proportional to $f(x)$. True or false?",
+        "answer": true
+      }
+    ]
+  },
+  "condensed_matter_physics": {
+    "medium": [
+      {
+        "question": "Find the ratio of forward-bias to reverse-bias currents when the same voltage 1.5 V is applied in both forward and reverse. Assume room temperature 293 K.",
+        "answer": -6e+25
+      },
+      {
+        "question": "Find the fraction of the standard solar flux reaching the Earth (about 1000 W/m^2) available to a solar collector lying flat on the Earth’s surface at Miami (latitude 26°N) at noon on the winter solstice.",
+        "answer": 0.656
+      }
+    ]
+  },
+  "group_theory": {
+    "medium": [
+      {
+        "question": "Are groups Z_4 * Z_2 and D_4 isomorphic?",
+        "answer": false
+      },
+      {
+        "question": "Every group of order $5\\cdot7\\cdot47=1645 is abelian, and cyclic. Is this true? Answer true or false.",
+        "answer": true
+      },
+      {
+        "question": "What is the order of the element 5 in U_8?",
+        "answer": 2
+      }
+    ]
+  },
+  "celestial_mechanics": {
+    "medium": [
+      {
+        "question": "The planet Mercury travels around the Sun with a mean orbital radius of 5.8x10^10 m. The mass of the Sun is 1.99x10^30 kg. Use Newton's version of Kepler's third law to determine how long it takes Mercury to orbit the Sun. Give your answer in Earth days.",
+        "answer": 88.3
+      }
+    ]
+  },
+  "optics": {
+    "medium": [
+      {
+        "question": "Light travel from water n=1.33 to diamond n=2.42. If the angle of incidence was 13 degree, determine the angle of refraction.",
+        "answer": 7.1
+      }
+    ]
+  },
+  "statistical_physics": {
+    "medium": [
+      {
+        "question": "Compute the mean translational kinetic energy of a single ideal gas molecule in eV.",
+        "answer": 0.038
+      },
+      {
+        "question": "Calculate the Fermi energy for copper in eV.",
+        "answer": 7.03
+      }
+    ]
+  },
+  "geometry": {
+    "medium": [
+      {
+        "question": "The diagonals of rhombus QRST intersect at P. If m∠QTS = 76, find m∠TSP.",
+        "answer": 52
+      },
+      {
+        "question": "The diagonals of rhombus FGHJ intersect at K. If m∠FJH = 82, find m∠KHJ.",
+        "answer": 49
+      },
+      {
+        "question": "In triangle ABC, AB = 9x-1, CB = 5x-0.5, AC = 4x+1, and AC = CB. Find the measure of AB.",
+        "answer": 12.5
+      }
+    ]
+  },
+  "probability_theory": {
+    "medium": [
+      {
+        "question": "Consider a probability density $p_x(x)$ defined over a continuous variable x, and suppose that we make a nonlinear change of variable using $x = g(y)$. The location $\\hat{y}$ of the maximum of the density in $y$ is not in general related to the location $\\hat{x}$ of the maximum of the density over x by the simple functional relation $\\hat{x} = g(\\hat{y})$.",
+        "answer": true
+      },
+      {
+        "question": "Consider a probability density $p_x(x)$ defined over a continuous variable x, and suppose that we make a nonlinear change of variable using $x = g(y)$. In the case of a linear transformation, the location of the maximum density transforms in the same way as the variable itself.",
+        "answer": true
+      },
+      {
+        "question": "Let $W(t)$ be a Bownian motion, Let $E[exp(i*W(t))]:= E[cos(W(t))+i*sin(W(t))]$, where $i=\\sqrt{-1}$. Is $M(t):=exp(i*W(t))/E[exp(i*W(t))]$ a matingale? Return 1 for yes and 0 for no.",
+        "answer": 1.0
+      },
+      {
+        "question": "Suppose ${X_n:n\\geq 1}$ be independent and exponentially distributed with parameter 1. what is the probability $P(\\limsup _{n \\rightarrow infty} X_n/\\log(n)=1)? Return a numeric value.",
+        "answer": 1.0
+      }
+    ]
+  },
+  "information_theory": {
+    "medium": [
+      {
+        "question": "Let $R(D)$ be the rate distortion function for an i.i.d. process with probability mass function $p(x)$ and distortion function $d(x, \\hat{x})$ , $x \\in \\mathcal{X}$ , $\\hat{x} \\in \\hat{\\mathcal{X}}$. If we add a new reproduction symbol $\\hat{x}_0$ to $\\hat{\\mathcal{X}}$ with associated distortion $d(x, \\hat{x}_0)$, $x \\in \\mathcal{X}$, $R(D)$ will decrease. True or False?",
+        "answer": true
+      },
+      {
+        "question": "Let $X$ be uniformly distributed over $\\{1, 2, \\ldots, m\\}$. Assume $m=2^n$ . We ask random questions: Is $X\\in S_1$? Is $X\\in S_2$? ... until only one integer remains. All $2^m$ subsets of $\\{1, 2, \\ldots, m\\}$ are equally likely. Suppose we ask $n+\\sqrt{n}$ random questions. Use Markov's inequality to find the probability of error (one or more wrong objects remaining) when $n$ goes to infinity?",
+        "answer": 0.0
+      },
+      {
+        "question": "Which of these codes cannot be Huffman codes for any probability assignment? (a) {0, 10, 11}. (b) {00, 01, 10, 110}. (c) {0, 1}.",
+        "answer": "(b)"
+      },
+      {
+        "question": "We are interested in the capacity of photographic film. The film consists of silver iodide crystals, Poisson distributed, with a density of 100 particles per unit area. The film is illuminated without knowledge of the position of the silver iodide particles. It is then developed and the receiver sees only the silver iodide particles that have been illuminated. It is assumed that light incident on a cell exposes the grain if it is there and otherwise results in a blank response. Silver iodide particles that are not illuminated and vacant portions of the film remain blank. We make the following assumptions: We grid the film very finely into cells of area $dA$. It is assumed that there is at most one silver iodide particle per cell and that no silver iodide particle is intersected by the cell boundaries. Thus, the film can be considered to be a large number of parallel binary asymmetric channels with crossover probability $1 - 100dA$. What is the capacity of a 0.1 unit area film?",
+        "answer": 10.0
+      },
+      {
+        "question": "Let $X$ be uniformly distributed over $\\{1, 2, \\ldots, 256\\}$. We ask random questions: Is $X\\in S_1$? Is $X\\in S_2$? ... until only one integer remains. All $2^256$ subsets of $\\{1, 2, \\ldots, 256\\}$ are equally likely. How many deterministic questions are needed to determine $X$?",
+        "answer": 8
+      },
+      {
+        "question": "A cascade of $n$ identical independent binary symmetric channels each with raw error probability $p$, and $0<p<1$. What is the capacity of the cascade when $n$ goes to infinity?",
+        "answer": 0.0
+      }
+    ]
+  },
+  "economics": {
+    "medium": [
+      {
+        "question": "The perfectly competitive videotape-copying industry is composed of many firms that can copy five tapes per day at an average cost of $10 per tape. Each firm must also pay a royalty to film studios, and the per-film royalty rate (r) is an increasing function of total industry output (Q): r = 0.002Q. Demand is given by Q = D(P) = 1,050 - 50P. Assuming the industry is in long-run equilibrium, what will be the equilibrium price of copied tapes?",
+        "answer": 11
+      },
+      {
+        "question": "A young couple has made a non-refundable deposit of the first month's rent (equal to $1, 000) on a 6-month apartment lease. The next day they find a different apartment that they like just as well, but its monthly rent is only $900. They plan to be in the apartment only 6 months. Should they switch to the new apartment?",
+        "answer": 0.0
+      }
+    ]
+  },
+  "graph_theory": {
+    "medium": [
+      {
+        "question": "A distribution represented by a directed tree can be written as an equivalent distribution over the corresponding undirected tree. True or false?",
+        "answer": true
+      },
+      {
+        "question": "Suppose a convex 3d-object has 15 vertices and 39 edges. How many faces does it have?",
+        "answer": 26
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<2,6>,<2,8>,<2,5>,<6,5>,<5,8>,<6,10>,<10,8>}, which <A,B> represent Node A is connected to Node B. What is the shortest path from node 2 to node 10? Represent the path as a list.",
+        "answer": [
+          2,
+          8,
+          10
+        ]
+      }
+    ]
+  },
+  "number_theory": {
+    "medium": [
+      {
+        "question": "In year N, the 300th day of the year is a Tuesday. In year N + 1, the 200th day is also a Tuesday. Suppose Monday is the 1-th day of the week, on which day of the week did the 100th day of the year N - 1 occur? Return a numeric between 1 and 7.",
+        "answer": 4
+      },
+      {
+        "question": "Find the last 3 digits of 2003^(2002^2001).",
+        "answer": 241
+      },
+      {
+        "question": "For how many positive integral values of x ≤ 100 is 3^x − x^2 divisible by 5?",
+        "answer": 20
+      },
+      {
+        "question": "Find the smallest positive integer that leaves a remainder of 1 when divided by 4, a remainder of 2 when divided by 3, and a remainder of 5 when divided by 7.",
+        "answer": 17
+      },
+      {
+        "question": "What is 3^(3^(3^3)) mod 100?",
+        "answer": 87
+      }
+    ]
+  },
+  "atomic_physics": {
+    "medium": [
+      {
+        "question": "What is the minimum kinetic energy in MeV of a proton in a medium-sized nucleus having a diameter of 8.0 x 10^-15 m?",
+        "answer": 0.08
+      },
+      {
+        "question": "In a certain nuclear reaction initiated by 5.5-MeV alpha particles, the outgoing particles are measured to have kinetic energies of 1.1 MeV and 8.4 MeV. What is the Q value of the reaction in MeV?",
+        "answer": 4.0
+      },
+      {
+        "question": "Two argon atoms form the molecule $Ar_2$ as a result of a van der Waals interaction with $U_0 = 1.68 \\times 10 ^ {-21}$ J and $R_0 = 3.82 \\times 10 ^ {-10}$ m. Find the frequency of small oscillations of one Ar atom about its equilibrium position. (Unit: 10^11 Hz)",
+        "answer": 5.63
+      }
+    ]
+  },
+  "combinatorics": {
+    "medium": [
+      {
+        "question": "What is the smallest number of vertices in a graph that guarantees the existence of a clique of size 3 or an independent set of size 2?",
+        "answer": 3
+      },
+      {
+        "question": "In how many ways can a set of 6 distinct letters be partitioned into 2 non-empty groups if each group must contain at least 2 letters?",
+        "answer": 25
+      },
+      {
+        "question": "In a group of 10 people, each of whom has one of 3 different eye colors, at least how many people must have the same eye color?",
+        "answer": 4
+      },
+      {
+        "question": "A box contains 4 red, 3 green, and 2 blue balls. Balls are identical besides of their colors. In how many ways can we choose 4 balls, if at least 2 are red?",
+        "answer": 6
+      }
+    ]
+  },
+  "quantum": {
+    "medium": [
+      {
+        "question": "Calculate the momentum uncertainty of an electron within the smallest diameter of a hydrogen atom in kg m/s.",
+        "answer": 1e-24
+      }
+    ]
+  },
+  "stochastic_process": {
+    "medium": [
+      {
+        "question": "Let W(t) be the standard Brownian motion. Find P(W(1) + W(2) > 2).",
+        "answer": 0.186
+      },
+      {
+        "question": "Assuming we are underground, and the only thing we can observe is whether a person brings an umbrella or not. The weather could be either rainy or sunny. Assuming the P(rain)=0.6 and P(sunny)=0.4. Assuming the weather on day $k$ is dependent on the weather on day $k-1$. We can write the transition probability as P(sunny $\\mid$ sunny) = P(rain $\\mid$ rain) = 0.7. The person has 60\\% chance to bring an umbrella when the weather is rainy, and 40\\% chance to bring an umbrella when the weather is sunny, i.e. P(umbrella $\\mid$ rain) = 0.6 and P(umbrella $\\mid$ sunny) = 0.4. If we observe that the person (1) brought an umbrella on day 1, (2) did not bring an umbrella on day 2, (3) brought an umbrella on day 3, (4) did not bring an umbrella on day 4.  What are the most likely weather from day 1 to day 4? Return the answer as a list of binary values, where 1 represents rain and 0 represents sunny.",
+        "answer": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "particle": {
+    "medium": [
+      {
+        "question": "Assume the half-life of the proton is 10^33 years. How many decays per year would you expect in a tank of water containing 350,000 liters of water?",
+        "answer": 0.08
+      }
+    ]
+  },
+  "computer_networking": {
+    "medium": [
+      {
+        "question": "Calculate the Hamming pairwise distances and determine the minimum Hamming distance among the following codewords: 00000,10101,01010",
+        "answer": 2
+      }
+    ]
+  },
+  "wave": {
+    "medium": [
+      {
+        "question": "In a sinusoidal sound wave of moderate loudness, the maximum pressure variations are about $3.0 \\times 10 ^ {-2}$ Pa above and below atmospheric pressure. Find the corresponding maximum displacement if the frequency is 1000 Hz. In air at normal atmospheric pressure and density, the speed of sound is 344 m/s and the bulk modulus is $1.42 \\times 10^5$ Pa. (Unit: $10 ^ {-8}$)",
+        "answer": 1.2
+      }
+    ]
+  },
+  "thermodynamics": {
+    "medium": [
+      {
+        "question": "A $200-cm^3$ glass flask is filled to the brim with mercury at 20°C How much mercury overflows when the temperature of the system is raised to 100°C. The coefficient of linear expansion of the glass is $0.40 \\times 10^{-5} K^{-1}. (Unit: cm^3)",
+        "answer": 2.7
+      }
+    ]
+  },
+  "derivatives": {
+    "medium": [
+      {
+        "question": "You are asked to determine the price of a European put option on a stock. Assuming the Black-Scholes framework holds, you are given: (i) The stock price is $100. (ii) The put option will expire in 6 months. (iii) The strike price is $98. (iv) The continuously compounded risk-free interest rate is r = 0.055. (v) δ = 0.01 (vi) σ = 0.50. What is the price of the put option?",
+        "answer": 11.9
+      }
+    ]
+  }
+}

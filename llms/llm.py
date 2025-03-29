@@ -129,11 +129,12 @@ class Llm(ABC):
 
         # Filter results
         print(f"\r🧠 Filtering search results with Cohere...", end="")
-        filtered_results = self._filter_results(previous_reasoning, query, raw_results)
+        # filtered_results = self._filter_results(previous_reasoning, query, raw_results)
+        filtered_results = raw_results
         print(f"\r✅ Search results filtered                    ")
 
         # Store the filtered results for later retrieval
-        self._filtered_search_results = filtered_results
+        self._filtered_search_results = raw_results
 
         return filtered_results
 

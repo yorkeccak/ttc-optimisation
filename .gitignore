@@ -58,3 +58,6 @@ htmlcov/
 benchmark.log
 
 results/*
+
+# Temporary files
+subset_creation.py

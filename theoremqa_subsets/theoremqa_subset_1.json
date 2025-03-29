@@ -1,0 +1,686 @@
+{
+  "combinatorics": {
+    "medium": [
+      {
+        "question": "How many ways are there to divide a set of 8 elements into 5 non-empty ordered subsets?",
+        "answer": 11760
+      },
+      {
+        "question": "In how many ways can a group of 9 people be divided into 3 non-empty subsets?",
+        "answer": 3025
+      },
+      {
+        "question": "In how many ways can 10 distinct balls be placed into 4 identical boxes if each box must have at least 1 balls?",
+        "answer": 26335
+      },
+      {
+        "question": "How many distinct necklaces with 12 beads can be made with 10 beads of color R and 2 beads of color B, assuming rotations and reflections are considered equivalent?",
+        "answer": 6
+      },
+      {
+        "question": "In how many ways can a committee of 2 men and 3 women be selected from a group of 6 men and 8 women?",
+        "answer": 840
+      },
+      {
+        "question": "Arbitrarily place 19 points in a unit square and cover as many of these points as possible with a circle of diameter $\\frac{\\sqrt 2}{3}$. Question: At least how many points can be guaranteed to be covered?",
+        "answer": 3
+      },
+      {
+        "question": "A group of 10 people is split into 3 different committees of 3, 4, and 3 people, respectively. In how many ways can this be done?",
+        "answer": 4200
+      },
+      {
+        "question": "A group of 7 people is to be divided into 3 committees. Within each committee, people are ranked in a certain order. In how many ways can this be done?",
+        "answer": 12600
+      },
+      {
+        "question": "In how many ways can a group of 6 people be divided into 2 teams? Notice that members in each team are ordered.",
+        "answer": 1800
+      }
+    ]
+  },
+  "complex_analysis": {
+    "medium": [
+      {
+        "question": "Compute $\\int_{|z| = 1} z^2 sin(1/z) dz$. The answer is Ai with i denoting the imaginary unit, what is A?",
+        "answer": -1.047
+      },
+      {
+        "question": "Let f = u(z) + iv(z) be an entire function in complex plane C. If |u(z)| < M for every z in C, where M is a positive constant, is f is a constant function?",
+        "answer": true
+      },
+      {
+        "question": "Compute $\\int_{|z| = 2} (5z - 2) / (z * (z - 1)) dz$. The answer is Ai with i denoting the imaginary unit, what is A?",
+        "answer": 31.4
+      },
+      {
+        "question": "Let f be a bounded entire function, z_1,z_2 be two points in the ball B(0,r). What is the value of the integral $\\int_{|z|=r} f(z)/(z-z_1)(z-z_2) dz$?",
+        "answer": 0.0
+      }
+    ]
+  },
+  "calculus": {
+    "medium": [
+      {
+        "question": "compute the line integral of \\int_K xy dx, \\int_L xy dx, where K is a straight line from (0,0) to (1,1) and L is the Parabola y=x^2 from (0,0) to (1,1). return the answer as a list",
+        "answer": [
+          0.333,
+          0.25
+        ]
+      },
+      {
+        "question": "Find $\\int_{0}^{\\sqrt{3}} \\frac{dx}{1+x^2}$.",
+        "answer": 1.0472
+      },
+      {
+        "question": "What is the value of the integral $\\int_2^4 \\frac{\\sqrt{log(9-x)}}{\\sqrt{log(9-x)}+\\sqrt{log(x+3)}} dx$?",
+        "answer": 1.0
+      },
+      {
+        "question": "Is the function of f(x) = sin(x) / |x| continuous everywhere?",
+        "answer": false
+      },
+      {
+        "question": "is the following function $f(t, y) = \\frac{t^3+t^2y+ty+y^3}{t^3 + ty^2}$ scale invariant function",
+        "answer": true
+      },
+      {
+        "question": "Let $P_5(x)$ be the fifth-degree Taylor polynomial approximation for f(x)=sin(x), centered at x=0. What is the Lagrange error of the polynomial approximation to sin(1)?.",
+        "answer": 0.000198
+      },
+      {
+        "question": "Find the solutions to the second order boundary-value problem. y''-2y'+2y=0, y(0)=0, y(\\pi/2) = 1. What is y(\\pi/4)?",
+        "answer": 0.322
+      },
+      {
+        "question": "Use the Trapezoidal Rule with to approximate $\\int_0^{\\pi} sin^2(x)dx$. Return the approximated demical value.",
+        "answer": 1.570796
+      },
+      {
+        "question": "A cylindrical tank of height 4 m and radius 1 m is filled with water. Water drains through a square hole of side 2 cm in the bottom. How long does it take for the tank to go from full to empty?",
+        "answer": 7142
+      },
+      {
+        "question": "Let $F_0(x)=log(x)$. For $n\\geq 0$ and $x>0$, let $F_{n+1}(x)=\\int_0^x F_n(t)dt$. Evaluate $\\lim _{n \\rightarrow \\infty} (n! F_n(1))/(log(n))$.",
+        "answer": -1.0
+      },
+      {
+        "question": "What's the value of a > 0, such that the tangent line to the graph of f(x) = (x^2) (e^(-x)) at x = a passes through the origin?",
+        "answer": 1
+      },
+      {
+        "question": "Use Green's Theorem to evaluate $\\oiint_{s} y^3 dx + x^3dy$ where $C$ is the positively oriented circle of radius 2 centered at origin.",
+        "answer": -75.396
+      },
+      {
+        "question": "Compute the are of that part of the helicoid z = arctan(y/x) which lies in the first octant between the cylinder $x^2+y^2 = 1^2$ and $x^2+y^2 = 2^2$.",
+        "answer": 2.843
+      },
+      {
+        "question": "What is \\lim_{x \\to (\\pi)/2} (cos(x)cos(tan(x)))?",
+        "answer": 0
+      },
+      {
+        "question": "for a given function f(x)=x^2*sin(x). Is there a value $x$ between 10pi and 11pi such that $f'(x) = 0$?",
+        "answer": true
+      },
+      {
+        "question": "Derive the solution y = f(t) to the following IVP. $ty' - 2y = t^5sin(2t) - t^3 + 4t^4$, where $y(\\pi) = 3\\pi^4/2$. What is y(t) when $t=pi/2$.",
+        "answer": 19.095
+      },
+      {
+        "question": "If r(t) = (6t+2)i + 5t^2j - 8tk, find the Binormal vector as [xi, yj, zk]. What are x, y, z? Return them as a list.",
+        "answer": [
+          0.8,
+          0.0,
+          0.6
+        ]
+      },
+      {
+        "question": "Find acceleration in m/(min^2) at time t = 5 min of a helicopter whose height is s(t) = 300t - 4t^3 m.",
+        "answer": -120
+      },
+      {
+        "question": "Compute the double integrals over indicated rectangles $\\iint\\limits_{R}{{2x - 4{y^3}\\,dA}}$, $R = [-5,4] \\times [0, 3]",
+        "answer": -756
+      },
+      {
+        "question": "If z = arctan(e^{1 + (1 + x)^2}), what's the derivative of $\\frac{\\partial z}{\\partial x}$ at x = 0.",
+        "answer": 0.3017
+      },
+      {
+        "question": "\\lim_{x \\to 1}(1/(x - 1) - c/(x^3 - 1)) exists. What is the value of c?",
+        "answer": 3
+      },
+      {
+        "question": "Use divergence therem to evaluate $\\iint_S \\vec{F} \\cdot d \\vec{S}$ where $\\vec{F} = sin(\\pi x) \\vec{i} + (z y^3)\\vec{j} + (z^2 + 4x)\\vec{k}$ and $S$ is the suface of the box with $-1 \\le x \\le 2, 0 \\le y \\le 1$ and $1 \\le z \\le 4$. Note that all six sides of the box are included in $S$.",
+        "answer": 67.5
+      }
+    ]
+  },
+  "stochastic_process": {
+    "medium": [
+      {
+        "question": "Let W(t) be the standard Brownian motion. Define X(t) = exp{W(t)}, for all t \\in [0, \\infty). Let 0 < s < t. Find Cov(X(s=1/2), X(t=1)).",
+        "answer": 1.3733
+      }
+    ]
+  },
+  "quantitive_methods": {
+    "medium": [
+      {
+        "question": "Aisha graduates college and starts a job. She saves $1000 each quarter, depositing it into a retirement savings account. Suppose that Aisha saves for 30 years and then retires. At retirement she wants to withdraw money as an annuity that pays a constant amount every month for 25 years. During the savings phase, the retirement account earns 6% interest compounded quarterly. During the annuity payout phase, the retirement account earns 4.8% interest compounded monthly. Calculate Aisha’s monthly retirement annuity payout.",
+        "answer": 1898.27
+      },
+      {
+        "question": "For a one-period binomial model for the price of a stock, you are given: (i) The period is one year. (ii) The stock pays no dividends. (iii) u =1.433, where u is one plus the rate of capital gain on the stock if the price goes up.  (iv) d = 0.756 , where d is one plus the rate of capital loss on the stock if the price goes down. (v) The continuously compounded annual expected return on the stock is 10%. What is the true probability of the stock price going up.",
+        "answer": 0.52
+      },
+      {
+        "question": "For the 3 payments of $1000 each end-of-year, with 7% rate of return, what is the present value if the first payment is made at the end of fifth year?",
+        "answer": 2002.0781
+      }
+    ]
+  },
+  "mathematical_analysis": {
+    "medium": [
+      {
+        "question": "For a\\geq 0, we define $S_a={x | dist(x, S) \\leq a}$, where $dist(x,S)=inf_{y\\in S}||x-y||$. Suppose S is convex. Is S_a convex? Return 1 for yes and 0 for no.",
+        "answer": 1.0
+      },
+      {
+        "question": "Let C[0,1] be all the continuous function on in the interval [0,1]. For the integral equation $x(t)-\\lambda \\int_0^1 e^{t-s} x(s) ds=y(t)$, where $y(t)\\in C[0,1]$ is a given function. \\lambda is a constant and |\\lambda|<1. Then there exists a unique solution x(t)\\in C[0,1]. This conclusion can be proved by: 1. Implicit function theorem, 2. Riesz representation theorem, 3. Banach fixed point theorem, 4. None of the above. Return the number as the answer.",
+        "answer": 3.0
+      },
+      {
+        "question": "For equation x^2*y^2-3y+2x^3=0, and suppose y=f(x). Then what is the derivate f'(1) near the point (1,1) and the point (1,2)? return the answer in a list.",
+        "answer": [
+          8,
+          -14
+        ]
+      },
+      {
+        "question": "Does the following series $\\sum_{i=0}^{\\infty} \\frac{n^2 ln(n)}{n!}$ converge?",
+        "answer": 1.0
+      },
+      {
+        "question": "For all $n>1$, define $a_n=\\sum_{k=1}^{n-1} \\frac{\\sin (\\frac{(2 k-1) \\pi}{2 n})}{\\cos ^2(\\frac{(k-1) \\pi}{2n}) \\cos ^2 (\\frac{k \\pi}{2n})}$. What is the limit of $a_n/n^3$ as $n$ goes to infinity?",
+        "answer": 0.258
+      },
+      {
+        "question": "Find the sum of $\\sum_{n=1}^{\\infty} (1/e^n + 1/(n*(n+1)))$",
+        "answer": 1.581
+      }
+    ]
+  },
+  "group_theory": {
+    "medium": [
+      {
+        "question": "What is the order of group Z_{18}?",
+        "answer": 18
+      },
+      {
+        "question": "What are the generators of the additive cyclic group Z?",
+        "answer": [
+          1,
+          -1
+        ]
+      }
+    ]
+  },
+  "derivatives": {
+    "medium": [
+      {
+        "question": "Assume the Black-Scholes framework. For $t \\ge 0$, let $S(t)$ be the time-$t$ price of a nondividend-paying stock. You are given:\n(i) $S(0)=0.5\n(ii) The stock price process is $\\frac{dS(t)}{S(t)} = 0.05dt+0.2dZ(t)$ where $Z(t)$ is a standart Brownian motion.\n(iii) $E[S(1)^\\alpha]=1.4$, where $\\alpha$ is a negative constant.\n(iv) The continuously compounded risk-free interest rate is $3%$.\nConsider a contingent claim that pays $S(1)^\\alpha$ at time 1. What is the time-0 price of the contigent claim?",
+        "answer": 1.372
+      },
+      {
+        "question": "Consider a strategy of the form $(\\gamma, 0, 0)$ for the investment wheel. Show that the overall factor multiplying your money after $n$ steps is likely to be $(1+2\\gamma)^{n/2}(1-\\gamma)^{n/2}$. Find the value of $\\gamma$ that maximizes this factor.",
+        "answer": 0.25
+      },
+      {
+        "question": "The current price of gold is $412 per ounce. The storage cost is $2 per ounce per year, payable quaterly in advance. Assuming a constant intrest rate of 9% compounded quarterly, what is the theoretial forward price of gold for delivery in 9 months?",
+        "answer": 442.02
+      },
+      {
+        "question": "For an American perpetual option within the Black-Scholes framework, you are given: (i) $h_1 + h_2$ = 7/9 (ii) The continuously compounded risk-free interest rate is 5%. (iii) σ = 0.30. What is the value of $h_1$?",
+        "answer": 1.51
+      },
+      {
+        "question": "The stock of the CCC Corporation is currently valued at $12 and is assumed to possess all the properties of geometric Brownian motion. It has an expected annual return of 15%, an annual volatility of 20%, and the annual risk-free is 10%. Using a binomial lattice, determine the price of a call option on CCC stock maturing in 10 monthes time with a strike price of $14 (Let the distance between nodes on your tree be 1 month in length).",
+        "answer": 53.0
+      }
+    ]
+  },
+  "number_theory": {
+    "medium": [
+      {
+        "question": "The two-digit integers from 19 to 92 are written consecutively to form the large integer N = 192021 · · · 909192. Suppose that 3^k is the highest power of 3 that is a factor of N. What is k?",
+        "answer": 1
+      },
+      {
+        "question": "The positive integers N and N^2 both end in the same sequence of four digits abcd when written in base 10, where digit a is nonzero. Find the three-digit number abc.",
+        "answer": 937
+      },
+      {
+        "question": "When 30! is computed, it ends in 7 zeros. Find the digit that immediately precedes these zeros.",
+        "answer": 8
+      }
+    ]
+  },
+  "probability_theory": {
+    "medium": [
+      {
+        "question": "Let {X_n: n \\geq 1} be independent, identically distributed random variables taking integer values {1,-1}. Let S_0=0, S_n=\\sum_{i=1}^n X_i. Let P(X_i=1)=0.8 and P(X_i=-1)=0.2. The range R_n of S_0,S_1,...,S_n is the number of distinct values taken by the sequence. Then what is the limit of n^{-1}E[R_n] as n goes to infinity? Here E[R_n] is the expectation over the random variable R_n.",
+        "answer": 0.6
+      },
+      {
+        "question": "Let G_n(s) be the probability generating function of the size Z_n of the n-th generation of a branching process, where Z_0=1 and var(Z_1)>0. Let H_n be the inverse function of the function G_n, viewed as a function on the interval [0, 1].  Is M_n= {H_n(s)}^{Z_n} defines a martingale with respect to the sequence Z? Return 1 for yes and 0 for no.",
+        "answer": 1.0
+      },
+      {
+        "question": "If T_1 and T_2 are stopping times with respect to a filtration F. Is T_1+T_2 stopping time? Is max(T_1, T_2} stopping time? Is min(T_1, T_2} stopping time? Answer 1 for yes and 0 for no. Return the answers of the three questions as a list.",
+        "answer": [
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "geometry": {
+    "medium": [
+      {
+        "question": "If polygon ABCDE ~ polygon PQRST, AB = BC = 8, AE = CD = 4, ED = 6, QR = QP, and RS = PT = 3, find the perimeter of polygon PQRST.",
+        "answer": 22.5
+      },
+      {
+        "question": "The diagonals of kite WXYZ intersect at P. If XP = 8, PZ = 8, WP = 6, and PY = 24, find ZY.",
+        "answer": 25.3
+      }
+    ]
+  },
+  "signal_processing": {
+    "medium": [
+      {
+        "question": "In Image processing, opening is a process in which first dilation operation is performed and then erosion operation is performed. Is it true?",
+        "answer": false
+      },
+      {
+        "question": "The bandwidth of an analog signal is 4kHz. An A/D converter is used to convert the signal from analog to digital. What is the minimum sampling rate for eliminating the aliasing problem? (in kHz)",
+        "answer": 8
+      },
+      {
+        "question": "Is the Fourier transform of the signal $x_1(t)=\\left\\{\\begin{array}{cc}\\sin \\omega_0 t, & -\\frac{2 \\pi}{\\omega_0} \\leq t \\leq \\frac{2 \\pi}{\\omega_0} \\\\ 0, & \\text { otherwise }\\end{array}\\right.$ imaginary?",
+        "answer": true
+      },
+      {
+        "question": "If the peak voltage value of a signal is 20 times the peak voltage value of the noise, what is the SNR? What is the $\\mathrm{SNR}_{\\mathrm{dB}}$ (in 3 sig.fig.)?",
+        "answer": 26.0
+      },
+      {
+        "question": "In the process of searching circles in an image, object O is detected. The contour of the object O is represented with the Fourier Descriptors (35,129,0,1,0,0,-1,0). Given that the Fourier Descriptors of a circle are (0,40,0,0,0,0,0,0). Is the object O a circle-like polygon in the image? Bear in mind that there is some high frequency noise in the image. You should take this into account when you make your judgment.",
+        "answer": true
+      },
+      {
+        "question": "Given an image $$ \\begin{array}{llllllll} 6 & 5 & 6 & 7 & 7 & 7 & 7 & 7 \\\\ 7 & 7 & 7 & 7 & 6 & 7 & 7 & 7 \\\\ 8 & 8 & 8 & 6 & 5 & 5 & 6 & 7 \\\\ 8 & 8 & 8 & 6 & 4 & 3 & 5 & 7 \\\\ 7 & 8 & 8 & 6 & 3 & 3 & 4 & 6 \\\\ 7 & 8 & 8 & 6 & 4 & 3 & 4 & 6 \\\\ 8 & 8 & 8 & 7 & 5 & 5 & 5 & 5 \\\\ 8 & 9 & 9 & 8 & 7 & 6 & 6 & 4 \\end{array} $$ . Find an appropriate threshold for thresholding the following image into 2 regions using the histogram.",
+        "answer": 6.25
+      },
+      {
+        "question": "If $X(k)$ is the N-point DFT of a sequence $x(n)$, then circular time shift property is that N-point DFT of $x((n-I))_N$ is $X(k) e^{-j 2 \\pi k \\mid / N}$. Is it true?",
+        "answer": true
+      },
+      {
+        "question": "What is the total number of colors in RGB color space?",
+        "answer": 16777216
+      },
+      {
+        "question": "A remote database contains 30 seconds of color motion-video. The video sequence is of the format (352 ́288 pixels) with RGB digitization at 30 frames per second. Find the the data rate for this motion-video in Mbits/s (3 sig. fig.).",
+        "answer": 69.6
+      }
+    ]
+  },
+  "optics": {
+    "medium": [
+      {
+        "question": "A scuba diver is wearing a head lamp and looking up at the surface of the water. If the minimum angle to the vertical resulting in total internal reflection is 25∘, what is the index of refraction of the water? $\\theta_{air} = 1.00$.",
+        "answer": 2.37
+      },
+      {
+        "question": "The image produced by a concave mirror is at -16.2m, and the magnification is 1.79. What is the object distance in terms of meter?",
+        "answer": 9.05
+      }
+    ]
+  },
+  "statistics": {
+    "medium": [
+      {
+        "question": "What is the Cramer-Rao lower bound on $E_\\theta(\\hat{\\theta}(X)-\\theta)^2$, where $\\hat{\\theta}(X)$ is an unbaised estimator of $\\theta$ for the distribution family $f_\\theta(x)=\\theta e^{-\\theta x}$, $x \\geq 0$? (a) $\\theta$. (b) $\\theta^2$. (c) $\\theta^{-1}$. (d) $\\theta^{-2}$.",
+        "answer": "(b)"
+      },
+      {
+        "question": "The following data related the rubber percentage of two types of rubber plants, where the sample have been drawn independently. Test for their mean difference. Type 1: 6.21 5.70 6.04 4.47 5.22 4.45 4.84 5.84 5.88 5.82 6.09 5.59 6.06 5.59 6.74 5.55, Type 2: 4.28 7.71 6.48 7.71 7.37 7.20 7.06 6.40 8.93 5.91 5.51 6.36. Are there difference between these two rubber plants?",
+        "answer": true
+      },
+      {
+        "question": "A group of 5 patients treated with medicine. A is of weight 42,39,38,60 &41 kgs. Second group of 7 patients from the same hospital treated with medicine B is of weight 38, 42, 56, 64, 68, 69, & 62 kgs. Is there any difference between medicines under significance level of 5%?",
+        "answer": false
+      }
+    ]
+  },
+  "algebra": {
+    "medium": [
+      {
+        "question": "For a matrix A, is the function F(A) = det A from the linear space R^{3*3} to R a linear transformation?",
+        "answer": false
+      },
+      {
+        "question": "For the two linear equations $2 * x + 3 * y + z = 8$ and $4 * x + 4 * y + 4z = 12$ and $x + y + 8z = 10$ with variables x, y and z. Use cramer's rule to solve these three variables.",
+        "answer": [
+          -1,
+          3,
+          1
+        ]
+      },
+      {
+        "question": "for the matrix $A=(\\begin{array}{rrrrr} 1 & 2 & 3 & 4 & -3 \\1 & 2 & 0 & -5 & 1 \\2 & 4 & -3 & -19 & 6 \\3 & 6 & -3 & -24 & 7\\end{array})$, what is its row rank and column rank? return the two numbers as a list.",
+        "answer": [
+          2,
+          2
+        ]
+      },
+      {
+        "question": "What is the vector that spans the kernel of A = [[1, 0, 2, 4], [0, 1, -3, -1], [3, 4, -6, 8], [0, -1, 3, 4]]?",
+        "answer": [
+          -2,
+          3,
+          1,
+          0
+        ]
+      },
+      {
+        "question": "Consider the matrix of A=[[1, 4], [4, 1]], is this a positive definite matrix?",
+        "answer": false
+      },
+      {
+        "question": "If A and B are both orthogonal square matrices, and det A = -det B. What is det(A+B)? Return the numerical value.",
+        "answer": 0.0
+      },
+      {
+        "question": "Let m and n be the roots of the equation 2x^2 + 15x + 16 = 0. What is the value of 1/m + 1/n?",
+        "answer": -0.9375
+      },
+      {
+        "question": "For matrix A = [[2, 4, 3], [3, 0, 1], [1, 2, 5]], what is its determinant?",
+        "answer": -42
+      },
+      {
+        "question": "The product of two of the four roots of the quartic equation x^4 - 18x^3 +kx2 + 200x - 1984 = 0 is -32. Determine the value of k.",
+        "answer": 86
+      },
+      {
+        "question": "How many triangles are there whose sides are all integers and whose maximum side length equals 11?",
+        "answer": 36
+      },
+      {
+        "question": "Suppose V is a finite-dimensional vector space on F. $M1={a_1,a_2,a_3}$ is a basis of V, $M2={b_1,b_2,b_3}$ is another basis of V. Suppose the coordinates of b_1,b_2,b_3 under M1 are $c_1=(1,1,-1),c_2=(1,-1,1),c_3=(-1,1,1)$. Suppose the coordinate of $d\\in V$ under M1 is (1,3,5). What is the coordinate of d under M2? Return the three coordinate values as a list.",
+        "answer": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "question": "Which of the following matrices takes any vector $v$ and projects it onto the space spanned by the columns of $\\Phi$? (a) $(\\Phi^T\\Phi)^{-1}$. (b) $\\Phi(\\Phi^T\\Phi)^{-1}$. (c) $\\Phi(\\Phi^T\\Phi)^{-1}\\Phi^T$. (d) $\\Phi^T(\\Phi^T\\Phi)^{-1}\\Phi^T$.",
+        "answer": "(c)"
+      }
+    ]
+  },
+  "graph_theory": {
+    "medium": [
+      {
+        "question": "Let a undirected graph G with edges E = {<0,1>,<1,3>,<0,3>,<3,4>,<0,4>,<1,2>,<2,5>,<2,7>,<2,6>,<6,7>,<6,10>,<5,8>,<10,9>,<5,10>,<6,8>,<7,8>,<6,9>,<7,10>,<8,10>,<9,11>,<9,12>,<9,13>,<13,12>,<13,11>,<11,14>}, which <A,B> represent Node A is connected to Node B. What is the shortest path from node 1 to node 14? Represent the path as a list.",
+        "answer": [
+          1,
+          2,
+          6,
+          9,
+          11,
+          14
+        ]
+      },
+      {
+        "question": "How many labeled graphs with a score of (6, 2, 2, 2, 2, 2, 2) are there?",
+        "answer": 15
+      },
+      {
+        "question": "What's the maximum number of edges in a simple triangle free planar graph with 30 vertices?",
+        "answer": 56
+      },
+      {
+        "question": "True or false: there exists a graph with score (1, 2, 3, 4, 5).",
+        "answer": false
+      },
+      {
+        "question": "How many trees are there on 5 unlabeled vertices?",
+        "answer": 3
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<1,2>,<2,4>,<5,4>,<5,6>}, which <A,B> represent Node A is connected to Node B. What is the shortest path from node 1 to node 6? Represent the path as a list.",
+        "answer": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "question": "How many distinct directed trees can be constructed from a undirected tree with 100 nodes?",
+        "answer": 100
+      },
+      {
+        "question": "True or false: there exists a graph with score (1, 1, 2, 2, 3, 3, 4, 4).",
+        "answer": true
+      },
+      {
+        "question": "If the sum-product algorithm is run on a factor graph with a tree structure (no loops), then after a finite number of messages have been sent, there will be no pending messages. True or false?",
+        "answer": true
+      }
+    ]
+  },
+  "wave": {
+    "medium": [
+      {
+        "question": "A ship uses a sonar system to locate underwater objects. Find the wavelength of a 262-Hz wave in water. (Unit: m)",
+        "answer": 5.65
+      }
+    ]
+  },
+  "information_theory": {
+    "medium": [
+      {
+        "question": "Consider a 26-key typewriter. Suppose that pushing a key results in printing that letter or the next (with equal probability). Thus A results in A or B, ..., Z results in Z or A. What is the capacity of this channel in bits?",
+        "answer": 3.7
+      },
+      {
+        "question": "Consider a source $X$ uniformly distributed on the set $\\{1, 2, \\dots, m\\}$. The rate distortion function for this source with Hamming distortion is $R(D) = \\log{m}-H(D)-D\\log{(m-1)}$ for $0\\leq D\\leq 1-\\frac{1}{m}$, and $R(D) = 0$ otherwise. True or False?",
+        "answer": true
+      },
+      {
+        "question": "Suppose that $(X, Y, Z)$ are jointly Gaussian and that $X \\rightarrow Y \\rightarrow Z$ forms a Markov chain. Let $X$ and $Y$ have correlation coefficient 0.1 and let $Y$ and $Z$ have correlation coefficient 0.9. Find $I(X;Z)$ in bits.",
+        "answer": 0.00587
+      },
+      {
+        "question": "Adding a row to a channel transition matrix does not decrease capacity. True or False?",
+        "answer": true
+      },
+      {
+        "question": "Suppose the codeword that we use to describe a random variable X always starts with a symbol chosen from the set {7, 8, 9} , followed by binary digits {0, 1}. Thus we have a ternary code for the first symbol and binary thereafter. Give the optimal uniquely decodeable code (minimum expected number of symbols) for the probability distribution $p = (16/69, 15/69, 12/69, 10/69, 8/69, 8/69)$.",
+        "answer": [
+          7,
+          8,
+          9,
+          70,
+          80,
+          90
+        ]
+      }
+    ]
+  },
+  "economics": {
+    "medium": [
+      {
+        "question": "Carl the clothier owns a large garment factory on an isolated island. Carl's factory is the only source of employment for most of the islanders, and thus Carl acts as a monopsonist. The supply curve for garment workers is given by l = 80w, where l is the number of workers hired and w is their hourly wage. Assume also that Carl's labor demand (marginal revenue product) curve is given by l = 400 - 40MRP_l. How many workers will Carl hire to maximize his profits?",
+        "answer": 200
+      },
+      {
+        "question": "George is seen to place an even-money $100,000 bet on the Bulls to win the NBA Finals. If George has a logarithmic utility-of-wealth function and if his current wealth is $1,000,000, what must he believe is the minimum probability that the Bulls will win?",
+        "answer": 0.525
+      }
+    ]
+  },
+  "real_analysis": {
+    "medium": [
+      {
+        "question": "is 1/4 belongs to Cantor set? Is 1/13 belongs to Cantor set? Return the two answers as a list with 1 for yes and 0 for no. For example, if you think both belong to Cantor set, return [1,1]",
+        "answer": [
+          1,
+          1
+        ]
+      },
+      {
+        "question": "the monotone function f on [0,1] is differentiable almost everywhere. This can be proved by: (a) Fubini Theorem; (b) Tonelli Theorem; (c) Vitali Cover Theorem; (d) None of the above. Which option is correct?",
+        "answer": "(c)"
+      }
+    ]
+  },
+  "equity_investments": {
+    "medium": [
+      {
+        "question": "CheckMate forecasts that its dividend will grow at 20% per year for the next four years before settling down at a constant 8% forever. Dividend (current year,2016) = $12; expected rate of return = 15%. What is the fair value of the stock now?",
+        "answer": 273.0
+      }
+    ]
+  },
+  "fixed_income": {
+    "medium": [
+      {
+        "question": "Mr. Jackson bought his house in 1995, and financed the loan for 30 years at an interest rate of 7.8%. His monthly payment was $1260. In 2015, Mr. Jackson decides to pay off the loan. Find the balance of the loan he still owes.",
+        "answer": 104761.48
+      },
+      {
+        "question": "Consider two 5 year bonds: one has a 9% coupon and sells for 101.00; the other has a 7% coupon and sells for 93.20. What is the price of a 5-year zero-coupon bond.",
+        "answer": 65.9
+      },
+      {
+        "question": "Let $P(r,t,T)$ denote the price at time $t$ of $1 to be paid with certainty at time $T, t\\leT$, if the short rate at time $t$ is equal to $r$. For a Vasicek model you are given: $P(0.04, 0, 2)=0.9445$, $P(0.05, 1, 3)=0.9321$, $P(r^*, 2, 4)=0.8960$. What is $r^*$?",
+        "answer": 0.08
+      }
+    ]
+  },
+  "atomic_physics": {
+    "medium": [
+      {
+        "question": "The spontaneous fission activity rate of U-238 is 6.7 fissions/kg s. A sample of shale contains 0.055% U-238 by weight. Calculate the number of spontaneous fissions in one day in a 106-kg pile of the shale by determining the mass of U-238 present in kg.",
+        "answer": 550.0
+      }
+    ]
+  },
+  "kinetics": {
+    "medium": [
+      {
+        "question": "All walking animals, including humans, have a natural walking pace—a number of steps per minute that is more comfortable than a faster or slower pace. Suppose that this pace corresponds to the oscillation of the leg as a physical pendulum.  Fossil evidence shows that T. rex, a two-legged dinosaur that lived about 65 million years ago, had a leg length L = 3.1 m and a stride length S = 4.0 m (the distance from one footprint to the next print of the same foot).  Estimate the walking speed of T. rex. (Unit: m/s)",
+        "answer": 1.4
+      },
+      {
+        "question": "A 'fishbowl' of height 4r/3 is formed by removing the top third of a sphere of radius r=6. The fishbowl is fixed in sand so that its rim is parallel with the ground. A small marble of mass m rests at the bottom of the fishbowl. Assuming all surfaces are frictionless and ignoring air resistance, find the maximum initial velocity that could be given to the marble for it to land back in the fishbowl with g=9.8.",
+        "answer": 18.25
+      },
+      {
+        "question": "A bungee cord is 30.0 m long and, when stretched a distance x, it exerts a restoring force of magnitude kx. Your father-in-law (mass 95.0 kg) stands on a platform 45.0 m above the ground, and one end of the cord is tied securely to his ankle and the other end to the platform. You have promised him that when he steps off the platform he will fall a maximum distance of only 41.0 m before the cord stops him. You had several bungee cords to select from, and you tested them by stretching them out, tying one end to a tree, and pulling on the other end with a force of 380.0 N. When you do this, what distance (in m) will the bungee cord that you should select have stretched?",
+        "answer": 0.602
+      },
+      {
+        "question": "A radioactive sample contains two different isotopes, A and B. A has a half-life of 3 days, and B has a half-life of 6 days. Initially in the sample there are twice as many atoms of A as of B. In how many days will the ratio of the number of atoms of A to B be reversed?",
+        "answer": 12.0
+      },
+      {
+        "question": "An Aston Martin V8 Vantage sports car has a lateral acceleration of $0.96g = (0.96)(9.8 m / s^2) = 9.4 m / s^2$. This is the maximum centripetal acceleration the car can sustain without skidding out of a curved path. If the car is traveling at a constant 40m/s on level ground, what is the radius R of the tightest unbanked curve it can negotiate? (Unit: m))",
+        "answer": 170
+      }
+    ]
+  },
+  "computer_networking": {
+    "medium": [
+      {
+        "question": "An IPv4 packet contains the following data (in hexadecimal value) in the IP header: 4500 0034 B612 4000 4006 6F80 0A00 008B 5BC6 AEE0 . Does the header contains error?",
+        "answer": false
+      },
+      {
+        "question": "Calculate the Hamming pairwise distances and determine the minimum Hamming distance among the following codewords: 000000,010101,101010,110110",
+        "answer": 3
+      },
+      {
+        "question": "Consider a file with a size of 350 Kbytes storing in a web server. Client A sends a request to the server to retrieve the file from a remote location. It is known that the link capacity between client A and the server is 10 Mbps and the round trip time (RTT) between the server and client is fixed at 20ms. Assume that the segment size is 20 Kbytes and the client has a receiver buffer of 200Kbytes. Assume that the window size (W) is fixed at 2. How long (in ms) does client A take to receive the whole file from the server after sending a request?",
+        "answer": 352
+      }
+    ]
+  },
+  "machine_learning": {
+    "medium": [
+      {
+        "question": "Consider Convolutional Neural Network D2 which takes input images of size 32x32 with 1 colour channels. The first layer of D2 uses 4 filters of size 5x5, a stride of 2, and zero-padding of width 1. Consider CNN D2 which takes input images of size 32x32 with 1 colour channels. The first layer of D2 uses 4 filters of size 5x5, a stride of 2, and zero-padding of width 1. What would be the total size of the flattened output vector from each filter?",
+        "answer": 25
+      }
+    ]
+  },
+  "condensed_matter_physics": {
+    "medium": [
+      {
+        "question": "Assume a temperature of 300 K and find the wavelength of the photon necessary to cause an electron to jump from the valence to the conduction band in germanium in nm.",
+        "answer": 1850.0
+      }
+    ]
+  },
+  "functional_analysis": {
+    "medium": [
+      {
+        "question": "Let P[0,1] denotes all the polynomials on the interval [0,1]. Define the distance \\rho(p, q)=\\int_0^1|p(x)-q(x)| dx. Is (P[0,1],\\rho) a complete space? Return 1 for yes and 0 for no.",
+        "answer": 0.0
+      }
+    ]
+  },
+  "electromagnetism": {
+    "medium": [
+      {
+        "question": "Point charges q1=50μC and  q2=−25μC are placed 1.0 m apart. What is the force on a third charge q3=20μC placed midway between q1 and q2?",
+        "answer": 53.94
+      }
+    ]
+  },
+  "particle": {
+    "medium": [
+      {
+        "question": "Consider the 7.0-TeV protons that are produced in the LHC collider at CERN. Find the available center-of-mass energy if these protons collide with other protons in a fixed-target experiment in GeV.",
+        "answer": 114.5
+      }
+    ]
+  },
+  "portfolio_management": {
+    "medium": [
+      {
+        "question": "Suppose we are given the following information. Use this information to calculate abnormal return. Rf: 4%\nRm: 12%\nBeta of the Portfolio: 1.8\nBeginning Value of Portfolio: $50,000\nEnding Value of Portfolio: $60,000\nWhat is the abnormal return?",
+        "answer": 0.016
+      }
+    ]
+  },
+  "numerical_analysis": {
+    "medium": [
+      {
+        "question": "We know that $y'=(x+y) / 2$, we also know that $y(x=0) = 2, y(x=0.5) = 2.636, y(x=1) = 3.595, y(x=1.5) = 4.9868$, what is the value of y(2) using Adams bashforth predictor method.",
+        "answer": 6.8731
+      }
+    ]
+  }
+}
