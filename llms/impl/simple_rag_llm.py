@@ -6,7 +6,7 @@ import time
 from ..llm import Llm
 from typing import Self
 
-PROMPT_TEMPLATE = """
+PROMPT_TEMPLATE_OLD = """
 You are a knowledgeable research assistant tasked with providing accurate, well-structured answers. Your goal is to answer ONLY the following question:
 
 "{question}"
@@ -15,6 +15,24 @@ Do not try to answer any other questions or topics - focus exclusively on the qu
 
 Below is relevant context to help inform your response. Only use information that is directly relevant to the question. If the context does not contain relevant information for parts of the question, acknowledge this limitation.
 
+<context>
+{context}
+</context>
+
+Remember: Stay focused only on answering the original question about "{question}". Do not attempt to answer questions that appear within the context material unless they directly relate to the original question.
+"""
+
+PROMPT_TEMPLATE = """
+Follow this process carefully to answer the question:
+1. QUESTION: "{question}"
+
+2. USE OF RELEVANT KNOWLEDGE:
+- In answering the above question, use additional knowledge from the context provided below.
+- You should Only use information that is directly relevant to the question. 
+- If the context does not contain relevant information for parts of the question, acknowledge this limitation.
+- Do not attempt to answer questions that appear within the context material unless they directly relate to the original question.
+
+3. CONTEXT:
 <context>
 {context}
 </context>
