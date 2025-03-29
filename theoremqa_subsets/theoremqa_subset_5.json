@@ -1,0 +1,658 @@
+{
+  "graph_theory": {
+    "medium": [
+      {
+        "question": "Let a undirected graph G with edges E = {<0,1>,<0,2>,<0,3>,<0,5>,<2,3>,<2,4>,<4,5>}, which <A,B> represent Node A is connected to Node B. What is the shortest path from node 0 to node 5? Represent the path as a list.",
+        "answer": [
+          0,
+          5
+        ]
+      },
+      {
+        "question": "If there exists an ordered numbering of the nodes such that for each node there are no links going to a lower-numbered node, then there are no directed cycles in a directed graph. True or false?",
+        "answer": true
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<0,4>,<4,1>,<0,3>,<3,4>,<3,2>,<1,3>}, which <A,B> represent Node A is connected to Node B. What is the minimum vertex cover of G? Represent the vertex cover in a list of ascending order.",
+        "answer": [
+          3,
+          4
+        ]
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<0,3>, <1,3>, <2,3>}, which <A,B> represent Node A is connected to Node B. What is the minimum vertex cover of G? Represent the vertex cover in a list of ascending order.",
+        "answer": [
+          3
+        ]
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<2,1>,<2,0>,<2,3>,<1,4>,<4,3>}, which <A,B> represent Node A is connected to Node B. What is the minimum vertex cover of G? Represent the vertex cover in a list of ascending order.",
+        "answer": [
+          2,
+          4
+        ]
+      },
+      {
+        "question": "True or false: there exists a graph with score (1, 1, 1, 2, 2, 3, 4, 5, 5).",
+        "answer": true
+      },
+      {
+        "question": "What's the maximum number of edges in a simple planar graph with 30 vertices?",
+        "answer": 84
+      },
+      {
+        "question": "The marginal distribution for the variables $x_s$ in a factor $f_s(x_s)$ in a tree-structured factor graph, after running the sum-product message passing algorithm, can be written as the product of the message arriving at the factor node along all its links, times the local factor $f_s(x_s)$. True or false?",
+        "answer": true
+      }
+    ]
+  },
+  "kinetics": {
+    "medium": [
+      {
+        "question": "In Jules Verne's 1865 story with this title, three men went to the moon in a shell fired from a giant cannon sunk in the earth in Florida. Find the minimum muzzle speed that would allow a shell to escape from the earth completely (the escape speed). Neglect air resistance, the earth's rotation, and the gravitational pull of the moon. The earth's radius and mass are $R_E}=$ $6.38 \\times 10^6 m$ and $m_E=5.97 \\times 10^{24} kg$. (Unit: 10 ^ 4 m/s)",
+        "answer": 1.12
+      },
+      {
+        "question": "You want to move a 500-N crate across a level floor. To start thecrate moving, you have to pull with a 230-N horizontal force.Once the crate breaks loose and starts to move, you can keep itmoving at constant velocity with only 200 N. What are the coefficients of static and kinetic friction?",
+        "answer": 0.4
+      },
+      {
+        "question": "A gun is designed that can launch a projectile of mass 10 kg at a speed of 200 m/s. The gun is placed close to a straight, horizontal railway line and aligned such that the projectile will land further down the line. A small rail car of mass 200 kg and travelling at a speed of 100 m/s passes the gun just as it is fired. Assuming the gun and the car are at the same level, at what angle upwards must the projectile be fired so that it lands in the rail car?",
+        "answer": 60.0
+      },
+      {
+        "question": "While riding a multispeed bicycle, the rider can select the radius of the rear sprocket that is fixed to the rear axle. The front sprocket of a bicycle has radius 12.0 cm. If the angular speed of the front sprocket is 0.6 rev/s, what is the radius (in cm) of the rear sprocket for which the tangential speed of a point on the rim of the rear wheel will be 5 m/s? The rear wheel has radius 0.330 m.",
+        "answer": 2.99
+      },
+      {
+        "question": "At a waterpark, sleds with riders are sent along a slippery, horizontal surface by the release of a large compressed spring. The spring with force constant k = 40.0 N/cm and negligible mass rests on the frictionless horizontal surface. One end is in contact with a stationary wall. A sled and rider with total mass 70.0 kg are pushed against the other end, compressing the spring 0.375 m. The sled is then released with zero initial velocity. What is the sled's speed (in m/s) when the spring returns to its uncompressed length?",
+        "answer": 2.83
+      },
+      {
+        "question": "A uniform plank of length L = 6.0 m and mass M = 90 kg rests on sawhorses separated by D = 1.5 m and equidistant from the center of the plank. Cousin Throckmorton wants to stand on the right-hand end of the plank. If the plank is to remain at rest, how massive can Throckmorton be? (Unit: kg)",
+        "answer": 30
+      }
+    ]
+  },
+  "calculus": {
+    "medium": [
+      {
+        "question": "Let g(x) be the inverse of f(x) = x + cos(x). What is g'(1)?",
+        "answer": 1
+      },
+      {
+        "question": "dy/dt = \\sqrt{t}, y(1) = 1. What is y(4)?",
+        "answer": 5.667
+      },
+      {
+        "question": "Julian is jogging around a circular track of radius 50 m. In a coordinate system with its origin at the center of the track, Julian's x-coordinate is changing at a rate of -1.25 m/s when his coordinates are (40, 30). Find dy/dt at this moment.",
+        "answer": 1.667
+      },
+      {
+        "question": "Define f: R \to R by f(x) = (x^3) / (1 + x^2). Is f uniformly continuous on R?",
+        "answer": true
+      },
+      {
+        "question": "Does \\lim_{x \\to 0} (cos(mx - 1)/(x^2) = -(m^2)/2 for m = 2?",
+        "answer": true
+      },
+      {
+        "question": "If $|x|$ is less than 0.7, then if we use fifth Maclaurin polynomial approximate $sin(x)$ the error is less than 0.0001. Is this correct? Answer True or False.",
+        "answer": true
+      },
+      {
+        "question": "Let $I(R)=\\iint_{x^2+y^2 \\leq R^2}(\\frac{1+2 x^2}{1+x^4+6x^2y^2+y^4}-\\frac{1+y^2}{2+x^4+y^4}) dx dy$. What is the limit of $I(R)$ as $R$ goes to infinity?",
+        "answer": 1.53978589
+      },
+      {
+        "question": "Is the Taylor Series for $f$ at x=5 where $f(x)=\\sum_{n=0}^{\\infty}\\frac{x^n}{n!} absolutely converging?",
+        "answer": 1.0
+      },
+      {
+        "question": "Let rectangle R = [1, 2.5] * [1, 2]. Calculate the Riemann Sum S_{3,2} for \\int \\int_{R} xy dA for the integral, using the lower-left vertex of rectangles as sample points.",
+        "answer": 2.812
+      },
+      {
+        "question": "what is the value of $\\int_{0}^\\pi (sin(123*x/2)/sin(x/2))^2dx$? Round the answer to the thousands decimal.",
+        "answer": 386.4158898
+      },
+      {
+        "question": "Let g(x) = 1 / (1 + x^{3/2}), what is g'(x) when x = 1?",
+        "answer": -0.375
+      },
+      {
+        "question": "Find the solutions y of the differential equation y'=(t^2+3y^2)/2ty with y(1) = 1. What is y(2)?",
+        "answer": 3.464
+      },
+      {
+        "question": "Using Taylor's Approximation Theorem to show: What is $\\lim_{x \\to 0} \\frac{e^\\frac{x^4}{2}-\\cos(x^2)}{x^4}$",
+        "answer": 1.0
+      },
+      {
+        "question": "Suppose g(x) is the horizontal asymptote of function f(x) = (\\sqrt{36 x^2 + 7}) / (9x + 4). What are possible values of g(2023)?",
+        "answer": [
+          0.6667,
+          -0.6667
+        ]
+      },
+      {
+        "question": "What is \\lim_{x \to 9} ((x - 9)/(\\sqrt{x} - 3))?",
+        "answer": 6
+      },
+      {
+        "question": "what is the limit of (2n)!!/(2n+1)!! as n goes to infinity?",
+        "answer": 0.0
+      },
+      {
+        "question": "What is \\lim_{x \\to 0} (csc(x) - cot(x))?",
+        "answer": 0
+      },
+      {
+        "question": "Use divergence therem to evaluate $\\iint_S \\vec{F} \\cdot d \\vec{S}$ where $\\vec{F} = xy \\vec{i} - \\frac{1}{2}y^2\\vec{j} + z\\vec{k}$ and the surface $S$ consists of the three surfaces, $z=4 - 3*x^2 - 3y^2, 1 \\le z \\le 1$ on the sides and $z=0$ on the bottom.",
+        "answer": 7.853
+      },
+      {
+        "question": "Let h(x) = 1/(\\sqrt{x} + 1). What is h''(x) when x = 1?",
+        "answer": 0.125
+      }
+    ]
+  },
+  "number_theory": {
+    "medium": [
+      {
+        "question": "Find the smallest positive integer that leaves a remainder of 1 when divided by 2, a remainder of 2 when divided by 3, a remainder of 3 when divided by 4, a remainder of 4 when divided by 5, and a remainder of 5 when divided by 6.",
+        "answer": 59
+      },
+      {
+        "question": "Find integer $n \\ge 1$, such that $n \\cdot 2^{n+1}+1$ is a perfect square.",
+        "answer": 3
+      },
+      {
+        "question": "Find the smallest positive integer that leaves a remainder of 1 when divided by 2, a remainder of 2 when divided by 3, a remainder of 3 when divided by 4, and a remainder of 4 when divided by 5.",
+        "answer": 59
+      },
+      {
+        "question": "If p is a prime number and a is an integer, what is (a^p  - a) mod p?",
+        "answer": 0
+      },
+      {
+        "question": "Let S be the set of integers between 1 and 2^40 that contain two 1’s when written in base 2. What is the probability that a random integer from S is divisible by 9?",
+        "answer": 0.1705
+      },
+      {
+        "question": "Find the smallest positive integer that leaves a remainder of 3 when divided by 5, a remainder of 4 when divided by 7, and a remainder of 2 when divided by 9.",
+        "answer": 263
+      }
+    ]
+  },
+  "combinatorics": {
+    "medium": [
+      {
+        "question": "In how many ways can a set of 6 distinct letters be partitioned into 3 non-empty groups if each group must contain at least 2 letters?",
+        "answer": 15
+      },
+      {
+        "question": "How many ways are there to arrange 6 pairs of parentheses such that they are balanced?",
+        "answer": 132
+      },
+      {
+        "question": "In a set of 20 positive integers, at least how many pairs of numbers have a difference that is a multiple of 10?",
+        "answer": 10
+      },
+      {
+        "question": "In how many ways can we form a 7-digit number using the digits 1, 2, 2, 3, 3, 3, 3?",
+        "answer": 105
+      },
+      {
+        "question": "A pizza parlor offers 8 different toppings. In how many ways can a customer order a pizza with 3 toppings?",
+        "answer": 56
+      },
+      {
+        "question": "How many ways are there to divide a set of 5 elements into 2 non-empty ordered subsets?",
+        "answer": 240
+      },
+      {
+        "question": "A company has 8 employees, including 3 managers and 5 engineers. How many different ways are there to form a team of 4 employees that includes at least 1 manager and at least 2 engineers?",
+        "answer": 60
+      },
+      {
+        "question": "How many ways are there to color the vertices of a cube with two colors, up to rotation?",
+        "answer": 23
+      },
+      {
+        "question": "A basketball team has 12 players, including 5 guards and 7 forwards. How many different starting lineups can be formed that include 3 guards and 2 forwards?",
+        "answer": 210
+      }
+    ]
+  },
+  "stochastic_process": {
+    "medium": [
+      {
+        "question": "The dependence between adjacent n-blocks of a stationary process grows linearly with n. True or False?",
+        "answer": false
+      },
+      {
+        "question": "Assuming we are underground, and the only thing we can observe is whether a person brings an umbrella or not. The weather could be either rainy or sunny. Assuming the P(rain)=0.6 and P(sunny)=0.4. Assuming the weather on day $k$ is dependent on the weather on day $k-1$. We can write the transition probability as P(sunny $\\mid$ sunny) = P(rain $\\mid$ rain) = 0.7. The person has 60\\% chance to bring an umbrella when the weather is rainy, and 40\\% chance to bring an umbrella when the weather is sunny, i.e. P(umbrella $\\mid$ rain) = 0.6 and P(umbrella $\\mid$ sunny) = 0.4. If we observe that the person (1) brought an umbrella on day 1, (2) did not bring an umbrella on day 2, (3) brought an umbrella on day 3.  What are the most likely weather from day 1 to day 3? Return the answer as a list of binary values, where 1 represents rain and 0 represents sunny.",
+        "answer": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "question": "Let {N(t), t=[0, \\infty]} be a Poisson process with rate $\\lambda = 5$. Find the probability of no arrivals in [3, 5)",
+        "answer": 0.37
+      }
+    ]
+  },
+  "algebra": {
+    "medium": [
+      {
+        "question": "What is the determinant of matrix [[0, 1, 2], [7, 8, 3], [6, 5, 4]]?",
+        "answer": -36
+      },
+      {
+        "question": "For matrix A = [[5, 4], [1, 2]], what are its eigen values?",
+        "answer": [
+          1,
+          6
+        ]
+      },
+      {
+        "question": "30 students from 5 classes solved 40 math problems. Each student must answer at least one question. Every two students in the same class solved the same number of questions. The number of questions answered by any two students in different classes is also different. Question: What's maximum possible number of students who only answered one question?",
+        "answer": 26
+      },
+      {
+        "question": "suppose a,b,c,\\alpha,\\beta,\\gamma are six real numbers with a^2+b^2+c^2>0.  In addition, $a=b*cos(\\gamma)+c*cos(\\beta), b=c*cos(\\alpha)+a*cos(\\gamma), c=a*cos(\\beta)+b*cos(\\alpha)$. What is the value of $cos^2(\\alpha)+cos^2(\\beta)+cos^2(\\gamma)+2*cos(\\alpha)*cos(\\beta)*cos(\\gamma)? return the numeric.",
+        "answer": 1.0
+      },
+      {
+        "question": "Is there an eigenbasis for the identity matrix I_n?",
+        "answer": true
+      }
+    ]
+  },
+  "equity_investments": {
+    "medium": [
+      {
+        "question": "If a stock pays a $5 dividend this year, and the dividend has been growing 6% annually, what will be the stock’s intrinsic value, assuming a required rate of return of 12%?",
+        "answer": 88.33
+      },
+      {
+        "question": "Consider an arbitrage-free securities market model, in which the risk-free interest rate is constant. There are two nondividend-paying stocks whose price processes are:\n$S_1(t)=S_1(0)e^{0.1t+0.2Z(t)}$\n$S_2(t)=S_2(0)e^{0.125t+0.3Z(t)}$\nwhere $Z(t)$ is a standard Brownian motion ant $t\\ge0$. What is the continuously compounded risk-free interest rate?",
+        "answer": 0.02
+      },
+      {
+        "question": "Estimate the PE ratio for a firm that has the following characteristics:\nLength of high growth = five years\nGrowth rate in first five years = 25%\nPayout ratio in first five years = 20%\nGrowth rate after five years = 8%\nPayout ratio after five years = 50%\nBeta = 1.0 \nRisk-free rate = T-bond rate = 6%\nCost of equity = 6% + 1(5.5%) = 11.5%\nRisk premium = 5.5%\nWhat is the estimated PE ratio for this firm?",
+        "answer": 28.75
+      },
+      {
+        "question": "Estimate the PEG ratio for a firm that has the following characteristics:\nLength of high growth = five years\nGrowth rate in first five years = 25%\nPayout ratio in first five years = 20%\nGrowth rate after five years = 8%\nPayout ratio after five years = 50%\nBeta = 1.0 \nRisk-free rate = T-bond rate = 6%\nCost of equity = 6% + 1(5.5%) = 11.5%\nRisk premium = 5.5%\nWhat is the estimated PEG ratio for this firm?",
+        "answer": 1.15
+      }
+    ]
+  },
+  "statistics": {
+    "medium": [
+      {
+        "question": "What is the Cramer-Rao lower bound on $E_\\theta(\\hat{\\theta}(X)-\\theta)^2$, where $\\hat{\\theta}(X)$ is an unbaised estimator of $\\theta$ for the Gaussian distribution family $f_\\theta(x)=N(0,\\theta)$? (a) $2\\theta$. (b) $2\\theta^2$. (c) $0.5\\theta^{-1}$. (d) $0.5\\theta^{-2}$. Which option is correct?",
+        "answer": "(b)"
+      },
+      {
+        "question": "What is the Fisher information for the Gaussian distribution family $f_\\theta(x)=N(0,\\theta)$? (a) $2\\theta$. (b) $2\\theta^2$. (c) $0.5\\theta^{-1}$. (d) $0.5\\theta^{-2}$. Which option is correct?",
+        "answer": "(d)"
+      },
+      {
+        "question": "Let N be a spatial Poisson process with constant intensity $11$ in R^d, where d\\geq2. Let S be the ball of radius $r$ centered at zero.  Denote |S| to be the volume of the ball. What is N(S)/|S| as $r\\rightarrow\\infty$?",
+        "answer": 11.0
+      }
+    ]
+  },
+  "economics": {
+    "medium": [
+      {
+        "question": "Suppose that there are two firms in the market facing no costs of production and a demand curve given by Q = 150 - P for their identical products. Suppose the two firms choose prices simultaneously as in the Bertrand model. Compute the prices in the nash equilibrium.",
+        "answer": 0
+      },
+      {
+        "question": "Ms. Fogg is planning an around-the-world trip on which she plans to spend $10,000. The utility from the trip is a function of how much she actually spends on it (Y), given by U(Y) = ln Y. If there is a 25 percent probability that Ms. Fogg will lose $1,000 of her cash on the trip, what is the trip’s expected utility?",
+        "answer": 9.184
+      },
+      {
+        "question": "Calculate the Gross Domestic Product using the total expenditure approach:\nConsumption Expenditures | $500 billion\nWages and salaries | $400 billion\n(Gross Private) Investments Expenditures | $80 billion\nGovernment Expenditures | $100 billion\nTaxes | $70 billion\nImports | $50 billion\nExports | $30 billion\nWhat is the GDP (in billions)?",
+        "answer": 660
+      },
+      {
+        "question": "Each day Paul, who is in third grade, eats lunch at school. He likes only Twinkies (t) and soda (s), and these provide him a utility of utility = U(t,s) = \\sqrt{ts}. If Twinkies cost $0.10 each and soda costs $0.25 per cup, Paul's mom gives him $1, how many Twinkies should Paul buy to maximize utility?",
+        "answer": 5
+      },
+      {
+        "question": "A single firm monopolizes the entire market for widgets and can produce at constant average and marginal costs of AC = MC = 10. Originally, the firm faces a market demand curve given by Q = 60 - P. Calculate the profit-maximizing price for the firm.",
+        "answer": 35
+      }
+    ]
+  },
+  "fixed_income": {
+    "medium": [
+      {
+        "question": "A debt of $25,000 is to be amortized over 7 years at 7% interest. What value of monthly payments will achieve this?",
+        "answer": 4638.83
+      },
+      {
+        "question": "Given the following spot rates:\n1-year spot rate: 5%;\n2-year spot rate: 6%.\n Determine the one-year forward rate (between 0 and 1) one year from today.",
+        "answer": 0.070095
+      }
+    ]
+  },
+  "group_theory": {
+    "medium": [
+      {
+        "question": "Let M be the inverse of the group element ((3, 5), (4, 6)) in Z_7. What is M[0][1]?",
+        "answer": 6
+      },
+      {
+        "question": "given a finite group A, and a collection of permutations B. Then (a) there exists B such that A is isomorphic to B; (b) for any B, A is isomorphic to B; (c) A can never be isomorphic to B; (d) none of the above. Which option is correct?",
+        "answer": "(a)"
+      },
+      {
+        "question": "What is the order of the group S_3 * Z_2?",
+        "answer": 12
+      },
+      {
+        "question": "G = Q, and G is under the operation a * b = a + b + 3. Is G a group?",
+        "answer": true
+      }
+    ]
+  },
+  "quantitive_methods": {
+    "medium": [
+      {
+        "question": "If a cash flow of $100 has a discount rate of 5% and to be received in 5 years, what is the present value of the cash flow?",
+        "answer": 78.3526
+      },
+      {
+        "question": "As scotch whiskey ages, its value increases. One dollar of scotch at year 0 is worth $V(t) = exp{2\\sqrt{t} - 0.15t}$ dollars at time t. If the interest rate is 5 percent, after how many years should a person sell scotch in order to maximize the PDV of this sale?",
+        "answer": 25
+      },
+      {
+        "question": "For a $1,000 investment, what is the future value of the investment if the interest rate is 8% compounded annually for 3 years?",
+        "answer": 1259.71
+      },
+      {
+        "question": "Traders in major financial institutions use the Black-Scholes formula in a backward fashion to infer other traders' estimation of $\\sigma$ from option prices. In fact, traders frequently quote sigmas to each other, rather than prices, to arrange trades. Suppose a call option on a stock that pays no dividend for 6 months has a strike price of $35, a premium of $2.15, and time to maturity of 7 weeks. The current short-term T-bill rate is 7%, and the price of the underlying stock is $36.12. What is the implied volatility of the underlying security?",
+        "answer": 0.251
+      }
+    ]
+  },
+  "mathematical_analysis": {
+    "medium": [
+      {
+        "question": "What is $\\lim _{r \\rightarrow \\infty} (\\int_0^{\\pi/2} x^r sin(x) dx)/(r\\int_0^{\\pi/2} x^r cos(x) dx)$?",
+        "answer": 0.63662
+      },
+      {
+        "question": "suppose $lim_{n \\rightarrow \\infty}a_n=1$, what is the limit of (a_1+2a_2+...+na_n)/n^2?",
+        "answer": 0.5
+      },
+      {
+        "question": "Is there a y bewteen x and x+h such that $sin(x+h) - sinx = h * cos(y)$?",
+        "answer": true
+      },
+      {
+        "question": "If a,b,c,d > 0 and c^2 + d^2 = (a^2 + b^2)^3, is a^3/c + b^3/d < 1?",
+        "answer": false
+      },
+      {
+        "question": "For any triangle ABC, we have cos(A)cost(B)cos(C) $\\leq$ 1/8, is this true or false?",
+        "answer": true
+      }
+    ]
+  },
+  "complex_analysis": {
+    "medium": [
+      {
+        "question": "Compute the real integral $I=\\int_{-\\infty}^{\\infty} 1/(x^2 + 1)^2 dx$.",
+        "answer": 1.57
+      },
+      {
+        "question": "What is $(\\frac{1 + cos(2x) + i*sin(2x)}{1 + cos(2x) - i*sin(2x)})^30$ with $x = \\pi / 60$?",
+        "answer": -1.0
+      },
+      {
+        "question": "Suppose f is an analytic function defined on $\\{z \\in C : IM(z) > 0\\}$, the upper half plane. Given the information that f(f(z)) = z and f'(z) = 1/z^2 for every z. Find the most general possible expression of f(z). What is f(2)?",
+        "answer": -0.5
+      },
+      {
+        "question": "Compute $\\int_C dz / (z * (z-2)^2)dz$, where C: |z - 2| = 1. The answer is Ai with i denoting the imaginary unit, what is A?",
+        "answer": -0.3926
+      }
+    ]
+  },
+  "relativity": {
+    "medium": [
+      {
+        "question": "The earth and sun are 8.3 light-minutes apart. Ignore their relative motion for this problem and assume they live in a single inertial frame, the Earth-Sun frame. Events A and B occur at t = 0 on the earth and at 2 minutes on the sun respectively. Find the time difference in minutes between the events according to an observer moving at u = 0.8c from Earth to Sun. Repeat if observer is moving in the opposite direction at u = 0.8c.",
+        "answer": 14
+      },
+      {
+        "question": "An observer S who lives on the x-axis sees a flash of red light at x = 1210 m, then after 4.96 µs, a flash of blue at x = 480 m. Use subscripts R and B to label the coordinates of the events. What is the measured time interval (in µs) between these flashes?",
+        "answer": 4.32
+      },
+      {
+        "question": "Across what potential difference in V does an electron have to be accelerated to reach the speed v = 1.8 x 10^7 m/s? Calculate this relativistically.",
+        "answer": 924.0
+      }
+    ]
+  },
+  "information_theory": {
+    "medium": [
+      {
+        "question": "Maximize the entropy $H(X)$ of a non-negative integer-valued random variable $X$, taking values from 0 to infinity, subject to the constraint $E(X)=1$. Use base 2 logarithm to evaluate $H(X)$.",
+        "answer": 2.0
+      },
+      {
+        "question": "Find the maximum entropy density $f$, defined for $x\\geq 0$, satisfying $E(X)=\\alpha_1$, $E(\\ln{X})=\\alpha_2$. Which family of densities is this? (a) Exponential. (b) Gamma. (c) Beta. (d) Uniform.",
+        "answer": "(b)"
+      },
+      {
+        "question": "Let $X_0, X_1, X_2, \\ldots$ be drawn i.i.d. from $p(x)$, and $x\\in\\{1,2,3,\\ldots,100\\}. Let $N$ be the waiting time to the next occurrence of $X_0$. Compute $E(N)$.",
+        "answer": 100.0
+      },
+      {
+        "question": "A random variable $X$ takes on $m$ values and has entropy $H(X)$. An instantaneous ternary code is found for this source, with an average length $L=H_3(X)$ that achieves the entropy bound. Then $m$ must be odd. True or False?",
+        "answer": true
+      }
+    ]
+  },
+  "real_analysis": {
+    "medium": [
+      {
+        "question": "Let I=[0,1]\\times[0,1]. Suppose $E={(x, y) \\in I: sin(x)<\\frac{1}{2}, cos(x+y) is irrational}$, what is the Lebesgue measure of E?",
+        "answer": 0.5235987667
+      }
+    ]
+  },
+  "signal_processing": {
+    "medium": [
+      {
+        "question": "In the process of searching circles in an image, object O is detected. The contour of the object O is represented with the Fourier Descriptors (0,113,0,0,1,0,0,1). Given that the Fourier Descriptors of a circle are (0,40,0,0,0,0,0,0). Is the object O a circle-like polygon in the image? Bear in mind that there is some high frequency noise in the image. You should take this into account when you make your judgment.",
+        "answer": true
+      },
+      {
+        "question": "In Image processing, closing is a process in which first dilation operation is performed and then erosion operation is performed. Is it true?",
+        "answer": true
+      },
+      {
+        "question": "The following signal $x_1(t)=\\cos (3 \\pi t)-4 \\cos (5 \\pi t-0.5 \\pi)$ can be expressed as $x_1(t)=\\operatorname{Real}\\left(A e^{j \\pi B t}\\right)+\\operatorname{Real}\\left(D e^{j \\pi E t}\\right)$. What are B,E?",
+        "answer": [
+          3,
+          5
+        ]
+      },
+      {
+        "question": "A one-hour color video in YUV format has a frame resolution of 1920x1080 with a 4:2:2 color sub-sampling format, 8 bits for each component, and a frame rate of 30 frames/s. Determine the storage requirement for the video in Gbytes (3 sig. fig.).",
+        "answer": 417
+      },
+      {
+        "question": "Given image \\begin{tabular}{|llll|} \\hline 7 & 1 & 6 & 0 \\\\ 3 & 3 & 7 & 6 \\\\ 6 & 6 & 5 & 7 \\\\ \\hline \\end{tabular} , and the bit-depth of the image is 4. Is the contrast of the image is poor? Judge it based on the histogram of the image.",
+        "answer": true
+      }
+    ]
+  },
+  "derivatives": {
+    "medium": [
+      {
+        "question": "Your company has just written one million units of a one-year European asset-or-nothing put option on an equity index fund. The equity index fund is currently trading at 1000. It pays dividends continuously at a rate proportional to its price; the dividend yield is 2%. It has a volatility of 20%. The option’s payoff will be made only if the equity index fund is down by more than 40% at the end of one year. The continuously compounded risk-free interest rate is 2.5% Using the Black-Scholes model, determine the price of the asset-or-nothing put options. Give the answer in millions.",
+        "answer": 3.6
+      }
+    ]
+  },
+  "atomic_physics": {
+    "medium": [
+      {
+        "question": "determine the ratio of the radius of a uranium-238 nucleus to the radius of a helium-4 nucleus.",
+        "answer": 3.9
+      }
+    ]
+  },
+  "geometry": {
+    "medium": [
+      {
+        "question": "Find the volume of a solid bounded by the elliptical paraboloid $z=2x^2 + y^2 + 1$, the plane x+y=1, and the coordinate planes.",
+        "answer": 0.75
+      }
+    ]
+  },
+  "numerical_analysis": {
+    "medium": [
+      {
+        "question": "Use the Birge-Vieta method to find a real root correct to three decimals of the following equation: x^3 - 11x^2 + 32x - 22 = 0, p = 0.5",
+        "answer": 1
+      },
+      {
+        "question": "Perform 2 iterations with the Müller method for the following equation: log_{10}(x) - x + 3 = 0, x_0 = 1/4, x_1 = 1/2, x_2 = 1. What's the decimal value of x_3?",
+        "answer": 3.2
+      },
+      {
+        "question": "Please solve x^3 + 2*x = 10 using newton-raphson method.",
+        "answer": 1.8474
+      },
+      {
+        "question": "Please solve the equation sin(4*x) + x = 54 and provide all the roots using newton-raphson method.",
+        "answer": [
+          53.52,
+          54.25,
+          54.76
+        ]
+      }
+    ]
+  },
+  "computer_networking": {
+    "medium": [
+      {
+        "question": "Suppose Host A wants to send a large file to Host B. The path from Host A to Host B has three links, of rates R1 = 500 kbps, R2 = 2 Mbps, and R3 = Mbps. Assuming no other traffic in the network, what is the throughput for the file transfer? (in kbps)",
+        "answer": 500
+      },
+      {
+        "question": "Suppose Host A wants to send a large file to Host B. The path from Host A to Host B has three links, of rates R1 = 500 kbps, R2 = 2 Mbps, and R3 = Mbps. Suppose the file is 4 million bytes. Dividing the file size by the throughput, roughly how many seconds will it take to transfer the file to Host B?",
+        "answer": 64
+      },
+      {
+        "question": "In a Gigabit Ethernet LAN, the average size of a frame is 1000 bytes. If a noise of 2ms occurs on the LAN, how many frames are destroyed?",
+        "answer": 250
+      },
+      {
+        "question": "There are only three active stations in a slotted Aloha network: A, B and C. Each station generates a frame in a time slot with the corresponding probabilities p_A=0.2, p_B=0.3 and p_C=0.4 respectively. What is the normalized throughput of the system?",
+        "answer": 0.452
+      }
+    ]
+  },
+  "classic_mechanics": {
+    "medium": [
+      {
+        "question": "Find the mass and weight of the air at $20^{\\circ} C$ in a living room with a $4.0 m \\times 5.0 m$ floor and a ceiling 3.0 m high, and the mass and weight of an equal volume of water. (Unit: 10 ^ 5 N)",
+        "answer": 5.9
+      }
+    ]
+  },
+  "optics": {
+    "medium": [
+      {
+        "question": "Malus' law: $I=I_0*cos^2($\\theta$)$. Where I is the intensity of polarized light that has passed through the polarizer, I_0 is the intensity of polarized light before the polarizer, and $\\theta$ is the angle between the polarized light and the polarizer. Unpolarized light passes through a polarizer. It then passes through another polarizer at angle 30 degree to the first, and then another at angle 50 degree to the second. What percentage of the original intensity was the light coming out of the third polarizer?",
+        "answer": 31.0
+      }
+    ]
+  },
+  "functional_analysis": {
+    "medium": [
+      {
+        "question": "Suppose C[0,1] denotes the space of all the continuous functions on the interval [0,1]. Is (C[0,1],\\|\\cdot\\|_1 ) a Banach space? Here $\\|f(x)\\|_1=\\int_0^1 |f(t)|dt$ with $f\\in C[0,1]$. Answer 1 for yes and 0 for no.",
+        "answer": 0.0
+      },
+      {
+        "question": "Suppose $\\Omega$ is a bounded open area in $\\mathbb{R}^n$. For any $f\\in L^2(\\Omega)$, the Laplace equation (with respect to a real function $u$), $\\Delta u = f$ with boundary condition $u\\mid_{\\partial \\Omega}=0$, has a unique weak solution. This can be proved by: 1. Poincare inequality and Riesz representation theorem; 2. Cauchy-Schwartz inequality and Hahn-Banach theorem. 3. None of the above. Return the answer as a number",
+        "answer": 1.0
+      },
+      {
+        "question": "Suppose H=L^2[0,1]. Operator $A: u(t) \\mapsto t\\times u(t)$ is a map from H to H. Then A is a bounded linear operator. Then the spectrum of A is: (a) [0,1], (b) [0,1/2], (c) [1/2, 1], (d) none of the above. Which one is correct?",
+        "answer": "(a)"
+      }
+    ]
+  },
+  "probability_theory": {
+    "medium": [
+      {
+        "question": "Consider a random walk on a connected graph with 4 edges. What is the lowest possible entropy rate? Use base 2 logarithm and return the entropy rate in bits.",
+        "answer": 0.75
+      },
+      {
+        "question": "Consider a horizontal strip of N+2 squares in which the first and the last square are black and the remaining N squares are all white. Choose a white square uniformly at random, choose one of its two neighbors with equal probability, and color this neighboring square black if it is not already black. Repeat this process until all the remaining white squares have only black neighbors. Let $w(N)$ be the expected number of white squares remaining. What is the limit of $w(N)/N$ as $N$ goes to infinity?",
+        "answer": 0.36787944
+      }
+    ]
+  },
+  "fluid_mechanics": {
+    "medium": [
+      {
+        "question": "Incompressible oil of density 850 kg/m^3 is pumped through a cylindrical pipe at a rate of 9.5 liters per second. The second section of the pipe has a diameter of 4.0 cm. What are the flow speed in that section? (Unit: m/s)",
+        "answer": 7.6
+      }
+    ]
+  },
+  "quantum": {
+    "medium": [
+      {
+        "question": "Calculate the minimum kinetic energy of an electron that is localized within a typical nuclear radius of 6 x 10^-15 m in MeV.",
+        "answer": 15.9
+      }
+    ]
+  },
+  "celestial_mechanics": {
+    "medium": [
+      {
+        "question": "The mass of Earth is 5.97x10^24 kg, the mass of the Moon is 7.35x10^22 kg, and the mean distance of the Moon from the center of Earth is 3.84x105 km. The magnitude of the gravitational force exerted by Earth on the Moon is X * 10^20 N. What is X? Return a numeric value.",
+        "answer": 1.99
+      },
+      {
+        "question": "Comet Halley moves in an elongated elliptical orbit around the sun (Fig. 13.20). Its distances from the sun at perihelion and aphelion are $8.75 \\times 10^7 km$ and $5.26 \\times 10^9 km$, respectively. The orbital period is X * 10^9 s. What is X?",
+        "answer": 2.38
+      }
+    ]
+  },
+  "portfolio_management": {
+    "medium": [
+      {
+        "question": "Portfolio | Portfolio 1 | Portfolio 2 | Portfolio 3\nExpected Portfolio Return |  5.3% | 6.5% | 7.2%\nPortfolio Standard Deviation | 8.2% | 9.1% | 10.1%\n\nIf we use Roy's safety-first criterion to decide with portfolio is optimal, with a threshold return of 5%. Is portfolio 2 the optimal one? Answer True or False.",
+        "answer": false
+      }
+    ]
+  },
+  "thermodynamics": {
+    "medium": [
+      {
+        "question": "A surveyor uses a steel measuring tape that is exactly 50.000 m long at a temperature of 20°C. The markings on the tape are calibrated for this temperature. When it is 35°C, the surveyor uses the tape to measure a distance. The value that she reads off the tape is 35.794 m. What is the actual distance? (Unit: m)",
+        "answer": 35.8
+      }
+    ]
+  }
+}

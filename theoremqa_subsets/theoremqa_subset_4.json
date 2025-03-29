@@ -1,0 +1,694 @@
+{
+  "combinatorics": {
+    "medium": [
+      {
+        "question": "How many ways are there to divide a set of 7 elements into 4 non-empty ordered subsets?",
+        "answer": 4200
+      },
+      {
+        "question": "In how many ways can we color a loop of 5 vertices with 3 colors such that no two adjacent vertices have the same color?",
+        "answer": 30
+      },
+      {
+        "question": "How many ways are there to arrange 9 people in a line such that no one is standing in their correct position?",
+        "answer": 133496
+      },
+      {
+        "question": "In how many ways can a group of 7 people be divided into 2 non-empty subsets?",
+        "answer": 63
+      },
+      {
+        "question": "Coloring the edges of a complete graph with n vertices in 2 colors (red and blue), what is the smallest n that guarantees there is either a triangle in red or a 6-clique in blue?",
+        "answer": 18
+      },
+      {
+        "question": "In how many ways can a group of 10 people be divided into 3 non-empty subsets?",
+        "answer": 9330
+      },
+      {
+        "question": "In how many ways can we form a 7-digit number using the digits 1, 2, 2, 3, 3, 3, 4?",
+        "answer": 420
+      },
+      {
+        "question": "Given that each cone can contain two ice cream balls, how many different ice cream cones can you make if you have 6 flavors of ice cream and 5 types of cones?",
+        "answer": 180
+      },
+      {
+        "question": "In a group of 1000 people, at least how many people have to share the same birthday?",
+        "answer": 3
+      },
+      {
+        "question": "A group of 9 people is split into 3 committees of 3 people. Committees are identical besides of members. In how many ways can this be done?",
+        "answer": 280
+      },
+      {
+        "question": "In how many ways can 8 people be seated at 2 identical round tables? Each table must have at least 1 person seated.",
+        "answer": 13068
+      },
+      {
+        "question": "How many integers between 1 (included) and 100 (included) are divisible by either 2, 3, or 5?",
+        "answer": 74
+      },
+      {
+        "question": "How many paths are there from the origin (0,0) to the point (10,10) on a grid such that the path only moves up or right and does not cross the diagonal line y = x?",
+        "answer": 16796
+      },
+      {
+        "question": "In how many ways can a convex polygon with 8 sides be divided into triangles by connecting its vertices, with no intersecting lines?",
+        "answer": 132
+      },
+      {
+        "question": "Consider a group of 10 people {A,B,C,D,E,F,G,H,I,J} and we are to choose a committee of 4 people from them. Given that (1) A and B should not be chosen together, and that (2) A, C, F should not be chosen together, then how many ways are there to choose such a committee?",
+        "answer": 176
+      },
+      {
+        "question": "In how many ways can 8 people be seated at 5 identical round tables? Each table must have at least 1 person seated.",
+        "answer": 1960
+      }
+    ]
+  },
+  "algebra": {
+    "medium": [
+      {
+        "question": "Find the x value of the solutions to the linear system: 7x - y = 15x, -6x + 8y = 15y.",
+        "answer": 0
+      },
+      {
+        "question": "Does the following transformation have an eigenvector: Counterclockwise rotation through an angle of 45 degrees followed by a scaling by 2 in R^2.",
+        "answer": false
+      },
+      {
+        "question": "Are the vectors v_1 = [1,2,3], v_2 = [4,5,6], v_3 = [7,8,9] linearly independent?",
+        "answer": false
+      },
+      {
+        "question": "Let f_1, ..., f_n be polynomials. Do they span the space P of all polynomials?",
+        "answer": false
+      },
+      {
+        "question": "What is the determinant of the matrix A = [[1, 0, 0, 0, 0, 0], [2, 7, 0, 0, 0, 0], [3, 8, 6, 0, 0, 0], [4, 9, 5, 2, 1, 4], [5, 8, 4, 0, 2, 5], [6, 7, 3, 0, 3, 6]]?",
+        "answer": -252
+      },
+      {
+        "question": "Let $x_1$ and $x_2$ be the roots of the equation $x^2 + 3x + 1 =0$. Compute $(x_1/(x_2 + 1))^2 + (x_2 / (x_1 + 1))^2$.",
+        "answer": 18.0
+      },
+      {
+        "question": "Is the transformation [[-1, 0], [0, -1]] invertible?",
+        "answer": true
+      }
+    ]
+  },
+  "graph_theory": {
+    "medium": [
+      {
+        "question": "What is the number of labelled forests on 10 vertices with 5 connected components, such that vertices 1, 2, 3, 4, 5 all belong to different connected components?",
+        "answer": 50000
+      },
+      {
+        "question": "What is the number of labelled forests on 8 vertices with 5 connected components, such that vertices 1, 2, 3, 4, 5 all belong to different connected components?",
+        "answer": 320
+      }
+    ]
+  },
+  "kinetics": {
+    "medium": [
+      {
+        "question": "The shock absorbers in an old car with mass 1000 kg are completely worn out. When a 980-N person climbs slowly into the car at its center of gravity, the car sinks 2.8 cm. The car (with the person aboard) hits a bump, and the car starts oscillating up and down in SHM. Model the car and person as a single body on a single spring, and find the frequency of the oscillation. (Unit: Hz)",
+        "answer": 0.9
+      },
+      {
+        "question": "A door 1.00 m wide, of mass 15 kg, can rotate freely about a vertical axis through its hinges. A bullet with a mass of 10 g and a speed of 400 m/s strikes the center of the door, in a direction perpendicular to the plane of the door, and embeds itself there. Find the door's angular speed. (Unit: rad/s)",
+        "answer": 0.4
+      },
+      {
+        "question": "A curve with a 120 m radius on a level road is banked at the correct angle for a speed of 20 m/s. If an automobile rounds this curve at 30 m/s, what is the minimum coefficient of static friction needed between tires and road to prevent skidding?",
+        "answer": 0.34
+      },
+      {
+        "question": "Two bicycle tires are set rolling with the same initial speed of 3.5 m/s on a long, straight road, and the distance each travels before its speed is reduced by half is measured. One tire is inflated to a pressure of 40 psi and goes 18.1 m; the other is at 105 psi and goes 92.9 m. What is the coefficient of rolling friction for each? Assume that the net horizontal force is due to rolling friction only.",
+        "answer": [
+          0.0259,
+          0.00505
+        ]
+      },
+      {
+        "question": "Each of the four jet engines on an Airbus A380 airliner develops athrust (a forward force on the airliner) of 322,000 N (72,000 lb).When the airplane is flying at 250 m/s, what horsepower does each engine develop? (Unit: hp)",
+        "answer": 108000
+      },
+      {
+        "question": "The planet Pluto (radius 1180 km) is populated by three species of purple caterpillar. Studies have established the following facts: 1. A line of 5 mauve caterpillars is as long as a line of 7 violet caterpillars. 2. A line of 3 lavender caterpillars and 1 mauve caterpillar is as long as a line of 8 violet caterpillars. 3. A line of 5 lavender caterpillars, 5 mauve caterpillars and 2 violet caterpillars is 1 m long in total. 4.  A lavender caterpillar takes 10 s to crawl the length of a violet caterpillar. 5. Violet and mauve caterpillars both crawl twice as fast as lavender caterpillars. How many years would it take a mauve caterpillar to crawl around the equator of Pluto?",
+        "answer": 23.0
+      },
+      {
+        "question": "Passengers on a carnival ride move at constant speed in a horizontal circle of radius 5.0 m, making a complete circle in 4.0 s. What is their acceleration? (Unit: m/s^2))",
+        "answer": 12
+      }
+    ]
+  },
+  "fluid_mechanics": {
+    "medium": [
+      {
+        "question": "A parachutist with mass m=80 kg is undergoing free fall. The drag force applied on him is $F_D = kv^2$, where v is the velocity measured relative to the air. The constant k=0.27 [Ns^2/m^2] is given. Find the distance traveled h in meters, until v=0.95$v_t$ is achieved, where $v_t$ is the terminal velocity. Return the numeric value.",
+        "answer": 345.0
+      },
+      {
+        "question": "Water stands 12.0 m deep in a storage tank whose top is open to the atmosphere. What are the gauge pressures at the bottom of the tank? (Unit: 10 ^ 5 Pa)",
+        "answer": 1.18
+      }
+    ]
+  },
+  "calculus": {
+    "medium": [
+      {
+        "question": "Does $p(x) = x^5 + x − 1$ have any real roots?",
+        "answer": true
+      },
+      {
+        "question": "compute the integral $\\iint_V \\frac{d x d y d z}{(1+x+y+z)^3}$, where V={(x, y, z): x, y, z \\geq 0, x+y+z\\leq 1}.",
+        "answer": 0.034
+      },
+      {
+        "question": "Does the function $y=xe^{-x^2/2}$, does it satisfy the equation $xy' = (1 - x^2)y$",
+        "answer": true
+      },
+      {
+        "question": "Find the arc length of y = (1/4)x^4 over the interval [1,2] using the Trapezoidal Rule T_5.",
+        "answer": 3.958
+      },
+      {
+        "question": "What is \\int_{-3}^1 (7x^2 + x +1)dx?",
+        "answer": 65.333
+      },
+      {
+        "question": "Suppose $f(x, y)= \\begin{cases}1-x-y, & x+y \\leqslant 1 \\ 0, & x+y>1\\end{cases}$. What is the integral of f(x,y) over the region I=[0,1]\\times[0,1]?",
+        "answer": 0.16667
+      },
+      {
+        "question": "Is the differential equation $2tyy' + 2t + ty^2 = 0$ the total derivative of the potential function $\\phi(t, y) = t^2 + ty^2$?",
+        "answer": false
+      },
+      {
+        "question": "What is the limit of the sequence a_n = n/(\\sqrt{n^2 + 1})?",
+        "answer": 1
+      },
+      {
+        "question": "Use Euler's Method to calculate the approximation of y(0.2) where y(x) is the solution of the initial-value problem that is as follows. y''+xy'+y=0 and y(0)=2 and y'(0) = 3.",
+        "answer": 2.58
+      },
+      {
+        "question": "Consider the set S:= {2^{-m} + n^{-1}: m, n \\in N}. What is the maximum of S?",
+        "answer": 1.5
+      },
+      {
+        "question": "If $x=4*cost(t)$ and $y=8*sin(x)$, what is $y{''}_{xx}$ at t=pi/3?",
+        "answer": -4.0
+      },
+      {
+        "question": "Is differential equation $sin(t)y' + t^2e^yy' - y' = -ycos(t) - 2te^y$ exact or not?",
+        "answer": true
+      }
+    ]
+  },
+  "mathematical_analysis": {
+    "medium": [
+      {
+        "question": "Sum the series $\\sum_{m=1}^{\\infty} \\sum_{n=1}^{\\infty}\\frac{m^2 n}{3^m(n3^m+m3^n)}$",
+        "answer": 0.28125
+      },
+      {
+        "question": "suppose the sequence a_n satisfies $lim_{n\\rightarrow\\infty}a_n\\sum_{i=1}^n a_i^2=1$. What is the limit of  3n(a_n)^3?",
+        "answer": 1.0
+      },
+      {
+        "question": "what is the value of \\sum_{n=0}^{\\infty}(-1)^n \\frac{1}{3 n+1}? Round the answer to the thousands decimal.",
+        "answer": 0.8356488482647211
+      },
+      {
+        "question": "Find the minimum of $f(x,y)=2x - 5y$, subject to the constraint $x^2+y^2=144$.",
+        "answer": -64.62
+      },
+      {
+        "question": "Evaluate $\\lim _{x \\rightarrow 1^{-}} \\prod_{n=0}^{\\infty}(\\frac{1+x^{n+1}}{1+x^n})^{x^n}$?",
+        "answer": 0.73575888
+      },
+      {
+        "question": "suppose f is differentiable in [0,+\\infty) and f(0)=0. When x>=0, |f'(x)|<=|f(x)| where f' stands for the derivative of f. What is f(2687) and f(35)? answer the two values in a list",
+        "answer": [
+          0,
+          0
+        ]
+      },
+      {
+        "question": "For any triangle ABC, we have sin(A) + sin(B) + sin(C) $\\le$ 3\\sqrt(3)/2, is this true or false?",
+        "answer": true
+      }
+    ]
+  },
+  "electromagnetism": {
+    "medium": [
+      {
+        "question": "A load dissipates 1.5kW of power in an ac series RC circuit. Given that the power factor is 0.75, what is its reactive power $(P_r)$? What is its apparent power $(P_a)$? Represent the answer in a list [$P_r, P_a$] with unit kVA and kVAR respectively.",
+        "answer": [
+          2.0,
+          1.32
+        ]
+      },
+      {
+        "question": "Consider a resistor made from a hollow cylinder of carbon as shown below. The inner radius of the cylinder is $R_i=0.2$mm and the outer radius is $R_o=0.3$mm. The length of the resistor is $L=0.9$mm. The resistivity of the carbon is $\\rho=3.5 * 10^{-5} \\Omega \\cdot m$. What is the resistance in $\\Omega \\cdot m$?",
+        "answer": 2.5
+      }
+    ]
+  },
+  "stochastic_process": {
+    "medium": [
+      {
+        "question": "Assuming we are underground, and the only thing we can observe is whether a person brings an umbrella or not. The weather could be either rainy or sunny. Assuming the P(rain)=0.6 and P(sunny)=0.4. Assuming the weather on day $k$ is dependent on the weather on day $k-1$. We can write the transition probability as P(sunny $\\mid$ sunny) = P(rain $\\mid$ rain) = 0.55. The person has 60\\% chance to bring an umbrella when the weather is rainy, and 40\\% chance to bring an umbrella when the weather is sunny, i.e. P(umbrella $\\mid$ rain) = 0.6 and P(umbrella $\\mid$ sunny) = 0.4. If we observe that the person (1) brought an umbrella on day 1, (2) did not bring an umbrella on day 2, (3) brought an umbrella on day 3.  What are the most likely weather from day 1 to day 3? Return the answer as a list of binary values, where 1 represents rain and 0 represents sunny.",
+        "answer": [
+          1,
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "atomic_physics": {
+    "medium": [
+      {
+        "question": "The cross section for neutrons of energy 10 eV being captured by silver is 17 barns. What is the probability of a neutron being captured as it passes through a layer of silver 2 mm thick?",
+        "answer": 0.2
+      }
+    ]
+  },
+  "probability_theory": {
+    "medium": [
+      {
+        "question": "Toss a coin repeatedly until two consecutive heads appear. Assume that the probability of the coin landing on heads is 3/7. Calculate the average number of times the coin needs to be tossed before the experiment can end.",
+        "answer": 7.77778
+      },
+      {
+        "question": "What is the number of equivalent parameter settings due to interchange symmetries in a mixture model with 10 components?",
+        "answer": 3628800
+      },
+      {
+        "question": "An ordinary deck of cards containing 26 red cards and 26 black cards is shuffled and dealt out one card at a time without replacement. Let $X_i$ be the color of the $i$th card. Compute $H(X_1,X_2,\\ldots,X_{52})$ in bits.",
+        "answer": 48.8
+      },
+      {
+        "question": "Suppose there are 10 independent random variables $X_1, X_2, \\cdots, X_10$. Each of the $X_i$ lies within the range of [10, 11] with a mean value of 10.5. If we take the mean of the 10 random variables as $\\hat{X_n}$. What is the upper bound of the probability that $\\hat{X_n}$ is either smaller than 10.2 or larger than 10.8?",
+        "answer": 0.3305
+      }
+    ]
+  },
+  "real_analysis": {
+    "medium": [
+      {
+        "question": "Let f be a real function on [0,1]. If the bounded variation of f on [0,1] equals f(1)-f(0), then: (a) f is increasing on [0,1]; (b) f is decreasing on [0,1]; (c) None of the above. Which one is correct?",
+        "answer": "(a)"
+      }
+    ]
+  },
+  "computer_networking": {
+    "medium": [
+      {
+        "question": "Consider a file with a size of 350 Kbytes storing in a web server. Client A sends a request to the server to retrieve the file from a remote location. It is known that the link capacity between client A and the server is 10 Mbps and the round trip time (RTT) between the server and client is fixed at 20ms. Assume that the segment size is 20 Kbytes and the client has a receiver buffer of 200Kbytes. Assume that the window size (W) is adjusted according to the congestion control procedures of TCP-Reno. How long (in ms) does client A take to receive the whole file from the server after sending a request? Given that the initial slow-start threshold is 32.",
+        "answer": 344
+      },
+      {
+        "question": "A Chord based distributed hash table (DHT) with 25 address space is used in a peer- to-peer file sharing network. There are currently 5 active peers in the network with node ID N3, N8, N15, N19 and N30. Show all the target key (in ascending order, ignore the node's identifier itself) for N3.",
+        "answer": [
+          4,
+          5,
+          7,
+          11,
+          19
+        ]
+      },
+      {
+        "question": "Consider a 900 Kbytes file stored in a web server. Client A sends a request to the server to retrieve the file from a remote location. There are 3 links (2 intermediate nodes) between server and client and each has a transmission rate of 10Mbps. Given that the segment size is 15 Kbytes, the round trip time (RTT) between the server and client is 30ms, the initial slow-start threshold is 8 and the client's buffer has a storage space of 150 K bytes. Assume that TCP Reno is used, there is no loss during transmission and the headers of protocols are ignored. It is noted that the segments do experience a store-and-forward delay in intermediate routers. Determine how many ms client A takes to receive the whole file from the server after sending a request.",
+        "answer": 918
+      },
+      {
+        "question": "A disadvantage of the contention approach for LANs, such as CSMA/CD, is the capacity wasted due to multiple stations attempting to access the channel at the same time. Suppose that time is divided into discrete slots, with each of 5 stations attempting to transmit with probability 0.35 during each slot. What fraction of slots is wasted due to multiple simultaneous transmission attempts?",
+        "answer": 0.572
+      },
+      {
+        "question": "A Chord based distributed hash table (DHT) with 26 address space is used in a peer- to-peer file sharing network. There are currently 10 active peers in the network with node ID N1, N11, N15, N23, N31, N40, N45, N51, N60, and N63. Show all the target key (in ascending order, ignore the node's identifier itself) for N1.",
+        "answer": [
+          2,
+          3,
+          5,
+          9,
+          17,
+          33
+        ]
+      }
+    ]
+  },
+  "wave": {
+    "medium": [
+      {
+        "question": "X rays scattered from rock salt (NaCl) are observed to have an intense maximum at an angle of 20° from the incident direction. Assuming n = 1 (from the intensity), what must be the Wavelength of the incident radiation in nm?",
+        "answer": 0.098
+      }
+    ]
+  },
+  "numerical_analysis": {
+    "medium": [
+      {
+        "question": "Use the Runge-Kutta method with $h=0.1$ to find approximate values of the solution of $(y-1)^2 * y' = 2x + 3$ with y(1) = 4. What is y(0)?",
+        "answer": 3.46621207
+      },
+      {
+        "question": "Given the following equation: x^4 - x - 10 = 0. determine the initial approximations for finding the smallest positive root. Use these to find the root correct to three decimal places with Secant method.",
+        "answer": 1.856
+      },
+      {
+        "question": "Use the Runge-Kutta method with $h=0.1$ to find approximate values for the solution of the initial value problem $y' + 2y = x^3e^{-2x}$ with y(0)=1 at $x=0.2$.",
+        "answer": 0.6705
+      },
+      {
+        "question": "Suppose we have the following differential equation with the initial condition: $\\frac{\\partial p}{\\partial x} = 0.5 * x * (1-x)$ and $p(0)=2$. Use Euler's method to approximate p(2), using step of 1.",
+        "answer": 2.0
+      },
+      {
+        "question": "For the equation x^4 + 2*x^3 + x = 10, there are four roots. What is the sum of the roots using newton-raphson method.",
+        "answer": -2.0
+      }
+    ]
+  },
+  "signal_processing": {
+    "medium": [
+      {
+        "question": "Consider $x(t)$ to be given as, $$ x(t)=10 \\cos (20 \\pi-\\pi / 4)-5 \\cos (50 \\pi t) $$ What is minimum sampling rate (/Hz) such that $y(t)=x(t)$ ?",
+        "answer": 50
+      },
+      {
+        "question": "Consider $x(t)$ to be given as, $$ x(t)=\\cos (1000 \\pi t) $$ . Let the sampling frequency be $2000 \\mathrm{~Hz}$. Does aliasing occur?",
+        "answer": false
+      },
+      {
+        "question": "The equation of a digital filter is given by $y(n)=1 / 3(x(n)+x(n-1)+x(n-2))$, where $y(n)$ and $x(n)$ are, respectively, the nth samples of the output and input signals. Determine the pole(s) of the filter.",
+        "answer": 0
+      },
+      {
+        "question": "Given 2 colors whose HSI representations are given as follows: (a) $(pi, 0.3,0.5)$, (b) $(0.5 pi, 0.8,0.3)$, which color is brighter?",
+        "answer": "(a)"
+      },
+      {
+        "question": "Is the Fourier transform of the signal $x_1(t)=\\left\\{\\begin{array}{cc}\\sin \\omega_0 t, & -\\frac{2 \\pi}{\\omega_0} \\leq t \\leq \\frac{2 \\pi}{\\omega_0} \\\\ 0, & \\text { otherwise }\\end{array}\\right.$ even?",
+        "answer": false
+      },
+      {
+        "question": "Is the Fourier transform of the signal x(t)=(1-e^{-|t|})[u(t+1)-u(t-1)] even?",
+        "answer": true
+      }
+    ]
+  },
+  "portfolio_management": {
+    "medium": [
+      {
+        "question": "An investor has utility function $U(x) = x^{1/4}$ for salary. He has a new job offer which pays $80,000 with a bonus. The bonus will be $0, $10000, $20000, $30000, $40000, $50000, or $60000, each with equal probability. What is the certainty equivalent value of this job offer?",
+        "answer": 108610
+      },
+      {
+        "question": "Suppose a stock has the following information. It is listed on the London stock exchange and operates throughout Europe. The yield on a UK 10 year treasury is 2.8%. The stock in question will earn 8.6% as per historical data. The Beta for the stock is 1.4, i.e., it is 140% volatile to the changes in the general stock market. What is the expected rate of return?",
+        "answer": 10.92
+      }
+    ]
+  },
+  "number_theory": {
+    "medium": [
+      {
+        "question": "What is 3^(3^(3^(...))) mod 100? There are 2012 3's in the expression.",
+        "answer": 87
+      },
+      {
+        "question": "How many pairs of (a, b) can we substitute for a and b in 30a0b03 so that the resulting integer is divisible by 13?",
+        "answer": 3
+      },
+      {
+        "question": "Find the largest integer for which (x+11)/(x+7) is an integer.",
+        "answer": -3
+      },
+      {
+        "question": "Find the number of integers n, 1 ≤ n ≤ 25 such that n^2 + 3n + 2 is divisible by 6.",
+        "answer": 13
+      },
+      {
+        "question": "Find which digit is at 1001th place after the decimal point in the decimal expansion of the fraction 9/28.",
+        "answer": 2
+      },
+      {
+        "question": "Find all positive integers $n<2^{250}$ for which simultaneously $n$ divides $2^n$, $n-1$ divides $2^n-1$, and $n-2$ divides $2^n - 2$. Return all positive integers as an ascending list.",
+        "answer": [
+          4,
+          16,
+          65536
+        ]
+      },
+      {
+        "question": "Find the smallest positive integer that leaves a remainder of 2 when divided by 3, a remainder of 3 when divided by 5, and a remainder of 1 when divided by 7.",
+        "answer": 8
+      }
+    ]
+  },
+  "statistical_physics": {
+    "medium": [
+      {
+        "question": "Compute the mean molecular speed v in the heavy gas radon (Rn) in m/s",
+        "answer": 167.0
+      },
+      {
+        "question": "Compute the mean molecular speed v in the light gas hydrogen (H2) in m/s",
+        "answer": 1750.0
+      }
+    ]
+  },
+  "condensed_matter_physics": {
+    "medium": [
+      {
+        "question": "Find the fraction of the standard solar flux reaching the Earth (about 1000 W/m^22) available to a solar collector lying flat on the Earth’s surface at Regina, Saskatchewan (latitude 50°N) at noon on the summer solstice.",
+        "answer": 0.891
+      },
+      {
+        "question": "Assume a temperature of 300 K and find the wavelength of the photon necessary to cause an electron to jump from the valence to the conduction band in silicon in nm.",
+        "answer": 1130.0
+      }
+    ]
+  },
+  "quantitive_methods": {
+    "medium": [
+      {
+        "question": "For a two-period binomial model for stock prices, you are given: (i) Each period is 6 months. (ii) The current price for a nondividend-paying stock is $70.00. (iii) u =1.181, where u is one plus the rate of capital gain on the stock per period if the price goes up. (iv) d = 0.890 , where d is one plus the rate of capital loss on the stock per period if the price goes down. (v) The continuously compounded risk-free interest rate is 5%. What is the current price of a one-year American put option on the stock with a strike price of $80.00.",
+        "answer": 10.75
+      },
+      {
+        "question": "If at the beginning of each month a deposit of $500 is made in an account that pays 8% compounded monthly, what will the final amount be after five years?",
+        "answer": 36983.35
+      }
+    ]
+  },
+  "economics": {
+    "medium": [
+      {
+        "question": "A monopolist can produce at constant average and marginal costs of AC = MC = 5. The firm faces a market demand curve given by Q = 53 - P. Calculate the consumer surplus obtained by consumers under perfect competition (where price = marginal cost)?",
+        "answer": 1152
+      },
+      {
+        "question": "John's Lawn Mowing Service is a small business that acts as a price-taker (i.e., MR = P). The prevailing market price of lawn mowing is $20 per acre. John's costs are given by total cost = 0.1q^2 + 10q + 50, where q = the number of acres John chooses to cut a day. Calculate John's maximum daily profit.",
+        "answer": 200
+      },
+      {
+        "question": "Clare manages a piano store. Her utility function is given by Utility = w - 100, where w is the total of all monetary payments to her and 100 represents the monetary equivalent of the disutility of exerting effort to run the store. Her next best alternative to managing the store gives her zero utility. The store's revenue depends on random factors, with an equal chance of being $1,000 or $400. If shareholders offered to share half of the store's revenue with her, what would her expected utility be?",
+        "answer": 250
+      },
+      {
+        "question": "assume you are Indonesian. In 2010, the rupiah exchange rate was around IDR15,000/USD, and the consumer price index in Indonesia and the United States was at 100. In 2019, the exchange rate changed to IDR14,000/USD. Simultaneously, Indonesia’s inflation rose 5% due to the consumer price index rising to 105. Meanwhile, the United States’ inflation rate rose 10% due to the consumer price index rising to 110. Whats the real exchange rate?",
+        "answer": 14666.67
+      },
+      {
+        "question": "Suppose 100 cars will be offered on the used-car market. Let 50 of them be good cars, each worth $10,000 to a buyer, and let 50 be lemons, each worth only $2,000. Suppose that there are enough buyers relative to sellers that competition among them leads cars to be sold at their maximum willingness to pay. What would the market equilibrium price for good cars be if sellers value good cars at $6,000?",
+        "answer": 6000
+      },
+      {
+        "question": "Suppose a monopoly market has a demand function in which quantity demanded depends not only on market price (P) but also on the amount of advertising the firm does (A, measured in dollars). The specific form of this function is Q = (20 - P)(1 + 0.1A - 0.01A^2). The monopolistic firm's cost function is given by C = 10Q + 15 + A. Suppose there is no advertising (A = 0). What output will the profit-maximizing firm choose?",
+        "answer": 5
+      }
+    ]
+  },
+  "optics": {
+    "medium": [
+      {
+        "question": "An object 11cm tall is 9cm from a mirror. If the image distance is -3cm from the mirror, what is the image height in terms of cm?",
+        "answer": 3.67
+      },
+      {
+        "question": "Suppose a student who was farsighted wears glasses that allows him to read at a distance of 20cm from his eyes to the book. His near-point distance is 63cm. If his glasses are 1.5cm from his eyes, what is the refractive power of his glasses lenses?",
+        "answer": 3.846
+      }
+    ]
+  },
+  "information_theory": {
+    "medium": [
+      {
+        "question": "Roughly how many bits are required on the average to describe to 3 digit accuracy the decay time (in years) of a radium atom if the half-life of radium is 80 years? Note that half-life is the median of the distribution.",
+        "answer": 19
+      },
+      {
+        "question": "Which of the following codeword lengths can be the word lengths of a 3-ary Huffman code? (a) (1, 2, 2, 2, 2). (b) (2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3).",
+        "answer": "(b)"
+      },
+      {
+        "question": "Let $X \\sim N(0,1)$ and let the distortion measure be squared error. Here we do not allow block descriptions. Compute the minimum expected distortion for one bit quantization of $X$ using a squared error distortion measure.",
+        "answer": 0.363
+      },
+      {
+        "question": "$H(X_n|X_0)$ is a concave function of n for a stationary Markov process. True or False?",
+        "answer": true
+      }
+    ]
+  },
+  "group_theory": {
+    "medium": [
+      {
+        "question": "The function f: U_5 \to U_5 given by f(x) = x^2 is a homomorphism. What is K_f?",
+        "answer": [
+          4,
+          1
+        ]
+      },
+      {
+        "question": "Is the transformation T(M) = [[1, 2], [3, 4]]M from R^{2*2} to R^{2*2} an isomorphism?",
+        "answer": true
+      }
+    ]
+  },
+  "relativity": {
+    "medium": [
+      {
+        "question": "A muon has a lifetime of 2 x 10^{-6} s in its rest frame. It is created 100 km above the earth and moves towards it at a speed of 2.97 x 10^8 m/s. At what altitude in km does it decay? Return a numeric number.",
+        "answer": 4.2
+      }
+    ]
+  },
+  "particle": {
+    "medium": [
+      {
+        "question": "Calculate the minimum kinetic energy of a proton to be scattered from a fixed proton target to produce an antiproton in MeV.",
+        "answer": 5630.0
+      }
+    ]
+  },
+  "equity_investments": {
+    "medium": [
+      {
+        "question": "Company A is currently trading at $150 per share, and earnings per share are calculated as $10. What is the P/E ratio?",
+        "answer": 15.0
+      }
+    ]
+  },
+  "celestial_mechanics": {
+    "medium": [
+      {
+        "question": "Titan, the largest moon of Saturn, has a mean orbital radius of 1.22x10^9 m. The orbital period of Titan is 15.95 days. Hyperion, another moon of Saturn, orbits at a mean radius of 1.48x10^9 m. Use Kepler's third law of planetary motion to predict the orbital period of Hyperion in days.",
+        "answer": 21.3
+      }
+    ]
+  },
+  "thermodynamics": {
+    "medium": [
+      {
+        "question": "An aluminum cylinder 10 cm long, with a cross-sectional area of 20 $cm^2$ is used as a spacer between two steel walls. At 17.2°C it just slips between the walls. Calculate the stress in the cylinder and the total force it exerts on each wall when it warms to 22.3°C assuming that the walls are perfectly rigid and a constant distance apart. (Unit: 10^4 N)",
+        "answer": -1.7
+      }
+    ]
+  },
+  "complex_analysis": {
+    "medium": [
+      {
+        "question": "Let f be an entire function such that |f(z)| $\\geq$ 1 for every z in C. Is f is a constant function?",
+        "answer": true
+      },
+      {
+        "question": "Is there exist a holomorphic function $f$ on the unit disk $B(0,1)$ (boundary excluded) such that $f(B(0,1))=C$? Here C is the complex space. Return 1 for yes and 0 for no.",
+        "answer": 1.0
+      },
+      {
+        "question": "Determine values of the real numbers a, b, and c to make the function $x^2 + ay^2 + y + i(bxy + cx)$ by an analytical function of the complex variable of $x+iy$? Return your answer as a list [a, b, c].",
+        "answer": [
+          -1,
+          2,
+          -1
+        ]
+      },
+      {
+        "question": "For the following functions, which are bounded entire functions? 1. f(x)=0; 2. f(x)= 1+i; 3. f(x)=sin(x); 4. f(x)=min{|cos(x)|,1}. Here i=\\sqrt{-1} and $|\\cdot|$ is the norm of a complex number. Return the numbers of the answers as a list.",
+        "answer": [
+          1,
+          2
+        ]
+      },
+      {
+        "question": "Is function f defined by $f(z) = \\int_0^{\\infy} |e^{zt}| / (t+1) dt$ analytical on the left plane D: Re(z) < 0",
+        "answer": true
+      }
+    ]
+  },
+  "machine_learning": {
+    "medium": [
+      {
+        "question": "Consider a two-layer fully-connected neural network in which the hidden-unit nonlinear activation functions are given by logistic sigmoid functions. Does there exist an equivalent network in which the hidden unit nonlinear activation functions are given by hyperbolic tangent functions?",
+        "answer": true
+      }
+    ]
+  },
+  "statistics": {
+    "medium": [
+      {
+        "question": "Let $X_1, X_2, \\ldots$ be a sequence of independent indetically distributed random variables drawn according to the probability mass function $p(x) = N(0,1)$. Let $q(x)=N(1,1)$ be another probability mass function. Use natural logarithm to evaluate $\\lim -\\frac{1}{n}\\log{q(X_1,X_2,\\ldots,X_n)}$ as $n \\to \\infty$.",
+        "answer": 1.4
+      }
+    ]
+  },
+  "geometry": {
+    "medium": [
+      {
+        "question": "which n <= 20 can be constructed a regular n-gonwith compass and straightedge? return all the possible numbers in a list",
+        "answer": [
+          3,
+          4,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          16,
+          17,
+          20
+        ]
+      },
+      {
+        "question": "In triangle RST, X is located on the side RS, Y is located on the side RT, Z is located on the side ST, and XY and XZ are midsegments of △RST. If the length of side XY is 7, the length of side RT is 13, and the measure of angle YXZ is 124°, what is the length of side XZ?",
+        "answer": 6.5
+      }
+    ]
+  },
+  "quantum": {
+    "medium": [
+      {
+        "question": "In a particular semiconductor device, electrons that are accelerated through a potential of 5 V attempt to tunnel through a barrier of width 0.8 nm and height 10 V. What fraction of the electrons are able to tunnel through the barrier if the potential is zero outside the barrier?",
+        "answer": 4.1e-08
+      }
+    ]
+  },
+  "classic_mechanics": {
+    "medium": [
+      {
+        "question": "A steel rod 2.0 m long has a cross-sectional area of $0.30 cm ^ 2$. It is hung by one end from a support, and a 550-kg milling machine is hung from its other end. Determine the stress on the rod and the resulting strain and elongation. (Unit: mm)",
+        "answer": 1.8
+      }
+    ]
+  }
+}

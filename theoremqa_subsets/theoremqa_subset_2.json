@@ -1,0 +1,665 @@
+{
+  "mathematical_analysis": {
+    "medium": [
+      {
+        "question": "what is the value of $\\int_{-infty}^{+infty} sin(3*t)*sin(t/\\pi)/t^2 dt$?",
+        "answer": 1.0
+      },
+      {
+        "question": "Determine the number of positive real zero of the given function: $f(x)=x^5+4*x^4-3x^2+x-6$.",
+        "answer": [
+          3,
+          1
+        ]
+      },
+      {
+        "question": "Is the cumulative distribution function of the standard gaussian distribution $F(x)=1/\\sqrt{2 \\pi} \\int_{-\\infty}^x e^{-t^2/2} dt$ is log-concave?  Return 1 for yes and 0 for no.",
+        "answer": 1.0
+      },
+      {
+        "question": "suppose $-\\pi<x<\\pi$. what is the value of $(\\sum_{n=1}^{\\infty}(-1)^{n-1} \\frac{cos(nx)}{n})/log(2cos(x/2))$? Rounding it to the hundredths place and return the value.",
+        "answer": 1.0
+      },
+      {
+        "question": "suppose the sequence a_n satisfies 0<a_n<1, and $(1-a_n)a_{n+1}>1/4$ for all n, what is the limit of a_n as n goes to infinity?",
+        "answer": 0.5
+      },
+      {
+        "question": "Let $a_0=5/2$ and $a_k=(a_{k-1})^2-2$ for $k\\geq 1$. Compute $\\prod_{k=0}^{\\infty}(1-1/a_k)$ in closed form.",
+        "answer": 0.42857
+      },
+      {
+        "question": "Does the following series $\\sum_{i=0}^{\\infty} \\frac{n!}{n^2 cos(n)}$ converge?",
+        "answer": 0.0
+      },
+      {
+        "question": "what is the limit of $(n!)^{1/n}/n$ as n goes to infinity? Round the answer to the thousands decimal.",
+        "answer": 0.367879441
+      },
+      {
+        "question": "suppose F(x,y,z)=0. What is $\\frac{\\partial x}{\\partial y} \\frac{\\partial y}{\\partial z} \\frac{\\partial z}{\\partial x}$?",
+        "answer": -1.0
+      }
+    ]
+  },
+  "fluid_mechanics": {
+    "medium": [
+      {
+        "question": "A container weighs 3.22 lb force when empty. Filled with water at 60°F the mass of the container and its contents is 1.95 slugs. Find its volume in cubic feet. Assume density of water = 62.4 lb force/ft3.",
+        "answer": 0.955
+      },
+      {
+        "question": "A hydraulic press contains $0.25 m^3$ (250 L) of oil. Find the decrease in the volume of the oil when it is subjected to a pressure increase  $\\Delta p=1.6 \\times 10^7 Pa$ (about 160 atm or 2300 psi). The bulk modulus of the oil is $B=5.0 \\times 10^9 Pa$ (about $5.0 \\times 10^4 atm$) and its compressibility is $k=1 / B=20 \\times 10^{-6} atm^{-1}$. (Unit: 10^{-4} m^3)",
+        "answer": -0.8
+      }
+    ]
+  },
+  "graph_theory": {
+    "medium": [
+      {
+        "question": "True of false: one can draw a simple connected planar graph with 200 vertices and 400 faces",
+        "answer": false
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<0,2>, <2,4>, <3,4>, <1,4>}, which <A,B> represent Node A is connected to Node B. What is the minimum vertex cover of G if 0 is one of vertex cover? Represent the vertex cover in a list of ascending order.",
+        "answer": [
+          0,
+          4
+        ]
+      },
+      {
+        "question": "How many trees are there on n (n > 1) labeled vertices with no vertices of degree 1 or 2?",
+        "answer": 0
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<0,1>,<0,2>,<0,3>,<3,5>,<2,3>,<2,4>,<4,5>}, which <A,B> represent Node A is connected to Node B. What is the shortest path from node 0 to node 5? Represent the path as a list.",
+        "answer": [
+          0,
+          3,
+          5
+        ]
+      },
+      {
+        "question": "Let a undirected graph G with edges E = {<0,2>,<1,4>,<9,6>,<8,12>,<2,4>,<1,3>,<1,5>,<12,1>,<8,1>,<5,9>,<0,10>,<5,2>,<0,8>,<3,4>,<3,11>,<7,1>,<2,1>,<0,12>,<1,0>,<7,8>}, which <A,B> represent Node A is connected to Node B. What is the minimum vertex cover of G? Represent the vertex cover in a list of ascending order.",
+        "answer": [
+          0,
+          1,
+          2,
+          3,
+          8,
+          9
+        ]
+      },
+      {
+        "question": "How many labeled trees are there on 6 vertices?",
+        "answer": 1296
+      },
+      {
+        "question": "How many trees are there on 5 labeled vertices?",
+        "answer": 125
+      }
+    ]
+  },
+  "probability_theory": {
+    "medium": [
+      {
+        "question": "Consider a random walk on a connected graph with 4 edges. What is the highest possible entropy rate? Use base 2 logarithm and return the entropy rate in bits.",
+        "answer": 1.094
+      },
+      {
+        "question": "For a simple random walk S_n with S_0=0 and P(S_n-S_{n-1}=1)=1/4, P(S_n-S_{n-1}=-1)=3/4. Let M=\\max{S_n:n\\geq 0}. What is the probability of the event {M\\geq 5}? Round the answer to the thousands decimal.",
+        "answer": 0.01234567
+      },
+      {
+        "question": "Find the entropy rate of the Markov chain associated with a random walk of a king on the 3 by 3 chessboard. Use base 2 logarithm and return the entropy rate in bits.",
+        "answer": 2.24
+      }
+    ]
+  },
+  "statistics": {
+    "medium": [
+      {
+        "question": "Let $g_\\theta(x_1,x_2)=f_\\theta(x_1)f_\\theta(x_2)$. Let $J_f(\\theta)$ be the Fisher information of $f_\\theta$.  What is the relationship between $J_f(\\theta)$ and $J_g(\\theta)$? (a) $J_g(\\theta) = 0.5J_f(\\theta)$. (b) $J_g(\\theta) = J_f(\\theta)$. (c) $J_g(\\theta) = 2J_f(\\theta)$. (d) $J_g(\\theta) = 4J_f(\\theta)$. Which option is correct?",
+        "answer": "(c)"
+      },
+      {
+        "question": "What is the Fisher information for the distribution family $f_\\theta(x)=\\theta e^{-\\theta x}$, $x \\geq 0$? (a) $\\theta$. (b) $\\theta^2$. (c) $\\theta^{-1}$. (d) $\\theta^{-2}$. Which option is correct?",
+        "answer": "(d)"
+      },
+      {
+        "question": "Assuming $x$ and $y$ are both 2-d random variable. The covariance matrix of $x=((1,2),(2,3),(3,5),(4,4))$, $y=((3,4),(1,5),(5,3),(3,3))$ is $Cov$. What is the trace of $Cov$?",
+        "answer": -0.166
+      },
+      {
+        "question": "The Chi-square statistic $\\chi^2=\\sum_c\\frac{(P(x)-Q(x))^2}{Q(x)}$ is (twice) the first term in the Taylor series expansion of $D(P||Q)$ about $Q$. True or False?",
+        "answer": true
+      },
+      {
+        "question": "Suppose a fair coin is tossed 50 times. The bound on the probability that the number of heads will be greater than 35 or less than 15 can be found using Chebyshev's Inequality. What is the upper bound of the probability?",
+        "answer": 0.125
+      },
+      {
+        "question": "Let X_1, X_2 , X_3 be independent random variables taking values in the positive integers and having mass functions given by P(X_i=x)=(1-p_i)*p_i^{x-1} for x=1,2,... and i=1,2,3. Suppose p_1=1/2,p_2=1/4,p_3=1/8, what is the probability of X_1<X_2<X_3 (i.e. P(X_1<X_2<X_3))?",
+        "answer": 0.00153609831
+      },
+      {
+        "question": "Based on field experiments, a new variety green gram is expected to given an yield of 12.0 quintals per hectare. The variety was tested on 10 randomly selected farmers fields. The yield ( quintals/hectare) were recorded as 14.3,12.6,13.7,10.9,13.7,12.0,11.4,12.0,12.6,13.1. Do the results conform the expectation with Level of significance being 5%?",
+        "answer": true
+      },
+      {
+        "question": "You have a coin and you would like to check whether it is fair or biased. More specifically, let $\\theta$ be the probability of heads, $\\theta = P(H)$. Suppose that you need to choose between the following hypotheses: H_0 (null hypothesis): The coin is fair, i.e. $\\theta = \\theta_0 = 1 / 2$. H_1 (the alternative hypothesis): The coin is not fair, i.e. $\\theta > 1 / 2$. We toss 100 times and observe 60 heads. Can we reject H_0 at significance level $\\alpha = 0.05$?",
+        "answer": true
+      },
+      {
+        "question": "Assuming $x$ and $y$ are both 2-d random variable. The covariance matrix of $x=((1,2),(2,3),(3,3),(4,4))$, $y=((3,4),(1,5),(5,3),(3,3))$ is $Cov$. What is summation of the eigenvalue of $Cov$?",
+        "answer": 2.767
+      }
+    ]
+  },
+  "algebra": {
+    "medium": [
+      {
+        "question": "suppose the 10-by-10 matrix A has the form: if i \\neq j, A_{i,j}=a_i*b_j; if i=j,  A_{i,j}=1+a_i*b_j for all 1<=i,j<=10. Here a_i = 1/i, b_i=1/(i+1). Find the determinant of A. return the numeric.",
+        "answer": 1.9
+      },
+      {
+        "question": "Are the vectors [1, 2], [2, 3], and [3, 4] linearly independent?",
+        "answer": false
+      },
+      {
+        "question": "Both A, B are n-by-n matrices with rank(A)=n, rank(A*B)=0. What is rank(B)?",
+        "answer": 0.0
+      },
+      {
+        "question": "What is the determinant of the matrix A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]?",
+        "answer": -3
+      },
+      {
+        "question": "Is 10 a quadratic residue modulo 19? Use Gauss's Lemma to answer it.",
+        "answer": false
+      },
+      {
+        "question": "Consider the matrix of A=[[1, -1], [-1, 4]], is this a positive definite matrix?",
+        "answer": true
+      },
+      {
+        "question": "Is the set of 3 * 3 matrices in reduced row-echelon form a subspace of R^{3 * 3}?",
+        "answer": false
+      },
+      {
+        "question": "Consider an m * n matrix A and an n * m matrix B (with n != m) such that AB = I_m. Are the columns of A linearly independent?",
+        "answer": false
+      }
+    ]
+  },
+  "economics": {
+    "medium": [
+      {
+        "question": "Suppose there is a 50-50 chance that an individual with logarithmic utility from wealth and with a current wealth of $20,000 will suffer a loss of $10,000 from a car accident. Insurance is competitively provided at actuarially fair rates. Compute the utility if the individual buys full insurance.",
+        "answer": 9.616
+      },
+      {
+        "question": "Suppose there are 100 identical firms in a perfectly competitive industry. Each firm has a short-run total cost function of the form C(q) = \frac{1}{300}q^3 + 0.2q^2 + 4q + 10. Suppose market demand is given by Q = -200P + 8,000. What will be the short-run equilibrium price?",
+        "answer": 25
+      },
+      {
+        "question": "Does the utility function U(x,y) = xy/(x+y) has a convex indifference curve?",
+        "answer": true
+      },
+      {
+        "question": "Suppose the demand curve for oPads is given by $p=\\frac{500-x}{10}, What is the elasticity value of this demand function.",
+        "answer": -1.5
+      },
+      {
+        "question": "Universal Fur is located in Clyde, Baffin Island, and sells high-quality fur bow ties throughout the world at a price of $5 each. The production function for fur bow ties (q) is given by q = 240x - 2x^2, where x is the quantity of pelts used each week. Pelts are supplied only by Dan's Trading Post, which obtains them by hiring Eskimo trappers at a rate of $10 per day. Dan's weekly production function for pelts is given by x = \\sqrt{l}, where l represents the number of days of Eskimo time used each week. For a quasi-competitive case in which both Universal Fur and Dan's Trading Post act as price-takers for pelts, what will be the equilibrium price (p_x) for pelt?",
+        "answer": 600
+      }
+    ]
+  },
+  "combinatorics": {
+    "medium": [
+      {
+        "question": "A box contains 4 red, 3 green, and 2 blue balls. Balls are distinct even with the same color. In how many ways can we choose 4 balls, if at least 2 are red?",
+        "answer": 81
+      },
+      {
+        "question": "In how many ways can 7 people be seated at 5 identical round tables? Each table must have at least 1 person seated.",
+        "answer": 175
+      },
+      {
+        "question": "Coloring the edges of a complete graph with 6 vertices in 2 colors, how many triangles of the same color are there at least?",
+        "answer": 2
+      },
+      {
+        "question": "What is the minimum number of people needed in a room to guarantee that there are 3 mutual friends or 3 mutual strangers?",
+        "answer": 6
+      },
+      {
+        "question": "How many ways are there to partition a set of 5 elements into 3 non-empty cycles?",
+        "answer": 35
+      },
+      {
+        "question": "In how many ways can 3 students be selected from a class of 20 to form a study group?",
+        "answer": 1140
+      }
+    ]
+  },
+  "signal_processing": {
+    "medium": [
+      {
+        "question": "Is 80 dB twice as loud as 40 dB?",
+        "answer": false
+      },
+      {
+        "question": "If x(n) and X(k) are an N-point DFT pair, then x(n+N)=x(n). Is it true?",
+        "answer": true
+      },
+      {
+        "question": "Given 3 Colors whose RGB representations are given as follows: Color 1: (0.5, 0.5, 0.5), Color 2: (0.4, 0.6, 0.5), Color 3: (0.3, 0.7, 0.5), Which Color does not carry chrominance (Color) Information? Answer with 1 or 2 or 3.",
+        "answer": 1
+      },
+      {
+        "question": "Calculate the required memory size in Mebibytes (MiB) (in 3 sig.fig.)  for storing a frame in 1080p if the sampling scheme R'G'B' 4:4:4 is used. Note that there are 1920 × 1080 pixels in one 1080p frame. Each pixel contains three primary-colour components. Each primary-colour component requires 1 byte of memory for storage. 1 Mebibyte has 1024^2 bytes.",
+        "answer": 5.93
+      }
+    ]
+  },
+  "numerical_analysis": {
+    "medium": [
+      {
+        "question": "Determine the multiplicity of the root ξ = 1, of the polynomial P(x) = x^5 - 2x^4 + 4x^3 - x^2 - 7x + 5 = 0 using synthetic division. What is P'(2) + P''(2)? Please return the decimal number.",
+        "answer": 163
+      },
+      {
+        "question": "Apply the Graeffe's root squaring method to find the roots of the following equation x^3 - 2x + 2 = 0 correct to two decimals. What's the sum of these roots?",
+        "answer": 1
+      },
+      {
+        "question": "The root of the equation x = (1 / 2) + sin x by using the iteration method: x_{k+1} = 1/2 + sin(x_k), x_0 = 1 correct to o six decimals is x = 1.497300. Determine the number of iteration steps required to reach the root by linear iteration. If the Aitken ∆2-process is used after three approximations are available, how many iterations are required?",
+        "answer": 3
+      },
+      {
+        "question": "Given the following equation: x - e^{-x} = 0. determine the initial approximations for finding the smallest positive root. Use these to find the root correct to three decimal places with Regula-Falsi method.",
+        "answer": 0.567
+      },
+      {
+        "question": "Use euler's method to find the solution to the differential equation $\\frac{\\partial y}{\\partial x} = 3x + 4y$ at $x=1$ with the initial condition y(0) = 0 and step size $h=0.25$. What is y(1)?",
+        "answer": 2.0625
+      }
+    ]
+  },
+  "calculus": {
+    "medium": [
+      {
+        "question": "Find the arc length of y = x^{-1} over the interval [1,2] using the Simpson's Rule S_8.",
+        "answer": 1.132
+      },
+      {
+        "question": "For every positive real number $x$, let $g(x)=\\lim _{r \\rightarrow 0}((x+1)^{r+1}-x^{r+1})^{1/r}$. What is the limit of $g(x)/x$ as $x$ goes to infinity?",
+        "answer": 2.7182818
+      },
+      {
+        "question": "Find the arc length of the curve, where x=t, y=t^2 and z=2*t^3/3.",
+        "answer": 7.333
+      },
+      {
+        "question": "Suppose that $X_1,X_2,...$ are real numbers between 0 and 1 that are chosen independently and uniformly at random. Let $S=\\sum_{i=1}^k X_i/2^i$, where $k$ is the least positive integer such that $X_k<X_{k+1}$, or $k=\\infty$ if there is no such integer. Find the expected value of S.",
+        "answer": 0.29744254
+      },
+      {
+        "question": "For $p(x)=f(x)g(x)$, if $f(2)=3$, $f'(2)=-4$, $g(2)=1$, and $g'(2)=6$, what is $p'(2)$?",
+        "answer": 14
+      },
+      {
+        "question": "Using n=6 approximate the value of $\\int_{-1}^2 \\sqrt{e^{-x^2} + 1} dx$ using the Simpson's rule.",
+        "answer": 3.70358145
+      },
+      {
+        "question": "A function f(x) is given by f(0)=3, f(2)=7, f(4)=11, f(6)=9, f(8)=3. Approximate the area under the curve y=f(x) between x=0 and x=8 using Trapezoidal rule with n=4 subintervals.",
+        "answer": 60.0
+      },
+      {
+        "question": "Is (t-y)y' - 2y +3t + y^2/t = 0 an Euler homogeneous equation?",
+        "answer": true
+      },
+      {
+        "question": "Let (x_n) be a sequence defined by x_1 = 2 and x_{n+1} = 1 + 1/(1 + x_n). If (x_n) converges, what must its limit be in decimals?",
+        "answer": 1.414
+      },
+      {
+        "question": "Find the curvature for f(x) = \\sqrt{4x - x^2}, x = 2.",
+        "answer": 0.5
+      },
+      {
+        "question": "Is cos(\\pi/8) equal to (\\sqrt{2+\\sqrt{2}})/2?",
+        "answer": true
+      },
+      {
+        "question": "Let h(x) = (x^{-1/2} + 2x)(7 - x^{-1}). What is h'(x) when x = 4?",
+        "answer": 13.609
+      },
+      {
+        "question": "Does r(t) = [8 - 4t^3, 2 + 5t^2, 9t^3] parametrize a line?",
+        "answer": false
+      },
+      {
+        "question": "compute the integral $\\iint_{\\Sigma} x^3 dy*dz +y^3 dz*dx+z^3 dx*dy$, where is the outward of the ellipsoid x^2+y^2+z^2/4=1. Round the answer to the thousands decimal.",
+        "answer": 30.15928896
+      },
+      {
+        "question": "What is the value of the inflection point of f(x) =(10 ln(x))/(x^2)?",
+        "answer": 2.301
+      },
+      {
+        "question": "What is (sin(2x) / x)^(1+x) when x is approaching 0?",
+        "answer": 2.0
+      }
+    ]
+  },
+  "fixed_income": {
+    "medium": [
+      {
+        "question": "What is the effective rates (between 0 and 1) for 18% compounded quarterly? Return the numeric value.",
+        "answer": 0.1925
+      },
+      {
+        "question": "If the spot rates for 1 and 2 years are $s_1=6.3%$ and $s_2=6.9%, what is the forward rate $f_{1,2}$?",
+        "answer": 0.075
+      },
+      {
+        "question": "Suppose that:\nThe 1-year spot rate is 3%;\nThe 2-year spot rate is 4%; and\nThe 3-year spot rate is 5%. What is the price of a 100-par value 3-year bond paying 6% annual coupon payment?",
+        "answer": 102.95
+      }
+    ]
+  },
+  "number_theory": {
+    "medium": [
+      {
+        "question": "For an integer a > 0 and an integer b > 0, is there any other number c > 0 such that a^10 + b^10 = c^10?",
+        "answer": false
+      },
+      {
+        "question": "What is (6^83 + 8^83) mod 49?",
+        "answer": 35
+      },
+      {
+        "question": "For (10236, 244), use the Euclidean algorithm to find their gcd.",
+        "answer": 4
+      },
+      {
+        "question": "Every published book has a ten-digit ISBN-10 number that is usually of the form x_1 - x_2 x_3 x_4 - x_5 x_6 x_7 x_8 x_9 - x_{10} (where each x_i is a single digit). The first 9 digits identify the book. The last digit x_{10} is a check digit, it is chosen so that 10 x_1 + 9 x_2 + 8 x_3 + 7 x_4 + 6 x_5 + 5 x_6 + 4 x_7 + 3 x_8 + 2 x_9 + x_{10} = 0 (mod 11). Is 3-540-90518-9 a valid ISBN number?",
+        "answer": true
+      },
+      {
+        "question": "Find the smallest positive integer that leaves a remainder of 5 when divided by 8, a remainder of 1 when divided by 3, and a remainder of 7 when divided by 11.",
+        "answer": 205
+      },
+      {
+        "question": "Mrs. Walter gave an exam in a mathematics class of five students. She entered the scores in random order into a spreadsheet, which recalculated the class average after each score was entered. Mrs. Walter noticed that after each score was entered, the average was always an integer. The scores (listed in ascending order) were 71,76,80,82,and 91. What was the last score Mrs. Walter entered?",
+        "answer": 80
+      }
+    ]
+  },
+  "relativity": {
+    "medium": [
+      {
+        "question": "The atomic mass of the 4He atom is 4.002603 u. Find the binding energy of the 4He nucleus in MeV.",
+        "answer": 28.3
+      },
+      {
+        "question": "Electrons used to produce medical x rays are accelerated from rest through a potential difference of 25,000 volts before striking a metal target. Calculate the speed of the electrons in m/s.",
+        "answer": 90000000.0
+      }
+    ]
+  },
+  "geometry": {
+    "medium": [
+      {
+        "question": "If polygon ABCDE ~ polygon PQRST, AB = BC = 8, AE = CD = 4, ED = 6, QR = QP, and RS = PT = 3, find the perimeter of polygon ABCDE.",
+        "answer": 30
+      },
+      {
+        "question": "In triangle ACD, B is located on the side AC, and E is located on the side AD. If AB = 3, AC = 5, CD = 3.5, ED = 3, and EB ∥ DC, what is the length of AD?",
+        "answer": 7.5
+      },
+      {
+        "question": "If polygon ACDF is similar to polygon VWYZ, AF = 12, CD = 9, YZ = 10, YW = 6, and ZV = 3y-1, find y.",
+        "answer": 3
+      },
+      {
+        "question": "Can we use the method of compass and straightedge construction to construct the edge length of a cube, such that the volume of the cube is equal to X time the volume of a given cube, where X belongs to the set {3,17,8,27,343,1331}? Return the answer list for the respective values of X with 1 for yes and 0 for no.",
+        "answer": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "information_theory": {
+    "medium": [
+      {
+        "question": "The distortion rate function $D(R)=\\min_{p(\\hat{x}|x):I(X;\\hat{X})\\leq R} E(d(X,\\hat{X}))$ is convex. True or False?",
+        "answer": true
+      },
+      {
+        "question": "Consider an additive white Gaussian noise channel with an expected output power constraint $P=2$. Thus $Y = X + Z$, $Z \\sim N(0, 1)$, $Z$ is independent of $X$, and $E(Y)^2 \\leq 2$. Find the channel capacity in bits.",
+        "answer": 0.5
+      },
+      {
+        "question": "The distortion rate function $D(R)=\\min_{p(\\hat{x}|x):I(X;\\hat{X})\\leq R} E(d(X,\\hat{X}))$ is nonincreasing. True or False?",
+        "answer": true
+      }
+    ]
+  },
+  "celestial_mechanics": {
+    "medium": [
+      {
+        "question": "Astrophysical theory suggests that a burned-out star whose mass is at least three solar masses will collapse under its own gravity to form a black hole. If it does, the radius of its event horizon is X * 10^3 m, what is X?",
+        "answer": 8.9
+      }
+    ]
+  },
+  "functional_analysis": {
+    "medium": [
+      {
+        "question": "Suppose H is a Banach space, and {x_n}\\in H, x\\in H. Then x_n weakly converges to x is equivalent to: ||x_n|| is bounded; for a dense set M* in H*, it holds \\lim_{n\\rightarrow\\infty} f(x_n)=f(x) for all f\\in M*. Is this correct? Answer 1 for yes and 0 for no.",
+        "answer": 1.0
+      },
+      {
+        "question": "Suppose C is a compact convex set in a linear normed space, and let T: C → C be a continuous mapping. Then, there exists a fixed point of T in C. Is this correct? Answer 1 for yes and 0 for no.",
+        "answer": 1.0
+      }
+    ]
+  },
+  "thermodynamics": {
+    "medium": [
+      {
+        "question": "A glass contains 0.25 kg of Omni-Cola (mostly water) initially at 25°C. How much ice, initially at -20°C must you add to obtain a final temperature of 0°C with all the ice melted? Neglect the heat capacity of the glass. (Unit: g)",
+        "answer": 70
+      }
+    ]
+  },
+  "kinetics": {
+    "medium": [
+      {
+        "question": "A neutron at rest decays (breaks up) to a proton and an electron. Energy is released in the decay and appears as kinetic energy of the proton and electron. The mass of a proton is 1836 times the mass of an electron. What fraction of the total energy released goes into the kinetic energy of the proton?",
+        "answer": 0.000544
+      },
+      {
+        "question": "While a person is walking, his arms swing through approximately a 45° angle in 0.5s.As a reasonable approximation, we can assume that the arm moves with constant speed during each swing. A typical arm is 70.0 cm long, measured from the shoulder joint. What is the acceleration (in metre per second squared) of a 1.0 g drop of blood in the fingertips at the bottom of the swing?",
+        "answer": 1.73
+      }
+    ]
+  },
+  "derivatives": {
+    "medium": [
+      {
+        "question": "consider a forward contract on a non-dividend paying stock that matures in 6 months. The current stock price is $50 and the 6-month interest rate is 4% per annum. What is the forward price, F.",
+        "answer": 51.0
+      },
+      {
+        "question": "An investor who is bullish about a stock may wish to construct a bull spread for that stock. One way to construct such a spread is to buy a call with strke price $K_1$ and sell a call with the same expiration date but with a strike price of $K_2 > K_1$. If we draw the payoff curve for that a spread, the initial cost of the spread would be negative is this True? Answer True or False.",
+        "answer": false
+      },
+      {
+        "question": "A certain underlying state graph is a tree where each node has three successor nodes, indexed $a$, $b$, $c$. There are two assets defined on this tree which pay no dividends except at the terminal time $T$. At a certain period it is known that the prices of the two accets are multiplied by factors, depending on the successor node. These factors are shown in the table below:\n | | a | b | c\nsecurity | 1 | 1.2 | 1.0 | 0.8\n | 2 | 1.2 | 1.3 | 1.4\n\n Is there a short-tem riskless asset for this period? Answer True or False.",
+        "answer": true
+      }
+    ]
+  },
+  "classic_mechanics": {
+    "medium": [
+      {
+        "question": "Sir Lancelot, who weighs 800 N, is assaulting a castle by climbing a uniform ladder that is 5.0 m long and weighs 180 N. The bottom of the ladder rests on a ledge and leans across the moat in equilibrium against a frictionless, vertical castle wall. The ladder makes an angle of with the horizontal. Lancelot pauses onethird of the way up the ladder.  Find the magnitude of the contact force on the base of the ladder. (Unit: N)",
+        "answer": 1020
+      },
+      {
+        "question": "James (mass 90.0 kg) and Ramon (mass 60.0 kg) are 20.0 m apart on a frozen pond. Midway between them is a mug of their favorite beverage. They pull on the ends of a light rope stretched between them. When James has moved 6.0 m toward the mug, how far has Ramon moved? (Unit: m)",
+        "answer": 1.0
+      }
+    ]
+  },
+  "computer_networking": {
+    "medium": [
+      {
+        "question": "Suppose there are three routers between a source host and a destination host. Ignoring fragmentation, an IP datagram sent from the source host to the destination host will travel over how many interfaces? How many forwarding tables will be indexed to move the datagram from the source to the destination? Answer in [Interfaces, Tables].",
+        "answer": [
+          8,
+          4
+        ]
+      },
+      {
+        "question": "A TCP entity sends 6 segments across the Internet. The measured round-trip times (RTTM) for the 6 segments are 68ms, 42ms, 65ms, 80ms, 38ms, and 75ms, respectively. Assume that the smooth averaged RTT (RTTs) and Deviation (RTTD) was respectively 70ms and 10ms just before the first of these six samples. According to the Jacobson's algorithm, the retransmission timeout (RTO) is given by one RTTs plus 4 times the value of RTTD. Determine the value of RTO (in ms) after the six segments using the Jacobson's algorithm if the exponential smoothing parameters (a and B) are 0.15 and 0.2 for calculating RTTs and RTTD respectively.",
+        "answer": 114.28
+      },
+      {
+        "question": "A network with one primary and four secondary stations uses polling. The size of a data frame is 1000 bytes. The size of the poll, ACK, and NAK frames are 32 bytes each. Each station has 5 frames to send. How many total bytes are exchanged if each station can send only one frame in response to a poll?",
+        "answer": 21536
+      }
+    ]
+  },
+  "condensed_matter_physics": {
+    "medium": [
+      {
+        "question": "Light of wavelength 400 nm is incident upon lithium (phi = 2.93 eV). Calculate the stopping potential in V.",
+        "answer": 0.17
+      }
+    ]
+  },
+  "statistical_physics": {
+    "medium": [
+      {
+        "question": "Calculate the Fermi temperature for copper in eV.",
+        "answer": 81600.0
+      }
+    ]
+  },
+  "real_analysis": {
+    "medium": [
+      {
+        "question": "Suppose $E \\subset(0,2 \\pi) is a measurable set. \\left\\{\\xi_n\right\\}$ is an arbitrary sequence of real numbers. If the Lebesgue measure of E is 2, what is $\\lim _{n \rightarrow \\infty} \\int_E \\cos ^2 (n x+\\xi_n ) dx$? Return the numeric.",
+        "answer": 1.0
+      },
+      {
+        "question": "Denote m(\\cdot) to be Lebesgue measure. Given a point set E. Suppose for any closed set F and open set G with F \\subset E \\subset G, it holds $\\sup _F {m(F)}<\\inf _G {m(G)}$. Is set E Lebesgue measurable? Answer 1 for yes and 0 for no. Return the number",
+        "answer": 0.0
+      }
+    ]
+  },
+  "machine_learning": {
+    "medium": [
+      {
+        "question": "A positive-definite kernel function satisfies the Cauchy-Schwartz inequality. True or false?",
+        "answer": true
+      },
+      {
+        "question": "Consider Convolutional Neural Network D2 which takes input images of size 32x32 with 1 colour channels. The first layer of D2 uses 4 filters of size 5x5, a stride of 2, and zero-padding of width 1. The dimensions of the resulting activation map for each filter in this first layer will be k x k. What is the value of k?",
+        "answer": 15
+      }
+    ]
+  },
+  "atomic_physics": {
+    "medium": [
+      {
+        "question": "A hospital has a 3.0 x 10^14 Bq Co-60 source for cancer therapy. The rate of gamma rays incident on a patient of area 0.30 m^2 located 4.0 m from the source is $X*10^11$ Bq, what is X? Co-60 emits a 1.1- and a 1.3-MeV gamma ray for each disintegration.",
+        "answer": 8.95
+      },
+      {
+        "question": "Given that the spacing between vibrational energy levels of the HCl molecule is 0.36 eV, calculate the effective force constant in N/m.",
+        "answer": 490.0
+      },
+      {
+        "question": "The spontaneous fission activity rate of U-238 is 6.7 fissions/kg s. A sample of shale contains 0.055% U-238 by weight. Calculate the number of spontaneous fissions in one day in a 106-kg pile of the shale by determining the number of fissions.",
+        "answer": 320000000.0
+      }
+    ]
+  },
+  "stochastic_process": {
+    "medium": [
+      {
+        "question": "Let $N_1(t)$ and $N_2(t)$ be two independent Posson processes with rate $\\lambda_1 = 1$ and $\\lambda_2 = 2$, respectively. Let N(t) be the merged process N(t) = N_1(t) + N_2(t). Given that N(1) = 2, Find the probability that N_1(1) = 1.",
+        "answer": 0.4444
+      },
+      {
+        "question": "Let {N(t), t \\in [0, \\infty)} be a Poisson process with rate of $\\lambda = 4$ and $X_1$ be the first arrival time. Given N(t) = 1, then what is $P(X_1 <= t / 2)$?",
+        "answer": 0.5
+      }
+    ]
+  },
+  "particle": {
+    "medium": [
+      {
+        "question": "The Relativistic Heavy Ion Collider (RHIC) at the Brookhaven National Laboratory collides gold ions onto other gold ions head on. The energy of the gold ions is 100 GeV per nucleon. What is the center-of-mass energy of the collision in TeV?",
+        "answer": 39.4
+      }
+    ]
+  },
+  "complex_analysis": {
+    "medium": [
+      {
+        "question": "Suppose f is analytic on the closed unit disk, f(0) = 0, and |f(z)| $\\leq$ |e^z| whenever |z| = 1. How big can f((1 + i)/2) be? Return a numerical number.",
+        "answer": 1.9221
+      },
+      {
+        "question": "Evaluate $\\int_c 1 / (z^ + 4)^2 dz$ over the contour. This contour is a circle centered at (0, i) with a diameter of 3 on the (Re, Im) plane, the contour goes counter-clockwise.",
+        "answer": 0.19634
+      },
+      {
+        "question": "H(z) = $\\int_0^1 e^{-z^2 t^2} dt$, what is H'(1)?",
+        "answer": -0.3789
+      }
+    ]
+  },
+  "wave": {
+    "medium": [
+      {
+        "question": "One end of a 2.00-kg rope is tied to a support at the top of a mine shaft 80.0 m deep. The rope is stretched taut by a 20.0-kg box of rocks attached at the bottom. If a point on the rope is in transverse SHM with f = 2.00 Hz, how many cycles of the wave are there in the rope’s length?",
+        "answer": 1.81
+      },
+      {
+        "question": "Calculate the de Broglie Wavelength, in nm, of an electron with kinetic energy 50 eV.",
+        "answer": 0.17
+      }
+    ]
+  },
+  "electromagnetism": {
+    "medium": [
+      {
+        "question": "The electric flux through a spherical surface is  $4.0\\times 10^4 N \\cdot m^2/C$. What is the net charge enclosed by the surface?",
+        "answer": 3.54e-07
+      }
+    ]
+  },
+  "equity_investments": {
+    "medium": [
+      {
+        "question": "Lore Ltd. estimates that its dividend growth will be 13% per year for the next five years. It will then settle to a sustainable, constant, and continuing rate of 5%. Let’s say that the current year’s dividend is $14 and the required rate of return (or discount rate) is 12%. What is the current fair value of Lore Ltd. stock?",
+        "answer": 291.45
+      }
+    ]
+  }
+}

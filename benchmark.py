@@ -964,7 +964,8 @@ def run_benchmark(
 
     logger.info(f"Collected {len(all_questions)} questions matching criteria")
     print(f"📋 Collected {len(all_questions)} questions matching criteria")
-
+    
+    print()
     # Sample questions if requested
     if sample_size or sample_percent:
         total_questions = len(all_questions)
