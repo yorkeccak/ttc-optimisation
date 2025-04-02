@@ -63,3 +63,5 @@ results/*
 subset_creation.py
 
 unsloth_compiled_cache/*
+
+test.py
