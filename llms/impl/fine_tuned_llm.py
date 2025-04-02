@@ -203,7 +203,11 @@ class FineTunedLlm(Llm):
         start_index = text.rfind("### Response:")
         # return the rest of the string after the start index
         
-        return text[start_index + len("### Response:"):].strip()
+        if start_index == -1:
+            text = text.rfind("<think>")
+            return text[start_index + len("<think>"):].strip()
+        else:
+            return text[start_index + len("### Response:"):].strip()
         
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         prompt = PROMPT_TEMPLATE.format(question=question)
