@@ -43,7 +43,7 @@ class RagTokenLlm(Llm):
             end_result=self._end_result,
         ))
 
-    def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
+    def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         print("\n🤔 Initial Question:", question)
         prompt = PROMPT_TEMPLATE_NEW.format(
             question=question,

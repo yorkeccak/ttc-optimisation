@@ -263,5 +263,5 @@ class Llm(ABC):
         return metrics
 
     @abstractmethod
-    def generate_output(self: Self, question: str, max_turns: int = 5) -> str:
+    def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         pass
