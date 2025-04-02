@@ -4,7 +4,6 @@
 # The search model then uses the Valyu API to search for the information and returns the results.
 # The results are then passed to the reasoning model, which then uses the context to inform the answer.
 
-import time
 from ..llm import Llm
 from typing import Self
 
@@ -109,11 +108,7 @@ If you need additional information, you can search again using {self._start_rag}
             embedded_context = (
                 f"\n{self._start_result}\n{res}\n{self._end_result}\n{focus_reminder}"
             )
-            
-            prompt += f"\n{current_chunk}\n\n"
-            print('-' * 100)
-            print(prompt)
-            time.sleep(100)
+            prompt += f"\n{current_chunk}\n{embedded_context}\n"
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
             current_chunk = ""
 
