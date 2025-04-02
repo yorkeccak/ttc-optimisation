@@ -1,6 +1,7 @@
 # fine_tuned_llm.py
 # Fine-tuned LLM is a more sophisticated version of rag_token_llm.py that uses a fine-tuned model to output search tokens instead of prompt engineering.
 
+import time
 from ..llm import Llm
 from typing import Self
 import torch
@@ -196,7 +197,59 @@ class FineTunedLlm(Llm):
         response = self.tokenizer.batch_decode(outputs)
         return response[0]
 
+    def extract_response(self: Self, text: str) -> str:
+        # given the model output, extract all tokens after encountering the first ###Response  
+        # Find the index of the last occurrence of "### Response:"
+        start_index = text.rfind("### Response:")
+        # return the rest of the string after the start index
+        
+        return text[start_index + len("### Response:"):].strip()
+        
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         prompt = PROMPT_TEMPLATE.format(question=question)
-        output = self._run_ollama(prompt)
+        
+        output = ""
+        
+        for turn in range(max_turns):
+            print(f"\n--- Turn {turn+1} ---")
+            response = self._run_ollama(prompt)
+            response = self.extract_response(response)
+            
+            print(f"Model Response:\n{response}")
+            with open("model_response.txt", "a") as f:
+                f.write(response + "\n")
+                f.write("-" * 50 + "\n")
+            
+            output += "\n" + response
+            search_query = self._extract_rag_query(response)
+            
+            if not search_query:
+                print("\n[✅ No further searches required.]")
+                print("\nFinal Response:\n")
+                print(response)
+                break
+
+            print(f"\n🔍 Searching: '{search_query}'")
+            res = self._run_valyu(search_query)
+            print("\n📚 Search Results:")
+            print("-" * 50)
+            print(res)
+            print("-" * 50)
+            
+            focus_reminder = f"""
+            Use the search results above to help answer the original question: "{question}"
+            Do not just summarize or explain the search results - use them to provide a direct answer to the question.
+            If you need additional information, you can search again
+            
+            ### Response:
+            
+            """
+            embedded_context = (
+                f"\n{self._start_result}\n{res}\n{self._end_result}\n{focus_reminder}"
+            )
+            
+            prompt += f"\n{response}\n{embedded_context}\n"
+            print(f"\n📎 Search results added to context. Continuing reasoning...\n")
+        
+            
         return self._compute_metrics(output)
