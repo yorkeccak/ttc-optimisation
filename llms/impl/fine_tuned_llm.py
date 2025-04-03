@@ -69,7 +69,7 @@ class FineTunedLlm(Llm):
         load_in_4bit = True
 
         base_model, _ = FastLanguageModel.from_pretrained(
-            model_name = "unsloth/DeepSeek-R1-Distill-Llama-8B",
+            model_name = "unsloth/DeepSeek-R1-Distill-Qwen-14B",
             max_seq_length = max_seq_length,
             dtype = dtype,
             load_in_4bit = load_in_4bit,
@@ -105,14 +105,14 @@ class FineTunedLlm(Llm):
         # = ADD ADAPTER TO BASE MODEL =
         # =============================
 
-        self.model = PeftModel.from_pretrained(base_model, "canertugrul/DeepSeek-R1-Distill-Llama-8B-Tool-Use-Adapter", cache_dir="/cs/student/projects1/2021/jadhwani/.cache/huggingface/hub")
+        self.model = PeftModel.from_pretrained(base_model, "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter", cache_dir="/cs/student/projects1/2021/jadhwani/.cache/huggingface/hub")
         FastLanguageModel.for_inference(self.model)
 
         # ==================
         # = LOAD TOKENIZER =
         # ==================
 
-        self.tokenizer = AutoTokenizer.from_pretrained("canertugrul/DeepSeek-R1-Distill-Llama-8B-Tool-Use-Tokenizer", cache_dir="/cs/student/projects1/2021/jadhwani/.cache/huggingface/hub")
+        self.tokenizer = AutoTokenizer.from_pretrained("canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Tokenizer", cache_dir="/cs/student/projects1/2021/jadhwani/.cache/huggingface/hub")
 
     def add_new_tokens(self, model, tokenizer, new_tokens=[], method="mean", interpolation=0.5):
         assert isinstance(new_tokens, (list, tuple))
