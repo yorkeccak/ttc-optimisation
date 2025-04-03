@@ -6,10 +6,8 @@ from ..llm import Llm
 from typing import Self
 import torch
 import gc
-from unsloth import FastLanguageModel
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria, StoppingCriteriaList
 from peft import PeftModel
-from transformers import StoppingCriteria, StoppingCriteriaList
 
 PROMPT_TEMPLATE = """
 Below is an instruction that describes a task, paired with an input that provides further context.
@@ -28,37 +26,20 @@ You are a scientific expert with advanced knowledge in analytical reasoning, pro
 
 """
 
-# PROMPT_TEMPLATE = """
-# QUESTION: {question}
-
-# Answer this question accurately. If you're uncertain about any facts:
-# 1. IMMEDIATELY output a search query between {start_rag} and {end_rag} tags
-# 2. Wait for search results between {start_result} and {end_result}
-# 3. Use these results to complete your answer
-
-# EXAMPLES:
-# Q: "Who is the current CEO of OpenAI?"
-# {start_rag}current CEO of OpenAI 2025{end_rag}
-# {start_result}Sam Altman returned as OpenAI CEO in November 2023 and continues to serve in this role as of March 2025.{end_result}
-# The current CEO of OpenAI is Sam Altman.
-
-# Q: "What is the population of Tokyo?"
-# {start_rag}current population of Tokyo 2025{end_rag}
-# {start_result}Tokyo's population is approximately 13.96 million as of January 2025.{end_result}
-# Tokyo has a population of approximately 13.96 million people.
-
-# Today's date: April 1, 2025. Be direct and concise.
-# """
-
-
 class FineTunedLlm(Llm):
-    def __init__(self: Self,_) -> None:
+    def __init__(self) -> None:
         super().__init__("")
         self._rag_enabled = True
         self._start_rag = "<SEARCH>"
         self._end_rag = "</SEARCH>"
         self._start_result = "<RESULT>"
         self._end_result = "</RESULT>"
+
+        # Fix tokenizer initialization - should happen before using it
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Tokenizer", 
+            cache_dir="./.cache/huggingface/hub",
+        )
 
         # ===================
         # = LOAD BASE MODEL =
@@ -68,11 +49,11 @@ class FineTunedLlm(Llm):
         dtype = None
         load_in_4bit = True
 
-        base_model, _ = FastLanguageModel.from_pretrained(
-            model_name = "unsloth/DeepSeek-R1-Distill-Qwen-14B",
-            max_seq_length = max_seq_length,
-            dtype = dtype,
-            load_in_4bit = load_in_4bit,
+        base_model = AutoModelForCausalLM.from_pretrained(
+            "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
+            cache_dir="./.cache/huggingface/hub",
+            load_in_4bit = True,
+            device_map="auto",
         )
 
         # ============================
@@ -87,32 +68,25 @@ class FineTunedLlm(Llm):
             self._end_result
         }
 
-        # Exclude existing tokens
-        new_tokens = list(special_tokens - set(_.vocab.keys()))
-
-        if new_tokens:
-            print("Addding new tokens... ")
-
-            # Add new tokens to tokenizer and model using add_new_tokens()
-            self.add_new_tokens(base_model, _, new_tokens=new_tokens)
-
-            # Verify the additions
-            print(f"Added {len(new_tokens)} new tokens to the tokenizer and model! ")
-        else:
-            print("No new tokens added. ")
+  
 
         # =============================
         # = ADD ADAPTER TO BASE MODEL =
         # =============================
 
-        self.model = PeftModel.from_pretrained(base_model, "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter", cache_dir="/cs/student/projects1/2021/jadhwani/.cache/huggingface/hub")
-        FastLanguageModel.for_inference(self.model)
+        self.model = PeftModel.from_pretrained(base_model, "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter", cache_dir="./.cache/huggingface/hub", device_map='auto', ignore_mismatched_sizes=True)
+        # Exclude existing tokens
+        new_tokens = list(special_tokens - set(self.tokenizer.vocab.keys()))
+        if new_tokens:
+            print("Addding new tokens... ")
+            # Add new tokens to tokenizer and model using add_new_tokens()
+            self.add_new_tokens(base_model, self.tokenizer, new_tokens=new_tokens)
+            # Verify the additions
+            print(f"Added {len(new_tokens)} new tokens to the tokenizer and model! ")
+        else:
+            print("No new tokens added. ")
 
-        # ==================
-        # = LOAD TOKENIZER =
-        # ==================
-
-        self.tokenizer = AutoTokenizer.from_pretrained("canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Tokenizer", cache_dir="/cs/student/projects1/2021/jadhwani/.cache/huggingface/hub")
+        self.model.eval()
 
     def add_new_tokens(self, model, tokenizer, new_tokens=[], method="mean", interpolation=0.5):
         assert isinstance(new_tokens, (list, tuple))
@@ -125,7 +99,7 @@ class FineTunedLlm(Llm):
             print(f"Unsloth: Skipping overlapping tokens: {list(overlapping_tokens)}")
             new_tokens = [x for x in new_tokens if x not in overlapping_tokens]
 
-        # Add new tokens to tokenizer
+        # Add new tokens to tokenizercache
         old_length = len(tokenizer)
         tokenizer.add_tokens(new_tokens)
 
@@ -178,7 +152,9 @@ class FineTunedLlm(Llm):
             def __call__(self, input_ids, scores, **kwargs):
                 return any(input_ids[0, -1].item() == stop_id for stop_id in self.stop_ids)
 
-        FastLanguageModel.for_inference(self.model)
+        # Prepare model for inference (no need for FastLanguageModel)
+        self.model.eval()
+        
         inputs = self.tokenizer([prompt], return_tensors="pt").to(self.model.device)
         stop_token_id = self.tokenizer.convert_tokens_to_ids(self._end_rag)
 
@@ -198,17 +174,17 @@ class FineTunedLlm(Llm):
         return response[0]
 
     def extract_response(self: Self, text: str) -> str:
-        # given the model output, extract all tokens after encountering the first ###Response  
-        # Find the index of the last occurrence of "### Response:"
+        # Fix the incorrect variable assignment when tag not found
         start_index = text.rfind("### Response:")
-        # return the rest of the string after the start index
         
         if start_index == -1:
-            text = text.rfind("<think>")
+            start_index = text.rfind("<think>")
+            if start_index == -1:
+                return text.strip()
             return text[start_index + len("<think>"):].strip()
         else:
             return text[start_index + len("### Response:"):].strip()
-        
+
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         prompt = PROMPT_TEMPLATE.format(question=question)
         
