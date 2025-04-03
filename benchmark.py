@@ -1094,7 +1094,7 @@ if __name__ == "__main__":
         type=str,
         nargs="+",
         choices=["simple_rag_llm", "rag_token_llm", "no_rag_llm", "fine_tuned_llm"],
-        default=["simple_rag_llm", "no_rag_llm", "rag_token_llm"],
+        default=["simple_rag_llm", "no_rag_llm", "rag_token_llm", "fine_tuned_llm"],
         help="Model implementations to use for the benchmark (multiple can be specified)",
     )
     parser.add_argument(
@@ -1154,6 +1154,11 @@ if __name__ == "__main__":
     logger.info(f"Command line arguments: {args}")
 
     # Run benchmark with the specified parameters
+    
+    response = "\n<think>\nOkay, so I need to figure out the smallest number of vertices n in a complete graph such that if you color its edges either red or blue, there must be a 4-clique (a complete subgraph with 4 vertices) in either red or blue. This sounds like a Ramsey-type problem, specifically looking for Ramsey numbers. I remember that Ramsey numbers are about the minimum number of vertices needed to guarantee a monochromatic clique of a certain size. \n\nBut let me think through it step by step to make sure I understand the problem correctly. A complete graph with n vertices means every pair of vertices is connected by an edge. Coloring these edges red or blue means partitioning the edges into two color classes. The goal is to find the smallest n where, no matter how you color the edges, you will always end up with at least one 4-clique in either red or blue.\n\nI know that for smaller clique sizes, the Ramsey numbers are established. For example, R(3,3) = 6, which means that in any 2-coloring of the edges of a complete graph with 6 vertices, there is always a monochromatic triangle. However, this problem is about a 4-clique, so I need to find R(4,4).\n\nI should check if I can recall the exact value of R(4,4). From what I remember, the Ramsey number R(s,t) is the smallest number n such that any 2-coloring of the edges of a complete graph on n vertices contains a monochromatic clique of size s in one color or a monochromatic clique of size t in the other color. \n\nI recall that R(4,4) is known to be 18. This is because it is established in graph theory that for n=18, any 2-coloring of the edges of a complete graph will contain either a red 4-clique or a blue 4-clique. \n\nTo confirm this, I can look up the exact value of R(4,4) in a reliable source or mathematical reference. \n\n<SEARCH> Ramsey number R(4,4) </SEARCH>\nThe smallest n that guarantees a 4-clique in either red or blue is 18. This is established by the Ramsey number R(4,4) = 18, which states that in any 2-coloring of the edges of a complete graph with 18 vertices, there must be either a red 4-clique or a blue 4-clique. The proof involves showing that for any graph with 18 vertices, either the graph itself or its complement contains a 4-clique, confirming that 18 is the minimum value required to ensure a monochromatic 4-clique.\n            \n            For example, a graph with 17 vertices can be constructed that neither contains a red 4-clique nor a blue 4-clique. However, once the number of vertices reaches 18, it is impossible to avoid a monochromatic 4-clique regardless of the coloring. This result is well-documented in Ramsey theory, confirming the value of R(4,4) = 18.\n            \n            In conclusion, the smallest n that guarantees the existence of a 4-clique in either red or blue is **18**.\n            \n            If you need further confirmation or additional context, you can perform a RAG call for R(4,4) and its implications in Ramsey theory.\n            \n            </SEARCH>"
+    thinking_tokens = count_thinking_tokens(response)
+    print(f"Thinking tokens: {thinking_tokens}")
+    
     results = run_benchmark(
         model_name=args.model,
         model_impl=args.model_impl,

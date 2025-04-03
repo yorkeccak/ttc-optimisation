@@ -52,7 +52,7 @@ You are a scientific expert with advanced knowledge in analytical reasoning, pro
 
 
 class FineTunedLlm(Llm):
-    def __init__(self: Self) -> None:
+    def __init__(self: Self,_) -> None:
         super().__init__("")
         self._rag_enabled = True
         self._start_rag = "<SEARCH>"
@@ -64,7 +64,7 @@ class FineTunedLlm(Llm):
         # = LOAD BASE MODEL =
         # ===================
 
-        max_seq_length = 2048
+        max_seq_length = 8192
         dtype = None
         load_in_4bit = True
 
@@ -189,7 +189,7 @@ class FineTunedLlm(Llm):
         outputs = self.model.generate(
             input_ids=inputs.input_ids,
             attention_mask=inputs.attention_mask,
-            max_new_tokens=2048,
+            max_new_tokens=8192,
             use_cache=True,
             stopping_criteria=stopping_criteria
         )
@@ -217,12 +217,15 @@ class FineTunedLlm(Llm):
         for turn in range(max_turns):
             print(f"\n--- Turn {turn+1} ---")
             response = self._run_ollama(prompt)
-            response = self.extract_response(response)
             
-            print(f"Model Response:\n{response}")
             with open("model_response.txt", "a") as f:
                 f.write(response + "\n")
                 f.write("-" * 50 + "\n")
+            
+            print(f"Model Response:\n{response}")
+            response = self.extract_response(response)
+            if "<think>" in response and "</think" not in response:
+                response+= "</think>"
             
             output += "\n" + response
             search_query = self._extract_rag_query(response)
