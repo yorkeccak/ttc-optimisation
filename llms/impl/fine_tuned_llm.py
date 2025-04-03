@@ -19,6 +19,8 @@ Before answering, think carefully about the question and create a step-by-step c
 ### Instruction:
 You are a scientific expert with advanced knowledge in analytical reasoning, problem-solving, and quantitative analysis across various disciplines, including mathematics, physics, biology, chemistry, and engineering. Please answer the following question.
 
+Immediately output the search query in the format <SEARCH>search query</SEARCH> to find relevant information.
+
 ### Question:
 {question}
 
@@ -27,7 +29,7 @@ You are a scientific expert with advanced knowledge in analytical reasoning, pro
 """
 
 class FineTunedLlm(Llm):
-    def __init__(self) -> None:
+    def __init__(self, model: str) -> None:
         super().__init__("")
         self._rag_enabled = True
         self._start_rag = "<SEARCH>"
@@ -44,9 +46,6 @@ class FineTunedLlm(Llm):
         # ===================
         # = LOAD BASE MODEL =
         # ===================
-
-        max_seq_length = 8192
-        dtype = None
         load_in_4bit = True
 
         base_model = AutoModelForCausalLM.from_pretrained(
@@ -56,6 +55,7 @@ class FineTunedLlm(Llm):
             device_map="auto",
         )
 
+        base_model.resize_token_embeddings(len(self.tokenizer))
         # ============================
         # = ADD TOKENS TO BASE MODEL =
         # ============================
@@ -68,13 +68,11 @@ class FineTunedLlm(Llm):
             self._end_result
         }
 
-  
-
         # =============================
         # = ADD ADAPTER TO BASE MODEL =
         # =============================
 
-        self.model = PeftModel.from_pretrained(base_model, "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter", cache_dir="./.cache/huggingface/hub", device_map='auto', ignore_mismatched_sizes=True)
+        self.model = PeftModel.from_pretrained(base_model, "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter", cache_dir="./.cache/huggingface/hub", device_map='auto')
         # Exclude existing tokens
         new_tokens = list(special_tokens - set(self.tokenizer.vocab.keys()))
         if new_tokens:
