@@ -1063,7 +1063,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dataset",
         type=str,
-        default="./datasets/theoremqa/theoremqa.json",
+        default="datasets/theoremqa/theoremqa.json",
         help="Path to benchmark dataset",
     )
     parser.add_argument("--sample-size", type=int, help="Number of questions to sample")
