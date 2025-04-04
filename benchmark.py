@@ -23,6 +23,7 @@ import pandas as pd
 from tqdm import tqdm
 import dotenv
 import tiktoken
+from fpdf import FPDF
 import re
 import argparse
 import random
@@ -812,8 +813,6 @@ def generate_visualizations(
 
     # 8. Create a comprehensive PDF report with all visualizations
     try:
-        from fpdf import FPDF
-
         # Create PDF
         pdf = FPDF()
 
