@@ -42,6 +42,7 @@ class FineTunedLlm(Llm):
             cache_dir="./.cache/huggingface/hub",
         )
 
+
         # ===================
         # = LOAD BASE MODEL =
         # ===================
@@ -100,12 +101,13 @@ class FineTunedLlm(Llm):
             attention_mask=inputs.attention_mask,
             max_new_tokens=8192,
             use_cache=True,
-            stopping_criteria=stopping_criteria
+            stopping_criteria=stopping_criteria,
+            pad_token_id=self.tokenizer.eos_token_id,
         )
 
         # skip the prompt tokens
         generated_tokens = outputs[0][inputs.input_ids.shape[-1]:]
-        response = self.tokenizer.decode(generated_tokens)
+        response = self.tokenizer.decode(generated_tokens) 
 
         return response
 
