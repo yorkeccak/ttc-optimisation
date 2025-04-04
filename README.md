@@ -168,4 +168,159 @@ If you use this benchmarking tool in your research, please cite:
 }
 ```
 
+## Running on EC2
+
+### EC2 Setup Instructions
+
+1. **Launch an EC2 Instance**
+   - Choose an instance with GPU support (recommended: g4dn.xlarge or larger)
+   - Select Ubuntu Server 22.04 LTS AMI
+   - Ensure security group allows SSH access (port 22)
+   - Create or select an existing key pair
+
+2. **Connect to EC2**
+   ```bash
+   ssh -i /path/to/your-key.pem ubuntu@your-ec2-ip
+   ```
+
+3. **Install System Dependencies**
+   ```bash
+   # Update system
+   sudo apt-get update && sudo apt-get upgrade -y
+
+   # Install Python and dev tools
+   sudo apt-get install -y python3-pip python3-dev build-essential tmux
+
+   # Install CUDA drivers (for GPU support)
+   sudo apt-get install -y nvidia-driver-535 nvidia-cuda-toolkit
+   ```
+
+4. **Install Ollama**
+   ```bash
+   curl -fsSL https://ollama.ai/install.sh | sh
+   ```
+
+5. **Copy Local Code to EC2**
+   From your local machine:
+   ```bash
+   # Create project directory on EC2
+   ssh -i /path/to/your-key.pem ubuntu@your-ec2-ip "mkdir -p ~/ttc-optimization"
+
+   # Copy code (run from your local project directory)
+   scp -i /path/to/your-key.pem -r ./* ubuntu@your-ec2-ip:~/ttc-optimization/
+   ```
+
+6. **Set Up Python Environment on EC2**
+   ```bash
+   # Create and activate virtual environment
+   cd ~/ttc-optimization
+   python3 -m venv venv
+   source venv/bin/activate
+
+   # Install dependencies
+   pip install -r requirements.txt
+   ```
+
+7. **Configure Environment**
+   ```bash
+   # Create .env file
+   cat > .env << EOL
+   VALYU_API_KEY=your_valyu_api_key_here
+   COHERE_API_KEY=your_cohere_api_key_here
+   EOL
+   ```
+
+8. **Pull Required Models**
+   ```bash
+   ollama pull deepseek-r1:1.5b
+   # Add other models as needed
+   ```
+
+### Running Benchmarks with tmux
+
+1. **Start tmux Session**
+   ```bash
+   tmux new -s benchmark
+   ```
+
+2. **Activate Environment and Run Benchmark**
+   ```bash
+   cd ~/ttc-optimization
+   source venv/bin/activate
+
+   # Run benchmark
+   python benchmark.py \
+     --model deepseek-r1:1.5b \
+     --model-impl simple_rag_llm no_rag_llm \
+     --difficulties medium hard \
+     --sample-size 10 \
+     --results-dir ec2_benchmark
+   ```
+
+3. **Detach from tmux Session**
+   - Press `Ctrl+B`, then `D` to detach
+   - Your benchmark will continue running in the background
+
+4. **Monitor or Return to Session**
+   ```bash
+   # List sessions
+   tmux ls
+
+   # Reattach to session
+   tmux attach -t benchmark
+   ```
+
+5. **Copy Results Back to Local Machine**
+   From your local machine:
+   ```bash
+   # Replace timestamp with actual results directory name
+   scp -i /path/to/your-key.pem -r ubuntu@your-ec2-ip:~/ttc-optimization/results/ec2_benchmark_* ./results/
+   ```
+
+### Useful tmux Commands
+
+- `tmux ls` - List sessions
+- `tmux attach -t benchmark` - Reattach to session
+- `Ctrl+B, D` - Detach from session
+- `Ctrl+B, %` - Split pane vertically
+- `Ctrl+B, "` - Split pane horizontally
+- `Ctrl+B, arrow keys` - Navigate between panes
+- `exit` - Close current pane/session
+
+### Monitoring GPU Usage
+
+```bash
+# Install nvidia-smi if not already installed
+sudo apt-get install -y nvidia-utils-535
+
+# Monitor GPU usage
+watch -n 1 nvidia-smi
+```
+
+### Troubleshooting
+
+1. **GPU Not Detected**
+   ```bash
+   # Check GPU status
+   nvidia-smi
+   
+   # If not found, try reloading driver
+   sudo systemctl restart nvidia-persistenced
+   ```
+
+2. **Ollama GPU Issues**
+   ```bash
+   # Check Ollama logs
+   journalctl -u ollama
+   
+   # Restart Ollama
+   sudo systemctl restart ollama
+   ```
+
+3. **Permission Issues**
+   ```bash
+   # Fix directory permissions
+   sudo chown -R ubuntu:ubuntu ~/ttc-optimization
+   ```
+
 ---
