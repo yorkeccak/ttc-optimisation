@@ -61,6 +61,7 @@ class FineTunedLlm(Llm):
             cache_dir="./.cache/huggingface/hub",
             load_in_4bit=True,
             device_map="auto",
+            bnb_4bit_compute_dtype=torch.float16,
         )
 
         base_model.resize_token_embeddings(len(self.tokenizer))
@@ -92,11 +93,13 @@ class FineTunedLlm(Llm):
             max_new_tokens=8192,
             use_cache=True,
             stopping_criteria=stopping_criteria,
+            pad_token_id=self.tokenizer.eos_token_id,
         )
 
         # skip the prompt tokens
         generated_tokens = outputs[0][inputs.input_ids.shape[-1] :]
-        response = self.tokenizer.decode(generated_tokens, skip_special_tokens=True)
+        response = self.tokenizer.decode(generated_tokens)
+
         return response
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
