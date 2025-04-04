@@ -859,7 +859,7 @@ def generate_visualizations(
 def run_benchmark(
     model_name: str,
     model_impl: List[Model],
-    dataset_path="benchmark.json",
+    dataset_path="datasets/benchmark.json",
     sample_size=None,
     sample_percent=None,
     difficulties=None,
