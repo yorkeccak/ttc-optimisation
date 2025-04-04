@@ -133,9 +133,8 @@ class FineTunedLlm(Llm):
                 print(response)
                 break
 
-            # print(f"\n🔍 Searching: '{search_query}'")
-            # res = self._run_valyu(search_query)
-            res = ""
+            print(f"\n🔍 Searching: '{search_query}'")
+            res = self._run_valyu(search_query)
             print("\n📚 Search Results:")
             print("-" * 50)
             print(res)
@@ -152,6 +151,5 @@ class FineTunedLlm(Llm):
             
             prompt += f"\n{response}\n{embedded_context}\n"
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
-        
             
         return self._compute_metrics(output)
