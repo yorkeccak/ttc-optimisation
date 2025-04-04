@@ -3,6 +3,7 @@
 
 from ..llm import Llm
 from typing import Self
+import torch
 from transformers import (
     AutoTokenizer,
     AutoModelForCausalLM,
