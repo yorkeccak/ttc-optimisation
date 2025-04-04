@@ -18,8 +18,6 @@ Usage:
 import json
 import matplotlib.pyplot as plt
 import seaborn as sns
-from valyu import Valyu
-import ollama
 from pathlib import Path
 import pandas as pd
 from tqdm import tqdm
@@ -34,13 +32,13 @@ import os
 import cohere
 import numpy as np
 import sys
-from typing import Literal, List, Dict, Any, Optional
+from typing import Literal, List, Dict, Any
+from llms.impl.no_rag_llm import NoRagLlm
 from llms.impl.simple_rag_llm import SimpleRagLlm
 from llms.impl.rag_token_llm import RagTokenLlm
-from llms.impl.no_rag_llm import NoRagLlm
 from llms.impl.fine_tuned_llm import FineTunedLlm
 
-Model = Literal["simple_rag_llm", "rag_token_llm", "no_rag_llm", "fine_tuned_llm"]
+Model = Literal["no_rag_llm", "simple_rag_llm", "rag_token_llm", "fine_tuned_llm"]
 
 # Load environment variables
 dotenv.load_dotenv()
@@ -50,30 +48,11 @@ tokenizer = tiktoken.get_encoding("cl100k_base")
 
 # Add a model mapping dictionary
 MODEL_MAP = {
+    "no_rag_llm": NoRagLlm,
     "simple_rag_llm": SimpleRagLlm,
     "rag_token_llm": RagTokenLlm,
-    "no_rag_llm": NoRagLlm,
     "fine_tuned_llm": FineTunedLlm,
 }
-
-# Regular expressions for thinking token counting
-START_THINK = "<think>"
-END_THINK = "</think>"
-
-
-def count_thinking_tokens(text: str) -> int:
-    """
-    Count tokens within <think></think> tags.
-
-    Args:
-        text: Text containing thinking sections
-
-    Returns:
-        Total number of tokens in thinking sections
-    """
-    pattern = re.escape(START_THINK) + r"(.*?)" + re.escape(END_THINK)
-    matches = re.findall(pattern, text, flags=re.DOTALL)
-    return sum(len(tokenizer.encode(match.strip())) for match in matches)
 
 
 def create_results_folder():
@@ -176,14 +155,13 @@ def judge_responses(
 
         print(response.text)
         evaluation_text = response.text.strip()
-        print(f'\n\nEvaluation text: \n{evaluation_text}' )
-
+        print(f"\n\nEvaluation text: \n{evaluation_text}")
 
         # Extract evaluations
         evaluations = {}
         for resp in responses:
             model_impl = resp.get("model_impl", "unknown")
-            print(f'\n\nModel implementation: {model_impl}')
+            print(f"\n\nModel implementation: {model_impl}")
 
             # Extract correctness
             correctness_pattern = f"<{model_impl}><Correctness>(.*?)</Correctness>"
@@ -193,7 +171,7 @@ def judge_responses(
             correctness = (
                 correctness_match.group(1).strip() if correctness_match else "Unknown"
             )
-            print(f'Correctness: {correctness}')
+            print(f"Correctness: {correctness}")
 
             # Extract conciseness
             conciseness_pattern = f"<{model_impl}>.*?<Conciseness>(.*?)</Conciseness>"
@@ -203,7 +181,7 @@ def judge_responses(
             conciseness = (
                 conciseness_match.group(1).strip() if conciseness_match else "Unknown"
             )
-            print(f'Conciseness: {conciseness}')
+            print(f"Conciseness: {conciseness}")
 
             evaluations[model_impl] = {
                 "correctness": correctness == "T",
@@ -947,25 +925,11 @@ def run_benchmark(
                         "question_dict": question_dict,
                     }
                 )
-    """
-    for qobj in dataset:
-        question_dict = {
-            "question": qobj["Question"],
-            "answer": qobj["Answer"]
-        }
-        all_questions.append(
-            {
-                "subject": "math",
-                "difficulty": "easy",
-                "question_dict": question_dict,
-            }
-        )
-    """
 
     logger.info(f"Collected {len(all_questions)} questions matching criteria")
     print(f"📋 Collected {len(all_questions)} questions matching criteria")
-    
     print()
+
     # Sample questions if requested
     if sample_size or sample_percent:
         total_questions = len(all_questions)
@@ -1019,9 +983,8 @@ def run_benchmark(
                 response_dict["model_impl"] = impl_name
 
                 # Count thinking tokens
-                thinking_tokens = count_thinking_tokens(
-                    response_dict.get("response", "")
-                )
+                response = response_dict.get("response", "")
+                thinking_tokens = len(tokenizer.encode(response.strip()))
                 response_dict["thinking_tokens"] = thinking_tokens
 
                 llm_results.append(response_dict)
@@ -1086,15 +1049,15 @@ if __name__ == "__main__":
             "llama2:7b",
             "mistral:7b",
         ],
-        default="deepseek-r1:1.5b",
+        default="deepseek-r1:14b",
         help="Model name to use for the benchmark",
     )
     parser.add_argument(
         "--model-impl",
         type=str,
         nargs="+",
-        choices=["simple_rag_llm", "rag_token_llm", "no_rag_llm", "fine_tuned_llm"],
-        default=["simple_rag_llm", "no_rag_llm", "rag_token_llm", "fine_tuned_llm"],
+        choices=["no_rag_llm", "simple_rag_llm", "rag_token_llm", "fine_tuned_llm"],
+        default=["no_rag_llm", "simple_rag_llm", "rag_token_llm", "fine_tuned_llm"],
         help="Model implementations to use for the benchmark (multiple can be specified)",
     )
     parser.add_argument(
@@ -1154,11 +1117,6 @@ if __name__ == "__main__":
     logger.info(f"Command line arguments: {args}")
 
     # Run benchmark with the specified parameters
-    
-    response = "\n<think>\nOkay, so I need to figure out the smallest number of vertices n in a complete graph such that if you color its edges either red or blue, there must be a 4-clique (a complete subgraph with 4 vertices) in either red or blue. This sounds like a Ramsey-type problem, specifically looking for Ramsey numbers. I remember that Ramsey numbers are about the minimum number of vertices needed to guarantee a monochromatic clique of a certain size. \n\nBut let me think through it step by step to make sure I understand the problem correctly. A complete graph with n vertices means every pair of vertices is connected by an edge. Coloring these edges red or blue means partitioning the edges into two color classes. The goal is to find the smallest n where, no matter how you color the edges, you will always end up with at least one 4-clique in either red or blue.\n\nI know that for smaller clique sizes, the Ramsey numbers are established. For example, R(3,3) = 6, which means that in any 2-coloring of the edges of a complete graph with 6 vertices, there is always a monochromatic triangle. However, this problem is about a 4-clique, so I need to find R(4,4).\n\nI should check if I can recall the exact value of R(4,4). From what I remember, the Ramsey number R(s,t) is the smallest number n such that any 2-coloring of the edges of a complete graph on n vertices contains a monochromatic clique of size s in one color or a monochromatic clique of size t in the other color. \n\nI recall that R(4,4) is known to be 18. This is because it is established in graph theory that for n=18, any 2-coloring of the edges of a complete graph will contain either a red 4-clique or a blue 4-clique. \n\nTo confirm this, I can look up the exact value of R(4,4) in a reliable source or mathematical reference. \n\n<SEARCH> Ramsey number R(4,4) </SEARCH>\nThe smallest n that guarantees a 4-clique in either red or blue is 18. This is established by the Ramsey number R(4,4) = 18, which states that in any 2-coloring of the edges of a complete graph with 18 vertices, there must be either a red 4-clique or a blue 4-clique. The proof involves showing that for any graph with 18 vertices, either the graph itself or its complement contains a 4-clique, confirming that 18 is the minimum value required to ensure a monochromatic 4-clique.\n            \n            For example, a graph with 17 vertices can be constructed that neither contains a red 4-clique nor a blue 4-clique. However, once the number of vertices reaches 18, it is impossible to avoid a monochromatic 4-clique regardless of the coloring. This result is well-documented in Ramsey theory, confirming the value of R(4,4) = 18.\n            \n            In conclusion, the smallest n that guarantees the existence of a 4-clique in either red or blue is **18**.\n            \n            If you need further confirmation or additional context, you can perform a RAG call for R(4,4) and its implications in Ramsey theory.\n            \n            </SEARCH>"
-    thinking_tokens = count_thinking_tokens(response)
-    print(f"Thinking tokens: {thinking_tokens}")
-    
     results = run_benchmark(
         model_name=args.model,
         model_impl=args.model_impl,

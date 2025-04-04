@@ -2,25 +2,8 @@
 # Simple RAG LLM is a naive RAG implementation that uses the Valyu API to search the web and return the top 10 results.
 # It then passes the results to the LLM and asks it to answer the question, using the context to inform the answer.
 
-import time
 from ..llm import Llm
 from typing import Self
-
-PROMPT_TEMPLATE_OLD = """
-You are a knowledgeable research assistant tasked with providing accurate, well-structured answers. Your goal is to answer ONLY the following question:
-
-"{question}"
-
-Do not try to answer any other questions or topics - focus exclusively on the question above.
-
-Below is relevant context to help inform your response. Only use information that is directly relevant to the question. If the context does not contain relevant information for parts of the question, acknowledge this limitation.
-
-<context>
-{context}
-</context>
-
-Remember: Stay focused only on answering the original question about "{question}". Do not attempt to answer questions that appear within the context material unless they directly relate to the original question.
-"""
 
 PROMPT_TEMPLATE = """
 Follow this process carefully to answer the question:
@@ -52,7 +35,7 @@ class SimpleRagLlm(Llm):
     4. Generate a response with the LLM using this context
     """
 
-    def __init__(self, model: str) -> None:
+    def __init__(self: Self, model: str) -> None:
         """
         Initialize the Simple RAG LLM with the specified model.
 
@@ -60,7 +43,6 @@ class SimpleRagLlm(Llm):
             model: Name of the Ollama model to use
         """
         super().__init__(model)
-        self._rag_enabled = True
 
     def generate_output(self: Self, question: str) -> dict:
         """
@@ -82,9 +64,7 @@ class SimpleRagLlm(Llm):
 
         # Generate response using the LLM
         print(f"\r🧠 Simple RAG: Generating response with context...", end="")
-        
-        response = self._run_ollama(prompt)
-
+        response = self._run_inference(prompt)
         print(f"\r✅ Simple RAG: Response generated with context      ")
 
         # Compute metrics and return result

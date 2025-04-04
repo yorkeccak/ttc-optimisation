@@ -7,8 +7,7 @@
 from ..llm import Llm
 from typing import Self
 
-
-PROMPT_TEMPLATE_NEW = """
+PROMPT_TEMPLATE = """
 QUESTION: {question}
 
 Answer this question accurately. If you're uncertain about any facts:
@@ -32,32 +31,29 @@ Today's date: April 1, 2025. Be direct and concise.
 
 
 class RagTokenLlm(Llm):
-    def __init__(self, model: str) -> None:
+    def __init__(self: Self, model: str) -> None:
         super().__init__(model)
-        self._rag_enabled = True
-        print(PROMPT_TEMPLATE_NEW.format(
-            question='test',
-            start_rag=self._start_rag,
-            end_rag=self._end_rag,
-            start_result=self._start_result,
-            end_result=self._end_result,
-        ))
+
+        print(
+            PROMPT_TEMPLATE.format(
+                question="test",
+                start_rag=self._start_rag,
+                end_rag=self._end_rag,
+                start_result=self._start_result,
+                end_result=self._end_result,
+            )
+        )
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         print("\n🤔 Initial Question:", question)
-        prompt = PROMPT_TEMPLATE_NEW.format(
+
+        prompt = PROMPT_TEMPLATE.format(
             question=question,
             start_rag=self._start_rag,
             end_rag=self._end_rag,
             start_result=self._start_result,
             end_result=self._end_result,
         )
-        # prompt = PROMPT_TEMPLATE.format(
-        #     question=question,
-        #     start_rag=self._start_rag,
-        #     end_rag=self._end_rag,
-        #     max_turns=max_turns,
-        # )
 
         output = ""
         current_chunk = ""
@@ -67,7 +63,9 @@ class RagTokenLlm(Llm):
             print("\n🤖 Model thinking...")
 
             # Stream the response and check for RAG tokens
-            for chunk in self._run_ollama_stream(prompt, stop_tokens=[self._end_rag]):
+            for chunk in self._run_inference_stream(
+                prompt, stop_tokens=[self._end_rag]
+            ):
                 print(chunk, end="", flush=True)
                 current_chunk += chunk
 

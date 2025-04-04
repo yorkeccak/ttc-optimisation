@@ -23,7 +23,7 @@ class NoRagLlm(Llm):
     2. Generate response using only the LLM's internal knowledge
     """
 
-    def __init__(self, model: str) -> None:
+    def __init__(self: Self, model: str) -> None:
         """
         Initialize the No RAG LLM with the specified model.
 
@@ -31,7 +31,6 @@ class NoRagLlm(Llm):
             model: Name of the Ollama model to use
         """
         super().__init__(model)
-        self._rag_enabled = False
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         """
@@ -51,7 +50,7 @@ class NoRagLlm(Llm):
         prompt = PROMPT_TEMPLATE.format(question=question)
 
         # Generate response using the LLM
-        response = self._run_ollama(prompt)
+        response = self._run_inference(prompt)
         print(f"\r✅ No RAG: Response generated using internal knowledge only       ")
 
         # Compute metrics and return result

@@ -9,3 +9,5 @@ tiktoken
 openai
 fpdf
 cohere
+transformers
+peft

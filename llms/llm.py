@@ -7,49 +7,6 @@ import tiktoken
 import cohere
 import os
 
-# Initialize tokenizer for token counting
-tokenizer = tiktoken.get_encoding("cl100k_base")
-
-
-WEB_SEARCH_PROMPT_OLD = """**Task Instruction:**
-
-You are tasked with reading and analyzing web pages based on the following inputs: **Previous Reasoning Steps**, **Current Search Query**, and **Searched Web Pages**. Your objective is to extract relevant and helpful information for **Current Search Query** from the **Searched Web Pages** and seamlessly integrate this information into the **Previous Reasoning Steps** to continue reasoning for the original question.
-
-**Guidelines:**
-
-1. **Analyze the Searched Web Pages:**
-- Carefully review the content of each searched web page.
-- Identify factual information that is relevant to the **Current Search Query** and can aid in the reasoning process for the original question.
-
-2. **Extract Relevant Information:**
-- Select the information from the Searched Web Pages that directly contributes to advancing the **Previous Reasoning Steps**.
-- Ensure that the extracted information is accurate and relevant.
-
-3. **Output Format:**
-- **If the web pages provide helpful information for current search query:** Present the information beginning with `**Final Information**` as shown below.
-**Final Information**
-
-[Helpful information]
-
-- **If the web pages do not provide any helpful information for current search query:** Output the following text.
-
-**Final Information**
-
-No helpful information found.
-
-**Inputs:**
-- **Previous Reasoning Steps:**  
-{prev_reasoning}
-
-- **Current Search Query:**  
-{search_query}
-
-- **Searched Web Pages:**  
-{document}
-
-Now you should analyze each web page and find helpful information based on the current search query "{search_query}" and previous reasoning steps.
-"""
-
 WEB_SEARCH_PROMPT = """**Task Instruction: EXTRACTION ONLY, DO NOT ANSWER THE QUESTION**
 
 You are an information extraction tool ONLY. Your job is to extract relevant facts from web pages WITHOUT answering, reasoning about, or addressing the original question directly.
@@ -82,12 +39,12 @@ class Llm(ABC):
         super().__init__()
         self._model = model
         self._valyu = Valyu()
-        self._rag_enabled = False
         self._start_rag = "<begin_search_query>"
         self._end_rag = "</end_search_query>"
         self._start_result = "<begin_search_result>"
         self._end_result = "</end_search_result>"
-        self._filtered_search_results = ""  # Store filtered search results
+        self._filtered_search_results = ""
+        self._tokenizer = tiktoken.get_encoding("cl100k_base")
 
     def _run_valyu(
         self: Self,
@@ -130,11 +87,10 @@ class Llm(ABC):
         # Filter results
         print(f"\r🧠 Filtering search results with Cohere...", end="")
         filtered_results = self._filter_results(previous_reasoning, query, raw_results)
-        # filtered_results = raw_results
         print(f"\r✅ Search results filtered                    ")
 
         # Store the filtered results for later retrieval
-        self._filtered_search_results = raw_results
+        self._filtered_search_results = filtered_results
 
         return filtered_results
 
@@ -169,7 +125,7 @@ class Llm(ABC):
 
         return response.text
 
-    def _run_ollama(self: Self, prompt: str, stop_tokens=None) -> str:
+    def _run_inference(self: Self, prompt: str, stop_tokens=None) -> str:
         """
         Runs the model with the given prompt and returns the response.
 
@@ -190,7 +146,7 @@ class Llm(ABC):
 
         return response["response"]
 
-    def _run_ollama_stream(
+    def _run_inference_stream(
         self: Self, prompt: str, stop_tokens=None
     ) -> Generator[str, None, None]:
         """
@@ -240,7 +196,7 @@ class Llm(ABC):
             Dictionary containing metrics and model response
         """
         # Count tokens in the response
-        response_tokens = len(tokenizer.encode(response))
+        response_tokens = len(self._tokenizer.encode(response.strip()))
 
         # Count number of search queries
         search_queries = len(re.findall(re.escape(self._start_rag), response))
