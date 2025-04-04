@@ -27,6 +27,7 @@ ENV/
 .env
 .venv
 env.bak/
+.test_env
 venv.bak/
 ._env/
 
@@ -59,7 +60,11 @@ benchmark.log
 
 results/*
 
-# Temporary files
+# Temporary files and folders
 subset_creation.py
 
 unsloth_compiled_cache/
+results/
+llm_models/
+bin/
+.cache/

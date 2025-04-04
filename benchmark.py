@@ -1063,7 +1063,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dataset",
         type=str,
-        default="benchmark.json",
+        default="datasets/benchmark.json",
         help="Path to benchmark dataset",
     )
     parser.add_argument("--sample-size", type=int, help="Number of questions to sample")
