@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import ollama
 import re
 import time
-from typing import Self, Generator, List, Tuple
+from typing import Self, Generator
 from valyu import Valyu
 import tiktoken
 import cohere
@@ -187,7 +187,10 @@ class Llm(ABC):
                     self._in_thinking = False
                     thinking_time = time.time() - self._thinking_start
                     self._thinking_times.append(thinking_time)
-                    print(f"\r✅ Thinking completed in {thinking_time:.2f} seconds", end="")
+                    print(
+                        f"\r✅ Thinking completed in {thinking_time:.2f} seconds",
+                        end="",
+                    )
                     buffer = ""  # Reset buffer after capturing a thinking session
                 yield text_chunk
         finally:
@@ -249,6 +252,9 @@ class Llm(ABC):
         # Add filtered search results if available
         if self._filtered_search_results:
             metrics["filtered_search_results"] = self._filtered_search_results
+
+        # Reset filtered search results
+        self._filtered_search_results = ""
 
         # Reset thinking times for next query
         self._thinking_times = []

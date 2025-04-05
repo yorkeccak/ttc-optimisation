@@ -2,11 +2,10 @@
 # Fine-tuned LLM is a more sophisticated version of rag_token_llm.py that uses a fine-tuned model to output search tokens instead of prompt engineering.
 
 from ..llm import Llm
-from typing import Self
+from typing import Self, Generator
 import torch
 import threading
 import time
-import re
 from transformers import (
     AutoTokenizer,
     AutoModelForCausalLM,
@@ -15,7 +14,6 @@ from transformers import (
     TextIteratorStreamer,
 )
 from peft import PeftModel
-
 
 PROMPT_TEMPLATE = """
 QUESTION: {question}
@@ -38,7 +36,7 @@ Tokyo has a population of approximately 13.96 million people.
 
 Today's date: April 5th, 2025. Be direct and concise.
 
-### Response:
+### Response:
 """
 
 
@@ -57,9 +55,8 @@ class FineTunedLlm(Llm):
         self._end_rag = "</search_query>"
         self._start_result = "<search_result>"
         self._end_result = "</search_result>"
-        self._thinking_tags = ("<think>", "</think>")
 
-        self.tokenizer = AutoTokenizer.from_pretrained(
+        self._ft_tokenizer = AutoTokenizer.from_pretrained(
             "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Tokenizer_v3",
             cache_dir="./.cache/huggingface/hub",
         )
@@ -80,30 +77,34 @@ class FineTunedLlm(Llm):
             bnb_4bit_compute_dtype=torch.float16,
         )
 
-        base_model.resize_token_embeddings(len(self.tokenizer))
+        base_model.resize_token_embeddings(len(self._ft_tokenizer))
 
         # =============================
         # = ADD ADAPTER TO BASE MODEL =
         # =============================
 
-        self.model = PeftModel.from_pretrained(
+        self._ft_model = PeftModel.from_pretrained(
             base_model,
             "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter_v3",
             cache_dir="./.cache/huggingface/hub",
             device_map="auto",
         )
 
-        self.model.eval()
+        self._ft_model.eval()
 
-    def _run_inference_stream(self: Self, prompt: str, stop_tokens=None):
+    def _run_inference_stream(
+        self: Self, prompt: str, stop_tokens=None
+    ) -> Generator[str, None, None]:
         # Prepare model for inference (no need for FastLanguageModel)
-        self.model.eval()
+        self._ft_model.eval()
 
-        inputs = self.tokenizer([prompt], return_tensors="pt").to(self.model.device)
-        stop_token_id = self.tokenizer.convert_tokens_to_ids(self._end_rag)
+        inputs = self._ft_tokenizer([prompt], return_tensors="pt").to(
+            self._ft_model.device
+        )
+        stop_token_id = self._ft_tokenizer.convert_tokens_to_ids(self._end_rag)
         stopping_criteria = StoppingCriteriaList([StopOnTokens([stop_token_id])])
         streamer = TextIteratorStreamer(
-            self.tokenizer, skip_prompt=True, skip_special_tokens=True
+            self._ft_tokenizer, skip_prompt=True, skip_special_tokens=True
         )
 
         generation_kwargs = {
@@ -112,17 +113,17 @@ class FineTunedLlm(Llm):
             "max_new_tokens": 8192,
             "use_cache": True,
             "stopping_criteria": stopping_criteria,
-            "pad_token_id": self.tokenizer.eos_token_id,
+            "pad_token_id": self._ft_tokenizer.eos_token_id,
             "streamer": streamer,
         }
 
         # Start generation in a separate thread
-        thread = threading.Thread(target=self.model.generate, kwargs=generation_kwargs)
+        thread = threading.Thread(
+            target=self._ft_model.generate, kwargs=generation_kwargs
+        )
         thread.start()
 
         # Track thinking state
-        in_thinking = False
-        thinking_start_time = None
         buffer = ""
         # Yield from the streamer
         for text in streamer:

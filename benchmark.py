@@ -73,7 +73,7 @@ def count_thinking_tokens(text: str) -> int:
     matches = re.findall(pattern, text, flags=re.DOTALL)
 
     if not matches:
-        return 0  # Return 0 if no thinking tags are found
+        return len(tokenizer.encode(text.strip()))
 
     return sum(len(tokenizer.encode(match.strip())) for match in matches)
 
