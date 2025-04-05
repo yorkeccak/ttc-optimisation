@@ -63,9 +63,8 @@ class RagTokenLlm(Llm):
             print("\n🤖 Model thinking...")
 
             # Stream the response and check for RAG tokens (timing is handled in _run_inference_stream)
-            stream = self._run_inference_stream(
-                prompt, stop_tokens=[self._end_rag]
-            )
+            stream = self._run_inference_stream(prompt, stop_tokens=[self._end_rag])
+
             for chunk in stream:
                 print(chunk, end="", flush=True)
                 current_chunk += chunk
