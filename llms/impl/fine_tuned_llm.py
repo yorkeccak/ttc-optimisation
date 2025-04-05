@@ -12,26 +12,28 @@ from transformers import (
 )
 from peft import PeftModel
 
-PROMPT_TEMPLATE = """
-QUESTION: {question}
+PROMPT_TEMPLATE = """Below is an instruction that describes a task, paired with an input that provides further context.
 
-Answer this question accurately. If you're uncertain about any facts:
-1. IMMEDIATELY output a search query between {start_rag} and {end_rag} tags
-2. Wait for search results between {start_result} and {end_result}
-3. Use these results to complete your answer
+Write a response that appropriately completes the request.
 
-EXAMPLES:
-Q: "Who is the current CEO of OpenAI?"
-{start_rag}current CEO of OpenAI 2025{end_rag}
-{start_result}Sam Altman returned as OpenAI CEO in November 2023 and continues to serve in this role as of March 2025.{end_result}
-The current CEO of OpenAI is Sam Altman.
+Before answering, think carefully about the question and create a step-by-step chain of thoughts to ensure a logical and accurate response.
 
-Q: "What is the population of Tokyo?"
-{start_rag}current population of Tokyo 2025{end_rag}
-{start_result}Tokyo's population is approximately 13.96 million as of January 2025.{end_result}
-Tokyo has a population of approximately 13.96 million people.
+If the answer relies on obscure concepts, knowledge unlikely to be in pretraining, or time-sensitive facts, trigger retrieval by:
+1.⁠ ⁠Output a search query between {start_rag} and {end_rag} tags
+2.⁠ ⁠Wait for search results between {start_result} and {end_result}
+3.⁠ ⁠Use these results to complete your answer
 
-Today's date: April 1, 2025. Be direct and concise.
+Multiple retrievals may be included in a single Chain of Thought, including multiple lookups for the same topic (e.g., clarification followed by fact checking).
+
+Today's date is April 1, 2025.
+
+### Instruction:
+You are a scientific expert with advanced knowledge in analytical reasoning, problem-solving, and quantitative analysis across various disciplines, including mathematics, physics, biology, chemistry, and engineering. Please answer the following question.
+
+### Question:
+{question}
+
+### Response:
 """
 
 
@@ -46,10 +48,13 @@ class StopOnTokens(StoppingCriteria):
 class FineTunedLlm(Llm):
     def __init__(self: Self, model: str) -> None:
         super().__init__(model)
+        self._start_rag = "<search_query>"
+        self._end_rag = "</search_query>"
+        self._start_result = "<search_result>"
+        self._end_result = "</search_result>"
 
-        # Fix tokenizer initialization - should happen before using it
         self.tokenizer = AutoTokenizer.from_pretrained(
-            "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Tokenizer",
+            "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Tokenizer_v3",
             cache_dir="./.cache/huggingface/hub",
         )
 
@@ -73,7 +78,7 @@ class FineTunedLlm(Llm):
 
         self.model = PeftModel.from_pretrained(
             base_model,
-            "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter",
+            "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Adapter_v3",
             cache_dir="./.cache/huggingface/hub",
             device_map="auto",
         )
