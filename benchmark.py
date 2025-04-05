@@ -55,6 +55,28 @@ MODEL_MAP = {
     "fine_tuned_llm": FineTunedLlm,
 }
 
+START_THINK = "<think>"
+END_THINK = "</think>"
+
+
+def count_thinking_tokens(text: str) -> int:
+    """
+    Count tokens within <think></think> tags.
+
+    Args:
+        text: Text containing thinking sections
+
+    Returns:
+        Total number of tokens in thinking sections
+    """
+    pattern = re.escape(START_THINK) + r"(.*?)" + re.escape(END_THINK)
+    matches = re.findall(pattern, text, flags=re.DOTALL)
+
+    if not matches:
+        return len(tokenizer.encode(text.strip()))
+
+    return sum(len(tokenizer.encode(match.strip())) for match in matches)
+
 
 def create_results_folder():
     """
@@ -983,7 +1005,7 @@ def run_benchmark(
 
                 # Count thinking tokens
                 response = response_dict.get("response", "")
-                thinking_tokens = len(tokenizer.encode(response.strip()))
+                thinking_tokens = count_thinking_tokens(response)
                 response_dict["thinking_tokens"] = thinking_tokens
 
                 llm_results.append(response_dict)

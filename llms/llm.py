@@ -196,7 +196,7 @@ class Llm(ABC):
             Dictionary containing metrics and model response
         """
         # Count tokens in the response
-        response_tokens = len(self._tokenizer.encode(response.strip()))
+        response_tokens = len(self._tokenizer.encode(response))
 
         # Count number of search queries
         search_queries = len(re.findall(re.escape(self._start_rag), response))
