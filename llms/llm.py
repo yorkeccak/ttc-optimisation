@@ -47,6 +47,8 @@ class Llm(ABC):
         self._filtered_search_results = ""
         self._tokenizer = tiktoken.get_encoding("cl100k_base")
         self._thinking_tags = ("<think>", "</think>")
+        self._thinking_start = None
+        self._in_thinking = False
         self._thinking_times = []  # Track multiple thinking session times
 
     def _run_valyu(
@@ -90,7 +92,7 @@ class Llm(ABC):
         # Filter results
         print(f"\r🧠 Filtering search results with Cohere...", end="")
         filtered_results = self._filter_results(previous_reasoning, query, raw_results)
-        print(f"\r✅ Search results filtered                    ")
+        print(f"\r✅ Search results filtered ")
 
         # Store the filtered results for later retrieval
         self._filtered_search_results = filtered_results
@@ -170,34 +172,32 @@ class Llm(ABC):
             options={"stop": stop_tokens or []} if stop_tokens else {},
         )
 
-        in_thinking = False
-        thinking_start_time = None
         buffer = ""
         try:
             for chunk in stream:
                 text_chunk = chunk["message"]["content"]
                 buffer += text_chunk
-
                 # Check for thinking start and end in the buffer
-                if not in_thinking and "<think>" in buffer:
-                    in_thinking = True
-                    thinking_start_time = time.time()
+                if not self._in_thinking and "<think>" in buffer:
+                    self._in_thinking = True
+                    self._thinking_start = time.time()
                     print(f"\r🧠 Thinking started...", end="")
 
-                if in_thinking and "</think>" in buffer:
-                    in_thinking = False
-                    thinking_time = time.time() - thinking_start_time
+                if self._in_thinking and "</think>" in buffer:
+                    self._in_thinking = False
+                    thinking_time = time.time() - self._thinking_start
                     self._thinking_times.append(thinking_time)
                     print(f"\r✅ Thinking completed in {thinking_time:.2f} seconds", end="")
                     buffer = ""  # Reset buffer after capturing a thinking session
-
                 yield text_chunk
         finally:
+            print("\r✅ Stream ended, cleaning up...", end="")
             # Handle the case where we search
-            if in_thinking:
-                thinking_time = time.time() - thinking_start_time
+            if self._in_thinking:
+                self._in_thinking = False
+                thinking_time = time.time() - self._thinking_start
                 self._thinking_times.append(thinking_time)
-                print(f"\r✅ Thinking interrupted but captured ({thinking_time:.2f} seconds)", end="")
+                print(f"\r✅ Thinking captured ({thinking_time:.2f} seconds)", end="")
 
     def _extract_rag_query(self: Self, text: str) -> str | None:
         """
@@ -234,7 +234,6 @@ class Llm(ABC):
         # Count number of search results
         search_results = len(re.findall(re.escape(self._start_result), response))
 
-        # Calculate total thinking time
         total_thinking_time = sum(self._thinking_times) if self._thinking_times else 0
 
         # Include filtered search results if available

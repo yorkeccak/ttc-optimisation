@@ -72,7 +72,6 @@ class RagTokenLlm(Llm):
 
                 # Check if we have a complete RAG query
                 if self._start_rag in current_chunk and self._end_rag in current_chunk:
-                    stream.close()
                     break
 
             # Ensure the RAG query is properly terminated
@@ -112,4 +111,7 @@ If you need additional information, you can search again using {self._start_rag}
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
             current_chunk = ""
 
+        self._in_thinking = False
+        self._thinking_start = None
+        
         return self._compute_metrics(output)

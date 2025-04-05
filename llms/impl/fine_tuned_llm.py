@@ -124,25 +124,28 @@ class FineTunedLlm(Llm):
         in_thinking = False
         thinking_start_time = None
         buffer = ""
-
         # Yield from the streamer
         for text in streamer:
+            print(f"{text}", end="", flush=True)
             buffer += text
 
             # Check for thinking start and end in the buffer
-            if not self._in_thinking and "<think>" in buffer:
+            if not self._in_thinking and "<think>" in buffer: 
                 self._in_thinking = True
                 self._thinking_start = time.time()
                 print(f"\r🧠 Thinking started...", end="")
 
-            if self._in_thinking and "</think>" in buffer:
-                self._in_thinking = False
-                thinking_time = time.time() - self._thinking_start
-                self._thinking_times.append(thinking_time)
-                print(f"\r✅ Thinking final turn completed in {thinking_time:.2f} seconds", end="")
-                buffer = ""  # Reset buffer after capturing a thinking session
-
+             # Get thinking time if incomplete thinking
+            if self._in_thinking and ((self._end_rag in buffer) or ("</think>" in buffer)): 
+                # Capture thinking time up to this point and restart for next turn
+                current_thinking_time = time.time() - self._thinking_start
+                self._thinking_times.append(current_thinking_time)
+                if ("</think>" in buffer):
+                    self._in_thinking = False
+                    self._thinking_start = None
+                print(f"\r✅ Thinking ended ({current_thinking_time:.2f} seconds)", end="")
             yield text
+
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         prompt = PROMPT_TEMPLATE.format(
@@ -159,17 +162,9 @@ class FineTunedLlm(Llm):
             print(f"\n--- Turn {turn+1} ---")
             # Stream the response
             response = ""
-            print("Model Response: \n", end="", flush=True)
+            print("Model Response: \n", end="")
             for chunk in self._run_inference_stream(prompt):
                 response += chunk
-                print(f"{chunk}", end="", flush=True)
-            
-            # Get thinking time if incomplete thinking
-            if self._in_thinking and self._thinking_start is not None:
-                # Capture thinking time up to this point and restart for next turn
-                current_thinking_time = time.time() - self._thinking_start
-                self._thinking_times.append(current_thinking_time)
-                print(f"\r✅ Thinking partial segment captured ({current_thinking_time:.2f} seconds)", end="")
 
             output += "\n" + response
             search_query = self._extract_rag_query(response)
@@ -192,7 +187,6 @@ Use the search results above to help answer the original question: "{question}"
 Do not just summarize or explain the search results - use them to provide a direct answer to the question.
 If you need additional information, you can search again
 """
-
             embedded_context = (
                 f"\n{self._start_result}\n{res}\n{self._end_result}\n{focus_reminder}"
             )
@@ -202,10 +196,7 @@ If you need additional information, you can search again
             self._thinking_start = time.time()
         
          # Final cleanup in case thinking state is still active at the end
-        if self._in_thinking and self._thinking_start is not None:
-            final_thinking_time = time.time() - self._thinking_start
-            self._thinking_times.append(final_thinking_time)
-            self._in_thinking = False
-            self._thinking_start = None
+        self._in_thinking = False
+        self._thinking_start = None
 
         return self._compute_metrics(output)
