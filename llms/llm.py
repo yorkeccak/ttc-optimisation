@@ -215,7 +215,8 @@ class Llm(ABC):
         # Add filtered search results if available
         if self._filtered_search_results:
             metrics["filtered_search_results"] = self._filtered_search_results
-
+        # Reset filtered search results
+        self._filtered_search_results = ""
         return metrics
 
     @abstractmethod
