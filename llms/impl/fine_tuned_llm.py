@@ -64,6 +64,10 @@ class FineTunedLlm(Llm):
             cache_dir="./.cache/huggingface/hub",
         )
 
+        # Add these state tracking variables
+        self._in_thinking = False
+        self._thinking_start = None
+
         # ===================
         # = LOAD BASE MODEL =
         # ===================
@@ -126,16 +130,16 @@ class FineTunedLlm(Llm):
             buffer += text
 
             # Check for thinking start and end in the buffer
-            if not in_thinking and "<think>" in buffer:
-                in_thinking = True
-                thinking_start_time = time.time()
+            if not self._in_thinking and "<think>" in buffer:
+                self._in_thinking = True
+                self._thinking_start = time.time()
                 print(f"\r🧠 Thinking started...", end="")
 
-            if in_thinking and "</think>" in buffer:
-                in_thinking = False
-                thinking_time = time.time() - thinking_start_time
+            if self._in_thinking and "</think>" in buffer:
+                self._in_thinking = False
+                thinking_time = time.time() - self._thinking_start
                 self._thinking_times.append(thinking_time)
-                print(f"\r✅ Thinking completed in {thinking_time:.2f} seconds", end="")
+                print(f"\r✅ Thinking final turn completed in {thinking_time:.2f} seconds", end="")
                 buffer = ""  # Reset buffer after capturing a thinking session
 
             yield text
@@ -159,6 +163,13 @@ class FineTunedLlm(Llm):
             for chunk in self._run_inference_stream(prompt):
                 response += chunk
                 print(f"{chunk}", end="", flush=True)
+            
+            # Get thinking time if incomplete thinking
+            if self._in_thinking and self._thinking_start is not None:
+                # Capture thinking time up to this point and restart for next turn
+                current_thinking_time = time.time() - self._thinking_start
+                self._thinking_times.append(current_thinking_time)
+                print(f"\r✅ Thinking partial segment captured ({current_thinking_time:.2f} seconds)", end="")
 
             output += "\n" + response
             search_query = self._extract_rag_query(response)
@@ -187,5 +198,14 @@ If you need additional information, you can search again
             )
             prompt += f"\n{response}\n{embedded_context}\n"
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
+            # Reset thinking for next turn after API call
+            self._thinking_start = time.time()
+        
+         # Final cleanup in case thinking state is still active at the end
+        if self._in_thinking and self._thinking_start is not None:
+            final_thinking_time = time.time() - self._thinking_start
+            self._thinking_times.append(final_thinking_time)
+            self._in_thinking = False
+            self._thinking_start = None
 
         return self._compute_metrics(output)

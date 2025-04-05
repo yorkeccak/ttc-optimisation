@@ -63,14 +63,16 @@ class RagTokenLlm(Llm):
             print("\n🤖 Model thinking...")
 
             # Stream the response and check for RAG tokens (timing is handled in _run_inference_stream)
-            for chunk in self._run_inference_stream(
+            stream = self._run_inference_stream(
                 prompt, stop_tokens=[self._end_rag]
-            ):
+            )
+            for chunk in stream:
                 print(chunk, end="", flush=True)
                 current_chunk += chunk
 
                 # Check if we have a complete RAG query
                 if self._start_rag in current_chunk and self._end_rag in current_chunk:
+                    stream.close()
                     break
 
             # Ensure the RAG query is properly terminated

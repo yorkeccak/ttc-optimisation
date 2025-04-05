@@ -173,25 +173,31 @@ class Llm(ABC):
         in_thinking = False
         thinking_start_time = None
         buffer = ""
+        try:
+            for chunk in stream:
+                text_chunk = chunk["message"]["content"]
+                buffer += text_chunk
 
-        for chunk in stream:
-            text_chunk = chunk["message"]["content"]
-            buffer += text_chunk
+                # Check for thinking start and end in the buffer
+                if not in_thinking and "<think>" in buffer:
+                    in_thinking = True
+                    thinking_start_time = time.time()
+                    print(f"\r🧠 Thinking started...", end="")
 
-            # Check for thinking start and end in the buffer
-            if not in_thinking and "<think>" in buffer:
-                in_thinking = True
-                thinking_start_time = time.time()
-                print(f"\r🧠 Thinking started...", end="")
+                if in_thinking and "</think>" in buffer:
+                    in_thinking = False
+                    thinking_time = time.time() - thinking_start_time
+                    self._thinking_times.append(thinking_time)
+                    print(f"\r✅ Thinking completed in {thinking_time:.2f} seconds", end="")
+                    buffer = ""  # Reset buffer after capturing a thinking session
 
-            if in_thinking and "</think>" in buffer:
-                in_thinking = False
+                yield text_chunk
+        finally:
+            # Handle the case where we search
+            if in_thinking:
                 thinking_time = time.time() - thinking_start_time
                 self._thinking_times.append(thinking_time)
-                print(f"\r✅ Thinking completed in {thinking_time:.2f} seconds", end="")
-                buffer = ""  # Reset buffer after capturing a thinking session
-
-            yield text_chunk
+                print(f"\r✅ Thinking interrupted but captured ({thinking_time:.2f} seconds)", end="")
 
     def _extract_rag_query(self: Self, text: str) -> str | None:
         """
