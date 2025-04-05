@@ -5,12 +5,14 @@ from ..llm import Llm
 from typing import Self
 import torch
 import threading
+import time
+import re
 from transformers import (
     AutoTokenizer,
     AutoModelForCausalLM,
     StoppingCriteria,
     StoppingCriteriaList,
-    TextIteratorStreamer
+    TextIteratorStreamer,
 )
 from peft import PeftModel
 
@@ -39,6 +41,7 @@ Today's date: April 5th, 2025. Be direct and concise.
 ### Response:
 """
 
+
 class StopOnTokens(StoppingCriteria):
     def __init__(self, stop_ids):
         self.stop_ids = stop_ids
@@ -54,6 +57,7 @@ class FineTunedLlm(Llm):
         self._end_rag = "</search_query>"
         self._start_result = "<search_result>"
         self._end_result = "</search_result>"
+        self._thinking_tags = ("<think>", "</think>")
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             "canertugrul/DeepSeek-R1-Distill-Qwen-14B-Tool-Use-Tokenizer_v3",
@@ -86,7 +90,7 @@ class FineTunedLlm(Llm):
         )
 
         self.model.eval()
-    
+
     def _run_inference_stream(self: Self, prompt: str, stop_tokens=None):
         # Prepare model for inference (no need for FastLanguageModel)
         self.model.eval()
@@ -95,11 +99,9 @@ class FineTunedLlm(Llm):
         stop_token_id = self.tokenizer.convert_tokens_to_ids(self._end_rag)
         stopping_criteria = StoppingCriteriaList([StopOnTokens([stop_token_id])])
         streamer = TextIteratorStreamer(
-            self.tokenizer, 
-            skip_prompt=True,
-            skip_special_tokens=True
+            self.tokenizer, skip_prompt=True, skip_special_tokens=True
         )
-    
+
         generation_kwargs = {
             "input_ids": inputs.input_ids,
             "attention_mask": inputs.attention_mask,
@@ -109,13 +111,33 @@ class FineTunedLlm(Llm):
             "pad_token_id": self.tokenizer.eos_token_id,
             "streamer": streamer,
         }
-        
+
         # Start generation in a separate thread
         thread = threading.Thread(target=self.model.generate, kwargs=generation_kwargs)
         thread.start()
-        
+
+        # Track thinking state
+        in_thinking = False
+        thinking_start_time = None
+        buffer = ""
+
         # Yield from the streamer
         for text in streamer:
+            buffer += text
+
+            # Check for thinking start and end in the buffer
+            if not in_thinking and "<think>" in buffer:
+                in_thinking = True
+                thinking_start_time = time.time()
+                print(f"\r🧠 Thinking started...", end="")
+
+            if in_thinking and "</think>" in buffer:
+                in_thinking = False
+                thinking_time = time.time() - thinking_start_time
+                self._thinking_times.append(thinking_time)
+                print(f"\r✅ Thinking completed in {thinking_time:.2f} seconds", end="")
+                buffer = ""  # Reset buffer after capturing a thinking session
+
             yield text
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:

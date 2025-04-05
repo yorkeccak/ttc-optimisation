@@ -49,8 +49,11 @@ class NoRagLlm(Llm):
         )
         prompt = PROMPT_TEMPLATE.format(question=question)
 
-        # Generate response using the LLM
-        response = self._run_inference(prompt)
+        # Generate response by streaming to properly time the thinking process
+        response = ""
+        for chunk in self._run_inference_stream(prompt):
+            response += chunk
+
         print(f"\r✅ No RAG: Response generated using internal knowledge only       ")
 
         # Compute metrics and return result

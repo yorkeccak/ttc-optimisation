@@ -62,7 +62,7 @@ class RagTokenLlm(Llm):
             print(f"\n📝 Turn {turn+1}/{max_turns} ---")
             print("\n🤖 Model thinking...")
 
-            # Stream the response and check for RAG tokens
+            # Stream the response and check for RAG tokens (timing is handled in _run_inference_stream)
             for chunk in self._run_inference_stream(
                 prompt, stop_tokens=[self._end_rag]
             ):
