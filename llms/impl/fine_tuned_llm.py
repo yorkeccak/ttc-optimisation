@@ -4,11 +4,13 @@
 from ..llm import Llm
 from typing import Self
 import torch
+import threading
 from transformers import (
     AutoTokenizer,
     AutoModelForCausalLM,
     StoppingCriteria,
     StoppingCriteriaList,
+    TextIteratorStreamer
 )
 from peft import PeftModel
 
@@ -92,21 +94,29 @@ class FineTunedLlm(Llm):
         inputs = self.tokenizer([prompt], return_tensors="pt").to(self.model.device)
         stop_token_id = self.tokenizer.convert_tokens_to_ids(self._end_rag)
         stopping_criteria = StoppingCriteriaList([StopOnTokens([stop_token_id])])
-
-        outputs = self.model.generate(
-            input_ids=inputs.input_ids,
-            attention_mask=inputs.attention_mask,
-            max_new_tokens=8192,
-            use_cache=True,
-            stopping_criteria=stopping_criteria,
-            pad_token_id=self.tokenizer.eos_token_id,
+        streamer = TextIteratorStreamer(
+            self.tokenizer, 
+            skip_prompt=True,
+            skip_special_tokens=True
         )
-
-        # skip the prompt tokens
-        generated_tokens = outputs[0][inputs.input_ids.shape[-1] :]
-        response = self.tokenizer.decode(generated_tokens)
-
-        return response
+    
+        generation_kwargs = {
+            "input_ids": inputs.input_ids,
+            "attention_mask": inputs.attention_mask,
+            "max_new_tokens": 8192,
+            "use_cache": True,
+            "stopping_criteria": stopping_criteria,
+            "pad_token_id": self.tokenizer.eos_token_id,
+            "streamer": streamer,
+        }
+        
+        # Start generation in a separate thread
+        thread = threading.Thread(target=self.model.generate, kwargs=generation_kwargs)
+        thread.start()
+        
+        # Yield from the streamer
+        for text in streamer:
+            yield text
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         prompt = PROMPT_TEMPLATE.format(
@@ -121,8 +131,12 @@ class FineTunedLlm(Llm):
 
         for turn in range(max_turns):
             print(f"\n--- Turn {turn+1} ---")
-            response = self._run_inference(prompt)
-            print(f"Model Response:\n{response}")
+            # Stream the response
+            response = ""
+            print("Model Response: \n", end="", flush=True)
+            for chunk in self._run_inference(prompt):
+                response += chunk
+                print(f"{chunk}", end="", flush=True)
 
             output += "\n" + response
             search_query = self._extract_rag_query(response)
