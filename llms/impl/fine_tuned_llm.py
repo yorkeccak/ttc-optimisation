@@ -14,30 +14,30 @@ from transformers import (
 )
 from peft import PeftModel
 
-PROMPT_TEMPLATE = """Below is an instruction that describes a task, paired with an input that provides further context.
 
-Write a response that appropriately completes the request.
+PROMPT_TEMPLATE = """
+QUESTION: {question}
 
-Before answering, think carefully about the question and create a step-by-step chain of thoughts to ensure a logical and accurate response.
+Answer this question accurately. If you're uncertain about any facts:
+1. IMMEDIATELY output a search query between {start_rag} and {end_rag} tags
+2. Wait for search results between {start_result} and {end_result}
+3. Use these results to complete your answer
 
-If the answer relies on obscure concepts, knowledge unlikely to be in pretraining, or time-sensitive facts, trigger retrieval by:
-1.⁠ ⁠Output a search query between {start_rag} and {end_rag} tags
-2.⁠ ⁠Wait for search results between {start_result} and {end_result}
-3.⁠ ⁠Use these results to complete your answer
+EXAMPLES:
+Q: "Who is the current CEO of OpenAI?"
+{start_rag}current CEO of OpenAI 2025{end_rag}
+{start_result}Sam Altman returned as OpenAI CEO in November 2023 and continues to serve in this role as of March 2025.{end_result}
+The current CEO of OpenAI is Sam Altman.
 
-Multiple retrievals may be included in a single Chain of Thought, including multiple lookups for the same topic (e.g., clarification followed by fact checking).
+Q: "What is the population of Tokyo?"
+{start_rag}current population of Tokyo 2025{end_rag}
+{start_result}Tokyo's population is approximately 13.96 million as of January 2025.{end_result}
+Tokyo has a population of approximately 13.96 million people.
 
-Today's date is April 1, 2025.
-
-### Instruction:
-You are a scientific expert with advanced knowledge in analytical reasoning, problem-solving, and quantitative analysis across various disciplines, including mathematics, physics, biology, chemistry, and engineering. Please answer the following question.
-
-### Question:
-{question}
+Today's date: April 5th, 2025. Be direct and concise.
 
 ### Response:
 """
-
 
 class StopOnTokens(StoppingCriteria):
     def __init__(self, stop_ids):
@@ -86,8 +86,8 @@ class FineTunedLlm(Llm):
         )
 
         self.model.eval()
-
-    def _run_inference(self: Self, prompt: str, stop_tokens=None):
+    
+    def _run_inference_stream(self: Self, prompt: str, stop_tokens=None):
         # Prepare model for inference (no need for FastLanguageModel)
         self.model.eval()
 
@@ -126,7 +126,7 @@ class FineTunedLlm(Llm):
             start_result=self._start_result,
             end_result=self._end_result,
         )
-
+        print(f"Prompt: {prompt}")
         output = ""
 
         for turn in range(max_turns):
@@ -134,7 +134,7 @@ class FineTunedLlm(Llm):
             # Stream the response
             response = ""
             print("Model Response: \n", end="", flush=True)
-            for chunk in self._run_inference(prompt):
+            for chunk in self._run_inference_stream(prompt):
                 response += chunk
                 print(f"{chunk}", end="", flush=True)
 
