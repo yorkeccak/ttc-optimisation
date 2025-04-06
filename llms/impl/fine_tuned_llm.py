@@ -131,22 +131,25 @@ class FineTunedLlm(Llm):
             buffer += text
 
             # Check for thinking start and end in the buffer
-            if not self._in_thinking and "<think>" in buffer: 
+            if not self._in_thinking and "<think>" in buffer:
                 self._in_thinking = True
                 self._thinking_start = time.time()
                 print(f"\r🧠 Thinking started...", end="")
 
-             # Get thinking time if incomplete thinking
-            if self._in_thinking and ((self._end_rag in buffer) or ("</think>" in buffer)): 
+            # Get thinking time if incomplete thinking
+            if self._in_thinking and (
+                (self._end_rag in buffer) or ("</think>" in buffer)
+            ):
                 # Capture thinking time up to this point and restart for next turn
                 current_thinking_time = time.time() - self._thinking_start
                 self._thinking_times.append(current_thinking_time)
-                if ("</think>" in buffer):
+                if "</think>" in buffer:
                     self._in_thinking = False
                     self._thinking_start = None
-                print(f"\r✅ Thinking ended ({current_thinking_time:.2f} seconds)", end="")
+                print(
+                    f"\r✅ Thinking ended ({current_thinking_time:.2f} seconds)", end=""
+                )
             yield text
-
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
         prompt = PROMPT_TEMPLATE.format(
@@ -195,8 +198,8 @@ If you need additional information, you can search again
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
             # Reset thinking for next turn after API call
             self._thinking_start = time.time()
-        
-         # Final cleanup in case thinking state is still active at the end
+
+        # Final cleanup in case thinking state is still active at the end
         self._in_thinking = False
         self._thinking_start = None
 

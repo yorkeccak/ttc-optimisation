@@ -112,5 +112,5 @@ If you need additional information, you can search again using {self._start_rag}
 
         self._in_thinking = False
         self._thinking_start = None
-        
+
         return self._compute_metrics(output)
