@@ -1254,6 +1254,7 @@ def run_benchmark(
                 response = response_dict.get("response", "")
                 thinking_tokens = count_thinking_tokens(response)
                 response_dict["thinking_tokens"] = thinking_tokens
+                logger.info(f"🎼🍦 Printing the response dict {[(key, value) for key, value in response_dict.items()]}")
 
                 llm_results.append(response_dict)
 
