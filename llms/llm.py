@@ -83,7 +83,7 @@ class Llm(ABC):
             max_price=max_price,
         )
         print(
-            f"\r✅ Found {len(response.results)} search results                      "
+            f"\r✅ Found {len(response.results)} search results"
         )
 
         # Store raw results for logging
@@ -217,7 +217,7 @@ class Llm(ABC):
         matches = re.findall(pattern, text, flags=re.DOTALL)
         return matches[-1].strip() if matches else None
 
-    def _compute_metrics(self: Self, response: str) -> dict:
+    def _compute_metrics(self: Self, response: str, last_response: str) -> dict:
         """
         Computes the metrics for the model response, this includes no. of thinking tokens,
         full response tokens, no. of search queries, no. of search results, and filtered search results.
@@ -238,10 +238,17 @@ class Llm(ABC):
         search_results = len(re.findall(re.escape(self._start_result), response))
 
         total_thinking_time = sum(self._thinking_times) if self._thinking_times else 0
+        
+        last_think = last_response.rfind(self._thinking_tags[1])
+        if last_think != -1:
+            last_response = last_response[last_think + len(self._thinking_tags[1]): ]
+
+        print("Last response", last_response)
 
         # Include filtered search results if available
         metrics = {
             "response": response,
+            "last_response": last_response,
             "response_tokens": response_tokens,
             "thinking_time": total_thinking_time,
             "thinking_time_sessions": self._thinking_times.copy(),

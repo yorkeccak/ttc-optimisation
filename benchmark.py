@@ -146,7 +146,7 @@ def judge_responses(
     response_sections = []
     for resp in responses:
         model_impl = resp.get("model_impl", "unknown")
-        response_text = resp.get("response", "No response generated")
+        response_text = resp.get("last_response", "No response generated")
         response_sections.append(f"{model_impl} Model answer: {response_text}")
 
     # Construct the judge prompt
@@ -157,9 +157,10 @@ def judge_responses(
         f"Reference answer: {reference_answer}\n\n"
         f"{chr(10).join(response_sections)}\n\n"
         "For each model, assess:\n"
-        "1. Correctness: Is the answer factually correct compared to the reference? Output T (true) or F (false).\n"
+        "1. Correctness: Is the answer factually correct compared to the reference answer? YOU MUST USE THE REFERENCE ANSWER TO JUDGE CORRECTNESS. Output T (true) or F (false).\n"
         "2. Conciseness: Rate the conciseness as a percentage (0-100), where 100% means the answer contains "
         "only necessary information with no extraneous details.\n\n"
+        "IMPORTANT REMINDER: Do not use any external knowledge or information to evaluate the answers." 
         "Format your evaluation for each model exactly as follows:\n"
     )
 

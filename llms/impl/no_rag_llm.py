@@ -57,4 +57,4 @@ class NoRagLlm(Llm):
         print(f"\r✅ No RAG: Response generated using internal knowledge only       ")
 
         # Compute metrics and return result
-        return self._compute_metrics(response)
+        return self._compute_metrics(response, last_response=response)

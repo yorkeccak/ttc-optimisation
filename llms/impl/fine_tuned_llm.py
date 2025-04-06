@@ -172,6 +172,7 @@ class FineTunedLlm(Llm):
 
             output += "\n" + response
             search_query = self._extract_rag_query(response)
+            last_response = response
 
             if not search_query:
                 print("\n[✅ No further searches required.]")
@@ -203,4 +204,4 @@ If you need additional information, you can search again
         self._in_thinking = False
         self._thinking_start = None
 
-        return self._compute_metrics(output)
+        return self._compute_metrics(output, last_response=last_response)

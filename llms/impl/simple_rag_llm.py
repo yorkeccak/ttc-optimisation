@@ -71,4 +71,4 @@ class SimpleRagLlm(Llm):
         print(f"\r✅ Simple RAG: Response generated with context      ")
 
         # Compute metrics and return result
-        return self._compute_metrics(response)
+        return self._compute_metrics(response, last_response=response)
