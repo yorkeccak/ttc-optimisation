@@ -243,7 +243,6 @@ class Llm(ABC):
         if last_think != -1:
             last_response = last_response[last_think + len(self._thinking_tags[1]): ]
 
-        print("Last response", last_response)
 
         # Include filtered search results if available
         metrics = {
