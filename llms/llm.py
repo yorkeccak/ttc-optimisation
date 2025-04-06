@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import ollama
 import re
+import time
 from typing import Self, Generator
 from valyu import Valyu
 import tiktoken
@@ -45,6 +46,10 @@ class Llm(ABC):
         self._end_result = "</end_search_result>"
         self._filtered_search_results = ""
         self._tokenizer = tiktoken.get_encoding("cl100k_base")
+        self._thinking_tags = ("<think>", "</think>")
+        self._thinking_start = None
+        self._in_thinking = False
+        self._thinking_times = []  # Track multiple thinking session times
 
     def _run_valyu(
         self: Self,
@@ -78,7 +83,7 @@ class Llm(ABC):
             max_price=max_price,
         )
         print(
-            f"\r✅ Found {len(response.results)} search results                      "
+            f"\r✅ Found {len(response.results)} search results"
         )
 
         # Store raw results for logging
@@ -87,7 +92,7 @@ class Llm(ABC):
         # Filter results
         print(f"\r🧠 Filtering search results with Cohere...", end="")
         filtered_results = self._filter_results(previous_reasoning, query, raw_results)
-        print(f"\r✅ Search results filtered                    ")
+        print(f"\r✅ Search results filtered ")
 
         # Store the filtered results for later retrieval
         self._filtered_search_results = filtered_results
@@ -151,6 +156,7 @@ class Llm(ABC):
     ) -> Generator[str, None, None]:
         """
         Runs the model with the given prompt and returns a generator that yields response chunks.
+        Also times the thinking process by detecting <think> and </think> tags.
 
         Args:
             prompt: The prompt to send to the model
@@ -166,8 +172,35 @@ class Llm(ABC):
             options={"stop": stop_tokens or []} if stop_tokens else {},
         )
 
-        for chunk in stream:
-            yield chunk["message"]["content"]
+        buffer = ""
+        try:
+            for chunk in stream:
+                text_chunk = chunk["message"]["content"]
+                buffer += text_chunk
+                # Check for thinking start and end in the buffer
+                if not self._in_thinking and "<think>" in buffer:
+                    self._in_thinking = True
+                    self._thinking_start = time.time()
+                    print(f"\r🧠 Thinking started...", end="")
+
+                if self._in_thinking and "</think>" in buffer:
+                    self._in_thinking = False
+                    thinking_time = time.time() - self._thinking_start
+                    self._thinking_times.append(thinking_time)
+                    print(
+                        f"\r✅ Thinking completed in {thinking_time:.2f} seconds",
+                        end="",
+                    )
+                    buffer = ""  # Reset buffer after capturing a thinking session
+                yield text_chunk
+        finally:
+            print("\r✅ Stream ended, cleaning up...", end="")
+            # Handle the case where we search
+            if self._in_thinking:
+                self._in_thinking = False
+                thinking_time = time.time() - self._thinking_start
+                self._thinking_times.append(thinking_time)
+                print(f"\r✅ Thinking captured ({thinking_time:.2f} seconds)", end="")
 
     def _extract_rag_query(self: Self, text: str) -> str | None:
         """
@@ -184,7 +217,7 @@ class Llm(ABC):
         matches = re.findall(pattern, text, flags=re.DOTALL)
         return matches[-1].strip() if matches else None
 
-    def _compute_metrics(self: Self, response: str) -> dict:
+    def _compute_metrics(self: Self, response: str, last_response: str) -> dict:
         """
         Computes the metrics for the model response, this includes no. of thinking tokens,
         full response tokens, no. of search queries, no. of search results, and filtered search results.
@@ -204,10 +237,20 @@ class Llm(ABC):
         # Count number of search results
         search_results = len(re.findall(re.escape(self._start_result), response))
 
+        total_thinking_time = sum(self._thinking_times) if self._thinking_times else 0
+        
+        last_think = last_response.rfind(self._thinking_tags[1])
+        if last_think != -1:
+            last_response = last_response[last_think + len(self._thinking_tags[1]): ]
+
+
         # Include filtered search results if available
         metrics = {
             "response": response,
+            "last_response": last_response,
             "response_tokens": response_tokens,
+            "thinking_time": total_thinking_time,
+            "thinking_time_sessions": self._thinking_times.copy(),
             "search_queries": search_queries,
             "search_results": search_results,
         }
@@ -215,8 +258,13 @@ class Llm(ABC):
         # Add filtered search results if available
         if self._filtered_search_results:
             metrics["filtered_search_results"] = self._filtered_search_results
+
         # Reset filtered search results
         self._filtered_search_results = ""
+
+        # Reset thinking times for next query
+        self._thinking_times = []
+
         return metrics
 
     @abstractmethod

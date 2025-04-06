@@ -56,23 +56,23 @@ class RagTokenLlm(Llm):
         )
 
         output = ""
-        current_chunk = ""
 
         for turn in range(max_turns):
+            current_chunk = ""
             print(f"\n📝 Turn {turn+1}/{max_turns} ---")
             print("\n🤖 Model thinking...")
 
-            # Stream the response and check for RAG tokens
-            for chunk in self._run_inference_stream(
-                prompt, stop_tokens=[self._end_rag]
-            ):
+            # Stream the response and check for RAG tokens (timing is handled in _run_inference_stream)
+            stream = self._run_inference_stream(prompt, stop_tokens=[self._end_rag])
+
+            for chunk in stream:
                 print(chunk, end="", flush=True)
                 current_chunk += chunk
 
                 # Check if we have a complete RAG query
                 if self._start_rag in current_chunk and self._end_rag in current_chunk:
                     break
-
+            last_response = current_chunk
             # Ensure the RAG query is properly terminated
             if self._start_rag in current_chunk and not current_chunk.endswith(
                 self._end_rag
@@ -108,6 +108,8 @@ If you need additional information, you can search again using {self._start_rag}
             )
             prompt += f"\n{current_chunk}\n{embedded_context}\n"
             print(f"\n📎 Search results added to context. Continuing reasoning...\n")
-            current_chunk = ""
 
-        return self._compute_metrics(output)
+        self._in_thinking = False
+        self._thinking_start = None
+
+        return self._compute_metrics(output, last_response=last_response)

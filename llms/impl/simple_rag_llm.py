@@ -62,10 +62,13 @@ class SimpleRagLlm(Llm):
         # Prepare prompt with question and context
         prompt = PROMPT_TEMPLATE.format(question=question, context=context)
 
-        # Generate response using the LLM
+        # Generate response using the LLM with streaming to properly time thinking
         print(f"\r🧠 Simple RAG: Generating response with context...", end="")
-        response = self._run_inference(prompt)
+        response = ""
+        for chunk in self._run_inference_stream(prompt):
+            response += chunk
+
         print(f"\r✅ Simple RAG: Response generated with context      ")
 
         # Compute metrics and return result
-        return self._compute_metrics(response)
+        return self._compute_metrics(response, last_response=response)

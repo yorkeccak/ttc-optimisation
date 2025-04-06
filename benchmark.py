@@ -146,7 +146,7 @@ def judge_responses(
     response_sections = []
     for resp in responses:
         model_impl = resp.get("model_impl", "unknown")
-        response_text = resp.get("response", "No response generated")
+        response_text = resp.get("last_response", "No response generated")
         response_sections.append(f"{model_impl} Model answer: {response_text}")
 
     # Construct the judge prompt
@@ -157,9 +157,10 @@ def judge_responses(
         f"Reference answer: {reference_answer}\n\n"
         f"{chr(10).join(response_sections)}\n\n"
         "For each model, assess:\n"
-        "1. Correctness: Is the answer factually correct compared to the reference? Output T (true) or F (false).\n"
+        "1. Correctness: Is the answer factually correct compared to the reference answer? YOU MUST USE THE REFERENCE ANSWER TO JUDGE CORRECTNESS. Output T (true) or F (false).\n"
         "2. Conciseness: Rate the conciseness as a percentage (0-100), where 100% means the answer contains "
         "only necessary information with no extraneous details.\n\n"
+        "IMPORTANT REMINDER: Do not use any external knowledge or information to evaluate the answers." 
         "Format your evaluation for each model exactly as follows:\n"
     )
 
@@ -328,6 +329,7 @@ def save_results(results, results_folder=None, model_name=""):
             # Store response metrics
             row[f"{model_impl}_total_tokens"] = result.get("response_tokens", 0)
             row[f"{model_impl}_thinking_tokens"] = result.get("thinking_tokens", 0)
+            row[f"{model_impl}_thinking_time"] = result.get("thinking_time", 0)
             row[f"{model_impl}_search_queries"] = result.get("search_queries", 0)
             row[f"{model_impl}_search_results"] = result.get("search_results", 0)
             data_rows.append(row)
@@ -367,6 +369,9 @@ def save_results(results, results_folder=None, model_name=""):
             if f"{model}_thinking_tokens" in df
             else 0
         )
+        summary_metrics[model]["avg_thinking_time"] = (
+            df[f"{model}_thinking_time"].mean() if f"{model}_thinking_time" in df else 0
+        )
         summary_metrics[model]["avg_search_queries"] = (
             df[f"{model}_search_queries"].mean()
             if f"{model}_search_queries" in df
@@ -391,6 +396,7 @@ def save_results(results, results_folder=None, model_name=""):
     # Calculate reduction percentages compared to baseline
     for model in model_names:
         if model != baseline_model:
+            # Calculate thinking token reduction
             baseline_thinking = summary_metrics[baseline_model]["avg_thinking_tokens"]
             model_thinking = summary_metrics[model]["avg_thinking_tokens"]
 
@@ -401,6 +407,20 @@ def save_results(results, results_folder=None, model_name=""):
                 summary_metrics[model]["thinking_reduction_pct"] = reduction_pct
             else:
                 summary_metrics[model]["thinking_reduction_pct"] = 0
+
+            # Calculate thinking time reduction
+            baseline_time = summary_metrics[baseline_model]["avg_thinking_time"]
+            model_time = summary_metrics[model]["avg_thinking_time"]
+
+            if baseline_time > 0:
+                time_reduction_pct = (
+                    (baseline_time - model_time) / baseline_time
+                ) * 100
+                summary_metrics[model][
+                    "thinking_time_reduction_pct"
+                ] = time_reduction_pct
+            else:
+                summary_metrics[model]["thinking_time_reduction_pct"] = 0
 
     # Convert summary metrics to DataFrame
     summary_df = pd.DataFrame(summary_metrics).transpose()
@@ -414,8 +434,16 @@ def save_results(results, results_folder=None, model_name=""):
         for model in model_names
         if f"{model}_thinking_tokens" in df.columns
     ]
+    thinking_time_cols = [
+        f"{model}_thinking_time"
+        for model in model_names
+        if f"{model}_thinking_time" in df.columns
+    ]
+
     subject_difficulty_summary = (
-        df.groupby(["subject", "difficulty"])[thinking_cols].mean().round(2)
+        df.groupby(["subject", "difficulty"])[thinking_cols + thinking_time_cols]
+        .mean()
+        .round(2)
     )
     subject_difficulty_csv = results_folder / "data" / "subject_difficulty_summary.csv"
     subject_difficulty_summary.to_csv(subject_difficulty_csv)
@@ -433,6 +461,10 @@ def save_results(results, results_folder=None, model_name=""):
     for model in model_names:
         print(f"  {model}: {summary_metrics[model]['avg_thinking_tokens']:.1f}")
 
+    print("\n⏱️ Average Thinking Time (seconds):")
+    for model in model_names:
+        print(f"  {model}: {summary_metrics[model]['avg_thinking_time']:.2f}")
+
     if len(model_names) > 1:
         print("\n📉 Thinking Token Reduction vs Baseline:")
         for model in model_names:
@@ -442,6 +474,16 @@ def save_results(results, results_folder=None, model_name=""):
             ):
                 print(
                     f"  {model} vs {baseline_model}: {summary_metrics[model]['thinking_reduction_pct']:.1f}%"
+                )
+
+        print("\n⏱️ Thinking Time Reduction vs Baseline:")
+        for model in model_names:
+            if (
+                model != baseline_model
+                and "thinking_time_reduction_pct" in summary_metrics[model]
+            ):
+                print(
+                    f"  {model} vs {baseline_model}: {summary_metrics[model]['thinking_time_reduction_pct']:.1f}%"
                 )
 
     # Print performance metrics if available
@@ -522,6 +564,40 @@ def generate_visualizations(
         plt.savefig(plots_folder / "thinking_tokens_by_model.png", dpi=300)
         plt.close()
 
+    # 1b. Thinking time by model implementation
+    plt.figure(figsize=(12, 8))
+    thinking_time_cols = [
+        f"{model}_thinking_time"
+        for model in model_names
+        if f"{model}_thinking_time" in df.columns
+    ]
+
+    if thinking_time_cols:
+        thinking_time_data = pd.melt(
+            df,
+            value_vars=thinking_time_cols,
+            id_vars=["difficulty"],
+        )
+
+        # Clean up variable names for display
+        thinking_time_data["variable"] = thinking_time_data["variable"].apply(
+            lambda x: x.split("_thinking_time")[0]
+        )
+
+        sns.boxplot(
+            data=thinking_time_data,
+            x="variable",
+            y="value",
+            hue="difficulty",
+        )
+        plt.title(f"Thinking Time (seconds) by Model Implementation ({model_name})")
+        plt.xlabel("Model Implementation")
+        plt.ylabel("Thinking Time (seconds)")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.savefig(plots_folder / "thinking_time_by_model.png", dpi=300)
+        plt.close()
+
     # 2. Thinking tokens by difficulty
     plt.figure(figsize=(12, 8))
     if thinking_cols:
@@ -538,6 +614,24 @@ def generate_visualizations(
         plt.legend(title="Model Implementation")
         plt.tight_layout()
         plt.savefig(plots_folder / "thinking_tokens_by_difficulty.png", dpi=300)
+        plt.close()
+
+    # 2b. Thinking time by difficulty
+    plt.figure(figsize=(12, 8))
+    if thinking_time_cols:
+        difficulty_time_data = thinking_time_data.copy()
+        sns.boxplot(
+            data=difficulty_time_data,
+            x="difficulty",
+            y="value",
+            hue="variable",
+        )
+        plt.title(f"Thinking Time (seconds) by Difficulty ({model_name})")
+        plt.xlabel("Difficulty")
+        plt.ylabel("Thinking Time (seconds)")
+        plt.legend(title="Model Implementation")
+        plt.tight_layout()
+        plt.savefig(plots_folder / "thinking_time_by_difficulty.png", dpi=300)
         plt.close()
 
     # 3. Thinking token reduction percentage (if applicable)
@@ -590,6 +684,53 @@ def generate_visualizations(
                 plt.savefig(plots_folder / "thinking_token_reduction.png", dpi=300)
                 plt.close()
 
+        # 3b. Thinking time reduction percentage
+        plt.figure(figsize=(12, 8))
+        baseline_time_col = f"{baseline_model}_thinking_time"
+
+        if baseline_time_col in df.columns:
+            time_reduction_data = []
+
+            for model in model_names:
+                if model != baseline_model:
+                    model_time_col = f"{model}_thinking_time"
+
+                    if model_time_col in df.columns:
+                        # Calculate time reduction percentage row by row
+                        df[f"{model}_time_reduction_pct"] = (
+                            (df[baseline_time_col] - df[model_time_col])
+                            / df[baseline_time_col].replace(0, np.nan)
+                        ) * 100
+
+                        time_reduction_rows = df[
+                            ["difficulty", f"{model}_time_reduction_pct"]
+                        ].copy()
+                        time_reduction_rows["model"] = model
+                        time_reduction_rows = time_reduction_rows.rename(
+                            columns={
+                                f"{model}_time_reduction_pct": "time_reduction_pct"
+                            }
+                        )
+                        time_reduction_data.append(time_reduction_rows)
+
+            if time_reduction_data:
+                time_reduction_df = pd.concat(time_reduction_data, ignore_index=True)
+
+                sns.barplot(
+                    data=time_reduction_df,
+                    x="model",
+                    y="time_reduction_pct",
+                    hue="difficulty",
+                )
+                plt.title(f"Thinking Time Reduction vs {baseline_model} ({model_name})")
+                plt.xlabel("Model Implementation")
+                plt.ylabel("Time Reduction Percentage (%)")
+                plt.axhline(y=0, color="r", linestyle="-", alpha=0.3)
+                plt.xticks(rotation=45)
+                plt.tight_layout()
+                plt.savefig(plots_folder / "thinking_time_reduction.png", dpi=300)
+                plt.close()
+
     # 4. Subject area performance
     plt.figure(figsize=(15, 10))
     if thinking_cols:
@@ -624,6 +765,42 @@ def generate_visualizations(
         plt.legend(title="Model Implementation")
         plt.tight_layout()
         plt.savefig(plots_folder / "thinking_tokens_by_subject.png", dpi=300)
+        plt.close()
+
+    # 4b. Subject area time performance
+    plt.figure(figsize=(15, 10))
+    if thinking_time_cols:
+        subject_time_data = pd.melt(
+            df,
+            value_vars=thinking_time_cols,
+            id_vars=["subject"],
+        )
+
+        # Clean up variable names for display
+        subject_time_data["variable"] = subject_time_data["variable"].apply(
+            lambda x: x.split("_thinking_time")[0]
+        )
+
+        # Get unique subjects and handle if there are many
+        subjects = df["subject"].unique()
+
+        if len(subjects) > 8:
+            # For many subjects, create a separate plot
+            plt.figure(figsize=(max(15, len(subjects)), 10))
+
+        sns.barplot(
+            data=subject_time_data,
+            x="subject",
+            y="value",
+            hue="variable",
+        )
+        plt.title(f"Thinking Time (seconds) by Subject Area ({model_name})")
+        plt.xlabel("Subject Area")
+        plt.ylabel("Thinking Time (seconds)")
+        plt.xticks(rotation=45, ha="right")
+        plt.legend(title="Model Implementation")
+        plt.tight_layout()
+        plt.savefig(plots_folder / "thinking_time_by_subject.png", dpi=300)
         plt.close()
 
     # 5. Correctness and conciseness (if available)
@@ -694,25 +871,36 @@ def generate_visualizations(
                 col in df.columns
                 for col in [
                     f"{model}_thinking_tokens",
+                    f"{model}_thinking_time",
                     f"{model}_correct",
                     f"{model}_conciseness",
                 ]
             ):
                 # Get average metrics
                 thinking_avg = df[f"{model}_thinking_tokens"].mean()
+                thinking_time_avg = df[f"{model}_thinking_time"].mean()
                 correct_pct = df[f"{model}_correct"].mean() * 100
                 conciseness_avg = df[f"{model}_conciseness"].mean()
 
                 # Calculate reduction from baseline if applicable
-                reduction_pct = 0
+                token_reduction_pct = 0
+                time_reduction_pct = 0
                 if (
                     model != baseline_model
                     and f"{baseline_model}_thinking_tokens" in df.columns
+                    and f"{baseline_model}_thinking_time" in df.columns
                 ):
-                    baseline_avg = df[f"{baseline_model}_thinking_tokens"].mean()
-                    if baseline_avg > 0:
-                        reduction_pct = (
-                            (baseline_avg - thinking_avg) / baseline_avg
+                    baseline_token_avg = df[f"{baseline_model}_thinking_tokens"].mean()
+                    baseline_time_avg = df[f"{baseline_model}_thinking_time"].mean()
+
+                    if baseline_token_avg > 0:
+                        token_reduction_pct = (
+                            (baseline_token_avg - thinking_avg) / baseline_token_avg
+                        ) * 100
+
+                    if baseline_time_avg > 0:
+                        time_reduction_pct = (
+                            (baseline_time_avg - thinking_time_avg) / baseline_time_avg
                         ) * 100
 
                 # Add to data
@@ -720,9 +908,11 @@ def generate_visualizations(
                     {
                         "model": model,
                         "thinking_tokens": thinking_avg,
+                        "thinking_time": thinking_time_avg,
                         "correctness": correct_pct,
                         "conciseness": conciseness_avg,
-                        "reduction_pct": reduction_pct,
+                        "token_reduction_pct": token_reduction_pct,
+                        "time_reduction_pct": time_reduction_pct,
                     }
                 )
 
@@ -732,9 +922,11 @@ def generate_visualizations(
             # Create radar chart
             categories = [
                 "Thinking Tokens (Lower is Better)",
+                "Thinking Time (Lower is Better)",
                 "Correctness (%)",
                 "Conciseness",
-                "Reduction vs Baseline (%)",
+                "Token Reduction vs Baseline (%)",
+                "Time Reduction vs Baseline (%)",
             ]
 
             N = len(categories)
@@ -742,26 +934,35 @@ def generate_visualizations(
             angles += angles[:1]  # Close the loop
 
             # Create figure
-            fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(polar=True))
+            fig, ax = plt.subplots(figsize=(12, 12), subplot_kw=dict(polar=True))
 
             # Normalize values for radar chart
             max_thinking = metrics_df["thinking_tokens"].max()
+            max_thinking_time = metrics_df["thinking_time"].max()
 
             # Plot each model
             for _, row in metrics_df.iterrows():
                 model = row["model"]
 
-                # Prepare values (normalize and invert thinking tokens)
+                # Prepare values (normalize and invert thinking tokens and time)
                 values = [
                     (
                         1 - (row["thinking_tokens"] / max_thinking)
                         if max_thinking > 0
                         else 0
                     ),  # Invert so lower is better
+                    (
+                        1 - (row["thinking_time"] / max_thinking_time)
+                        if max_thinking_time > 0
+                        else 0
+                    ),  # Invert so lower is better
                     row["correctness"] / 100,  # Normalize to 0-1
                     row["conciseness"] / 100,  # Normalize to 0-1
                     max(
-                        0, row["reduction_pct"] / 100
+                        0, row["token_reduction_pct"] / 100
+                    ),  # Normalize and ensure non-negative
+                    max(
+                        0, row["time_reduction_pct"] / 100
                     ),  # Normalize and ensure non-negative
                 ]
                 values += values[:1]  # Close the loop
@@ -793,6 +994,10 @@ def generate_visualizations(
         # Add thinking tokens
         if f"{model}_thinking_tokens" in df.columns:
             model_metrics["thinking_tokens"] = df[f"{model}_thinking_tokens"].mean()
+
+        # Add thinking time
+        if f"{model}_thinking_time" in df.columns:
+            model_metrics["thinking_time"] = df[f"{model}_thinking_time"].mean()
 
         # Add correctness
         if f"{model}_correct" in df.columns:
@@ -833,7 +1038,50 @@ def generate_visualizations(
         plt.savefig(plots_folder / "metrics_summary.png", dpi=300)
         plt.close()
 
-    # 8. Create a comprehensive PDF report with all visualizations
+    # 8. Create a tokens vs time scatter plot
+    plt.figure(figsize=(12, 8))
+
+    if thinking_cols and thinking_time_cols:
+        scatter_data = []
+
+        for idx, row in df.iterrows():
+            for model in model_names:
+                token_col = f"{model}_thinking_tokens"
+                time_col = f"{model}_thinking_time"
+
+                if token_col in df.columns and time_col in df.columns:
+                    scatter_data.append(
+                        {
+                            "model": model,
+                            "difficulty": row["difficulty"],
+                            "tokens": row[token_col],
+                            "time": row[time_col],
+                        }
+                    )
+
+        if scatter_data:
+            scatter_df = pd.DataFrame(scatter_data)
+
+            plt.figure(figsize=(12, 8))
+            sns.scatterplot(
+                data=scatter_df,
+                x="tokens",
+                y="time",
+                hue="model",
+                style="difficulty",
+                s=100,
+                alpha=0.7,
+            )
+
+            plt.title(f"Thinking Time vs Thinking Tokens ({model_name})")
+            plt.xlabel("Thinking Tokens")
+            plt.ylabel("Thinking Time (seconds)")
+            plt.grid(True, linestyle="--", alpha=0.7)
+            plt.tight_layout()
+            plt.savefig(plots_folder / "thinking_time_vs_tokens.png", dpi=300)
+            plt.close()
+
+    # 9. Create a comprehensive PDF report with all visualizations
     try:
         # Create PDF
         pdf = FPDF()
@@ -1007,6 +1255,7 @@ def run_benchmark(
                 response = response_dict.get("response", "")
                 thinking_tokens = count_thinking_tokens(response)
                 response_dict["thinking_tokens"] = thinking_tokens
+                logger.info(f"🎼🍦 Printing the response dict {[(key, value) for key, value in response_dict.items()]}")
 
                 llm_results.append(response_dict)
 
@@ -1020,6 +1269,7 @@ def run_benchmark(
                         "response": f"Error: {str(e)}",
                         "response_tokens": 0,
                         "thinking_tokens": 0,
+                        "thinking_time": 0,
                         "search_queries": 0,
                         "search_results": 0,
                     }
