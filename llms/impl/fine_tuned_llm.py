@@ -149,6 +149,7 @@ class FineTunedLlm(Llm):
                 print(
                     f"\r✅ Thinking ended ({current_thinking_time:.2f} seconds)", end=""
                 )
+                buffer = ""
             yield text
 
     def generate_output(self: Self, question: str, max_turns: int = 5) -> dict:
