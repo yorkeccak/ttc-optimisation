@@ -160,7 +160,7 @@ def judge_responses(
         "1. Correctness: Is the answer factually correct compared to the reference answer? YOU MUST USE THE REFERENCE ANSWER TO JUDGE CORRECTNESS. Output T (true) or F (false).\n"
         "2. Conciseness: Rate the conciseness as a percentage (0-100), where 100% means the answer contains "
         "only necessary information with no extraneous details.\n\n"
-        "IMPORTANT REMINDER: Do not use any external knowledge or information to evaluate the answers." 
+        "IMPORTANT REMINDER: Do not use any external knowledge or information to evaluate the answers."
         "Format your evaluation for each model exactly as follows:\n"
     )
 
@@ -1255,7 +1255,9 @@ def run_benchmark(
                 response = response_dict.get("response", "")
                 thinking_tokens = count_thinking_tokens(response)
                 response_dict["thinking_tokens"] = thinking_tokens
-                logger.info(f"🎼🍦 Printing the response dict {[(key, value) for key, value in response_dict.items()]}")
+                logger.info(
+                    f"🎼🍦 Printing the response dict {[(key, value) for key, value in response_dict.items()]}"
+                )
 
                 llm_results.append(response_dict)
 

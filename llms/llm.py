@@ -82,9 +82,7 @@ class Llm(ABC):
             max_num_results=max_num_results,
             max_price=max_price,
         )
-        print(
-            f"\r✅ Found {len(response.results)} search results"
-        )
+        print(f"\r✅ Found {len(response.results)} search results")
 
         # Store raw results for logging
         raw_results = "\n".join([result.content for result in response.results])
@@ -238,11 +236,11 @@ class Llm(ABC):
         search_results = len(re.findall(re.escape(self._start_result), response))
 
         total_thinking_time = sum(self._thinking_times) if self._thinking_times else 0
-        
-        last_think = last_response.rfind(self._thinking_tags[1])
-        if last_think != -1:
-            last_response = last_response[last_think + len(self._thinking_tags[1]): ]
 
+        last_think = last_response.rfind(self._thinking_tags[1])
+
+        if last_think != -1:
+            last_response = last_response[last_think + len(self._thinking_tags[1]) :]
 
         # Include filtered search results if available
         metrics = {
